@@ -1,4 +1,4 @@
-<a href="index.php">Index</a>
+<a href="index.php">Index</a><br><br>
 
 <?php
 /**
@@ -10,8 +10,8 @@
 
 
 
-function zomerInZaandam(){
-
+function zomerInZaandam($plaats, $naam1, $naam2){
+    echo "Zooooomer in $plaats! $naam1, het is zooomer in $plaats! Ik ga met $naam2 naar $naam1 toeeehhh.";
 }
 
 function rob($aanwezigheid){
@@ -20,5 +20,8 @@ function rob($aanwezigheid){
 
 
 rob('niet');
+
+echo '<br>';
+zomerInZaandam('heerhugowaard', 'Tiri', 'Allah');
 
 ?>
