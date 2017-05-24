@@ -6,7 +6,9 @@
  * Time: 11:34
  */
 
+if($rob = 'oeps, fo niet ingeleverd'){
+echo 'shit';
+}
 
 echo "hello world my name is Alie";
-echo "WE SHALL BEGIN THE PURGE , FOR KERMIT THE FROG AND THE FROG EMPEROR OF FROG KIN RIBBIT";
 ?>
