@@ -6,7 +6,12 @@
  * Time: 11:56
  */
 
-echo 'Test';
 
+function rob($aanwezigheid){
+   echo "Hij is op dit moment $aanwezigheid aanwezig";
+}
+
+
+rob('niet');
 
 ?>
