@@ -8,7 +8,7 @@
 
 
 function rob($aanwezigheid){
-   echo "Hij is op dit moment $aanwezigheid aanwezig. In lokaal 1.060 is een mogelijkheid tot condoleren";
+   echo "Hij is op dit moment $aanwezigheid aanwezig. In lokaal 1.060 is een mogelijkheid tot condoleren.";
 }
 
 
