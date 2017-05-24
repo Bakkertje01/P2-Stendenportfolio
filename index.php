@@ -8,4 +8,5 @@
 
 
 echo "hello world my name is Alie";
+echo "WE SHALL BEGIN THE PURGE , FOR KERMIT THE FROG AND THE FROG EMPEROR OF FROG KIN RIBBIT";
 ?>
