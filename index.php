@@ -6,8 +6,10 @@
  * Time: 11:34
  */
 
-if($rob = 'oeps, fo niet ingeleverd'){
-echo 'shit';
+$rob = 'oeps, fo niet ingeleverd';
+
+if($rob == 'oeps, fo niet ingeleverd'){
+echo 'shit<br>';
 }
 
 echo "hello world my name is Alie";
