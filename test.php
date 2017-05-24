@@ -1,3 +1,5 @@
+<a href="index.php">Index</a>
+
 <?php
 /**
  * Created by PhpStorm.
@@ -6,6 +8,11 @@
  * Time: 11:56 -
  */
 
+
+
+function zomerInZaandam(){
+
+}
 
 function rob($aanwezigheid){
    echo "Hij is op dit moment $aanwezigheid aanwezig";
