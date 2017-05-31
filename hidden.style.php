@@ -78,6 +78,12 @@
             background-color: #0a53a0;
         }
 
+        /*Errors*/
+
+        .errorText{
+            color:red;
+        }
+
     </style>
 </head>
 <body>
