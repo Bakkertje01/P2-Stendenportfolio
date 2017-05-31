@@ -1,7 +1,7 @@
 <html>
 
 <head>
-
+    <link rel="icon" type="image/png" href="fav.png"/>
 </head>
 
 <body>
@@ -9,6 +9,7 @@
 
 include 'hidden.header.php';
 include 'hidden.menu.php';
+
 ?>
 
 

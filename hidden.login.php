@@ -11,7 +11,7 @@
 <html>
 
 <head>
-
+    <link rel="icon" type="image/png" href="fav.png"/>
 </head>
 
 <body>
