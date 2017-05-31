@@ -20,6 +20,44 @@
             background-color: #f2f2f2;
             padding: 25px;
         }
+
+
+        /*Style voor contact pagina */
+        #contactFormulier{
+            width:100%;
+            float:left;
+
+        }
+
+        .contactLabel {
+            float:left;
+        }
+
+        .inputForm{
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+        }
+
+        #submitContact {
+            float:left;
+            background-color: #3c75af;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #submitContact:hover {
+            background-color: #0a53a0;
+        }
+
     </style>
 </head>
 <body>
