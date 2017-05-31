@@ -27,13 +27,14 @@ include 'hidden.menu.php';
 		if(isset($_SESSION['loggedIn'])){
 
 			var_dump($_SESSION['loggedIn']);
-			echo "<p>U bent ingleogd</p>";
+			echo "<p>U bent ingelogd</p>";
 			echo "<a href='index.php?page=logout'>klik hier om uit te loggen</a>";
 
 		}
 		else{
 
 			echo "U bent niet ingelogd<br /><br />";
+			include "hidden.inlogform.html";
 		}
 
 
