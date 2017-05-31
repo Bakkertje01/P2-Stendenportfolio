@@ -41,14 +41,16 @@ include 'hidden.menu.php';
                         <a href="hidden.registrer.php">Registreren</a>
         </form>
     </div>
-</div>
 
-</html>
+</div>
 <?php
 
 include 'hidden.footer.php';
 
 ?>
+
+</html>
+
 
 </body>
 
