@@ -43,7 +43,7 @@ include "hidden.style.php";
 
             ?>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="hidden.login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li><a href="hidden.loginForm.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
             </ul>
         </div>
     </div>
