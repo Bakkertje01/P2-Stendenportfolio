@@ -29,11 +29,11 @@
 
         }
 
-        .contactLabel {
+        label {
             float:left;
         }
 
-        .inputForm{
+        input[type=text], textarea{
             width: 100%;
             padding: 12px;
             border: 1px solid #ccc;
@@ -44,7 +44,7 @@
             resize: vertical;
         }
 
-        #submitContact {
+        input[type=submit] {
             float:left;
             background-color: #3c75af;
             color: white;
@@ -54,7 +54,7 @@
             cursor: pointer;
         }
 
-        #submitContact:hover {
+        input[type=submit]:hover {
             background-color: #0a53a0;
         }
 
