@@ -7,7 +7,7 @@
 <body>
 <?php
 
-include 'header.php';
+include 'hidden.header.php';
 
 ?>
 
@@ -16,7 +16,7 @@ include 'header.php';
 
 
     <p>
-        Ayoo funky dudes! Dit is een voorbeeld tamplate, later moet natuurlijk de bootstrap hiern nog in...
+        Ayoo funky dudes! Dit is een voorbeeld tamplate, later moet natuurlijk de bootstrap hier nog in...
 
     </p>
 
@@ -25,7 +25,7 @@ include 'header.php';
 
 <?php
 
-include 'footer.php';
+include 'hidden.footer.php';
 
 ?>
 
