@@ -37,20 +37,34 @@ include 'hidden.menu.php';
             <label for='password'>Wachtwoord*:</label><br/>
             <input type='password' name='pw' id='password' maxlength="50"/><br/>
             <br/>
-                        <input id="submit" type='submit' name='submit' value='Aanmelden'/><br>
-                        <a href="hidden.registrer.php">Registreren</a>
+            <input id="submit" type='submit' name='submit' value='Aanmelden'/><br>
+            <a href="hidden.registrer.php">Registreren</a>
         </form>
     </div>
-
 </div>
+
+</html>
+
+<?php
+if (isset($_POST['submit'])) {
+
+	//check if username and password are correct
+	if ($_POST['un'] == "test user" && $_POST['pw'] == "test123") {
+		$_SESSION['loggedIn'] = true;
+		echo "<p>you are logged in</p>";
+		echo "<a href='index.php'>back to home</a>";
+	} else {
+		echo "<p style='color: red;'>wrong username and/or password</p>";
+	}
+}
+
+?>
+
 <?php
 
 include 'hidden.footer.php';
 
 ?>
-
-</html>
-
 
 </body>
 
