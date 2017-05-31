@@ -6,7 +6,6 @@
 
 <body>
 <?php
-
 include 'hidden.header.php';
 include 'hidden.menu.php';
 ?>
@@ -62,7 +61,7 @@ include 'hidden.menu.php';
         Dit is de index.
 
     </p>    <p>
-        Dit is de index.
+        Dit is de index easteregg.
 
     </p>
 
@@ -70,9 +69,7 @@ include 'hidden.menu.php';
 
 
 <?php
-
 include 'hidden.footer.php';
-
 ?>
 
 </body>
