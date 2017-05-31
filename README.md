@@ -9,3 +9,5 @@ Project 2.2 portfolio
 - Ernst-Jan
 
 !!![NIET ZONDER OVERLEG ANDERMANS BESTANDEN GAAN AANPASSEN]!!!
+
+Geen .idea meesturen !!!
