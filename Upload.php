@@ -15,7 +15,6 @@ include 'hidden.menu.php';
     <div class="container text-center">
         <p>
             <div id="wrapper">
-
                 <div id='content'>
                     <h3> Bestanden Uploaden </h3>
 
@@ -144,6 +143,17 @@ include 'hidden.menu.php';
 
 
 </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 
 <?php
