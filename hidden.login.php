@@ -37,14 +37,8 @@ include 'hidden.menu.php';
             <label for='password'>Wachtwoord*:</label><br/>
             <input type='password' name='pw' id='password' maxlength="50"/><br/>
             <br/>
-            <table>
-                <t>
-                    <td>
-                        <input id="submit" type='submit' name='submit' value='Aanmelden'/><br><br>
+                        <input id="submit" type='submit' name='submit' value='Aanmelden'/><br>
                         <a href="registreren.php">Registreren</a>
-                    </td>
-            </table>
-
         </form>
     </div>
 </div>
