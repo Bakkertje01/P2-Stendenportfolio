@@ -1,11 +1,35 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
 <?php
-/**
- * Created by PhpStorm.
- * User: Ernst-Jan Bakker
- * Date: 24-5-2017
- * Time: 11:34
- */
+
+include 'hidden.header.php';
+include 'hidden.menu.php';
+?>
 
 
+
+<div class="maincontent">
+
+
+    <p>
+        Dit is de index.
+
+    </p>
+
+</div>
+
+
+<?php
+
+include 'hidden.footer.php';
 
 ?>
+
+</body>
+
+</html>
