@@ -43,7 +43,7 @@ function dateSelect($datum, $folder)
                     $numberOfFiles = count($files1);
 
 
-                    echo " <div class='col-sm-3'><p>$deftitle</p>";
+                    echo " <div class='col-sm-3'><h5>$deftitle</h5>";
 
                     echo "<img src='$file1' class='img-responsive' style='width:100%' alt='$file1'>";
 
@@ -114,8 +114,8 @@ include 'hidden.menu.php';
 
 <div class="jumbotron">
     <div class="container text-center">
-        <h1>My Portfolio</h1>
-        <p>Some text that represents "Me"...</p>
+        <h1>Bestanden van [Naam]</h1>
+        <p><i>"Zieke quote van [Naam]"</i></p>
     </div>
 </div>
 

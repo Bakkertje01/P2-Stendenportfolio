@@ -6,7 +6,7 @@
 
 <body>
 
-<?php require_once("include/db_connection.php") ?>
+
 
 <?php
 
@@ -16,42 +16,6 @@ include 'hidden.header.php';
 include 'hidden.menu.php';
 ?>
 
-<?php
-//Registration script
-if(isset($_POST["Submit"])){
-    //The post values have to be the same as the form <name> tag
-    $firstname = $_POST['Firstname'];
-    $lastname = $_POST['Lastname'];
-    $email = $_POST['Email'];
-    $password = $_POST['Password'];
-    $phone = $_POST['Phone'];
-    $city = $_POST['City'];
-    $streetaddress = $_POST['StreetAddress'];
-    $postalcode = $_POST['Postalcode'];
-    //validaton
-    $required_fields = array("Firstname", "Lastname", "Email", "Password", "Phone", "City", "StreetAddress", "Postalcode");
-    validate_presences($required_fields);
-    if (!empty($errors)) {
-        $_SESSION["errors"] = $errors;
-        redirect_to('hidden.register.php');
-    }
-    //hasing the password
-    $password = password_encrypt($_POST["Password"]);
-    //defining the query
-    $sql  = "INSERT INTO Customer ";
-    $sql .= "(Firstname, Lastname, Email, Password, Phone, City, StreetAddress, Postalcode) ";
-    $sql .= "VALUES ('$firstname', '$lastname', '$email', '$password', '$phone', '$city', '$streetaddress', '$postalcode')";
-    $result = mysqli_query($connection, $sql);
-    check_query($result);
-    //message when registration passes or fails
-    if($result){
-        $_SESSION["message"] = "Registratie succesvol. U kunt nu direct inloggen.";
-        redirect_to("login.php");
-    }else{
-        $_SESSION["message"] = "Registratie mislukt. Probeer het nogmaals.";
-    }
-}
-?>
 
 
 
@@ -64,9 +28,9 @@ if(isset($_POST["Submit"])){
                 <!-- CONTENT -->
                 <div id='content'>
                     <h1> Registratie </h1>
-                    <?php// echo message(); ?>
-                    <?php// $errors = errors(); ?>
-                   <?php// echo form_errors($errors); ?>
+                    <?php //echo message(); ?>
+                    <?php //$errors = errors(); ?>
+                   <?php //echo form_errors($errors); ?>
                     <form id='register' action='hidden.register.php' method='post'>
                         <label for='firstname' >Voornaam*: </label><br/>
                         <input type='text' name='Firstname' id='firstname' maxlength="50" /><br/>
@@ -99,6 +63,50 @@ if(isset($_POST["Submit"])){
 
 
 </div>
+
+<?php //require_once("include/session.php") ?>
+
+<?php include 'include/db_connection.php';
+//include 'include/functions.php';
+
+?>
+<?php
+//Registration script
+if(isset($_POST["Submit"])){
+    //The post values have to be the same as the form <name> tag
+    $firstname = $_POST['Firstname'];
+    $lastname = $_POST['Lastname'];
+    $email = $_POST['Email'];
+    $password = $_POST['Password'];
+    $phone = $_POST['Phone'];
+    $city = $_POST['City'];
+    $streetaddress = $_POST['StreetAddress'];
+    $postalcode = $_POST['Postalcode'];
+    //validaton
+    $required_fields = array("Firstname", "Lastname", "Email", "Password", "Phone", "City", "StreetAddress", "Postalcode");
+    //validate_presences($required_fields);
+    //if (!empty($errors)) {
+    //    $_SESSION["errors"] = $errors;
+     //   redirect_to('hidden.register.php');
+    //}
+    //hasing the password
+    //$password = password_encrypt($_POST["Password"]);
+    //defining the query
+    $sql  = "INSERT INTO customer ";
+    $sql .= "(Firstname, Lastname, Email, Password, Phone, City, StreetAddress, Postalcode) ";
+    $sql .= "VALUES ('$firstname', '$lastname', '$email', '$password', '$phone', '$city', '$streetaddress', '$postalcode')";
+    $result = mysqli_query($connection, $sql);
+    //check_query($result);
+    //message when registration passes or fails
+    if($result){
+        $_SESSION["message"] = "Registratie succesvol. U kunt nu direct inloggen.";
+        //redirect_to("hidden.login.php");
+    }else{
+        $_SESSION["message"] = "Registratie mislukt. Probeer het nogmaals.";
+    }
+}
+?>
+
 </p>
     </div>
 </div>

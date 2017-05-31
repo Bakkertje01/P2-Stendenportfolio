@@ -56,6 +56,8 @@ include 'hidden.menu.php';
 
             <p><?php
 
+                //Map datum gaat veranderen naar uploader, de submappen in de type geuploadde bestanden:
+                //Map 'CV', Map 'Opdrachten', Map 'Portfolio' enz..
 
                 if (isset($_POST['turbo'])) {
 
