@@ -17,9 +17,6 @@ include "hidden.style.php";
         <div class="collapse navbar-collapse" id="myNavbar">
             <?php
 
-
-            //namen nog aanpassen uiteraard...
-
             $files = glob("./" . "*");
 
             echo '<ul class="nav navbar-nav">';
