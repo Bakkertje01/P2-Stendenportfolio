@@ -61,7 +61,7 @@ include 'hidden.menu.php';
         Dit is de index.
 
     </p>    <p>
-        Dit is de index easteregg.
+        Dit is de index eastereggs.
 
     </p>
 
