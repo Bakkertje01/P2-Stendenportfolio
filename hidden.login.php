@@ -39,7 +39,7 @@ if (isset($_POST['submit'])) {
                 <p>Als u gebruik wil maken van deze dienst moet u eerst inloggen. Als dit de eerste keer is dat u <br>
                     deze site bezoekt moet u zich eerst registreren. Na het registreren kunt u inloggen en gebruik <br>
                     maken van onze dienst.<br></p>
-                <form id='login' action='index.php?page=login' method='post'>
+                <form id='login' action='hidden.loggedin.php?page=login' method='post'>
                     <label for='Gebruikersnaam'>Gebruikersnaam*:</label><br/>
                     <input type='text' name='un' id='Gebruikersnaam' maxlength=\"50\"/><br/>
         
