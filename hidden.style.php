@@ -87,6 +87,8 @@
 
         .errorText {
             color: red;
+            font-weight: bold;
+            float:left;
         }
 
         .correctText {

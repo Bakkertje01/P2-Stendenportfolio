@@ -147,17 +147,6 @@ include 'hidden.menu.php';
 
 
 </div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
 
 
