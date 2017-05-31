@@ -44,7 +44,7 @@ include 'hidden.menu.php';
         <?php
 
         if (isset($_POST["submit"])) {
-            echo "hoi";
+            echo "hois";
         }
 
         ?>
