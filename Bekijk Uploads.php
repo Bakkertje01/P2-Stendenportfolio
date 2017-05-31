@@ -43,7 +43,7 @@ function dateSelect($datum, $folder)
                     $numberOfFiles = count($files1);
 
 
-                    echo " <div class='col-sm-3'><p>$deftitle</p>";
+                    echo " <div class='col-sm-3'><h5>$deftitle</h5>";
 
                     echo "<img src='$file1' class='img-responsive' style='width:100%' alt='$file1'>";
 
