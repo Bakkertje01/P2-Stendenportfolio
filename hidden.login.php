@@ -32,7 +32,7 @@ if (isset($_POST['submit'])) {
 		echo "<p style='color: red;'>wrong username and/or password</p>";
 	}
 } else {
-	include "hidden.inlogform.html";
+	include ("hidden.inlogform.html");
 }
 
 ?>
