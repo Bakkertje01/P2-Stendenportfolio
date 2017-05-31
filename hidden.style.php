@@ -88,6 +88,10 @@
             color:red;
         }
 
+        .correctText{
+            color: #009e12;
+        }
+
     </style>
 </head>
 <body>
