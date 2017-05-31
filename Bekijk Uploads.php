@@ -168,10 +168,6 @@ include 'hidden.menu.php';
 
 </div>
 
-
-
-
-
     <?php
 
     include 'hidden.footer.php';
