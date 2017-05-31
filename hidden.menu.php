@@ -4,7 +4,7 @@
     <?php
 
 
-    //namen nog aanpassen uiteraard
+    //namen nog aanpassen uiteraard...
 
     $files = glob("./" ."*");
 
