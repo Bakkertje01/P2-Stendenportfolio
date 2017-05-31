@@ -1,16 +1,33 @@
-<a href="index.php">Index</a><br><br>
+<html>
 
-<form action="test.php" method="POST">
-    <input type="text" name="plaats" ><br>
-    <input type="text" name="naam1"><br>
-    <input type="text" name="naam2"><br>
-    <input type="submit" name="klik">
-</form>
+<head>
+
+</head>
+
+<body>
+<?php
+
+include 'hidden.header.php';
+include 'hidden.menu.php';
+?>
+
+<div class="maincontent">
+
+
+    <p>
+        Ayoo funky dudes! Dit is een Test
+
+    </p>
+
+</div>
+
 
 <?php
 
-echo "Hello world!";
+include 'hidden.footer.php';
 
 ?>
 
+</body>
 
+</html>

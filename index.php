@@ -6,10 +6,10 @@
 
 <body>
 <?php
+
 include 'hidden.header.php';
 include 'hidden.menu.php';
 ?>
-
 
 
 <div class="maincontent">
@@ -18,50 +18,65 @@ include 'hidden.menu.php';
     <p>
         Dit is de index.
 
-    </p>    <p>
+    </p>
+    <p>
         Dit is de index.
 
-    </p>    <p>
+    </p>
+    <p>
         Dit is de index.
 
-    </p>    <p>
+    </p>
+    <p>
         Dit is de index.
 
-    </p>    <p>
+    </p>
+    <p>
         Dit is de index.
 
-    </p>    <p>
+    </p>
+    <p>
         Dit is de index.
 
-    </p>    <p>
+    </p>
+    <p>
         Dit is de index.
 
-    </p>    <p>
+    </p>
+    <p>
         Dit is de index.
 
-    </p>    <p>
+    </p>
+    <p>
         Dit is de index.
 
-    </p>    <p>
+    </p>
+    <p>
         Dit is de index.
 
-    </p>    <p>
+    </p>
+    <p>
         Dit is de index.
 
-    </p>    <p>
+    </p>
+    <p>
         Dit is de index.
 
-    </p>    <p>
+    </p>
+    <p>
         Dit is de index.
 
-    </p>    <p>
+    </p>
+    <p>
         Dit is de index.
 
-    </p>    <p>
+    </p>
+    <p>
         Dit is de index.
 
-    </p>    <p>
-        Dit is de index eastereggs.
+    </p>
+    <p>
+        Dit is de index.
 
     </p>
 
@@ -69,7 +84,9 @@ include 'hidden.menu.php';
 
 
 <?php
+
 include 'hidden.footer.php';
+
 ?>
 
 </body>
