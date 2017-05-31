@@ -119,35 +119,36 @@ include 'hidden.menu.php';
     </div>
 </div>
 
-<div class="container-fluid bg-3 text-center">
-    <h3>Selecteer map:</h3><br>
+
+<div class="container text-center">
+
+   <h3>Selecteer map:</h3><br>
 
 
     <form action="Bekijk%20Uploads.php" method="post" enctype="multipart/form-data">
-        <center>Datum:
+        <p>Datum:</p>
 
-            <?php
+        <?php
 
-            echo "<select name='date'>";
-            foreach ($dropdown as $item) {
-                if (substr_count($item, 'Ingevoerd') > 0) {
+        echo "<select name='date'>";
+        foreach ($dropdown as $item) {
+            if (substr_count($item, 'Ingevoerd') > 0) {
 
-                    $exlude = array('.', '/');
-                    $finalnameoffolder = str_replace($exlude, '', $item);
-                    echo "<option value='$finalnameoffolder'>$finalnameoffolder</option>";
+                $exlude = array('.', '/');
+                $finalnameoffolder = str_replace($exlude, '', $item);
+                echo "<option value='$finalnameoffolder'>$finalnameoffolder</option>";
 
-                }
             }
-            echo "</select>";
+        }
+        echo "</select>";
 
-            ?>
+        ?>
 
-        </center>
-        <br>
-        <center><input style="height: 50px; width: 100px; margin: 10px" type="submit" name="klik"
-                       value="Verstuur">
-            <input style="height: 50px;  width: 100px;" type="submit" name="reset" value="Reset">
-        </center>
+        <br><br><center><input id="bekijkup" type="submit" name="klik"
+               value="Verstuur">
+        <input id="bekijkup" type="submit" name="reset" value="Reset"></center><br><br><br>
+
+
     </form>
 
     <p><?php
@@ -165,8 +166,10 @@ include 'hidden.menu.php';
 
         ?></p>
 
+</div>
 
-    <br>
+
+
 
 
     <?php
