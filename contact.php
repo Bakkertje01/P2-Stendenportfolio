@@ -64,7 +64,7 @@ include 'hidden.menu.php';
 
 
             if (!empty($_POST["firstname"]) && !empty($_POST["lastname"]) && !empty($_POST["email"]) && !empty($_POST["subject"]) && (filter_var($_POST["email"], FILTER_VALIDATE_EMAIL))) {
-                echo "alle velden zijn ingevuld";
+                echo "<div class='correctText'>Alle velden zijn ingevuld </div>";
 
 
 

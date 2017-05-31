@@ -119,14 +119,13 @@ include 'hidden.menu.php';
     </div>
 </div>
 
-
 <div class="container text-center">
 
-   <h3>Selecteer map:</h3><br>
+   <h3>Selecteer map:</h3>
 
 
     <form action="Bekijk%20Uploads.php" method="post" enctype="multipart/form-data">
-        <p>Datum:</p>
+
 
         <?php
 
@@ -151,30 +150,31 @@ include 'hidden.menu.php';
 
     </form>
 
+    <div>
+
     <p><?php
 
         if (isset($_POST['klik'])) {
 
             $datumin = $_POST['date'];
 
-
             echo $datumin;
 
             echo dateSelect($datumin, 'meme');
+
         }
 
 
         ?></p>
+    </div>
+
 
 </div>
 
-
-
-
-
     <?php
 
-    include 'hidden.footer.php';
+
+        include 'hidden.footer.php';
 
     ?>
 
