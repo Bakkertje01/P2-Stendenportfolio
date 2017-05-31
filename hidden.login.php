@@ -38,7 +38,7 @@ include 'hidden.menu.php';
             <input type='password' name='pw' id='password' maxlength="50"/><br/>
             <br/>
                         <input id="submit" type='submit' name='submit' value='Aanmelden'/><br>
-                        <a href="registreren.php">Registreren</a>
+                        <a href="hidden.registrer.php">Registreren</a>
         </form>
     </div>
 </div>
