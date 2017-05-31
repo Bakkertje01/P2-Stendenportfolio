@@ -151,26 +151,31 @@ include 'hidden.menu.php';
 
     </form>
 
+    <div>
+
     <p><?php
 
         if (isset($_POST['klik'])) {
 
             $datumin = $_POST['date'];
 
-
             echo $datumin;
 
             echo dateSelect($datumin, 'meme');
+
         }
 
 
         ?></p>
+    </div>
+
 
 </div>
 
     <?php
 
-    include 'hidden.footer.php';
+
+        include 'hidden.footer.php';
 
     ?>
 

@@ -13,6 +13,7 @@
         body {
             background-color: #eeeeee;
         }
+
         /* Remove the navbar's default margin-bottom and rounded borders */
         .navbar {
             margin-bottom: 0;
@@ -25,19 +26,18 @@
             padding: 25px;
         }
 
-
         /*Style voor contact pagina */
-        #contactFormulier{
-            width:100%;
-            float:left;
+        #contactFormulier {
+            width: 100%;
+            float: left;
 
         }
 
         label {
-            float:left;
+            float: left;
         }
 
-        input[type=text], textarea{
+        input[type=text], textarea {
             width: 100%;
             padding: 12px;
             border: 1px solid #ccc;
@@ -47,7 +47,8 @@
             margin-bottom: 16px;
             resize: vertical;
         }
-        input[type=password]{
+
+        input[type=password] {
             width: 100%;
             padding: 12px;
             border: 1px solid #ccc;
@@ -59,7 +60,7 @@
         }
 
         input[type=submit] {
-            float:left;
+            float: left;
             background-color: #3c75af;
             color: white;
             padding: 12px 20px;
@@ -68,7 +69,7 @@
             cursor: pointer;
         }
 
-        #bekijkup{
+        #bekijkup {
             float: inherit;
             background-color: #3c75af;
             color: white;
@@ -84,12 +85,20 @@
 
         /*Errors*/
 
-        .errorText{
-            color:red;
+        .errorText {
+            color: red;
         }
 
-        .correctText{
+        .correctText {
             color: #009e13;
+        }
+
+        #foot {
+            height: 100%;
+            bottom: 0;
+            width: 100%;
+            height: 50px;
+            position: absolute;
         }
 
     </style>
