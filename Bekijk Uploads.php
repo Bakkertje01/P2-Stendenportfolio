@@ -119,14 +119,13 @@ include 'hidden.menu.php';
     </div>
 </div>
 
-
 <div class="container text-center">
 
-   <h3>Selecteer map:</h3><br>
+   <h3>Selecteer map:</h3>
 
 
     <form action="Bekijk%20Uploads.php" method="post" enctype="multipart/form-data">
-        <p>Datum:</p>
+
 
         <?php
 

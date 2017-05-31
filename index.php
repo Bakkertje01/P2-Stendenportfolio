@@ -13,7 +13,7 @@ include 'hidden.menu.php';
 
 <div class="jumbotron">
     <div class="container text-center">
-        <h1>Welkom Bij Stenden Portfolio</h1>
+        <h2>Welkom Bij Stenden Portfolio</h2>
         <p>Welkom!</p>
     </div>
 </div>
@@ -39,12 +39,12 @@ include 'hidden.menu.php';
     </div>
 </div>
 <br><br>
-
+<br>
+<br>
+<br>
 
 <?php
-
 include 'hidden.footer.php';
-
 ?>
 
 </body>
