@@ -18,6 +18,7 @@ include 'hidden.menu.php';
     <div class="container text-center">
         <h2>Contact</h2>
         <?php
+        //Variabelen aanmaken die later worden gebruikt voor het invullen van de values en errors
         $voornaam = "";
         $achternaam = "";
         $email = "";
@@ -28,33 +29,30 @@ include 'hidden.menu.php';
         $errBericht = "";
         $emailErr = "";
 
-        if(isset($_POST['submit'])){
+
+        if (isset($_POST["submit"])) {
+
+            //Variabelen zetten naar de ingevoerde waarden om de ingevoerde waarden te laten staan.
             $voornaam = $_POST['firstname'];
             $achternaam = $_POST['lastname'];
             $email = $_POST['email'];
             $bericht = $_POST['subject'];
 
-        }
-
-        if (isset($_POST["submit"])) {
-
-
+            //Kijken of er wel/geen lege velden zijn en foutmeldingen aanmaken
             if (!empty($_POST["firstname"]) && !empty($_POST["lastname"]) && !empty($_POST["email"]) && !empty($_POST["subject"]) && (filter_var($_POST["email"], FILTER_VALIDATE_EMAIL))) {
                 echo "<div class='correctText'>Alle velden zijn ingevuld </div>";
 
-
-
             } else {
 
-                if(empty($_POST["firstname"])){
-                    $errVoornaam =  "<div class='errorText'>&emsp; Voornaam is verplicht</div>";
+                if (empty($_POST["firstname"])) {
+                    $errVoornaam = "<div class='errorText'>&emsp; Voornaam is verplicht</div>";
                 }
 
-                if(empty($_POST["lastname"])){
-                    $errAchternaam =  "<div class='errorText'>&emsp; Achternaam is verplicht</div>";
+                if (empty($_POST["lastname"])) {
+                    $errAchternaam = "<div class='errorText'>&emsp; Achternaam is verplicht</div>";
                 }
 
-                if(empty($_POST["subject"])) {
+                if (empty($_POST["subject"])) {
                     $errBericht = "<div class='errorText'>&emsp; Een bericht is verplicht</div>";
                 }
 
@@ -77,7 +75,8 @@ include 'hidden.menu.php';
 
             <label for="lname">Achternaam</label>
             <?php echo $errAchternaam; ?>
-            <input type="text" id="lname" name="lastname" placeholder="Uw achternaam.." value="<?php echo $achternaam; ?>">
+            <input type="text" id="lname" name="lastname" placeholder="Uw achternaam.."
+                   value="<?php echo $achternaam; ?>">
 
             <label for="email">E-mail adres</label>
             <?php echo $emailErr; ?>
@@ -92,15 +91,6 @@ include 'hidden.menu.php';
             <input type="submit" name="submit" value="Verzenden">
 
         </form>
-
-        <?php
-
-
-
-
-        ?>
-
-
     </div>
 </div>
 
