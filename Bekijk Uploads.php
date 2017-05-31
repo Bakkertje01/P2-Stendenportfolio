@@ -48,6 +48,13 @@ function dateSelect($datum, $folder)
                     echo "</div>";
 
                     $numberOfFiles = count($files1);
+
+                    if ($numberOfFiles > 4){
+                        echo "<div class='row'>";
+
+                        echo "";
+                    }
+
                 }
 
             } elseif ($filetypes[1] == 'mp4') {
@@ -148,7 +155,6 @@ include 'hidden.menu.php';
         </center>
     </form>
 
-    <div class="row">
         <p><?php
 
             if (isset($_POST['klik'])) {
@@ -163,7 +169,7 @@ include 'hidden.menu.php';
 
 
             ?></p>
-    </div>
+
 
 <br>
 

@@ -19,7 +19,7 @@ include 'hidden.menu.php';
         <h2>Contact</h2>
 
 
-        <form id="contactFormulier" action="#" method="POST">
+        <form id="contactFormulier" action="contact.php" method="POST">
 
 
             <label class="contactLabel" for="fname">Voornaam</label>
