@@ -10,7 +10,7 @@
     $Finfo = pathinfo($Tfile, PATHINFO_EXTENSION);
 
     if(isset($_POST["submit"])){
-        if ($Finfo !== "PDF"){
+        if ($Finfo != "PDF"){
             echo "invalid file type : please upload a PDF file";
         }else{
             echo "file is pdf";
