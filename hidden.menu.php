@@ -1,32 +1,55 @@
+<?php
+
+include "hidden.style.php";
+
+?>
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Portfolio</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <?php
 
 
-<div class="menu">
-    <?php
+            //namen nog aanpassen uiteraard...
 
+            $files = glob("./" ."*");
 
-    //namen nog aanpassen uiteraard...
+            echo '<ul class="nav navbar-nav">';
 
-    $files = glob("./" ."*");
+            foreach ($files as $link) {
 
-    echo '<ul>';
+                $heh = explode('.', $link);
 
-    foreach ($files as $link) {
+                if(!empty($heh[2])) {
+                    if ($heh[2] == 'php' || $heh[2] == 'html') {
+                        $friendlylink = preg_replace('/[^A-Za-z0-9\-]/', '', $heh[1]);
 
-        $heh = explode('.', $link);
-
-        if(!empty($heh[2])) {
-            if ($heh[2] == 'php' || $heh[2] == 'html') {
-                $friendlylink = preg_replace('/[^A-Za-z0-9\-]/', '', $heh[1]);
-
-                echo "<li><a href='$link'>" . ucfirst($friendlylink) . "</a></li>";
-            } else {
-                echo '';
+                        echo "<li><a href='$link'>" . ucfirst($friendlylink) . "</a></li>";
+                    } else {
+                        echo '';
+                    }
+                }
             }
-        }
-    }
 
-    echo '</ul>';
+            echo '</ul>';
 
-    ?>
+            ?>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
-</div>
+
+
+
+
