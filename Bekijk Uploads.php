@@ -114,8 +114,8 @@ include 'hidden.menu.php';
 
 <div class="jumbotron">
     <div class="container text-center">
-        <h1>My Portfolio</h1>
-        <p>Some text that represents "Me"...</p>
+        <h1>Bestanden van [Naam]</h1>
+        <p><i>"Zieke quote van [Naam]"</i></p>
     </div>
 </div>
 
