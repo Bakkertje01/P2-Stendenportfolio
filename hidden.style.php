@@ -33,7 +33,7 @@
             float:left;
         }
 
-        input[type=text], textarea{
+        input[type=text], textarea, password{
             width: 100%;
             padding: 12px;
             border: 1px solid #ccc;
