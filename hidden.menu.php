@@ -12,7 +12,7 @@ include "hidden.style.php";
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Portfolio</a>
+            <a class="navbar-brand" href="index.php">Portfolio</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <?php

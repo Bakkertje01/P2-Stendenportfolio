@@ -139,6 +139,10 @@ include 'hidden.menu.php';
                 ?></p>
         </center>
 
+        <p>Upload hier de bestanden die je met de wereld wil delen! <br>
+        Zorg dat je de juiste map selecteert.
+        </p>
+
 
     </form>
 
