@@ -17,7 +17,7 @@ include 'hidden.menu.php';
 
 
     <p>
-        Ayoo funky dudes! Dit is een voorbeeld tamplate, later moet natuurlijk de bootstrap hier nog in...
+        Deze template moeten we gaan gebruiken!!!!!
 
     </p>
 
