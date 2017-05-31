@@ -33,7 +33,7 @@ if(isset($_POST["Submit"])){
     validate_presences($required_fields);
     if (!empty($errors)) {
         $_SESSION["errors"] = $errors;
-        redirect_to('register.php');
+        redirect_to('hidden.register.php');
     }
     //hasing the password
     $password = password_encrypt($_POST["Password"]);
@@ -67,7 +67,7 @@ if(isset($_POST["Submit"])){
                     <?php// echo message(); ?>
                     <?php// $errors = errors(); ?>
                    <?php// echo form_errors($errors); ?>
-                    <form id='register' action='register.php' method='post'>
+                    <form id='register' action='hidden.register.php' method='post'>
                         <label for='firstname' >Voornaam*: </label><br/>
                         <input type='text' name='Firstname' id='firstname' maxlength="50" /><br/>
 
