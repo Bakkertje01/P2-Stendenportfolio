@@ -40,6 +40,8 @@ function dateSelect($datum, $folder)
                 if (!empty($fileTitle[1])) {
                     $deftitle = ucfirst($fileTitle[1]);
 
+                    $numberOfFiles = count($files1);
+
 
                     echo " <div class='col-sm-3'><p>$deftitle</p>";
 
@@ -47,13 +49,6 @@ function dateSelect($datum, $folder)
 
                     echo "</div>";
 
-                    $numberOfFiles = count($files1);
-
-                    if ($numberOfFiles > 4){
-                        echo "<div class='row'>";
-
-                        echo "";
-                    }
 
                 }
 
@@ -155,30 +150,30 @@ include 'hidden.menu.php';
         </center>
     </form>
 
-        <p><?php
+    <p><?php
 
-            if (isset($_POST['klik'])) {
+        if (isset($_POST['klik'])) {
 
-                $datumin = $_POST['date'];
-
-
-                echo $datumin;
-
-                echo dateSelect($datumin, 'meme');
-            }
+            $datumin = $_POST['date'];
 
 
-            ?></p>
+            echo $datumin;
+
+            echo dateSelect($datumin, 'meme');
+        }
 
 
-<br>
+        ?></p>
 
 
-<?php
+    <br>
 
-include 'hidden.footer.php';
 
-?>
+    <?php
+
+    include 'hidden.footer.php';
+
+    ?>
 
 </body>
 
