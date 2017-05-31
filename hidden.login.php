@@ -16,7 +16,6 @@
 
 <body>
 <?php
-
 include 'hidden.header.php';
 include 'hidden.menu.php';
 ?>
