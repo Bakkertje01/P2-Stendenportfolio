@@ -11,8 +11,6 @@ include 'hidden.header.php';
 include 'hidden.menu.php';
 ?>
 
-
-
 <div class="jumbotron">
     <div class="container text-center">
         <h1>Welkom Bij Stenden Portfolio</h1>
@@ -21,47 +19,26 @@ include 'hidden.menu.php';
 </div>
 
 <div class="container-fluid bg-3 text-center">
-    <h3>Some of my Work</h3><br>
     <div class="row">
         <div class="col-sm-3">
-            <p>Some text..</p>
-            <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+            <p>Landingpage object</p>
+            <img src="pofo1.jpg" class="img-responsive" style="width:100%" alt="Image">
         </div>
         <div class="col-sm-3">
-            <p>Some text..</p>
-            <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+            <p>Landingpage object</p>
+            <img src="pofo3.jpg" class="img-responsive" style="width:100%" alt="Image">
         </div>
         <div class="col-sm-3">
-            <p>Some text..</p>
-            <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-        </div>
-        <div class="col-sm-3">
-            <p>Some text..</p>
-            <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-        </div>
-    </div>
-</div><br>
-
-<div class="container-fluid bg-3 text-center">
-    <div class="row">
-        <div class="col-sm-3">
-            <p>Some text..</p>
-            <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-        </div>
-        <div class="col-sm-3">
-            <p>Some text..</p>
-            <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-        </div>
-        <div class="col-sm-3">
-            <p>Some text..</p>
-            <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+            <p>Landingpage object</p>
+            <img src="pofo2.png" class="img-responsive" style="width:100%" alt="Image">
         </div>
         <div class="col-sm-3">
             <p>Dingo</p>
-            <img src="amazin.jpeg" class="img-responsive" style="width:100%" alt="Image">
+            <img src="pofo4.jpg" class="img-responsive" style="width:100%" alt="Image">
         </div>
     </div>
-</div><br><br>
+</div>
+<br><br>
 
 
 <?php
