@@ -26,11 +26,11 @@ include 'hidden.menu.php';
         </div>
         <div class="col-sm-3">
             <p>Landingpage object</p>
-            <img src="pofo2.png" class="img-responsive" style="width:100%" alt="Image">
+            <img src="pofo3.jpg" class="img-responsive" style="width:100%" alt="Image">
         </div>
         <div class="col-sm-3">
             <p>Landingpage object</p>
-            <img src="pofo3.jpg" class="img-responsive" style="width:100%" alt="Image">
+            <img src="pofo2.png" class="img-responsive" style="width:100%" alt="Image">
         </div>
         <div class="col-sm-3">
             <p>Dingo</p>
