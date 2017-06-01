@@ -48,14 +48,14 @@ include 'hidden.menu.php';
                 echo "<div class='correctText'>Alle velden zijn ingevuld </div>";
                 echo "<h2>Bedankt voor uw bericht!</h2>";
 
-                $to      = 'niekluttikhof8@gmail.com';
+               /* $to      = 'niekluttikhof8@gmail.com';
                 $subject = 'Contactformulier' . $onderwerp;
                 $message = 'Het volgende bericht is verstuurd via het contact formulier \n' . '<b>' . $onderwerp . '</b>\n\n' . $bericht ;
                 $headers = 'From: webmaster@example.com' . "\r\n" .
                     'Reply-To: webmaster@example.com' . "\r\n" .
                     'X-Mailer: PHP/' . phpversion();
-
-                mail($to, $subject, $message, $headers);
+                ini_set('smtp_port',25);
+                mail($to, $subject, $message, $headers);*/
 
 
 
