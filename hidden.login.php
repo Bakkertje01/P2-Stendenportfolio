@@ -27,7 +27,7 @@ if (isset($_POST['submit'])) {
 	if ($_POST['un'] == "test user" && $_POST['pw'] == "test123") {
 		$_SESSION['loggedIn'] = true;
 		echo "<p>you are logged in</p>";
-		// SUGGESTION : gebruik header() om meteen naar home to gaan inplaats van link
+		// SUGGESTION : gebruik header("Location: link") om meteen naar home to gaan inplaats van link
 		echo "<a href='index.php'>back to home</a><br><br>";
 		echo "<a href='hidden.loggedin.php?page=logout'>klik hier om uit te loggen</a>";
 	} else {
