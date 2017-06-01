@@ -29,7 +29,7 @@ else
     $retrieve = "INSERT INTO portfolio(date, time, email, voornaam, achternaam, bericht) " // uit het formulier naar de database versturen
         . "VALUES ('$date','$time','$email','$voornaam','$achternaam','$bericht')";
     $result = mysqli_query($conn, $retrieve);
-    header("Location: toongastenboek.php");    // verwijst terug naar de main page als je op report drukt
+    header("Location: hidden.toongastenboek.php");    // verwijst terug naar de main page als je op report drukt
 }
 
 function postValueset($key)
