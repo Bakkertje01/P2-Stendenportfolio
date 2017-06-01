@@ -8,11 +8,11 @@ function fieldname_as_text($fieldname)
 }
 
 // REGISTRATIE
-function redirect_to($new_location)
+/*function redirect_to($new_location)
 {
     header("Location: " . $new_location);
     exit;
-}
+}*/
 
 //Function for checking if the query was succesfull
 function check_query($resultset)
@@ -23,12 +23,12 @@ function check_query($resultset)
 }
 
 //Function that sets the class of a menu item according to the selected menu item
-function echoSelectedClassIfRequestMatches($requestUri)
+/*function echoSelectedClassIfRequestMatches($requestUri)
 {
     $current_file_name = basename($_SERVER['REQUEST_URI'], ".php");
     if ($current_file_name == $requestUri)
         echo 'class="selected"';
-}
+}*/
 
 //Validation
 function has_precence($value)
@@ -36,7 +36,7 @@ function has_precence($value)
     return isset($value) && $value !== "";
 }
 
-function validate_presences($required_fields)
+/*function validate_presences($required_fields)
 {
     global $errors;
     foreach ($required_fields as $field) {
@@ -45,7 +45,7 @@ function validate_presences($required_fields)
             $errors[$field] = fieldname_as_text($field) . " mag niet leeg zijn.";
         }
     }
-}
+}*/
 
 function form_errors($errors = array())
 {
@@ -63,23 +63,23 @@ function form_errors($errors = array())
     return $output;
 }
 
-function find_all_employees()
+/*function find_all_employees()
 {
     global $connection;
     $query = "SELECT * FROM Employees";
     $employee_set = mysqli_query($connection, $query);
     check_query($employee_set);
     return $employee_set;
-}
+}*/
 
-function find_all_customers()
+/*function find_all_customers()
 {
     global $connection;
     $query = "SELECT * FROM Customer";
     $customer_set = mysqli_query($connection, $query);
     check_query($customer_set);
     return $customer_set;
-}
+}*/
 
 function password_encrypt($password)
 {
@@ -108,7 +108,7 @@ function generate_salt($length)
     return $salt;
 }
 
-function password_check($password, $existing_hash)
+/*function password_check($password, $existing_hash)
 {
 // existing hash contains format and salt at start
     $hash = crypt($password, $existing_hash);
@@ -117,9 +117,9 @@ function password_check($password, $existing_hash)
     } else {
         return false;
     }
-}
+}*/
 
-function find_user_by_email($email)
+/*function find_user_by_email($email)
 {
     global $connection;
 
@@ -135,9 +135,9 @@ function find_user_by_email($email)
     } else {
         return null;
     }
-}
+}*/
 
-function find_employee_by_email($email)
+/*function find_employee_by_email($email)
 {
     global $connection;
 
@@ -153,9 +153,9 @@ function find_employee_by_email($email)
     } else {
         return null;
     }
-}
+}*/
 
-function attempt_login($email, $password)
+/*function attempt_login($email, $password)
 {
     $user = find_user_by_email($email);
     if ($user) {
@@ -171,9 +171,9 @@ function attempt_login($email, $password)
 // user not found
         return false;
     }
-}
+}*/
 
-function attempt_employee_login($user, $password)
+/*function attempt_employee_login($user, $password)
 {
     $user1 = find_employee_by_email($user);
     if ($user1) {
@@ -189,6 +189,6 @@ function attempt_employee_login($user, $password)
 // user not found
         return false;
     }
-}
+}*/
 
 ?>
