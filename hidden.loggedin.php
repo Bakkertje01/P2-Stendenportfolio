@@ -7,7 +7,6 @@
 
 <body>
 <?php
-
 include 'hidden.header.php';
 include 'hidden.menu.php';
 ?>
@@ -48,7 +47,7 @@ include 'hidden.menu.php';
 
 <?php
 
-include 'hidden.footer.php';
+include_once 'hidden.footer.php';
 
 ?>
 
