@@ -2,7 +2,7 @@
 <html>
 
 <head>
-
+    <link rel="icon" type="image/png" href="fav.png"/>
 </head>
 
 <body>
@@ -15,11 +15,13 @@ include 'hidden.menu.php';
 
 
 <div class="jumbotron">
+
+
 	<?php
 
 
 	if(isset($_GET['page'])){
-		include($_GET['page']. ".php");
+		include("hidden." . $_GET['page']. ".php");
 	}
 	else{
 
@@ -28,13 +30,13 @@ include 'hidden.menu.php';
 
 			var_dump($_SESSION['loggedIn']);
 			echo "<p>U bent ingelogd</p>";
-			echo "<a href='index.php?page=logout'>klik hier om uit te loggen</a>";
+			echo "<a href='hidden.loggedin.php?page=logout'>klik hier om uit te loggen</a>";
 
 		}
 		else{
 
 			echo "U bent niet ingelogd<br /><br />";
-			include "hidden.inlogform.html";
+			//include ("hidden.login.php");
 		}
 
 
