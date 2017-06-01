@@ -111,7 +111,10 @@ if(isset($_POST["Submit"])){
         $sql .= "(Firstname, Lastname, Email, Password, Phone, City, StreetAddress, Postalcode) ";
         $sql .= "VALUES ('$firstname', '$lastname', '$email', '$password', '$phone', '$city', '$streetaddress', '$postalcode')";
         $result = mysqli_query($connection, $sql);
-        check_query($result);
+        if($result === false){
+            echo"ERROR".mysqli_errno()." : ".mysqli_error();
+
+        }
         //message when registration passes or fails
 
         header("location: hidden.loging.php");
