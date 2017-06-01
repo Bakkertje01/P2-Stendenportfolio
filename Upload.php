@@ -21,17 +21,27 @@ include 'hidden.menu.php';
                     <form id='register' action='Upload.php' method='post' enctype="multipart/form-data">
                         <label for='upload'>Bestand: </label><br/>
                         <input type='file' name='upload' id='firstname'/><br/>
+        <p>Type:</p>
+
+        <?php
+        $foldersForUpload = array('CV', 'Afbeeldingen', 'Documenten');
+
+        echo "<select name='dirselect'>";
+        foreach ($foldersForUpload as $item) {
+            echo "<option value='$item'>$item</option>";
+
+        }
+        echo "</select>";
+
+        ?>
 
 
-                        <input type='radio' style="float: left; margin-left: 1px" name='dirselect' value="meme"
-                               checked="checked"/><br>
-        <p style="float: inherit; text-align: justify">Meme</p>
-        <input type='radio' style="float: left;" name='dirselect' value="huiswerk"/><br>
-        <p style="float: inherit; text-align: justify">Huiswerk</p>
         <label for='Titel'>Titel:</label>
+
+
         <input type='text' name='Titel' id='email'/><br/>
 
-        <label for='Poster'>Poster:</label>
+        <label for='Poster'>Studentnummer: MOET UIT DE SESSION GEHAALD WORDEN</label>
         <input type='text' name='Poster' id='password'/><br/>
 
 
@@ -52,8 +62,6 @@ include 'hidden.menu.php';
 
 <p><?php
 
-    //Map datum gaat veranderen naar uploader, de submappen in de type geuploadde bestanden:
-    //Map 'CV', Map 'Opdrachten', Map 'Portfolio' enz..
 
     if (isset($_POST['turbo'])) {
 
@@ -91,34 +99,42 @@ include 'hidden.menu.php';
 
 
             if ($file_size > 8388608) {
-                $errors[] = 'File too big (8 MB max)';
+                $errors[] = 'Bestand is te groot!(8 MB max)';
             }
             if (empty($errors) == true) {
+                $StudentDir = 'studentuploads';
+                $dirname = "$filePoster";
 
-                $dirname = "Ingevoerd op " . date('d-m-y');
-                if (!is_dir("./$dirname")) {
-                    mkdir("./$dirname", 0777);
-                    if (!is_dir("./$dirname/$selectedDir")) {
-                        mkdir("./$dirname/$selectedDir", 0777);
-                        echo '<center>Map voor uploads aangemaakt</center>';
-                    }
+
+                if (!is_dir("./$StudentDir")) {
+                    mkdir("./$StudentDir", 0777);
                 }
-                if (is_dir("./$dirname")) {
 
-                    if (!is_dir("./$dirname/$selectedDir")) {
-                        mkdir("./$dirname/$selectedDir", 0777);
+                if (!is_dir("$StudentDir/$dirname")) {
+                    mkdir("$StudentDir/$dirname", 0777);
+                    if (!is_dir("$StudentDir/$dirname/$selectedDir")) {
+                        mkdir("$StudentDir/$dirname/$selectedDir", 0777);
                         echo "<center>Map voor $selectedDir aangemaakt</center>";
                     }
                 }
+
+
+                if (is_dir("$StudentDir/$dirname")) {
+
+                    if (!is_dir("$StudentDir/$dirname/$selectedDir")) {
+                        mkdir("$StudentDir/$dirname/$selectedDir", 0777);
+                        echo "<center>Map voor $dirname aangemaakt</center>";
+                    }
+                }
                 $pupe = substr_count($file_name, '.');
-                if ($pupe <= 1) {
-                    move_uploaded_file($file_tmp, "./$dirname/$selectedDir/" . $file_name);
+                if ($pupe <= 3) {
+                    move_uploaded_file($file_tmp, "$StudentDir/$dirname/$selectedDir/" . $file_name);
                 } else {
-                    echo "<br><p style='text-align:center;'>Bestandsnaam bevat meer dan 1 punt!<br>Upload gefaald, net zoals jij.</p>";
+                    echo "<br><p style='text-align:center;'>Bestandsnaam bevat meer dan 1 punt!<br>Upload gefaald</p>";
                     $file_name = NULL;
                 }
                 if (strpos($file_name, '.')) {
-                    echo "<br><p style='text-align:center;'>Bestand: $fileTitleup[1] in $dirname Succes </p><br>";
+                    echo "<br><p style='text-align:center;'>Bestand: $fileTitleup[1] in $selectedDir Succes </p><br>";
 
                 }
             } else {

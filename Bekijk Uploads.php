@@ -14,7 +14,7 @@ if (isset($_POST['klik'])) {
 function dateSelect($datum, $folder)
 {
 
-    $dirnamez = $datum;
+    $dirnamez = "./studentuploads/" . $datum;
 
     $files1 = glob("$dirnamez/" . "$folder/" . "*");
 
@@ -36,7 +36,7 @@ function dateSelect($datum, $folder)
             $filePoster = explode('{-}', $file1);
 
 
-            if ($filetypes[1] == 'jpg' || $filetypes[1] == 'png' || $filetypes[1] == 'jpeg' || $filetypes[1] == 'JPG' || $filetypes[1] == 'gif') {
+            if ($filetypes[2] == 'jpg' || $filetypes[2] == 'png' || $filetypes[2] == 'jpeg' || $filetypes[2] == 'JPG' || $filetypes[2] == 'gif') {
                 if (!empty($fileTitle[1])) {
                     $deftitle = ucfirst($fileTitle[1]);
 
@@ -121,7 +121,7 @@ include 'hidden.menu.php';
 
 <div class="container text-center">
 
-   <h3>Selecteer map:</h3>
+    <h3>Selecteer map:</h3>
 
 
     <form action="Bekijk%20Uploads.php" method="post" enctype="multipart/form-data">
@@ -129,58 +129,70 @@ include 'hidden.menu.php';
 
         <?php
 
+        $dropoptions = array('CV', 'Afbeeldingen', 'Documenten');
+
         echo "<select name='date'>";
-        foreach ($dropdown as $item) {
-            if (substr_count($item, 'Ingevoerd') > 0) {
+        foreach ($dropoptions as $item) {
 
-                $exlude = array('.', '/');
-                $finalnameoffolder = str_replace($exlude, '', $item);
-                echo "<option value='$finalnameoffolder'>$finalnameoffolder</option>";
 
-            }
+            $finalnameoffolder = str_replace($exlude, '', $item);
+
+
+            echo "<option value='$finalnameoffolder'>$finalnameoffolder</option>";
         }
         echo "</select>";
 
         ?>
 
-        <br><br><center><input id="bekijkup" type="submit" name="klik"
-               value="Verstuur">
-        <input id="bekijkup" type="submit" name="reset" value="Reset"></center><br><br><br>
+        <br><br>
+        <center><input id="bekijkup" type="submit" name="klik"
+                       value="Verstuur">
+            <input id="bekijkup" type="submit" name="reset" value="Reset"></center>
+        <br><br><br>
 
 
     </form>
 
     <div>
 
-    <p><?php
+        <p><?php
 
-        if (isset($_POST['klik'])) {
+            if (isset($_POST['klik'])) {
 
-            $datumin = $_POST['date'];
+                $studentnumber = 'henk/'; //DIT MOET UIT DE SESSION KOMEN!!!
 
-            echo $datumin;
+                $finalnameoffolder = $studentnumber;
 
-            echo dateSelect($datumin, 'meme');
+                $Typefolder = $_POST['date'];
 
-        }
+                $testTheFolder = $finalnameoffolder . $Typefolder;
+
+                echo dateSelect($studentnumber, $Typefolder);
+
+            }
 
 
-        ?></p>
+            ?></p>
     </div>
 
 
 </div>
 
-    <?php
+<?php
 
 
-        include 'hidden.footer.php';
+include 'hidden.footer.php';
 
-    ?>
+?>
 
 </body>
 
 </html>
+
+
+
+
+
 
 
 
