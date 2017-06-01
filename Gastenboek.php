@@ -51,7 +51,7 @@ if (mysqli_num_rows($result) == 0)
 mysqli_close($con); // sluit connectie
 ?>
 <div class="nieuw-bericht">
-    <a class="button" href="guestbook.html">Plaats Nieuw Bericht</a> <!-- Nieuw bericht plaatsen -->
+    <a class="button" href="bericht.html">Plaats Nieuw Bericht</a> <!-- Nieuw bericht plaatsen -->
 </div>
 </body>
 </html>
