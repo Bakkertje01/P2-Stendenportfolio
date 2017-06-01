@@ -7,7 +7,9 @@
 <body>
 
 
-
+<?php include 'include/db_connection.php';?>
+<?php include 'include/functions.php';?>
+<?php include 'include/session.php';?>
 <?php
 
 
@@ -66,10 +68,9 @@ include 'hidden.menu.php';
 
 <?php //require_once("include/session.php") ?>
 
-<?php include 'include/db_connection.php';
-//include 'include/functions.php';
 
-?>
+
+
 <?php
 //Registration script
 if(isset($_POST["Submit"])){
@@ -83,27 +84,51 @@ if(isset($_POST["Submit"])){
     $streetaddress = $_POST['StreetAddress'];
     $postalcode = $_POST['Postalcode'];
     //validaton
-    $required_fields = array("Firstname", "Lastname", "Email", "Password", "Phone", "City", "StreetAddress", "Postalcode");
-    //validate_presences($required_fields);
-    //if (!empty($errors)) {
-    //    $_SESSION["errors"] = $errors;
-     //   redirect_to('hidden.register.php');
-    //}
-    //hasing the password
-    //$password = password_encrypt($_POST["Password"]);
-    //defining the query
-    $sql  = "INSERT INTO customer ";
-    $sql .= "(Firstname, Lastname, Email, Password, Phone, City, StreetAddress, Postalcode) ";
-    $sql .= "VALUES ('$firstname', '$lastname', '$email', '$password', '$phone', '$city', '$streetaddress', '$postalcode')";
-    $result = mysqli_query($connection, $sql);
-    //check_query($result);
-    //message when registration passes or fails
-    if($result){
+   // $required_fields = array("Firstname", "Lastname", "Email", "Password", "Phone", "City", "StreetAddress", "Postalcode");
+   //validate_presences($required_fields);
+
+//    if (!empty($errors)) {
+//       $_SESSION["errors"] = $errors;
+//       redirect_to('hidden.register.php');
+
+    if (empty ($_POST['firstname'])
+        || empty ($_POST['Lastname'])
+        || empty ($_POST['Email'])
+        || empty ($_POST['Password'])
+        || empty ($_POST['Phone'])
+        || empty ($_POST['StreetAddress'])
+        || empty ($_POST['Postalcode']))
+    {
+        echo "please fill in all fields";
+        header("location: hidden.register.php");
+        die("je wordt doorgestuurd");
+    }
+    else {
+        //hasing the password
+        $password = password_encrypt($_POST["Password"]);
+        //defining the query
+        $sql  = "INSERT INTO customer ";
+        $sql .= "(Firstname, Lastname, Email, Password, Phone, City, StreetAddress, Postalcode) ";
+        $sql .= "VALUES ('$firstname', '$lastname', '$email', '$password', '$phone', '$city', '$streetaddress', '$postalcode')";
+        $result = mysqli_query($connection, $sql);
+        if($result === false){
+            echo"ERROR".mysqli_errno()." : ".mysqli_error();
+
+        }
+        //message when registration passes or fails
+
+        header("location: hidden.loging.php");
+    }
+
+
+
+
+   /* if($result){
         $_SESSION["message"] = "Registratie succesvol. U kunt nu direct inloggen.";
         //redirect_to("hidden.login.php");
     }else{
         $_SESSION["message"] = "Registratie mislukt. Probeer het nogmaals.";
-    }
+    }*/
 }
 ?>
 
