@@ -27,6 +27,7 @@ if (isset($_POST['submit'])) {
 	if ($_POST['un'] == "test user" && $_POST['pw'] == "test123") {
 		$_SESSION['loggedIn'] = true;
 		echo "<p>you are logged in</p>";
+		// gebruik header() : een suggestion
 		echo "<a href='index.php'>back to home</a>";
 	} else {
 		echo "<p style='color: red;'>wrong username and/or password</p>";
