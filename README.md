@@ -7,3 +7,7 @@ Project 2.2 portfolio
 - Myrren
 - Niek
 - Ernst-Jan
+
+!!![NIET ZONDER OVERLEG ANDERMANS BESTANDEN GAAN AANPASSEN]!!!
+
+Geen .idea meesturen !!!

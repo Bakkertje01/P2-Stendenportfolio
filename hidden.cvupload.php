@@ -1,3 +1,7 @@
+<head>
+    <link rel="icon" type="image/png" href="fav.png"/>
+</head>
+
 <form action ="hidden.cvupload.php" method ="POST" enctype = "multipart/form-data">
     <input type ="file" name = "upload" id = "upload" >
     <input type = "submit" name = "submit" value = "upload">
