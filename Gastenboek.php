@@ -169,16 +169,12 @@ margin-bottom: 30px;
 }
 .form-style-7 li:last-child{
 border:none;
-margin-bottom: 0px;
-text-align: center;
 }
 .form-style-7 li > label{
-display: block;
 margin-top: -19px;
 padding: 2px 5px 2px 5px;
 color: #B9B9B9;
 font-size: 14px;
-overflow: hidden;
 font-family: Arial, Helvetica, sans-serif;
 }
 .form-style-7 input[type="voornaam"],
@@ -188,26 +184,12 @@ font-family: Arial, Helvetica, sans-serif;
 .form-style-7 textarea,
 .form-style-7 select
 {
-box-sizing: border-box;
--webkit-box-sizing: border-box;
--moz-box-sizing: border-box;
 width: 100%;
 display: block;
-outline: none;
 border: none;
-height: 25px;
 line-height: 25px;
 font-size: 16px;
-padding: 0;
 font-family: Georgia, "Times New Roman", Times, serif;
-}
-.form-style-7 input[type="voornaam"],
-.form-style-7 input[type="achternaam"],
-.form-style-7 input[type="email"],
-.form-style-7 input[type="bericht"],
-.form-style-7 textarea:focus,
-.form-style-7 select:focus
-{
 }
 .form-style-7 li > span{
 background: #F3F3F3;
