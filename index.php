@@ -41,6 +41,11 @@ include 'hidden.menu.php';
         <p>$welcomeMssg</p>";
 
 
+        $homePicture = fileToArray('afb.txt', 0);
+        $homePicture1 = fileToArray('afb.txt', 0);
+        $homePicture2 = fileToArray('afb.txt', 0);
+        $homePicture3 = fileToArray('afb.txt', 0);
+
         ?>
     </div>
 </div>
@@ -49,19 +54,19 @@ include 'hidden.menu.php';
     <div class="row">
         <div class="col-sm-3">
             <p>Landingpage object</p>
-            <img src="pofo1.jpg" class="img-responsive" style="width:100%" alt="Image">
+            <img src="<?php echo $homePicture?>" class="img-responsive" style="width:100%" alt="Image">
         </div>
         <div class="col-sm-3">
             <p>Landingpage object</p>
-            <img src="pofo3.jpg" class="img-responsive" style="width:100%" alt="Image">
+            <img src="<?php echo $homePicture1?>" class="img-responsive" style="width:100%" alt="Image">
         </div>
         <div class="col-sm-3">
             <p>Landingpage object</p>
-            <img src="pofo2.png" class="img-responsive" style="width:100%" alt="Image">
+            <img src="<?php echo $homePicture2?>" class="img-responsive" style="width:100%" alt="Image">
         </div>
         <div class="col-sm-3">
             <p>Dingo</p>
-            <img src="pofo4.jpg" class="img-responsive" style="width:100%" alt="Image">
+            <img src="<?php echo $homePicture3?>" class="img-responsive" style="width:100%" alt="Image">
         </div>
     </div>
 </div>

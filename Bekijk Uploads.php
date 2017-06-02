@@ -179,9 +179,7 @@ include 'hidden.menu.php';
 
 <?php
 
-
 include 'hidden.footer.php';
-
 ?>
 
 </body>
