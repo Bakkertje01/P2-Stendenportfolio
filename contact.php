@@ -48,6 +48,8 @@ include 'hidden.menu.php';
                 echo "<div class='correctText'>Alle velden zijn ingevuld </div>";
                 echo "<h2>Bedankt voor uw bericht!</h2>";
 
+
+
                /* $to      = 'niekluttikhof8@gmail.com';
                 $subject = 'Contactformulier' . $onderwerp;
                 $message = 'Het volgende bericht is verstuurd via het contact formulier \n' . '<b>' . $onderwerp . '</b>\n\n' . $bericht ;
@@ -56,6 +58,38 @@ include 'hidden.menu.php';
                     'X-Mailer: PHP/' . phpversion();
                 ini_set('smtp_port',25);
                 mail($to, $subject, $message, $headers);*/
+
+
+                $voornaamPrint = $_POST['firstname'];
+                $achternaamPrint = $_POST['lastname'];
+                $emailPrint = $_POST['email'];
+                $onderwerpPrint = $_POST['onderwerp'];
+                $berichtPrint = $_POST['subject'];
+                $datum = date('d-m-y');
+
+                if (!file_exists("contactBerichten.txt")){
+                    $myfile = fopen("contactBerichten.txt", "w");
+                }
+
+                if (filesize("contactBerichten.txt") == 0){
+                    fwrite($myfile, "**************************************************************\n");
+                }
+
+                $myfile = fopen("contactBerichten.txt", "ab");
+
+                $nieuweBericht =
+
+                    "\nDatum: " . $datum . "\n\n" .
+                    "Voornaam: " . $voornaamPrint . "\n" .
+                    "Achternaam: " . $achternaamPrint . "\n" .
+                    "Email: " . $emailPrint . "\n\n\n" .
+                    "Onderwerp: " . $onderwerpPrint . "\n\n" .
+                    "Bericht: \n" . $berichtPrint . "\n\n" .
+                    "**************************************************************";
+
+                fwrite($myfile, $nieuweBericht);
+                echo "<h2>Bericht is verstuurd.</h2>";
+
 
 
 
