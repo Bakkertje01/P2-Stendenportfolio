@@ -151,65 +151,47 @@ include 'hidden.footer.php';
 
 </body>
 <style>
-.form-style-7{
+    /*form-style-7 is de form class*/
+.form-style-7{ /*balkbreedte en het font*/
 max-width:400px;
 margin:50px auto;
 padding:20px;
 font-family: Georgia, "Times New Roman", Times, serif;
 }
-.form-style-7 ul{
-list-style:none;
-padding:0;
-margin:0;
+.form-style-7 ul{ /*puntjes van de lijst verwijderen*/
+    list-style:none;
+    padding:0;
+    margin:0;
 }
-.form-style-7 li{
+.form-style-7 li{ /*afstand tussen de balkjes creeren en een border om de invoervelden*/
 padding: 9px;
 border:1px solid #DDDDDD;
 margin-bottom: 30px;
 }
-.form-style-7 li:last-child{
-border:none;
-margin-bottom: 0px;
-text-align: center;
+.form-style-7 li:last-child{ /*border verwijderen om de reset en verzend knop*/
+    border:none;
 }
-.form-style-7 li > label{
-display: block;
+.form-style-7 li > label{ /*de labels stylen*/
 margin-top: -19px;
 padding: 2px 5px 2px 5px;
 color: #B9B9B9;
 font-size: 14px;
-overflow: hidden;
 font-family: Arial, Helvetica, sans-serif;
-}
+} /*invoervelden*/
 .form-style-7 input[type="voornaam"],
 .form-style-7 input[type="achternaam"],
 .form-style-7 input[type="email"],
-.form-style-7 input[type="bericht"],
 .form-style-7 textarea,
 .form-style-7 select
 {
-box-sizing: border-box;
--webkit-box-sizing: border-box;
--moz-box-sizing: border-box;
-width: 100%;
-display: block;
-outline: none;
-border: none;
-height: 25px;
-line-height: 25px;
-font-size: 16px;
-padding: 0;
-font-family: Georgia, "Times New Roman", Times, serif;
+    width: 100%;
+    display: block;
+    border: none;
+    line-height: 25px;
+    font-size: 16px;
+    font-family: Georgia, "Times New Roman", Times, serif;
 }
-.form-style-7 input[type="voornaam"],
-.form-style-7 input[type="achternaam"],
-.form-style-7 input[type="email"],
-.form-style-7 input[type="bericht"],
-.form-style-7 textarea:focus,
-.form-style-7 select:focus
-{
-}
-.form-style-7 li > span{
+.form-style-7 li > span{  /*de tekst onderin de invoervelden*/
 background: #F3F3F3;
 display: block;
 padding: 3px;
@@ -219,10 +201,10 @@ color: #C0C0C0;
 font-family: Arial, Helvetica, sans-serif;
 font-size: 11px;
 }
-.form-style-7 textarea{
+.form-style-7 textarea{ /*textarea een vast grootte geven kan niet groter dan de pagina worden gemaakt*/
 resize:none;
 }
-.form-style-7 input[type="submit"],
+.form-style-7 input[type="submit"], /**/
 .form-style-7 input[type="reset"]{
 background: #2471FF;
 border: none;
@@ -231,6 +213,5 @@ border-bottom: 3px solid #5994FF;
 border-radius: 3px;
 color: #D2E2FF;
 }
-
 </style>
 </html>
