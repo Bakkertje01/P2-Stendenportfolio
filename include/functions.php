@@ -7,7 +7,7 @@ function fieldname_as_text($fieldname)
     return $fieldname;
 }
 
-// REGISTRATIE
+// REGISTRATIE dddd
 /*function redirect_to($new_location)
 {
     header("Location: " . $new_location);
