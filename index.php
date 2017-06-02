@@ -2,6 +2,27 @@
 
 <head>
     <link rel="icon" type="image/png" href="fav.png"/>
+
+    <?php
+
+    function fileToArray($chooseFile, $arrayindex)
+    {
+        $f = fopen("$chooseFile", "r");
+
+
+        while (!feof($f)) {
+            $arrM = explode(",", fgets($f));
+
+            shuffle($arrM);
+
+            if ($arrM !== NULL) {
+                return " $arrM[$arrayindex]";
+            }
+        }
+        fclose($f);
+    }
+
+    ?>
 </head>
 
 <body>
@@ -13,8 +34,14 @@ include 'hidden.menu.php';
 
 <div class="jumbotron">
     <div class="container text-center">
-        <h2>Welkom Bij Stenden Portfolio</h2>
-        <p>Welkom!</p>
+
+        <?php
+        $welcomeMssg = fileToArray('welkomberichten.txt', 0);
+        echo "<h2>Welkom Bij Stenden Portfolio</h2>
+        <p>$welcomeMssg</p>";
+
+
+        ?>
     </div>
 </div>
 
@@ -45,8 +72,12 @@ include 'hidden.menu.php';
 
 <?php
 include 'hidden.footer.php';
+
+
 ?>
 
 </body>
 
 </html>
+
+
