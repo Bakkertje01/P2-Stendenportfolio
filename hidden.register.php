@@ -91,7 +91,7 @@ if(isset($_POST["Submit"])){
 //       $_SESSION["errors"] = $errors;
 //       redirect_to('hidden.register.php');
 
-    if (empty ($_POST['firstname'])
+    if (empty ($_POST['Firstname'])
         || empty ($_POST['Lastname'])
         || empty ($_POST['Email'])
         || empty ($_POST['Password'])
@@ -100,7 +100,6 @@ if(isset($_POST["Submit"])){
         || empty ($_POST['Postalcode']))
     {
         echo "please fill in all fields";
-        header("location: hidden.register.php");
         die("je wordt doorgestuurd");
     }
     else {
@@ -117,7 +116,7 @@ if(isset($_POST["Submit"])){
         }
         //message when registration passes or fails
 
-        header("location: hidden.loging.php");
+
     }
 
 
