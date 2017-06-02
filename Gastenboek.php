@@ -18,6 +18,37 @@ include 'hidden.menu.php';
     <div class="container text-center">
         <h1>My Portfolio</h1>
         <p>Some text that represents "Me"...</p>
+        <h2>Plaats een bericht!</h2>
+        <form class="form-style-7" method="POST" action="guestbook.php">
+            <ul>
+                <li>
+                    <label for="email">Email</label>
+                    <input type="email" name="email" maxlength="100">
+                    <span>Vul een geldig e-mailadres in</span>
+                </li>
+                <li>
+                    <label for="voornaam">Voornaam</label>
+                    <input type="voornaam" name="voornaam" maxlength="100">
+                    <span></span>
+                </li>
+
+                <li>
+                    <label for="achternaam">Achternaam</label>
+                    <input type="achternaam" name="achternaam" maxlength="100">
+                    <span></span>
+                </li>
+                <li>
+                    <label for="bericht">Bericht</label>
+                    <textarea name="bericht" ></textarea>
+                    <span>Vertel het eens!</span>
+                </li>
+                <li>
+                    <input name="submit" type="submit">
+                    <input type="reset" value="Reset">
+                </li>
+            </ul>
+        </form>
+</body>
         <?php
         $host = "localhost"; //host, meestal localhost
         $user = "root"; //user die op DB connecteert
@@ -119,5 +150,87 @@ include 'hidden.footer.php';
 ?>
 
 </body>
+<style>
+.form-style-7{
+max-width:400px;
+margin:50px auto;
+padding:20px;
+font-family: Georgia, "Times New Roman", Times, serif;
+}
+.form-style-7 ul{
+list-style:none;
+padding:0;
+margin:0;
+}
+.form-style-7 li{
+padding: 9px;
+border:1px solid #DDDDDD;
+margin-bottom: 30px;
+}
+.form-style-7 li:last-child{
+border:none;
+margin-bottom: 0px;
+text-align: center;
+}
+.form-style-7 li > label{
+display: block;
+margin-top: -19px;
+padding: 2px 5px 2px 5px;
+color: #B9B9B9;
+font-size: 14px;
+overflow: hidden;
+font-family: Arial, Helvetica, sans-serif;
+}
+.form-style-7 input[type="voornaam"],
+.form-style-7 input[type="achternaam"],
+.form-style-7 input[type="email"],
+.form-style-7 input[type="bericht"],
+.form-style-7 textarea,
+.form-style-7 select
+{
+box-sizing: border-box;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+width: 100%;
+display: block;
+outline: none;
+border: none;
+height: 25px;
+line-height: 25px;
+font-size: 16px;
+padding: 0;
+font-family: Georgia, "Times New Roman", Times, serif;
+}
+.form-style-7 input[type="voornaam"],
+.form-style-7 input[type="achternaam"],
+.form-style-7 input[type="email"],
+.form-style-7 input[type="bericht"],
+.form-style-7 textarea:focus,
+.form-style-7 select:focus
+{
+}
+.form-style-7 li > span{
+background: #F3F3F3;
+display: block;
+padding: 3px;
+margin: 0 -9px -9px -9px;
+text-align: center;
+color: #C0C0C0;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 11px;
+}
+.form-style-7 textarea{
+resize:none;
+}
+.form-style-7 input[type="submit"],
+.form-style-7 input[type="reset"]{
+background: #2471FF;
+border: none;
+padding: 10px 20px 10px 20px;
+border-bottom: 3px solid #5994FF;
+border-radius: 3px;
+color: #D2E2FF;
+}
 
+</style>
 </html>
