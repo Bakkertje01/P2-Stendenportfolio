@@ -11,11 +11,8 @@
 <?php include 'include/functions.php';?>
 <?php include 'include/session.php';?>
 <?php
-
-
-
 include 'hidden.header.php';
-include 'hidden.menu.php';
+ob_start(); include 'hidden.menu.php';
 ?>
 
 
@@ -30,9 +27,7 @@ include 'hidden.menu.php';
                 <!-- CONTENT -->
                 <div id='content'>
                     <h1> Registratie </h1>
-                    <?php //echo message(); ?>
-                    <?php //$errors = errors(); ?>
-                   <?php //echo form_errors($errors); ?>
+
                     <form id='register' action='hidden.register.php' method='post'>
                         <label for='firstname' >Voornaam*: </label><br/>
                         <input type='text' name='Firstname' id='firstname' maxlength="50" /><br/>
@@ -66,9 +61,6 @@ include 'hidden.menu.php';
 
 </div>
 
-<?php //require_once("include/session.php") ?>
-
-
 
 
 <?php
@@ -83,26 +75,21 @@ if(isset($_POST["Submit"])){
     $city = $_POST['City'];
     $streetaddress = $_POST['StreetAddress'];
     $postalcode = $_POST['Postalcode'];
-    //validaton
-   // $required_fields = array("Firstname", "Lastname", "Email", "Password", "Phone", "City", "StreetAddress", "Postalcode");
-   //validate_presences($required_fields);
-
-//    if (!empty($errors)) {
-//       $_SESSION["errors"] = $errors;
-//       redirect_to('hidden.register.php');
 
     if (empty ($_POST['Firstname'])
         || empty ($_POST['Lastname'])
         || empty ($_POST['Email'])
         || empty ($_POST['Password'])
         || empty ($_POST['Phone'])
+        || empty ($_POST['City'])
         || empty ($_POST['StreetAddress'])
         || empty ($_POST['Postalcode']))
     {
         echo "please fill in all fields";
-        die("je wordt doorgestuurd");
+
     }
-    else {
+    else
+        {
         //hasing the password
         $password = password_encrypt($_POST["Password"]);
         //defining the query
@@ -110,24 +97,18 @@ if(isset($_POST["Submit"])){
         $sql .= "(Firstname, Lastname, Email, Password, Phone, City, StreetAddress, Postalcode) ";
         $sql .= "VALUES ('$firstname', '$lastname', '$email', '$password', '$phone', '$city', '$streetaddress', '$postalcode')";
         $result = mysqli_query($connection, $sql);
+
+        header("Location: hidden.login.php");
+
+        ob_end_flush();
+
         if($result === false){
             echo"ERROR".mysqli_errno()." : ".mysqli_error();
-
         }
-        //message when registration passes or fails
-        // kdkdkdkdkd
+
 
     }
 
-
-
-
-   /* if($result){
-        $_SESSION["message"] = "Registratie succesvol. U kunt nu direct inloggen.";
-        //redirect_to("hidden.login.php");
-    }else{
-        $_SESSION["message"] = "Registratie mislukt. Probeer het nogmaals.";
-    }*/
 }
 ?>
 
@@ -136,45 +117,12 @@ if(isset($_POST["Submit"])){
 </div>
 
 <div class="container-fluid bg-3 text-center">
-    <h3>Some of my Work</h3><br>
-    <div class="row">
-        <div class="col-sm-3">
-            <p>Some text..</p>
-            <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-        </div>
-        <div class="col-sm-3">
-            <p>Some text..</p>
-            <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-        </div>
-        <div class="col-sm-3">
-            <p>Some text..</p>
-            <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-        </div>
-        <div class="col-sm-3">
-            <p>Some text..</p>
-            <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-        </div>
-    </div>
+
 </div><br>
 
 <div class="container-fluid bg-3 text-center">
     <div class="row">
-        <div class="col-sm-3">
-            <p>Some text..</p>
-            <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-        </div>
-        <div class="col-sm-3">
-            <p>Some text..</p>
-            <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-        </div>
-        <div class="col-sm-3">
-            <p>Some text..</p>
-            <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-        </div>
-        <div class="col-sm-3">
-            <p>Some text..</p>
-            <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-        </div>
+
     </div>
 </div><br><br>
 
