@@ -80,7 +80,8 @@ include 'hidden.menu.php';
                     <td>
                         <input id="submit" type='submit' name='submit' value='Aanmelden'/>
                     </td>
-
+                </tr>
+            </table>
         </form>
     </div>
 </div>
