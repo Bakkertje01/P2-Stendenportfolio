@@ -201,10 +201,10 @@ function find_professor_by_email($email)
 	$query .= "FROM professors ";
 	$query .= "WHERE User = '{$safe_email}' ";
 	$query .= "LIMIT 1";
-	$professor_set = mysqli_query($connection, $query);
-	check_query($professor_set);
-	if ($professor = mysqli_fetch_assoc($professor_set)) {
-		return $professor;
+	$user_set = mysqli_query($connection, $query);
+	check_query($user_set);
+	if ($user = mysqli_fetch_assoc($user_set)) {
+		return $user;
 	} else {
 		return null;
 	}
@@ -220,10 +220,10 @@ function find_admin_by_email($email)
 	$query .= "FROM admins ";
 	$query .= "WHERE User = '{$safe_email}' ";
 	$query .= "LIMIT 1";
-	$admin_set = mysqli_query($connection, $query);
-	check_query($admin_set);
-	if ($admin = mysqli_fetch_assoc($admin_set)) {
-		return $admin;
+	$user_set = mysqli_query($connection, $query);
+	check_query($user_set);
+	if ($user = mysqli_fetch_assoc($user_set)) {
+		return $user;
 	} else {
 		return null;
 	}
@@ -238,10 +238,10 @@ function find_slb_by_email($email)
 	$query .= "FROM slb ";
 	$query .= "WHERE User = '{$safe_email}' ";
 	$query .= "LIMIT 1";
-	$slb_set = mysqli_query($connection, $query);
-	check_query($slb_set);
-	if ($SLB = mysqli_fetch_assoc($slb_set)) {
-		return $SLB;
+	$user_set = mysqli_query($connection, $query);
+	check_query($user_set);
+	if ($user = mysqli_fetch_assoc($user_set)) {
+		return $user;
 	} else {
 		return null;
 	}
@@ -340,12 +340,12 @@ function attempt_admin_login($professor, $password)
 
 function attempt_slb_login($professor, $password)
 {
-	$user3 = find_admin_by_email($professor);
-	if ($user3) {
+	$user2 = find_admin_by_email($professor);
+	if ($user2) {
 // found user, now check password
-		if (password_check($password, $user3["Password"])) {
+		if (password_check($password, $user2["Password"])) {
 // password matches
-			return $user3;
+			return $user2;
 		} else {
 // password does not match
 			return false;
