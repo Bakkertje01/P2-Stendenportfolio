@@ -41,7 +41,7 @@ if(empty($_POST['voornaam' ])|| empty($_POST['achternaam'])){
                 echo "There was no student found by the name of ".$voornaam." ".$achternaam."";
             }else{
                 echo "student by the name of  ".$voornaam." ".$achternaam." was found";
-                // https.portfolio.$voornaam.$achternaam
+                // https.portfolio.$voornaam.$achternaam  //hier komt link van site met naam naar pagina van student
             }
         }
     }
