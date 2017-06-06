@@ -79,6 +79,7 @@ include 'hidden.menu.php';
                 <tr>
                     <td>
                         <input id="submit" type='submit' name='submit' value='Aanmelden'/>
+                        <p><a href="hidden.register.php">registreren</a></p>
                     </td>
                 </tr>
             </table>
