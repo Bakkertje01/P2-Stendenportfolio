@@ -11,12 +11,13 @@ include "db_connection.php";
 include 'hidden.header.php';
 include 'hidden.menu.php';
 ?>
-
+<!---
 <form  action = "hidden.studentfind.php" method = "POST" >
     <input type = "text" name = "voornaam" value = 0 >
     <input type = "text" name = "achternaam" value = 0 >
     <input type = "submit" name = "submit" value = "Zoek">
 </form>
+-->
 <?php
 
 // doet het nog niet moet nog portofolio van student hebben
@@ -28,11 +29,12 @@ if(empty($_POST['voornaam' ])|| empty($_POST['achternaam'])){
     $DBtable = "gebruiker";
     $voornaam = $_POST["voornaam"];
     $achternaam = $_POST["achternaam"];
+    // filter van input spaces,kommas,quotes
     if(!mysqli_select_db($connection,DB_NAME)){
         echo" COULD NOT SELECT DATABASE ".mysqli_errno($connection)." : ".mysqli_error($connection);
     }else{
         mysqli_select_db($connection,DB_NAME);
-        $DBcommand = "SELECT * FROM $DBtable WHERE Voornaam = '$voornaam' AND Achternaam = '$achternaam'";
+        $DBcommand = "SELECT Voornaam , Achternaam FROM $DBtable WHERE Voornaam Like '$voornaam%'";
         $DBresult = mysqli_query($connection,$DBcommand);
         if($DBresult === FALSE){
             echo "COULD NOT SELECT FROM TABLE ".mysqli_errno($connection)." : ".mysqli_error($connection);
