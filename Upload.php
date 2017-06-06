@@ -1,5 +1,6 @@
 <?php
 
+//LOGIN MOET UIT DE SESSION KOMEN
 $login = '12849';
 if ($login !== '1234') {
     include 'hidden.noLogin.php';

@@ -17,6 +17,7 @@ include 'hidden.menu.php';
         <p>U bent niet ingelogd</p>
         <p>Zonder in te loggen heeft u geen toegang tot de portfolio's</p>
         <p><a href="hidden.login.php">Login</a></p>
+        <img src="homepic/whoops.png" style="margin:0 auto; width: 40%;" alt="niet ingelogd">
     </div>
 </div>
 
