@@ -11,7 +11,7 @@ function message() {
         return $output;
     }
 }
-function errors() {
+function errors(){
     if (isset($_SESSION["errors"])) {
         $errors = $_SESSION["errors"];
 

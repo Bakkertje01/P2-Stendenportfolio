@@ -18,8 +18,12 @@ include 'hidden.menu.php';
     <input type = "submit" name = "submit" value = "Zoek">
 </form>
 <?php
+
+// doet het nog niet moet nog table hebben en link van portfolio van student
+
+
 if(empty($_POST['voornaam' ])|| empty($_POST['achternaam'])){
- echo " fill in all fields";
+     echo " fill in all fields";
 }else{
     $DBtable = 0 // naam van table in database
     $voornaam = $_POST["voornaam"];
@@ -37,7 +41,7 @@ if(empty($_POST['voornaam' ])|| empty($_POST['achternaam'])){
                 echo "There was no student found by the name of ".$voornaam." ".$achternaam."";
             }else{
                 echo "student by the name of  ".$voornaam." ".$achternaam." was found";
-                //laat student naam en link van studentportfolio  zien
+                // https.portfolio.$voornaam.$achternaam
             }
         }
     }
