@@ -19,20 +19,20 @@ include 'hidden.menu.php';
 </form>
 <?php
 
-// doet het nog niet moet nog table hebben en link van portfolio van student
+// doet het nog niet moet nog portofolio van student hebben
 
 
 if(empty($_POST['voornaam' ])|| empty($_POST['achternaam'])){
      echo " fill in all fields";
 }else{
-    $DBtable = 0 // naam van table in database
+    $DBtable = "gebruiker";
     $voornaam = $_POST["voornaam"];
     $achternaam = $_POST["achternaam"];
     if(!mysqli_select_db($connection,DB_NAME)){
         echo" COULD NOT SELECT DATABASE ".mysqli_errno($connection)." : ".mysqli_error($connection);
     }else{
         mysqli_select_db($connection,DB_NAME);
-        $DBcommand = "SELECT * FROM $DBtable WHERE Lastname = '$voornaam' AND Firstname = '$achternaam'";
+        $DBcommand = "SELECT * FROM $DBtable WHERE Voornaam = '$voornaam' AND Achternaam = '$achternaam'";
         $DBresult = mysqli_query($connection,$DBcommand);
         if($DBresult === FALSE){
             echo "COULD NOT SELECT FROM TABLE ".mysqli_errno($connection)." : ".mysqli_error($connection);
