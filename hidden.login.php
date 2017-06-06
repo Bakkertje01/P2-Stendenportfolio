@@ -23,24 +23,24 @@ if (isset($_POST['submit'])) {
 		if ($found_student) {
 			// Success
 			// Mark user as logged in
-			$_SESSION["user_id"] = $found_student["CustomerID"];
+			$_SESSION["student_id"] = $found_student["CustomerID"];
 			$_SESSION["firstname"] = $found_student["Firstname"];
 			$_SESSION["email"] = $found_student["Email"];
 			redirect_to("hidden.student.php");
 		} elseif ($found_professor) {
 			$_SESSION["professor_id"] = $found_professor["EmployeeID"];
 			$_SESSION["firstname"] = $found_professor["Firstname"];
-			$_SESSION["user"] = $found_professor["User"];
+			$_SESSION["professor"] = $found_professor["User"];
 			redirect_to("hidden.professor.php");
 		} elseif ($found_admin) {
 			$_SESSION["admin_id"] = $found_admin["EmployeeID"];
 			$_SESSION["firstname"] = $found_admin["Firstname"];
-			$_SESSION["user"] = $found_admin["User"];
+			$_SESSION["admin"] = $found_admin["User"];
 			redirect_to("hidden.admin.php");
 		} elseif ($found_SLB) {
 			$_SESSION["slb_id"] = $found_SLB["EmployeeID"];
 			$_SESSION["firstname"] = $found_SLB["Firstname"];
-			$_SESSION["user"] = $found_SLB["User"];
+			$_SESSION["slb"] = $found_SLB["User"];
 			redirect_to("hidden.slb.php");
 		} else {
 			$_SESSION["message"] = "Onjuist gebruikersnaam en/of wachtwoord.";
