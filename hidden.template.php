@@ -7,12 +7,9 @@
 
 <body>
 <?php
-
 include 'hidden.header.php';
 include 'hidden.menu.php';
 ?>
-
-
 
 <div class="jumbotron">
     <div class="container text-center">
@@ -41,7 +38,8 @@ include 'hidden.menu.php';
             <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
         </div>
     </div>
-</div><br>
+</div>
+<br>
 
 <div class="container-fluid bg-3 text-center">
     <div class="row">

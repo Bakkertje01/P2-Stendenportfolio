@@ -41,10 +41,10 @@ include 'hidden.menu.php';
         <p>$welcomeMssg</p>";
 
 
-        $homePicture = fileToArray('afb.txt', 0);
-        $homePicture1 = fileToArray('afb.txt', 0);
-        $homePicture2 = fileToArray('afb.txt', 0);
-        $homePicture3 = fileToArray('afb.txt', 0);
+        $homePicture = fileToArray('homepic/afb.txt', 0);
+        $homePicture1 = fileToArray('homepic/afb1.txt', 0);
+        $homePicture2 = fileToArray('homepic/afb2.txt', 0);
+        $homePicture3 = fileToArray('homepic/afb3.txt', 0);
 
         ?>
     </div>

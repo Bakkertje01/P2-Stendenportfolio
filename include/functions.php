@@ -340,12 +340,12 @@ function attempt_admin_login($professor, $password)
 
 function attempt_slb_login($professor, $password)
 {
-	$user2 = find_admin_by_email($professor);
-	if ($user2) {
+	$user3 = find_admin_by_email($professor);
+	if ($user3) {
 // found user, now check password
-		if (password_check($password, $user2["Password"])) {
+		if (password_check($password, $user3["Password"])) {
 // password matches
-			return $user2;
+			return $user3;
 		} else {
 // password does not match
 			return false;
