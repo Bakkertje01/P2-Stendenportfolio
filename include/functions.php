@@ -1,26 +1,10 @@
 <?php
-/*$errors = array();
-function fieldname_as_text($fieldname)
-{
-    $fieldname = str_replace("_", " ", $fieldname);
-    $fieldname = ucfirst($fieldname);
-    return $fieldname;
-}*/
+
 
 // REGISTRATIE dddd
-/*function redirect_to($new_location)
-{
-    header("Location: " . $new_location);
-    exit;
-}*/
 
-//Function for checking if the query was succesfull
-/*function check_query($resultset)
-{
-    if (!$resultset) {
-        die("database query mislukt :/");
-    }
-}*/
+
+
 
 //Function that sets the class of a menu item according to the selected menu item
 /*function echoSelectedClassIfRequestMatches($requestUri)
@@ -30,38 +14,9 @@ function fieldname_as_text($fieldname)
         echo 'class="selected"';
 }*/
 
-//Validation
-/*function has_precence($value)
-{
-    return isset($value) && $value !== "";
-}*/
 
-/*function validate_presences($required_fields)
-{
-    global $errors;
-    foreach ($required_fields as $field) {
-        $value = trim($_POST[$field]);
-        if (!has_precence($value)) {
-            $errors[$field] = fieldname_as_text($field) . " mag niet leeg zijn.";
-        }
-    }
-}*/
 
-/*function form_errors($errors = array())
-{
-    $output = "";
-    if (!empty($errors)) {
-        $output .= "<div class=\"error\">";
-        $output .= "Voldoe a.u.b aan de volgende eisen :";
-        $output .= "<ul>";
-        foreach ($errors as $key => $error) {
-            $output .= "<li>{$error}</li>";
-        }
-        $output .= "</ul>";
-        $output .= "</div>";
-    }
-    return $output;
-}*/
+
 
 /*function find_all_employees()
 {
@@ -108,7 +63,7 @@ function generate_salt($length)
     return $salt;
 }
 
-/*function password_check($password, $existing_hash)
+function password_check($password, $existing_hash)
 {
 // existing hash contains format and salt at start
     $hash = crypt($password, $existing_hash);
@@ -117,25 +72,107 @@ function generate_salt($length)
     } else {
         return false;
     }
-}*/
+}
 
-/*function find_user_by_email($email)
+
+function form_errors($errors = array())
 {
-    global $connection;
-
-    $safe_email = mysqli_real_escape_string($connection, $email);
-    $query = "SELECT * ";
-    $query .= "FROM Customer ";
-    $query .= "WHERE Email = '{$safe_email}' ";
-    $query .= "LIMIT 1";
-    $user_set = mysqli_query($connection, $query);
-    check_query($user_set);
-    if ($user = mysqli_fetch_assoc($user_set)) {
-        return $user;
-    } else {
-        return null;
+    $output = "";
+    if (!empty($errors)) {
+        $output .= "<div class=\"error\">";
+        $output .= "Voldoe a.u.b aan de volgende eisen :";
+        $output .= "<ul>";
+        foreach ($errors as $key => $error) {
+            $output .= "<li>{$error}</li>";
+        }
+        $output .= "</ul>";
+        $output .= "</div>";
     }
-}*/
+    return $output;
+}
+
+function redirect_to($new_location)
+{
+    header("Location: " . $new_location);
+    exit;
+}
+
+
+//Function for checking if the query was succesfull
+function check_query($resultset)
+{
+    if (!$resultset) {
+        die("database query mislukt :/");
+    }
+}
+
+
+$errors = array();
+function fieldname_as_text($fieldname)
+{
+	$fieldname = str_replace("_", " ", $fieldname);
+	$fieldname = ucfirst($fieldname);
+	return $fieldname;
+}
+
+
+//Validation
+function has_precence($value)
+{
+	return isset($value) && $value !== "";
+}
+
+function validate_presences($required_fields)
+{
+	global $errors;
+	foreach ($required_fields as $field) {
+		$value = trim($_POST[$field]);
+		if (!has_precence($value)) {
+			$errors[$field] = fieldname_as_text($field) . " mag niet leeg zijn.";
+		}
+	}
+}
+
+
+/*
+function find_user_by_email($email)
+{
+	global $connection;
+
+	$safe_email = mysqli_real_escape_string($connection, $email);
+	$query = "SELECT * ";
+	$query .= "FROM Customer ";
+	$query .= "WHERE Email = '{$safe_email}' ";
+	$query .= "LIMIT 1";
+	$user_set = mysqli_query($connection, $query);
+	check_query($user_set);
+	if ($user = mysqli_fetch_assoc($user_set)) {
+		return $user;
+	} else {
+		return null;
+	}
+}
+*/
+function find_student_by_email($email)
+{
+	global $connection;
+
+	$safe_email = mysqli_real_escape_string($connection, $email);
+	$query = "SELECT * ";
+	$query .= "FROM students ";
+	$query .= "WHERE Email = '{$safe_email}' ";
+	$query .= "LIMIT 1";
+	$user_set = mysqli_query($connection, $query);
+	check_query($user_set);
+	if ($user = mysqli_fetch_assoc($user_set)) {
+		return $user;
+	} else {
+		return null;
+	}
+}
+
+
+
 
 /*function find_employee_by_email($email)
 {
@@ -155,7 +192,62 @@ function generate_salt($length)
     }
 }*/
 
-/*function attempt_login($email, $password)
+function find_professor_by_email($email)
+{
+	global $connection;
+
+	$safe_email = mysqli_real_escape_string($connection, $email);
+	$query = "SELECT * ";
+	$query .= "FROM professors ";
+	$query .= "WHERE User = '{$safe_email}' ";
+	$query .= "LIMIT 1";
+	$professor_set = mysqli_query($connection, $query);
+	check_query($professor_set);
+	if ($professor = mysqli_fetch_assoc($professor_set)) {
+		return $professor;
+	} else {
+		return null;
+	}
+}
+
+
+function find_admin_by_email($email)
+{
+	global $connection;
+
+	$safe_email = mysqli_real_escape_string($connection, $email);
+	$query = "SELECT * ";
+	$query .= "FROM admins ";
+	$query .= "WHERE User = '{$safe_email}' ";
+	$query .= "LIMIT 1";
+	$admin_set = mysqli_query($connection, $query);
+	check_query($admin_set);
+	if ($admin = mysqli_fetch_assoc($admin_set)) {
+		return $admin;
+	} else {
+		return null;
+	}
+}
+
+function find_slb_by_email($email)
+{
+	global $connection;
+
+	$safe_email = mysqli_real_escape_string($connection, $email);
+	$query = "SELECT * ";
+	$query .= "FROM slb ";
+	$query .= "WHERE User = '{$safe_email}' ";
+	$query .= "LIMIT 1";
+	$slb_set = mysqli_query($connection, $query);
+	check_query($slb_set);
+	if ($SLB = mysqli_fetch_assoc($slb_set)) {
+		return $SLB;
+	} else {
+		return null;
+	}
+}
+/*
+function attempt_login($email, $password)
 {
     $user = find_user_by_email($email);
     if ($user) {
@@ -172,6 +264,24 @@ function generate_salt($length)
         return false;
     }
 }*/
+
+function attempt_student_login($email, $password)
+{
+	$user = find_student_by_email($email);
+	if ($user) {
+// found user, now check password
+		if (password_check($password, $user["Password"])) {
+// password matches
+			return $user;
+		} else {
+// password does not match
+			return false;
+		}
+	} else {
+// user not found
+		return false;
+	}
+}
 
 /*function attempt_employee_login($user, $password)
 {
@@ -190,5 +300,60 @@ function generate_salt($length)
         return false;
     }
 }*/
+
+function attempt_professor_login($professor, $password)
+{
+	$user1 = find_professor_by_email($professor);
+	if ($user1) {
+// found user, now check password
+		if (password_check($password, $user1["Password"])) {
+// password matches
+			return $user1;
+		} else {
+// password does not match
+			return false;
+		}
+	} else {
+// user not found
+		return false;
+	}
+}
+
+
+function attempt_admin_login($professor, $password)
+{
+	$user2 = find_admin_by_email($professor);
+	if ($user2) {
+// found user, now check password
+		if (password_check($password, $user2["Password"])) {
+// password matches
+			return $user2;
+		} else {
+// password does not match
+			return false;
+		}
+	} else {
+// user not found
+		return false;
+	}
+}
+
+function attempt_slb_login($professor, $password)
+{
+	$user2 = find_admin_by_email($professor);
+	if ($user2) {
+// found user, now check password
+		if (password_check($password, $user2["Password"])) {
+// password matches
+			return $user2;
+		} else {
+// password does not match
+			return false;
+		}
+	} else {
+// user not found
+		return false;
+	}
+}
 
 ?>

@@ -68,7 +68,7 @@ include 'hidden.menu.php';
         <p>Als u gebruik wil maken van het portfolio moet u eerst inloggen. Als dit de eerste keer is dat u <br>
             deze site bezoekt moet u zich eerst registreren. Na het registreren kunt u inloggen en gebruik <br>
             maken van onze dienst.<br></p>
-        <form id='login' action='hidden.login.php' method='post'>
+        <form id='login' action='hidden.logintest.php' method='post'>
             <label for='email'>Email Address*:</label><br/>
             <input type='text' name='Email' id='email' maxlength="50" value="<?php echo htmlentities($email); ?>"/><br/>
 
@@ -80,8 +80,7 @@ include 'hidden.menu.php';
                     <td>
                         <input id="submit" type='submit' name='submit' value='Aanmelden'/>
                     </td>
-                </tr>
-            </table>
+
         </form>
     </div>
 </div>
