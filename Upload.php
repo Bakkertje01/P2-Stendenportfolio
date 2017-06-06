@@ -1,7 +1,7 @@
 <?php
 
 //LOGIN MOET UIT DE SESSION KOMEN
-$login = '12849';
+$login = '1234';
 if ($login !== '1234') {
     include 'hidden.noLogin.php';
 }
@@ -11,7 +11,7 @@ if ($login !== '1234') {
 <html>
 
 <head>
-    <link rel="icon" type="image/png" href="fav.png"/>
+    <link rel="icon" type="image/png" href="hide/fav.png"/>
 </head>
 
 <body>

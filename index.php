@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <link rel="icon" type="image/png" href="fav.png"/>
+    <link rel="icon" type="image/png" href="hide/fav.png"/>
 
     <?php
 
@@ -47,7 +47,7 @@ $imgTitle3 = fileToArray('homepic/titles.txt', 3);
     <div class="container text-center">
 
         <?php
-        $welcomeMssg = fileToArray('welkomberichten.txt', 0);
+        $welcomeMssg = fileToArray('hide/welkomberichten.txt', 0);
         echo "<h2>Welkom Bij Stenden Portfolio</h2>
         <p>$welcomeMssg</p>";
 

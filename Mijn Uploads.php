@@ -90,7 +90,7 @@ $studentquote = "Quote Uit Session";
 <html>
 
 <head>
-    <link rel="icon" type="image/png" href="fav.png"/>
+    <link rel="icon" type="image/png" href="hide/fav.png"/>
 </head>
 
 <body>
