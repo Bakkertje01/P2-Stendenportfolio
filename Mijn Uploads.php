@@ -80,8 +80,10 @@ if (isset($_POST['reset'])) {
 }
 
 
-$naam = "Uit session";
-$studentquote = "Quote Uit Session";
+//V-Uit de Session Halen-V
+
+$naam = "Henk";
+$studentquote = "Ik houd erg veel van vlaflip en macaroni";
 
 
 ?>
