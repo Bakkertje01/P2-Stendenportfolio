@@ -30,6 +30,17 @@
 
 include 'hidden.header.php';
 include 'hidden.menu.php';
+
+
+$homePicture = fileToArray('homepic/afb.txt', 0);
+$homePicture1 = fileToArray('homepic/afb1.txt', 0);
+$homePicture2 = fileToArray('homepic/afb2.txt', 0);
+$homePicture3 = fileToArray('homepic/afb3.txt', 0);
+
+$imgTitle = fileToArray('homepic/titles.txt', 0);
+$imgTitle1 = fileToArray('homepic/titles.txt', 1);
+$imgTitle2 = fileToArray('homepic/titles.txt', 2);
+$imgTitle3 = fileToArray('homepic/titles.txt', 3);
 ?>
 
 <div class="jumbotron">
@@ -41,11 +52,6 @@ include 'hidden.menu.php';
         <p>$welcomeMssg</p>";
 
 
-        $homePicture = fileToArray('homepic/afb.txt', 0);
-        $homePicture1 = fileToArray('homepic/afb1.txt', 0);
-        $homePicture2 = fileToArray('homepic/afb2.txt', 0);
-        $homePicture3 = fileToArray('homepic/afb3.txt', 0);
-
         ?>
     </div>
 </div>
@@ -53,19 +59,19 @@ include 'hidden.menu.php';
 <div class="container-fluid bg-3 text-center">
     <div class="row">
         <div class="col-sm-3">
-            <p>Landingpage object</p>
+            <p><?php echo $imgTitle?></p>
             <img src="<?php echo $homePicture?>" class="img-responsive" style="width:100%" alt="Image">
         </div>
         <div class="col-sm-3">
-            <p>Landingpage object</p>
+            <p><?php echo $imgTitle1?></p>
             <img src="<?php echo $homePicture1?>" class="img-responsive" style="width:100%" alt="Image">
         </div>
         <div class="col-sm-3">
-            <p>Landingpage object</p>
+            <p><?php echo $imgTitle2?></p>
             <img src="<?php echo $homePicture2?>" class="img-responsive" style="width:100%" alt="Image">
         </div>
         <div class="col-sm-3">
-            <p>Dingo</p>
+            <p><?php echo $imgTitle3?></p>
             <img src="<?php echo $homePicture3?>" class="img-responsive" style="width:100%" alt="Image">
         </div>
     </div>

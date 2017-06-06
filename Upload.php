@@ -31,7 +31,7 @@ include 'hidden.menu.php';
             echo "<option value='$item'>$item</option>";
 
         }
-        echo "</select>";
+        echo "</select><p></p>";
 
         ?>
 
@@ -39,12 +39,12 @@ include 'hidden.menu.php';
         <label for='Titel'>Naam van je bestand:</label>
 
 
-        <input type='text' name='Titel' id='email'/><br/>
+        <input type='text' name='Titel' id='email'/>
 
-        <input type='submit' name='verstuur' id='phone' value="Upload" " />
+        <input type='submit' name='verstuur' id='phone' value='Upload'/>
 
 
-        <input type='submit' name='reset' style="float: right" value="Reset"/><br/><br/>
+        <input type='submit' name='reset' style="float: right" value="Reset"/>
 
         </form>
     </div>
@@ -62,7 +62,7 @@ include 'hidden.menu.php';
     if (isset($_POST['verstuur'])) {
 
 
-        if (isset($_FILES['upload'])) {
+        if (isset($_FILES['upload']) && !empty($_FILES['upload']['name'])) {
 
 
             $errors = array();
@@ -81,11 +81,6 @@ include 'hidden.menu.php';
                 $fileTitle = 'Geen naam opgegeven';
             }
 
-            if (!empty($_POST['Poster'])) {
-                $filePoster = $_POST['Poster'];
-            } else {
-                $filePoster = 'Anoniem';
-            }
 
             if (!empty($_POST['dirselect'])) {
                 $selectedDir = $_POST['dirselect'];
@@ -103,6 +98,15 @@ include 'hidden.menu.php';
 
             $fileTitleup = explode('--', $file_name);
 
+            $ext = explode('.', $file_name);
+            $acceptedFiles = array('doc', 'docx', 'xls', 'xlsx', 'pdf', 'jpg', 'jpeg', 'png', 'gif', 'JPG', 'JPEG');
+
+
+
+            if (!in_array($ext[1],$acceptedFiles)) {
+                $errors[] = 'Bestandsformaat niet juist!';
+
+            }
 
             if ($file_size > 8388608) {
                 $errors[] = 'Bestand is te groot!(8 MB max)';
@@ -120,7 +124,7 @@ include 'hidden.menu.php';
                     mkdir("$StudentDir/$dirname", 0777);
                     if (!is_dir("$StudentDir/$dirname/$selectedDir")) {
                         mkdir("$StudentDir/$dirname/$selectedDir", 0777);
-                        echo "<center>Map voor $selectedDir aangemaakt</center>";
+                        echo "<center>Nieuwe map voor $dirname aangemaakt</center>";
                     }
                 }
 
@@ -129,7 +133,7 @@ include 'hidden.menu.php';
 
                     if (!is_dir("$StudentDir/$dirname/$selectedDir")) {
                         mkdir("$StudentDir/$dirname/$selectedDir", 0777);
-                        echo "<center>Map voor $dirname aangemaakt</center>";
+                        echo "<center>Nieuwe map voor $dirname aangemaakt</center>";
                     }
                 }
                 $dots = substr_count($file_name, '.');
@@ -148,6 +152,8 @@ include 'hidden.menu.php';
                     echo '<center>' . $error . '</center><br>';
                 }
             }
+        } else {
+            echo "<center><p>Geen bestand gekozen!</p></center>";
         }
 
 
@@ -165,17 +171,6 @@ include 'hidden.menu.php';
 
 
 </div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
 
 <?php
