@@ -1,3 +1,12 @@
+<?php
+
+$login = '12849';
+if ($login !== '1234') {
+    include 'hidden.noLogin.php';
+}
+
+?>
+
 <html>
 
 <head>
@@ -102,8 +111,7 @@ include 'hidden.menu.php';
             $acceptedFiles = array('doc', 'docx', 'xls', 'xlsx', 'pdf', 'jpg', 'jpeg', 'png', 'gif', 'JPG', 'JPEG');
 
 
-
-            if (!in_array($ext[1],$acceptedFiles)) {
+            if (!in_array($ext[1], $acceptedFiles)) {
                 $errors[] = 'Bestandsformaat niet juist!';
 
             }
@@ -138,7 +146,11 @@ include 'hidden.menu.php';
                 }
                 $dots = substr_count($file_name, '.');
                 if ($dots <= 1) {
-                    move_uploaded_file($file_tmp, "$StudentDir/$dirname/$selectedDir/" . $file_name);
+                    if (!file_exists("$StudentDir/$dirname/$selectedDir/" . $file_name)) {
+                        move_uploaded_file($file_tmp, "$StudentDir/$dirname/$selectedDir/" . $file_name);
+                    } else {
+                        move_uploaded_file($file_tmp, "$StudentDir/$dirname/$selectedDir/" . "--Duplicate" . $file_name);
+                    }
                 } else {
                     echo "<br><p style='text-align:center;'>Bestandsnaam bevat meer dan 1 punt!<br>Upload Mislukt, verander je bestandsnaam</p>";
                     $file_name = NULL;
