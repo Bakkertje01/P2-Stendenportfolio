@@ -101,7 +101,9 @@ include 'hidden.menu.php';
             $ext = explode('.', $file_name);
             $acceptedFiles = array('doc', 'docx', 'xls', 'xlsx', 'pdf', 'jpg', 'jpeg', 'png', 'gif', 'JPG', 'JPEG');
 
-            if (strpos($ext[1], $acceptedFiles) == false) {
+
+
+            if (!in_array($ext[1],$acceptedFiles)) {
                 $errors[] = 'Bestandsformaat niet juist!';
 
             }
