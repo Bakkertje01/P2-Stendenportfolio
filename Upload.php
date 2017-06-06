@@ -31,7 +31,7 @@ include 'hidden.menu.php';
             echo "<option value='$item'>$item</option>";
 
         }
-        echo "</select>";
+        echo "</select><p></p>";
 
         ?>
 
