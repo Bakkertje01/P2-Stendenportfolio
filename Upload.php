@@ -138,7 +138,11 @@ include 'hidden.menu.php';
                 }
                 $dots = substr_count($file_name, '.');
                 if ($dots <= 1) {
+                    if (!file_exists("$StudentDir/$dirname/$selectedDir/" . $file_name)){
                     move_uploaded_file($file_tmp, "$StudentDir/$dirname/$selectedDir/" . $file_name);
+                    }else{
+                        move_uploaded_file($file_tmp, "$StudentDir/$dirname/$selectedDir/" . "--Duplicate". $file_name);
+                    }
                 } else {
                     echo "<br><p style='text-align:center;'>Bestandsnaam bevat meer dan 1 punt!<br>Upload Mislukt, verander je bestandsnaam</p>";
                     $file_name = NULL;
