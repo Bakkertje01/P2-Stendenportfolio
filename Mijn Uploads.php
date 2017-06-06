@@ -79,7 +79,6 @@ if (isset($_POST['reset'])) {
 
 }
 
-
 //V-Uit de Session Halen-V
 
 $naam = "Henk";
@@ -87,7 +86,6 @@ $studentquote = "Ik houd erg veel van vlaflip en macaroni";
 
 
 ?>
-
 
 <html>
 
