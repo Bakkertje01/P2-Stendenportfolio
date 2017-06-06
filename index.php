@@ -51,7 +51,6 @@ $imgTitle3 = fileToArray('homepic/titles.txt', 3);
         echo "<h2>Welkom Bij Stenden Portfolio</h2>
         <p>$welcomeMssg</p>";
 
-
         ?>
     </div>
 </div>
