@@ -36,16 +36,12 @@ include 'hidden.menu.php';
         ?>
 
 
-        <label for='Titel'>Titel:</label>
+        <label for='Titel'>Naam van je bestand:</label>
 
 
         <input type='text' name='Titel' id='email'/><br/>
 
-        <label for='Poster'>Studentnummer: MOET UIT DE SESSION GEHAALD WORDEN</label>
-        <input type='text' name='Poster' id='password'/><br/>
-
-
-        <input type='submit' name='turbo' id='phone' value="Upload" " />
+        <input type='submit' name='verstuur' id='phone' value="Upload" " />
 
 
         <input type='submit' name='reset' style="float: right" value="Reset"/><br/><br/>
@@ -63,7 +59,7 @@ include 'hidden.menu.php';
 <p><?php
 
 
-    if (isset($_POST['turbo'])) {
+    if (isset($_POST['verstuur'])) {
 
 
         if (isset($_FILES['upload'])) {
@@ -72,9 +68,17 @@ include 'hidden.menu.php';
             $errors = array();
 
             if (!empty($_POST['Titel'])) {
-                $fileTitle = $_POST['Titel'];
+
+                $contains = strpos($_POST['Titel'], '--');
+
+                if (!$contains) {
+                    $fileTitle = $_POST['Titel'];
+                }
+                if ($contains) {
+                    $fileTitle = str_replace('--', '_', $_POST['Titel']);
+                }
             } else {
-                $fileTitle = 'Naamloos geval';
+                $fileTitle = 'Geen naam opgegeven';
             }
 
             if (!empty($_POST['Poster'])) {
@@ -90,12 +94,14 @@ include 'hidden.menu.php';
             }
 
 
-            $file_name = time('h-m-s') . "(+)$fileTitle(+){-}$filePoster{-}" . $_FILES['upload']['name'];
+            $filePoster = 'henk';
+
+            $file_name = "--$fileTitle--" . $_FILES['upload']['name'];
             $file_size = $_FILES['upload']['size'];
             $file_tmp = $_FILES['upload']['tmp_name'];
             $file_type = $_FILES['upload']['type'];
 
-            $fileTitleup = explode('(+)', $file_name);
+            $fileTitleup = explode('--', $file_name);
 
 
             if ($file_size > 8388608) {
@@ -126,15 +132,15 @@ include 'hidden.menu.php';
                         echo "<center>Map voor $dirname aangemaakt</center>";
                     }
                 }
-                $pupe = substr_count($file_name, '.');
-                if ($pupe <= 3) {
+                $dots = substr_count($file_name, '.');
+                if ($dots <= 1) {
                     move_uploaded_file($file_tmp, "$StudentDir/$dirname/$selectedDir/" . $file_name);
                 } else {
-                    echo "<br><p style='text-align:center;'>Bestandsnaam bevat meer dan 1 punt!<br>Upload gefaald</p>";
+                    echo "<br><p style='text-align:center;'>Bestandsnaam bevat meer dan 1 punt!<br>Upload Mislukt, verander je bestandsnaam</p>";
                     $file_name = NULL;
                 }
                 if (strpos($file_name, '.')) {
-                    echo "<br><p style='text-align:center;'>Bestand: $fileTitleup[1] in $selectedDir Succes </p><br>";
+                    echo "<br><p style='text-align:center;'>Bestand: '$fileTitleup[1]' in de map $selectedDir geplaatst! </p><br>";
 
                 }
             } else {
