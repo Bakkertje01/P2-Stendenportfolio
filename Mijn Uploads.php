@@ -27,24 +27,19 @@ function dateSelect($datum, $folder)
 
             foreach (array_reverse($files1) as $file1) {
                 $filetypes = explode('.', $file1);
-                $fileTitle = explode('(+)', $file1);
-                $filePoster = explode('{-}', $file1);
+                $fileTitle = explode('--', $file1);
 
 
                 if ($filetypes[2] == 'jpg' || $filetypes[2] == 'png' || $filetypes[2] == 'jpeg' || $filetypes[2] == 'JPG' || $filetypes[2] == 'gif') {
-                    if (!empty($fileTitle[1])) {
-                        $deftitle = ucfirst($fileTitle[1]);
 
-                        $numberOfFiles = count($files1);
+                    $deftitle = ucfirst($fileTitle[1]);
 
 
-                        echo " <div class='col-sm-3'><h5>$deftitle</h5>";
+                    echo " <div class='col-sm-3'><h5>$deftitle</h5>";
 
-                        echo "<img src='$file1' class='img-responsive' style='width:100%' alt='$file1'>";
+                    echo "<a href='$file1' download><img src='$file1' title='$deftitle' class='img-responsive' style='width:100%' alt='$file1'></a>";
 
-                        echo "</div>";
-
-                    }
+                    echo "</div>";
 
 
                 }
@@ -60,14 +55,12 @@ function dateSelect($datum, $folder)
                         $thumbnail = 'pdf.jpg';
                     }
 
+                    echo " <div class='col-sm-3'><h5>$deftitle ($filetypes[2])</h5>";
 
-                    echo " <div class='col-sm-3'><h5>$deftitle</h5>";
-
-                    echo "<a href='$file1' download><img src='thumbnails/$thumbnail' class='img-responsive'                         style=\"width:100%\" alt=\"$file1\"></a>";
+                    echo "<a href='$file1' download><img src='thumbnails/$thumbnail' title='$deftitle' class='img-responsive' style=\"width:100%\" alt=\"$file1\"></a>";
 
                     echo "</div>";
                 }
-
 
             }
         } else {
