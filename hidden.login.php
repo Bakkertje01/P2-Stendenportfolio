@@ -1,7 +1,7 @@
-<?php require_once("/include/session.php") ?>
-<?php //require_once("/include/db_connection.php") ?>
-<?php require_once("/include/functions.php") ?>
-<?php //include "/include/repeats/header.php";?>
+<?php require_once("include/session.php") ?>
+<?php //require_once("include/db_connection.php") ?>
+<?php require_once("include/functions.php") ?>
+<?php //include "include/repeats/header.php";?>
 
 <?php
 $email = "";
