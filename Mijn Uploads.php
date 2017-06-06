@@ -55,7 +55,7 @@ function dateSelect($datum, $folder)
                         $thumbnail = 'pdf.jpg';
                     }
 
-                    echo " <div class='col-sm-3'><h5>$deftitle</h5>";
+                    echo " <div class='col-sm-3'><h5>$deftitle ($filetypes[2])</h5>";
 
                     echo "<a href='$file1' download><img src='thumbnails/$thumbnail' title='$deftitle' class='img-responsive' style=\"width:100%\" alt=\"$file1\"></a>";
 
