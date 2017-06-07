@@ -1,7 +1,7 @@
-<?php require_once("include/session.php") ?>
-<?php require_once("include/db_connection.php") ?>
-<?php require_once("include/functions.php") ?>
-<?php //include "include/repeats/header.php";?>
+<?php require_once("/include/session.php") ?>
+<?php //require_once("/include/db_connection.php") ?>
+<?php require_once("/include/functions.php") ?>
+<?php //include "/include/repeats/header.php";?>
 
 <?php
 $email = "";
@@ -23,24 +23,24 @@ if (isset($_POST['submit'])) {
 		if ($found_student) {
 			// Success
 			// Mark user as logged in
-			$_SESSION["student_id"] = $found_student["studentID"];
+			$_SESSION["user_id"] = $found_student["CustomerID"];
 			$_SESSION["firstname"] = $found_student["Firstname"];
 			$_SESSION["email"] = $found_student["Email"];
 			redirect_to("hidden.student.php");
 		} elseif ($found_professor) {
-			$_SESSION["professor_id"] = $found_professor["professorID"];
+			$_SESSION["professor_id"] = $found_professor["EmployeeID"];
 			$_SESSION["firstname"] = $found_professor["Firstname"];
-			$_SESSION["professor"] = $found_professor["User"];
+			$_SESSION["user"] = $found_professor["User"];
 			redirect_to("hidden.professor.php");
 		} elseif ($found_admin) {
-			$_SESSION["admin_id"] = $found_admin["adminID"];
+			$_SESSION["admin_id"] = $found_admin["EmployeeID"];
 			$_SESSION["firstname"] = $found_admin["Firstname"];
-			$_SESSION["admin"] = $found_admin["User"];
+			$_SESSION["user"] = $found_admin["User"];
 			redirect_to("hidden.admin.php");
 		} elseif ($found_SLB) {
-			$_SESSION["slb_id"] = $found_SLB["slbID"];
+			$_SESSION["slb_id"] = $found_SLB["EmployeeID"];
 			$_SESSION["firstname"] = $found_SLB["Firstname"];
-			$_SESSION["slb"] = $found_SLB["User"];
+			$_SESSION["user"] = $found_SLB["User"];
 			redirect_to("hidden.slb.php");
 		} else {
 			$_SESSION["message"] = "Onjuist gebruikersnaam en/of wachtwoord.";
@@ -68,7 +68,7 @@ include 'hidden.menu.php';
         <p>Als u gebruik wil maken van het portfolio moet u eerst inloggen. Als dit de eerste keer is dat u <br>
             deze site bezoekt moet u zich eerst registreren. Na het registreren kunt u inloggen en gebruik <br>
             maken van onze dienst.<br></p>
-        <form id='login' action='hidden.login.php' method='post'>
+        <form id='login' action='hidden.logintest.php' method='post'>
             <label for='email'>Email Address*:</label><br/>
             <input type='text' name='Email' id='email' maxlength="50" value="<?php echo htmlentities($email); ?>"/><br/>
 
@@ -79,10 +79,8 @@ include 'hidden.menu.php';
                 <tr>
                     <td>
                         <input id="submit" type='submit' name='submit' value='Aanmelden'/>
-                        <p><a href="hidden.register.php">registreren</a></p>
                     </td>
-                </tr>
-            </table>
+
         </form>
     </div>
 </div>

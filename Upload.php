@@ -1,7 +1,17 @@
+<?php
+
+//LOGIN MOET UIT DE SESSION KOMEN
+$login = '1234';
+if ($login !== '1234') {
+    include 'hidden.noLogin.php';
+}
+
+?>
+
 <html>
 
 <head>
-    <link rel="icon" type="image/png" href="fav.png"/>
+    <link rel="icon" type="image/png" href="hide/fav.png"/>
 </head>
 
 <body>
@@ -31,24 +41,20 @@ include 'hidden.menu.php';
             echo "<option value='$item'>$item</option>";
 
         }
-        echo "</select>";
+        echo "</select><p></p>";
 
         ?>
 
 
-        <label for='Titel'>Titel:</label>
+        <label for='Titel'>Naam van je bestand:</label>
 
 
-        <input type='text' name='Titel' id='email'/><br/>
+        <input type='text' name='Titel' id='email'/>
 
-        <label for='Poster'>Studentnummer: MOET UIT DE SESSION GEHAALD WORDEN</label>
-        <input type='text' name='Poster' id='password'/><br/>
-
-
-        <input type='submit' name='turbo' id='phone' value="Upload" " />
+        <input type='submit' name='verstuur' id='phone' value='Upload'/>
 
 
-        <input type='submit' name='reset' style="float: right" value="Reset"/><br/><br/>
+        <input type='submit' name='reset' style="float: right" value="Reset"/>
 
         </form>
     </div>
@@ -63,25 +69,28 @@ include 'hidden.menu.php';
 <p><?php
 
 
-    if (isset($_POST['turbo'])) {
+    if (isset($_POST['verstuur'])) {
 
 
-        if (isset($_FILES['upload'])) {
+        if (isset($_FILES['upload']) && !empty($_FILES['upload']['name'])) {
 
 
             $errors = array();
 
             if (!empty($_POST['Titel'])) {
-                $fileTitle = $_POST['Titel'];
+
+                $contains = strpos($_POST['Titel'], '--');
+
+                if (!$contains) {
+                    $fileTitle = $_POST['Titel'];
+                }
+                if ($contains) {
+                    $fileTitle = str_replace('--', '_', $_POST['Titel']);
+                }
             } else {
-                $fileTitle = 'Naamloos geval';
+                $fileTitle = 'Geen naam opgegeven';
             }
 
-            if (!empty($_POST['Poster'])) {
-                $filePoster = $_POST['Poster'];
-            } else {
-                $filePoster = 'Anoniem';
-            }
 
             if (!empty($_POST['dirselect'])) {
                 $selectedDir = $_POST['dirselect'];
@@ -90,13 +99,23 @@ include 'hidden.menu.php';
             }
 
 
-            $file_name = time('h-m-s') . "(+)$fileTitle(+){-}$filePoster{-}" . $_FILES['upload']['name'];
+            $filePoster = 'henk';
+
+            $file_name = "--$fileTitle--" . $_FILES['upload']['name'];
             $file_size = $_FILES['upload']['size'];
             $file_tmp = $_FILES['upload']['tmp_name'];
             $file_type = $_FILES['upload']['type'];
 
-            $fileTitleup = explode('(+)', $file_name);
+            $fileTitleup = explode('--', $file_name);
 
+            $ext = explode('.', $file_name);
+            $acceptedFiles = array('doc', 'docx', 'xls', 'xlsx', 'pdf', 'jpg', 'jpeg', 'png', 'gif', 'JPG', 'JPEG');
+
+
+            if (!in_array($ext[1], $acceptedFiles)) {
+                $errors[] = 'Bestandsformaat niet juist!';
+
+            }
 
             if ($file_size > 8388608) {
                 $errors[] = 'Bestand is te groot!(8 MB max)';
@@ -114,7 +133,7 @@ include 'hidden.menu.php';
                     mkdir("$StudentDir/$dirname", 0777);
                     if (!is_dir("$StudentDir/$dirname/$selectedDir")) {
                         mkdir("$StudentDir/$dirname/$selectedDir", 0777);
-                        echo "<center>Map voor $selectedDir aangemaakt</center>";
+                        echo "<center>Nieuwe map voor $dirname aangemaakt</center>";
                     }
                 }
 
@@ -123,18 +142,22 @@ include 'hidden.menu.php';
 
                     if (!is_dir("$StudentDir/$dirname/$selectedDir")) {
                         mkdir("$StudentDir/$dirname/$selectedDir", 0777);
-                        echo "<center>Map voor $dirname aangemaakt</center>";
+                        echo "<center>Nieuwe map voor $dirname aangemaakt</center>";
                     }
                 }
-                $pupe = substr_count($file_name, '.');
-                if ($pupe <= 3) {
-                    move_uploaded_file($file_tmp, "$StudentDir/$dirname/$selectedDir/" . $file_name);
+                $dots = substr_count($file_name, '.');
+                if ($dots <= 1) {
+                    if (!file_exists("$StudentDir/$dirname/$selectedDir/" . $file_name)) {
+                        move_uploaded_file($file_tmp, "$StudentDir/$dirname/$selectedDir/" . $file_name);
+                    } else {
+                        move_uploaded_file($file_tmp, "$StudentDir/$dirname/$selectedDir/" . "--Duplicate" . $file_name);
+                    }
                 } else {
-                    echo "<br><p style='text-align:center;'>Bestandsnaam bevat meer dan 1 punt!<br>Upload gefaald</p>";
+                    echo "<br><p style='text-align:center;'>Bestandsnaam bevat meer dan 1 punt!<br>Upload Mislukt, verander je bestandsnaam</p>";
                     $file_name = NULL;
                 }
                 if (strpos($file_name, '.')) {
-                    echo "<br><p style='text-align:center;'>Bestand: $fileTitleup[1] in $selectedDir Succes </p><br>";
+                    echo "<br><p style='text-align:center;'>Bestand: '$fileTitleup[1]' in de map $selectedDir geplaatst! </p><br>";
 
                 }
             } else {
@@ -142,6 +165,8 @@ include 'hidden.menu.php';
                     echo '<center>' . $error . '</center><br>';
                 }
             }
+        } else {
+            echo "<center><p>Geen bestand gekozen!</p></center>";
         }
 
 
@@ -159,17 +184,6 @@ include 'hidden.menu.php';
 
 
 </div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
 
 <?php

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" type="image/png" href="fav.png"/>
+    <link rel="icon" type="image/png" href="hide/fav.png"/>
     <title>Stenden portfolio</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -68,6 +68,33 @@
             border-radius: 4px;
             cursor: pointer;
         }
+        .profile{
+            float: left;
+            margin-top: 5px;
+            margin-right: 10%;
+            margin-left: 10%;
+            margin-bottom: 5px;
+            width: 80%;
+            background-color: aqua;
+
+        }
+
+        #profile-pic{
+            border-radius: 5px;
+            border: 5px;
+            border-color: #000000;
+            float: left;
+            margin:;
+            width: 250px;
+            height: 250px;
+            background-color: #009e13;
+        }
+        #profileinfo{
+            float: left;
+            width: 250px;
+            height: 250px;
+            background-color: yellow;
+        }
 
         #bekijkup {
             float: inherit;
@@ -102,6 +129,8 @@
             height: 50px;
             position: absolute;
         }
+
+
 
     </style>
 </head>
