@@ -42,8 +42,10 @@ if(empty($_POST['voornaam' ])|| empty($_POST['achternaam'])){
             if(mysqli_num_rows($DBresult)  == 0){
                 echo "There was no student found by the name of ".$voornaam." ".$achternaam."";
             }else{
-                echo "student by the name of  ".$voornaam." ".$achternaam." was found";
-                // https.portfolio.$voornaam.$achternaam  //hier komt link van site met naam naar pagina van student
+                if($row = mysqli_fetch_assoc($DBresult)) {
+                    echo "students by the name of  " . $voornaam . " " . $row . " was found";
+                    // https.portfolio.$voornaam.$achternaam  //hier komt link van site met naam naar pagina van student
+                }
             }
         }
     }
