@@ -84,25 +84,22 @@ if(isset($_POST["Submit"])){
         //hasing the password
         $password = password_encrypt($_POST["Password"]);
         //defining the query
-        if($rol == "admin"){        /// waarden moeten ingevult worden en moet onder de $sql komen
-            $rol = "INSERT INTO user_type (Admin) Values ('') WHERE Firstname = '$firstname' AND Lastname = '$lastname'";
-        }elseif ($rol == "docent"){
-            $rol = "INSERT INTO user_type (Docent) Values ('') WHERE Firstname = '$firstname' AND Lastname = '$lastname'";
-        }elseif ($rol == "slb"){
-            $rol = "INSERT INTO user_type (SLB) Values ('') WHERE Firstname = '$firstname' AND Lastname = '$lastname'";
-        }
+
         $sql  = "INSERT INTO customer (Firstname, Lastname, Email, Password, Phone, City, StreetAddress, Postalcode) 
         VALUES ('$firstname', '$lastname', '$email', '$password', '$phone', '$city', '$streetaddress', '$postalcode')";
         $result = mysqli_query($connection, $sql);
-
        // header("Location: hidden.login.php");
-
         ob_end_flush();
-
         if($result === false){
             echo"ERROR".mysqli_errno()." : ".mysqli_error();
         }
-
+        if($rol == "admin"){        /// waarden die ingevoerd worden moet unique zijn
+            $rol = "INSERT INTO user_type (Admin) Values ('') ";
+        }elseif ($rol == "docent"){
+            $rol = "INSERT INTO user_type (Docent) Values ('') ";
+        }elseif ($rol == "slb"){
+            $rol = "INSERT INTO user_type (SLB) Values ('') ";
+        }
 
     }
 
