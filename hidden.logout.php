@@ -15,9 +15,12 @@ include_once 'hidden.menu.php';
 
 <div class="jumbotron">
 	<?php
-	session_destroy();
+	if (!empty($_POST["logout"])) {
+		$_SESSION["studentID"] = "";
+		session_destroy();
+	}
 	echo"<P>U bent Uitgelogd</P>";
-	echo "<a href='index.php'>back to home</a>";
+	echo "<a href='index.php'>terug</a>";
 	?>
 </div>
 
