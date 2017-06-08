@@ -57,10 +57,10 @@ include 'hidden.menu.php';
 			$row = mysqli_fetch_array($result);
 			?>
             <form action="" method="post" id="frmLogout">
-                <div class="member-dashboard">Welcome <?php echo ucwords($row['FirstName']); ?>, You have successfully
+                Welcome <?php echo ucwords($row['FirstName']); ?>, You have successfully
                     logged in!<br>
                     Click to <input type="submit" name="logout" value="Logout" class="logout-button">.
-                </div>
+
             </form>
 
 		<?php } ?>
