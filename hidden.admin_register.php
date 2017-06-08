@@ -38,6 +38,8 @@ include 'hidden.menu.php';
     <label for='zipcode' >Postcode*: </label><br/>
     <input type='text' name='Postalcode' id='zipcode' maxlength="6" /><br/>
 
+
+
     <select name = "rol">
         <option  value = "admin" >Admin</option>
         <option  value = "docent" >Docent</option>
@@ -61,8 +63,8 @@ if(isset($_POST["Submit"])){
     $city = $_POST['City'];
     $streetaddress = $_POST['StreetAddress'];
     $postalcode = $_POST['Postalcode'];
-    $admin = $_POST['rol'];
-
+    $rol = $_POST['rol'];
+    $admincode = $_POST["admincode"];
 
     if (empty ($_POST['Firstname'])
         || empty ($_POST['Lastname'])
@@ -71,7 +73,8 @@ if(isset($_POST["Submit"])){
         || empty ($_POST['Phone'])
         || empty ($_POST['City'])
         || empty ($_POST['StreetAddress'])
-        || empty ($_POST['Postalcode']))
+        || empty ($_POST['Postalcode'])
+        || empty ($_POST['rol']))
     {
         echo "please fill in all fields";
 
@@ -81,12 +84,18 @@ if(isset($_POST["Submit"])){
         //hasing the password
         $password = password_encrypt($_POST["Password"]);
         //defining the query
-        if()
+        if($rol == "admin"){        /// waarden moeten ingevult worden en moet onder de $sql komen
+            $rol = "INSERT INTO user_type (Admin) Values ('') WHERE Firstname = '$firstname' AND Lastname = '$lastname'";
+        }elseif ($rol == "docent"){
+            $rol = "INSERT INTO user_type (Docent) Values ('') WHERE Firstname = '$firstname' AND Lastname = '$lastname'";
+        }elseif ($rol == "slb"){
+            $rol = "INSERT INTO user_type (SLB) Values ('') WHERE Firstname = '$firstname' AND Lastname = '$lastname'";
+        }
         $sql  = "INSERT INTO customer (Firstname, Lastname, Email, Password, Phone, City, StreetAddress, Postalcode) 
         VALUES ('$firstname', '$lastname', '$email', '$password', '$phone', '$city', '$streetaddress', '$postalcode')";
         $result = mysqli_query($connection, $sql);
 
-        header("Location: hidden.login.php");
+       // header("Location: hidden.login.php");
 
         ob_end_flush();
 
