@@ -7,44 +7,40 @@
 
 <body>
 <?php
-include "db_connection.php";
+$connection = mysqli_connect("127.0.0.1","root","");
 include 'hidden.header.php';
 ob_start();
 include 'hidden.menu.php';
 ?>
 
-<form id='register' action='hidden.register.php' method='post'>
-    <label for='firstname' >Voornaam*: </label><br/>
-    <input type='text' name='Firstname' id='firstname' maxlength="50" /><br/>
+<!-- tekstboxes kleiner maken--->
+<div class="jumbotron">
+    <div class="container text-center">
+        <h1>administrator registration</h1>
+        <p>
+            <div id="wrapper">
 
-    <label for='lastname' >Achternaam*: </label><br/>
-    <input type='text' name='Lastname' id='lastname' maxlength="50" /><br/>
+                <!-- CONTENT -->
+                <div id='content'>
+                <form id='register' action='hidden.register.php' method='post'>
+                    <label for='firstname' >Voornaam*: </label><br/>
+                    <input type='text' name='Firstname' id='firstname' maxlength="50" /><br/>
 
-    <label for='email' >Email Address*:</label><br/>
-    <input type='text' name='Email' id='email' maxlength="50" /><br/>
+                    <label for='lastname' >Achternaam*: </label><br/>
+                    <input type='text' name='Lastname' id='lastname' maxlength="50" /><br/>
 
-    <label for='password' >Password*:</label><br/>
-    <input type='password' name='Password' id='password' maxlength="50" /><br/>
+                    <label for='email' >Email Address*:</label><br/>
+                    <input type='text' name='Email' id='email' maxlength="50" /><br/>
 
-    <label for='phone' >Telefoon*: </label><br/>
-    <input type='text' name='Phone' id='phone' maxlength="10" /><br/>
+                    <label for='password' >Password*:</label><br/>
+                    <input type='password' name='Password' id='password' maxlength="50" /><br/>
 
-    <label for='city' >Woonplaats*: </label><br/>
-    <input type='text' name='City' id='city' maxlength="50" /><br/>
-
-    <label for='adress' >Adres*: </label><br/>
-    <input type='text' name='StreetAddress' id='adress' maxlength="50" /><br/>
-
-    <label for='zipcode' >Postcode*: </label><br/>
-    <input type='text' name='Postalcode' id='zipcode' maxlength="6" /><br/>
-
-
-
-    <select name = "rol">
-        <option  value = "admin" >Admin</option>
-        <option  value = "docent" >Docent</option>
-        <option  value = "slb" >SLB</option>
-    </select><br>
+                    <p>Please pick a role to determined which authorisation you will be given upon registration</p><br>
+                    <select name = "rol" >
+                        <option  value = "admin" >Admin</option>
+                        <option  value = "docent" >Docent</option>
+                        <option  value = "slb" >SLB</option>
+                    </select><br>
 
     <p>* Verplicht in te vullen.</p>
     <input id='submit'type='submit' name='Submit' value='Registreren' /><br/>
@@ -105,7 +101,8 @@ if(isset($_POST["Submit"])){
 
 }
 ?>
-
+</div>
+</div>
 
 
 
