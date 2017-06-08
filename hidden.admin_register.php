@@ -39,9 +39,9 @@ include 'hidden.menu.php';
     <input type='text' name='Postalcode' id='zipcode' maxlength="6" /><br/>
 
     <select name = "rol">
-        <option name = "admin" value = "admin" >Admin</option>
-        <option name = "docent" value = "docent" >Docent</option>
-        <option name = "slb" value = "slb" >SLB</option>
+        <option  value = "admin" >Admin</option>
+        <option  value = "docent" >Docent</option>
+        <option  value = "slb" >SLB</option>
     </select><br>
 
     <p>* Verplicht in te vullen.</p>
