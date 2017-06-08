@@ -50,6 +50,7 @@ include 'hidden.menu.php';
                     <div><input type="submit" name="login" value="Login" class="form-submit-button"></span></div>
                 </div>
             </form>
+            <p><a href="hidden.register.php">registreren</a></p>
 			<?php
 		} else {
 			$result = mysqlI_query($conn, "SELECT * FROM students WHERE studentID='" . $_SESSION["studentID"] . "'");
@@ -58,7 +59,7 @@ include 'hidden.menu.php';
             <form action="" method="post" id="frmLogout">
                 Welcome <?php echo ucwords($row['FirstName']); ?>, You have successfully
                 logged in!<br>
-                Click to <input type="submit" name="logout" value="Logout" class="logout-button">.
+                <input type="submit" name="logout" value="Logout" class="logout-button">.
             </form>
 		<?php } ?>
     </div>
