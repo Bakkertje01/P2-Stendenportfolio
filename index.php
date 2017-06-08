@@ -27,10 +27,9 @@
 
 <body>
 <?php
-
+include  'include/session.php';
 include 'hidden.header.php';
 include 'hidden.menu.php';
-
 
 $homePicture = fileToArray('homepic/afb.txt', 0);
 $homePicture1 = fileToArray('homepic/afb1.txt', 0);
@@ -41,16 +40,15 @@ $imgTitle = fileToArray('homepic/titles.txt', 0);
 $imgTitle1 = fileToArray('homepic/titles.txt', 1);
 $imgTitle2 = fileToArray('homepic/titles.txt', 2);
 $imgTitle3 = fileToArray('homepic/titles.txt', 3);
+
 ?>
 
 <div class="jumbotron">
     <div class="container text-center">
-
         <?php
         $welcomeMssg = fileToArray('hide/welkomberichten.txt', 0);
         echo "<h2>Welkom Bij Stenden Portfolio</h2>
         <p>$welcomeMssg</p>";
-
         ?>
     </div>
 </div>

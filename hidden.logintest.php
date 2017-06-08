@@ -1,104 +1,95 @@
-<?php
-session_start();
-$conn = mysqli_connect("localhost","root","","stendentwitter");
+<?php require_once("include/session.php") ?>
+<?php require_once("include/db_connection.php") ?>
+<?php require_once("include/functions.php") ?>
+<?php //include "include/repeats/header.php";?>
 
-$message="";
-if(!empty($_POST["login"])) {
-	$result = mysqli_query($conn,"SELECT * FROM users WHERE user_name='" . $_POST["user_name"] . "' and password = '". $_POST["password"]."'");
-	$row  = mysqli_fetch_array($result);
-	if(is_array($row)) {
-		$_SESSION["user_id"] = $row['user_id'];
-	} else {
-		$message = "Invalid Username or Password!";
-	}
-}
-if(!empty($_POST["logout"])) {
-	$_SESSION["user_id"] = "";
-	session_destroy();
-}
-?>
-<html>
-<head>
-    <title>User Login</title>
-    <style>
-        #frmLogin {
-            padding: 20px 60px;
-            background: #B6E0FF;
-            color: #555;
-            display: inline-block;
-            border-radius: 4px;
-        }
-        .field-group {
-            margin:15px 0px;
-        }
-        .input-field {
-            padding: 8px;width: 200px;
-            border: #A3C3E7 1px solid;
-            border-radius: 4px;
-        }
-        .form-submit-button {
-            background: #65C370;
-            border: 0;
-            padding: 8px 20px;
-            border-radius: 4px;
-            color: #FFF;
-            text-transform: uppercase;
-        }
-        .member-dashboard {
-            padding: 40px;
-            background: #D2EDD5;
-            color: #555;
-            border-radius: 4px;
-            display: inline-block;
-            text-align:center;
-        }
-        .logout-button {
-            color: #09F;
-            text-decoration: none;
-            background: none;
-            border: none;
-            padding: 0px;
-            cursor: pointer;
-        }
-        .error-message {
-            text-align:center;
-            color:#FF0000;
-        }
-        .demo-content label{
-            width:auto;
-        }
-    </style>
-</head>
-<body>
-<div>
-    <center>
-    <div style="display:block;margin:0px auto;">
-		<?php if(empty($_SESSION["user_id"])) { ?>
-            <form action="" method="post" id="frmLogin">
-                <div class="error-message"><?php if(isset($message)) { echo $message; } ?></div>
-                <div class="field-group">
-                    <div><label for="login">Username</label></div>
-                    <div><input name="user_name" type="text" class="input-field"></div>
-                </div>
-                <div class="field-group">
-                    <div><label for="password">Password</label></div>
-                    <div><input name="password" type="password" class="input-field"> </div>
-                </div>
-                <div class="field-group">
-                    <div><input type="submit" name="login" value="Login" class="form-submit-button"></span></div>
-                </div>
-            </form>
-			<?php
+<?php
+$email = "";
+if (isset($_POST['submit'])) {
+	$required_fields = array("Email", "Password");
+	validate_presences($required_fields);
+	if (empty($errors)) {
+		// Attempt Login
+		$email = $_POST["Email"];
+
+		$professor = $_POST["Email"];
+		$admin = $_POST["Email"];
+		$SLB = $_POST["Email"];
+		$password = $_POST["Password"];
+		$found_student = attempt_student_login($email, $password);
+		$found_professor = attempt_professor_login($professor, $password);
+		$found_admin = attempt_admin_login($admin, $password);
+		$found_SLB = attempt_slb_login($SLB, $password);
+		if ($found_student) {
+			// Success
+			// Mark user as logged in
+			$_SESSION["student_id"] = $found_student["studentID"];
+			$_SESSION["firstname"] = $found_student["Firstname"];
+			$_SESSION["email"] = $found_student["Email"];
+			redirect_to("hidden.student.php");
+		} elseif ($found_professor) {
+			$_SESSION["professor_id"] = $found_professor["professorID"];
+			$_SESSION["firstname"] = $found_professor["Firstname"];
+			$_SESSION["professor"] = $found_professor["User"];
+			redirect_to("hidden.professor.php");
+		} elseif ($found_admin) {
+			$_SESSION["admin_id"] = $found_admin["adminID"];
+			$_SESSION["firstname"] = $found_admin["Firstname"];
+			$_SESSION["admin"] = $found_admin["User"];
+			redirect_to("hidden.admin.php");
+		} elseif ($found_SLB) {
+			$_SESSION["slb_id"] = $found_SLB["slbID"];
+			$_SESSION["firstname"] = $found_SLB["Firstname"];
+			$_SESSION["slb"] = $found_SLB["User"];
+			redirect_to("hidden.slb.php");
 		} else {
-		$result = mysqlI_query($conn,"SELECT * FROM users WHERE user_id='" . $_SESSION["user_id"] . "'");
-		$row  = mysqli_fetch_array($result);
-		?>
-        <form action="" method="post" id="frmLogout">
-            <div class="member-dashboard">Welcome <?php echo ucwords($row['display_name']); ?>, You have successfully logged in!<br>
-                Click to <input type="submit" name="logout" value="Logout" class="logout-button">.</div>
+			$_SESSION["message"] = "Onjuist gebruikersnaam en/of wachtwoord.";
+		}
+	}
+} else {
+	// This is probably a GET request
+
+} // end: if (isset($_POST['submit']))
+?>
+<body>
+<!-- MENU -->
+<?php
+include 'hidden.header.php';
+include 'hidden.menu.php';
+?>
+
+<!-- CONTENT -->
+<div class='jumbotron'>
+    <div class="container text-center">
+
+        <h1>Login</h1>
+		<?php echo message(); ?>
+		<?php echo form_errors($errors); ?>
+        <p>Als u gebruik wil maken van het portfolio moet u eerst inloggen. Als dit de eerste keer is dat u <br>
+            deze site bezoekt moet u zich eerst registreren. Na het registreren kunt u inloggen en gebruik <br>
+            maken van onze dienst.<br></p>
+        <form id='login' action='hidden.login.php' method='post'>
+            <label for='email'>Email Address*:</label><br/>
+            <input type='text' name='Email' id='email' maxlength="50" value="<?php echo htmlentities($email); ?>"/><br/>
+
+            <label for='password'>Password*:</label><br/>
+            <input type='password' name='Password' id='password' maxlength="50"/><br/>
+            <br/>
+            <table>
+                <tr>
+                    <td>
+                        <input id="submit" type='submit' name='submit' value='Aanmelden'/>
+                        <p><a href="hidden.register.php">registreren</a></p>
+                    </td>
+                </tr>
+            </table>
         </form>
     </div>
-    </center>
 </div>
-<?php } ?>
-</body></html>
+
+<?php
+
+include 'hidden.footer.php';
+
+?>
+</body>

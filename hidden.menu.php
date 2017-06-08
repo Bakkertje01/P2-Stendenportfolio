@@ -44,7 +44,11 @@ include "hidden.style.php";
 
             ?>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="hidden.login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+	            <?php if(isset($_SESSION['studentID'])){ ?>
+                    <li><a href="hidden.logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+	            <?php }else{ ?>
+                    <li><a href="hidden.login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+	            <?php } ?>
             </ul>
         </div>
     </div>
