@@ -10,4 +10,7 @@ Project 2.2 portfolio
 
 !!![NIET ZONDER OVERLEG ANDERMANS BESTANDEN GAAN AANPASSEN]!!!
 
+![alt text](http://i.imgur.com/tqXGD8n.png)
+
+
 Geen .idea meesturen !!!
