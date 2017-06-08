@@ -20,8 +20,8 @@ if (!empty($_POST["logout"])) {
 ?>
 <html>
 <head>
-    <title>User Login</title>
-
+    <title>Login</title>
+    <link rel="icon" type="image/png" href="hide/fav.png"/>
 </head>
 <body>
 <?php
