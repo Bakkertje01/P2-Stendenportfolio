@@ -1,3 +1,8 @@
+<?php
+include 'include/session.php';
+session_destroy();
+
+?>
 <html>
 
 <head>
@@ -7,20 +12,19 @@
 <body>
 <?php
 
-include_once 'hidden.header.php';
-include_once 'hidden.menu.php';
+include 'hidden.header.php';
+ob_start();
+include 'hidden.menu.php';
 ?>
 
 
 
 <div class="jumbotron">
 	<?php
-	if (!empty($_POST["logout"])) {
-		$_SESSION["studentID"] = "";
-		session_destroy();
-	}
+
 	echo"<P>U bent Uitgelogd</P>";
-	echo "<a href='index.php'>terug</a>";
+	header('location:index.php');
+	ob_end_flush();
 	?>
 </div>
 

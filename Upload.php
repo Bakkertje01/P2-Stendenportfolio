@@ -6,6 +6,9 @@ if ($login !== '1234') {
     include 'hidden.noLogin.php';
 }
 
+$filePoster = 'Henk';
+
+
 ?>
 
 <html>
@@ -34,7 +37,7 @@ include 'hidden.menu.php';
         <p>Type:</p>
 
         <?php
-        $foldersForUpload = array('CV', 'Afbeeldingen', 'Documenten');
+        $foldersForUpload = array('CV', 'Afbeeldingen', 'Documenten', 'Profielfoto');
 
         echo "<select name='dirselect'>";
         foreach ($foldersForUpload as $item) {
@@ -99,9 +102,9 @@ include 'hidden.menu.php';
             }
 
 
-            $filePoster = 'henk';
-
             $file_name = "--$fileTitle--" . $_FILES['upload']['name'];
+
+
             $file_size = $_FILES['upload']['size'];
             $file_tmp = $_FILES['upload']['tmp_name'];
             $file_type = $_FILES['upload']['type'];
@@ -120,6 +123,11 @@ include 'hidden.menu.php';
             if ($file_size > 8388608) {
                 $errors[] = 'Bestand is te groot!(8 MB max)';
             }
+
+            if (empty($filePoster)){
+                $errors[] = 'Geen file poster!';
+            }
+
             if (empty($errors) == true) {
                 $StudentDir = 'studentuploads';
                 $dirname = "$filePoster";

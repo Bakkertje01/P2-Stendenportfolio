@@ -1,5 +1,5 @@
 <?php
-if(!isset($_SESSION['email']) || empty($_SESSION['email'])) {
+if(!isset($_SESSION['studentID']) || empty($_SESSION['studentID'])) {
 	redirect_to("index.php");
 }
 ?>
