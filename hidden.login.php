@@ -57,11 +57,9 @@ include 'hidden.menu.php';
 			$result = mysqlI_query($conn, "SELECT * FROM students WHERE studentID='" . $_SESSION["studentID"] . "'");
 			$row = mysqli_fetch_array($result);
 			?>
-            <form action="" method="post" id="frmLogout">
                 Welcome <?php echo ucwords($row['FirstName']); ?>, You have successfully
                 logged in!<br>
-                <input type="submit" name="logout" value="Logout" class="logout-button">.
-            </form>
+
 		<?php } ?>
     </div>
 </div>
