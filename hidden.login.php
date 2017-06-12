@@ -1,7 +1,8 @@
 <?php
 
 session_start();
-$conn = mysqli_connect("localhost", "root", "", "portfolio");
+$conn = mysqli_connect("localhost", "root", "root", "portfolio");
+$connBackup = mysqli_connect("localhost", "root", "", "portfolio");
 
 $message = "";
 if (!empty($_POST["login"])) {
