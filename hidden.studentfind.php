@@ -33,7 +33,7 @@ if(empty($_POST['voornaam' ])){
         echo" COULD NOT SELECT DATABASE ".mysqli_errno($connection)." : ".mysqli_error($connection);
     }else{
         mysqli_select_db($connection,DB_NAME);
-        $DBcommand = "SELECT Voornaam FROM $DBtable WHERE Voornaam Like '%$voornaam%'";
+        $DBcommand = "SELECT Voornaam,Achternaam FROM $DBtable WHERE Voornaam Like '%$voornaam%'";
         $DBresult = mysqli_query($connection,$DBcommand);
         if($DBresult === FALSE){
             echo "COULD NOT SELECT FROM TABLE ".mysqli_errno($connection)." : ".mysqli_error($connection);

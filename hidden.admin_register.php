@@ -81,8 +81,8 @@ if(isset($_POST["Submit"])){
         $password = password_encrypt($_POST["Password"]);
         //defining the query
 
-        $sql  = "INSERT INTO customer (Firstname, Lastname, Email, Password, Phone, City, StreetAddress, Postalcode) 
-        VALUES ('$firstname', '$lastname', '$email', '$password', '$phone', '$city', '$streetaddress', '$postalcode')";
+        $sql  = "INSERT INTO customer (Firstname, Lastname, Email, Password) 
+        VALUES ('$firstname', '$lastname', '$email', '$password')";
         $result = mysqli_query($connection, $sql);
        // header("Location: hidden.login.php");
         ob_end_flush();
