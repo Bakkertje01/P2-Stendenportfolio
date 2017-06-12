@@ -106,9 +106,10 @@ include 'hidden.menu.php';
 <div class="jumbotron">
     <div class="container text-center">
         <h3>Bestanden van <?php echo $studentnumber; ?></h3>
-        <p><i>'<?php echo $studentquote; ?>'</i></p>
+
         <img width="20%" <?php echo "src='$profielfoto'" ?> alt="profielfoto"
              title="Profielfoto">
+        <p><i>'<?php echo $studentquote; ?>'</i></p>
     </div>
 </div>
 
