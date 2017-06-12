@@ -30,7 +30,8 @@ include 'hidden.menu.php';
 ?>
 <div class='jumbotron'>
     <div class="container text-center">
-		<?php if (empty($_SESSION["studentID"])) { ?>
+		<?php
+        if (empty($_SESSION["studentID"])) { ?>
             <form action="" method="post" id="frmLogin">
                 <div class="error-message"><?php if (isset($message)) {
 						echo $message;

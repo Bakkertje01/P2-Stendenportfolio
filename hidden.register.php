@@ -6,24 +6,20 @@
 
 <body>
 
-
 <?php include 'include/db_connection.php';?>
 <?php include 'include/functions.php';?>
 <?php include 'include/session.php';?>
 <?php
 include 'hidden.header.php';
 ob_start(); include 'hidden.menu.php';
+
 ?>
-
-
-
 
 <div class="jumbotron">
     <div class="container text-center">
         <h1>My Portfolio</h1>
         <p>
             <div id="wrapper">
-
                 <!-- CONTENT -->
                 <div id='content'>
                     <h1> Registratie </h1>
@@ -41,15 +37,12 @@ ob_start(); include 'hidden.menu.php';
                         <label for='password' >Password*:</label><br/>
                         <input type='password' name='Wachtwoord' id='Wachtwoord' maxlength="50" /><br/>
 
-        <p>* Verplicht in te vullen.</p>
-        <input id='submit'type='submit' name='Submit' value='Registreren' /><br/>
-        </form>
+                        <p>* Verplicht in te vullen.</p>
+                        <input id='submit'type='submit' name='Submit' value='Registreren' /><br/>
+                    </form>
     </div>
 
-
-</div>
-
-
+    </div>
 
 <?php
 //Registration script
@@ -66,12 +59,9 @@ if(isset($_POST["Submit"])){
         || empty ($_POST['Wachtwoord']))
     {
         echo "please fill in all fields";
-
     }
     else
         {
-
-
         //hasing the password
         $password = password_encrypt($_POST["Wachtwoord"]);
         //defining the query
@@ -87,10 +77,7 @@ if(isset($_POST["Submit"])){
         if($result === false){
             echo"ERROR".mysqli_errno()." : ".mysqli_error();
         }
-
-
     }
-
 }
 ?>
 
