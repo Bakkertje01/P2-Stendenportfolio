@@ -99,7 +99,7 @@ if (isset($_POST["Submit"])) {
                         } else {
 
                             //hasing the password
-                            $password = password_encrypt($_POST["Wachtwoord"]);
+                            //$password = password_encrypt($_POST["Wachtwoord"]);
 
                             $sql = "INSERT INTO user";
                             $sql .= "(Voornaam, Achternaam, Email, Wachtwoord, Studentnr, Verified, Type) ";
