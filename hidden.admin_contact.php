@@ -63,32 +63,13 @@ include 'hidden.menu.php';
                                     echo '</table>';
                                     echo '<hr>';
 
-
-
-
-
                             }
-
-
-
-
-
 
                         }
                         mysqli_free_result($QueryResult);
                     }
                     mysqli_close($DBConnect);
                 }
-
-
-
-
-
-
-
-
-
-
 
 
 /*
