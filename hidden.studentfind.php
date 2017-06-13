@@ -23,7 +23,7 @@ include 'hidden.menu.php';
 
                 <form  action = "hidden.studentfind.php" method = "POST">
                     <p>vul het naamveld in van de student van wie je het portofolio wilt zien.</p><br>
-                    <p>Naam : <input type = "text" name = "voornaam" value = '<?php (!isset($voornaam))? 0 : $voornaam ?>'></p>
+                    <p>Naam : <input type = "text" name = "voornaam" value = '<?php echo (isset($_POST["submit"])) && empty($_POST['voornaam'])?  : $_POST['voornaam'] ?>'></p>
                     <input type = "submit" name = "submit" value = "Search">
                 </form>
 

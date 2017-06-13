@@ -41,7 +41,7 @@ include 'hidden.menu.php';
                         <option  value = "slb" >SLB</option>
                     </select><br>
 
-    <p>* Verplicht in te vullen.</p>
+
     <input id='submit'type='submit' name='Submit' value='Registreren' /><br/>
 
 </form>
@@ -61,13 +61,9 @@ if(isset($_POST["Submit"])){
         || empty ($_POST['Lastname'])
         || empty ($_POST['Email'])
         || empty ($_POST['Password'])
-        || empty ($_POST['Phone'])
-        || empty ($_POST['City'])
-        || empty ($_POST['StreetAddress'])
-        || empty ($_POST['Postalcode'])
         || empty ($_POST['rol']))
     {
-        echo "<h3>please fill in all fields<h3>";
+        echo  "<h3>please fill in all fields<h3>";
 
     }
     else
@@ -91,14 +87,15 @@ if(isset($_POST["Submit"])){
         }elseif ($rol == "slb"){
             $rol = "INSERT INTO user_type (SLB) Values ('') ";
         }
-
+        echo "<h3> Thanks for submiting<h3>";
     }
 
 }
 ?>
 </div>
 </div>
-
+</div>
+</div>
 
 
 
