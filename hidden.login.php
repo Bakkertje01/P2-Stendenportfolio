@@ -8,7 +8,8 @@ if (!empty($_POST["login"])) {
     $password = $_POST["password"];
 
 
-	$result = mysqli_query($connection, "SELECT * FROM user WHERE Email='$email' and Wachtwoord = '$password'");
+	$result = mysqli_query($connection, "SELECT * FROM user WHERE Email='$email' and Wachtwoord = '$password'")
+	or die ('error: '. mysqli_error($connection));
 	$row = mysqli_fetch_array($result);
 	if (is_array($row)) {
 		$_SESSION["Gebruiker_ID"] = $row['Gebruiker_ID'];
@@ -69,7 +70,8 @@ include 'hidden.menu.php';
             <p><a href="hidden.register.php">registreren</a></p>
 			<?php
 		} else {
-			$result = mysqlI_query($connection, "SELECT * FROM user WHERE Gebruiker_ID='" . $_SESSION["Gebruiker_ID"] . "'");
+			$result = mysqlI_query($connection, "SELECT * FROM user WHERE Gebruiker_ID='" . $_SESSION["Gebruiker_ID"] . "'")
+			or die ('error: '. mysqli_error($connection));
 			$row = mysqli_fetch_array($result);
 
 
