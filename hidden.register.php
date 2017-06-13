@@ -37,6 +37,9 @@ ob_start(); include 'hidden.menu.php';
                         <label for='password' >Password*:</label><br/>
                         <input type='password' name='Wachtwoord' id='Wachtwoord' maxlength="50" /><br/>
 
+                        <label for='Studentnr' >Student_nr*:</label><br/>
+                        <input type='number' name='Studentnr' id='Studentnr' maxlength="6" /><br/>
+
                         <p>* Verplicht in te vullen.</p>
                         <input id='submit'type='submit' name='Submit' value='Registreren' /><br/>
                     </form>
@@ -52,11 +55,13 @@ if(isset($_POST["Submit"])){
     $lastname = $_POST['Achternaam'];
     $email = $_POST['Email'];
     $password = $_POST['Wachtwoord'];
+    $studentnr = $_POST['Studentnr'];
 
     if (empty ($_POST['Voornaam'])
         || empty ($_POST['Achternaam'])
         || empty ($_POST['Email'])
-        || empty ($_POST['Wachtwoord']))
+        || empty ($_POST['Wachtwoord'])
+        || empty ($_POST['Studentnr']))
     {
         echo "please fill in all fields";
     }
@@ -65,11 +70,11 @@ if(isset($_POST["Submit"])){
         //hasing the password
         $password = password_encrypt($_POST["Wachtwoord"]);
         //defining the query
-        $sql  = "INSERT INTO gebruiker ";
-        $sql .= "(Voornaam, Achternaam, Email, Wachtwoord) ";
-        $sql .= "VALUES ('$firstname', '$lastname', '$email', '$password')";
-        $result = mysqli_query($connection, $sql);
+        $sql  = "INSERT INTO user";
+        $sql .= "(Voornaam, Achternaam, Email, Wachtwoord, Studentnr, Verified, Type) ";
+        $sql .= "VALUES ('$firstname', '$lastname', '$email', '$password', '$studentnr', 1, 'student')";
 
+        $result = mysqli_query($connection, $sql);
         header("Location: hidden.login.php");
 
         ob_end_flush();
