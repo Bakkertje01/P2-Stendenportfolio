@@ -23,17 +23,13 @@ include 'hidden.menu.php';
 <div class="jumbotron">
     <?php
 
-    echo"<P>U bent Uitgelogd</P>";
+    echo"<P>U bent Uitgelogd. <a href='index.php'>Ok!</a></P>";
 
     ?>
 </div>
 
 
-<?php
 
-include 'hidden.footer.php';
-
-?>
 
 </body>
 
