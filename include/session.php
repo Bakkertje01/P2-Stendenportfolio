@@ -18,8 +18,13 @@ if ($result->num_rows > 0) {
         $studentnaam = $row["Voornaam"];
 
         $studentnumber = $row["Studentnr"];
+
+
     }
 } else {
+    $studentnaam = "Gast";
+
+    $studentnumber = "default";
     echo "0 results";
 }
 
