@@ -1,4 +1,5 @@
 <?php
+include('include/session.php');
 
 include "hidden.style.php";
 
@@ -30,8 +31,15 @@ include "hidden.style.php";
                         $friendlylink = preg_replace('/[^A-Za-z0-9\-]/', '', $heh[1]);
 
                         if ($friendlylink !== 'index') {
+                            if ($ID > 0) {
 
-                            echo "<li><a href='$link'>" . ucfirst($friendlylink) . "</a></li>";
+                                echo "<li><a href='$link'>" . ucfirst($friendlylink) . "</a></li>";
+                            } else {
+                                if ($friendlylink === 'alleProfielen' ||$friendlylink === 'Gastenboek' ||$friendlylink === 'contact') {
+                                    echo "<li><a href='$link'>" . ucfirst($friendlylink) . "</a></li>";
+                                }
+
+                            }
                         }
 
                     } else {
