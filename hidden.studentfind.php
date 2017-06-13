@@ -15,7 +15,7 @@ include 'hidden.menu.php';
 <div class="jumbotron">
     <div class="container text-center">
         <h3>Student Finder</h3>
-        <p>
+
             <div id="wrapper">
 
                 <!-- CONTENT -->
