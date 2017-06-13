@@ -54,10 +54,6 @@ if(isset($_POST["Submit"])){
     $lastname = $_POST['Lastname'];
     $email = $_POST['Email'];
     $password = $_POST['Password'];
-    $phone = $_POST['Phone'];
-    $city = $_POST['City'];
-    $streetaddress = $_POST['StreetAddress'];
-    $postalcode = $_POST['Postalcode'];
     $rol = $_POST['rol'];
 
 
@@ -71,7 +67,7 @@ if(isset($_POST["Submit"])){
         || empty ($_POST['Postalcode'])
         || empty ($_POST['rol']))
     {
-        echo "please fill in all fields";
+        echo "<h3>please fill in all fields<h3>";
 
     }
     else
