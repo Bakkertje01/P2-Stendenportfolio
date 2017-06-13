@@ -1,7 +1,7 @@
 <?php
+include 'include/session.php';
 
-$studentnumber = "Henk";
-$studentnaam = "Henk";
+
 $studentquote = "Ik houd erg veel van vlaflip en macaroni";
 $PfNaam = 'pf.jpg';
 $profielfoto = "studentuploads/$studentnumber/Profielfoto/$PfNaam";
@@ -17,8 +17,76 @@ $profielfoto = "studentuploads/$studentnumber/Profielfoto/$PfNaam";
 
 <body>
 <?php
+
 include 'hidden.header.php';
 include 'hidden.menu.php';
+
+
+if (isset($_POST['kleursub']) && isset($_POST['textkleur']) ) {
+
+    $bgColor = $_POST['bgkleur'];
+    $textColor = $_POST['textkleur'];
+    $sql = "UPDATE User SET color_path = '$bgColor', img_path = '$textColor' WHERE Gebruiker_ID = $ID";
+    $result = $connection->query($sql);
+
+    echo "<style>
+
+body{
+background-color: $bgColor;
+}
+
+.jumbotron{
+background-color: $bgColor;
+}
+
+.container text-center{
+background-color: $bgColor;
+}
+
+.container-fluid bg-3 text-center{
+background-color: $bgColor;
+}
+
+.row{
+background-color: $bgColor;
+}
+
+.col-sm-3{
+background-color: $bgColor;
+}
+
+.img-responsive{
+background-color: $bgColor;
+}
+
+p{
+color: $textColor;
+}
+
+h1{
+color: $textColor;
+}h2{
+color: $textColor;
+}h3{
+color: $textColor;
+}h4{
+color: $textColor;
+}h5{
+color: $textColor;
+}h6{
+color: $textColor;
+}
+input{
+color: $textColor;
+}
+label{
+color: $textColor;
+}
+
+
+
+</style>";
+}
 
 
 ?>
@@ -29,12 +97,12 @@ include 'hidden.menu.php';
         <p>
         <div id="wrapper">
             <div id='content'>
-                <h3> Mijn Profiel </h3>
+                <h3>Profiel van <?php echo "$studentnaam $studentachter"; ?> </h3>
 
                 <form id='register' action='profiel.php' method='post' enctype="multipart/form-data">
 
                     <label for='upload'>Huidige Profielfoto: </label><br><br>
-                    <img style='float: left' width="20%" <?php echo "src='$profielfoto'" ?> alt="profielfoto"
+                    <img style='float: left' width="20%" <?php echo "src='$profielfoto'"; ?> alt="profielfoto"
                          title="Profielfoto"><br><br><br><br><br><br><br><br><br><br><br><br><br>
                     <label>Kies nieuwe Profielfoto: </label><br><br>
                     <input type='file' name='pfupload' id='firstname'/><br/>
@@ -171,7 +239,7 @@ include 'hidden.menu.php';
         <label for='Titel'>Naam van je bestand:</label>
 
 
-        <input type='text' name='Titel' id='email'/>
+        <input type='text' name='Titel' id='email' />
 
         <input type='submit' name='verstuur' id='phone' value='Upload'/>
 
@@ -182,10 +250,7 @@ include 'hidden.menu.php';
     </div>
 
 
-</div>
-
-
-</p>
+    </p>
 </div>
 
 <p><?php
@@ -305,11 +370,70 @@ include 'hidden.menu.php';
 
 </form>
 
-<center><p>Upload hier de bestanden die je met de wereld wil delen! <br>
-        Zorg dat je de juiste map selecteert.
+<center>
+
+    <form action="profiel.php" method="post">
+        <h3>Kleuren:</h3>
+
+        <p>Achtergrond:</p>
+        <select name="bgkleur">
+            <option value="#f44242">Rood</option>
+            <option value="#118e1d">Groen</option>
+            <option value="#ffea32">Geel</option>
+            <option value="#6d68ff">Blauw</option>
+            <option value="#ffaa00">Oranje</option>
+            <option value="#ffffff">Wit</option>
+            <option value="#000000">Zwart</option>
+            <option value="#00faff">Cyaan</option>
+            <option value="#eeeeee" selected="selected">Standaard</option>
+        </select><br>
+        <p>Text:</p>
+        <select name="textkleur">
+            <option value="#f44242">Rood</option>
+            <option value="#118e1d">Groen</option>
+            <option value="#ffea32">Geel</option>
+            <option value="#6d68ff">Blauw</option>
+            <option value="#ffaa00">Oranje</option>
+            <option value="#ffffff">Wit</option>
+            <option value="#000000" selected="selected">Zwart</option>
+            <option value="#00faff">Cyaan</option>
+            <option value="#eeeeee">Grijs</option>
+        </select><br>
+        <input type='submit' id='phone' name='kleursub' value='Kies kleur!'/>
+
+
+    </form>
+    <br><br><br><br>
     </p></center>
 
+<h3> Mijn Quote </h3>
 
+<form id='register' action='profiel.php' method='post'>
+
+    <label for='upload'>Huidige Quote: </label><br><br><br><br>
+    <?php echo $studentquote ?><br><br><br><br>
+    <label>Kies nieuwe Quote: </label><br><br>
+    <input type='text' name='quote' id='firstname'/><br/>
+    <input type='submit' name='quotesubmit' id='phone' value='Bewerk Quote'/>
+</form>
+
+<?php
+
+if (isset($_POST['quotesubmit']) && !empty($_POST['quote'])){
+    $nieuweQuote = $_POST['quote'];
+    $sql = "UPDATE User SET Quote = '$nieuweQuote' WHERE Gebruiker_ID = $ID";
+    $result = $connection->query($sql);
+
+
+}
+
+?>
+
+<br>
+<br>
+
+
+</div>
 </div>
 
 
@@ -318,6 +442,7 @@ include 'hidden.menu.php';
 include 'hidden.footer.php';
 
 ?>
+
 
 </body>
 

@@ -1,18 +1,5 @@
 <?php
-
 include('include/session.php');
-
-if (isset($_POST['bekijk'])) {
-
-    $datumin = $_POST['date'];
-
-    if (empty($_POST['map'])) {
-        $map = NULL;
-    } else {
-        $map = $_POST['map'];
-    }
-}
-
 function dateSelect($datum, $folder)
 {
 
@@ -84,6 +71,8 @@ if (isset($_POST['reset'])) {
 //V-Uit de Session Halen-V
 
 
+
+
 ?>
 
 <html>
@@ -100,35 +89,77 @@ include 'hidden.menu.php';
 
 
 <div class="jumbotron">
-    <div class="container text-center">
-        <h3>Bestanden van <?php echo "$studentnaam $studentachter"; ?></h3>
+    <?php
 
-        <img width="20%" <?php echo "src='$profielfoto'" ?> alt="profielfoto"
-             title="Profielfoto">
-        <p><i>'<?php echo $studentquote; ?>'</i></p>
-    </div>
+    include('include/db_connection.php');
 
 
-    <div class="container text-center">
+    $sql = "SELECT Gebruiker_ID, Voornaam, Studentnr, Quote, Achternaam FROM user";
+    $result = $connection->query($sql);
+
+    if ($result->num_rows > 0) {
+        // output data of each row
+        while ($row = $result->fetch_assoc()) {
 
 
-        <p><?php
+            $studentnaam = $row["Voornaam"];
+            $studentnumber = $row["Studentnr"];
+            $studentquote = $row["Quote"];
+            $studentachter2 =  $row["Achternaam"];
+
+
+            $profielfoto = "studentuploads/$studentnumber/Profielfoto/pf.jpg";
+
+            echo "    <div class='container text-center'>
+        <h3>Bestanden van  $studentnaam  $studentachter2</h3>
+
+        <img width='20%' src='$profielfoto' alt='profielfoto'
+             title='Profielfoto'>
+        <p><i>' $studentquote'</i></p>
+    </div>";
+
 
             $subdirs = array('CV', 'Afbeeldingen', 'Documenten');
 
 
             foreach ($subdirs as $subdir) {
 
-                echo "<div class='container text-center'><p>";
+                echo "<div class=\"container text-center\"><p>";
                 echo "<h4>$subdir van $studentnaam</h4>";
                 echo dateSelect($studentnumber, $subdir);
                 echo "</p><br><br></div>";
             }
 
-            ?></p>
-    </div>
+
+
+        }
+    } else {
+        $studentnaam = "Gast";
+
+        $studentnumber = "default";
+        $studentquote = "Ik ben hier nieuw!";
+
+        echo "0 results";
+    }
+
+
+
+
+    ?>
+
+
+
 </div>
 
+<div class="container text-center">
+
+    <div>
+
+        <p></p>
+    </div>
+
+
+</div>
 
 <?php
 
@@ -138,6 +169,8 @@ include 'hidden.footer.php';
 </body>
 
 </html>
+
+
 
 
 

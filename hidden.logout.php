@@ -1,6 +1,7 @@
 <?php
 include 'include/session.php';
-session_destroy();
+$_SESSION = array();
+session_unset();
 
 ?>
 <html>
@@ -13,19 +14,18 @@ session_destroy();
 <?php
 
 include 'hidden.header.php';
-ob_start();
+
 include 'hidden.menu.php';
 ?>
 
 
 
 <div class="jumbotron">
-	<?php
+    <?php
 
-	echo"<P>U bent Uitgelogd</P>";
-	header('refresh:3;index.php');
-	ob_end_flush();
-	?>
+    echo"<P>U bent Uitgelogd</P>";
+
+    ?>
 </div>
 
 

@@ -1,3 +1,6 @@
+<?php
+include  'include/session.php';
+?>
 <html>
 
 <head>
@@ -6,7 +9,6 @@
 
 <body>
 <?php
-
 include 'hidden.header.php';
 include 'hidden.menu.php';
 
@@ -26,14 +28,23 @@ include 'hidden.menu.php';
         $onderwerp = "";
         $bericht = "";
 
+        $statusBootstrap = "";
+
         $errVoornaam = "";
+        $errVoornaam2 = "";
         $errAchternaam = "";
+        $errAchternaam2 = "";
         $errBericht = "";
+        $errBericht2 = "";
         $errOnderwerp = "";
+        $errOnderwerp2 = "";
         $emailErr = "";
+        $emailErr2 = "";
 
 
         if (isset($_POST["submit"])) {
+
+
 
             //Variabelen zetten naar de ingevoerde waarden om de ingevoerde waarden te laten staan.
             $voornaam = $_POST['firstname'];
@@ -41,82 +52,84 @@ include 'hidden.menu.php';
             $email = $_POST['email'];
             $onderwerp = $_POST['onderwerp'];
             $bericht = $_POST['subject'];
+            $datum = date('y-m-d');
 
 
             //Kijken of er wel/geen lege velden zijn en foutmeldingen aanmaken
             if (!empty($_POST["firstname"]) && !empty($_POST["lastname"]) && !empty($_POST["email"]) && !empty($_POST["subject"]) && (filter_var($_POST["email"], FILTER_VALIDATE_EMAIL))) {
-                echo "<div class='correctText'>Alle velden zijn ingevuld </div>";
-                echo "<h2>Bedankt voor uw bericht!</h2>";
+
+                echo "<div class='correctText'>Alle velden zijn correct ingevuld </div>";
+                $errVoornaam2 = "bg-success";
+                $errAchternaam2 = "bg-success";
+                $errOnderwerp2 = "bg-success";
+                $errBericht2 = "bg-success";
+                $emailErr2 = "bg-success";
+                $error = "";
 
 
+                //Connectie maken met DB en testen
+                    $DBConnect = mysqli_connect("localhost", "root", "");
+                    if ($DBConnect === FALSE) {
+                        echo "<p>Unable to connect to the database server.</p>"
+                            . "<p>Error code " . mysqli_errno() . ": " . mysqli_error()
+                            . "</p>";
+                    } else {
+                        //Kijken of database 'bugReports' al bestaat en anders een nieuwe aanmaken.
+                        $DBName = "portfolio";
 
-               /* $to      = 'niekluttikhof8@gmail.com';
-                $subject = 'Contactformulier' . $onderwerp;
-                $message = 'Het volgende bericht is verstuurd via het contact formulier \n' . '<b>' . $onderwerp . '</b>\n\n' . $bericht ;
-                $headers = 'From: webmaster@example.com' . "\r\n" .
-                    'Reply-To: webmaster@example.com' . "\r\n" .
-                    'X-Mailer: PHP/' . phpversion();
-                ini_set('smtp_port',25);
-                mail($to, $subject, $message, $headers);*/
+                        mysqli_select_db($DBConnect, $DBName);
 
+                        //Dit is voor het testen
+                        //echo "<h1>Datbase connectie is gelukt! </h1>";
 
-                $voornaamPrint = $_POST['firstname'];
-                $achternaamPrint = $_POST['lastname'];
-                $emailPrint = $_POST['email'];
-                $onderwerpPrint = $_POST['onderwerp'];
-                $berichtPrint = $_POST['subject'];
-                $datum = date('d-m-y');
-
-                if (!file_exists("contactBerichten.txt")){
-                    $myfile = fopen("contactBerichten.txt", "w");
-                }
-
-                if (filesize("contactBerichten.txt") == 0){
-                    fwrite($myfile, "**************************************************************\n");
-                }
-
-                $myfile = fopen("contactBerichten.txt", "ab");
-
-                $nieuweBericht =
-
-                    "\nDatum: " . $datum . "\n\n" .
-                    "Voornaam: " . $voornaamPrint . "\n" .
-                    "Achternaam: " . $achternaamPrint . "\n" .
-                    "Email: " . $emailPrint . "\n\n\n" .
-                    "Onderwerp: " . $onderwerpPrint . "\n\n" .
-                    "Bericht: \n" . $berichtPrint . "\n\n" .
-                    "**************************************************************";
-
-                fwrite($myfile, $nieuweBericht);
-                echo "<h2>Bericht is verstuurd.</h2>";
+                        //
+                        $TableName = "contact";
+                        $SQLstring = "SHOW TABLES LIKE '$TableName'";
+                        $QueryResult = mysqli_query($DBConnect, $SQLstring);
 
 
+                        $SQLstring2 = "INSERT INTO $TableName VALUES(NULL,'$voornaam', '$achternaam', '$email', '$onderwerp', '$bericht', '$datum')";
+                        $QueryResult2 = mysqli_query($DBConnect, $SQLstring2);
+                        if ($QueryResult2 === FALSE) {
+                            echo "<p>Unable to execute the query.</p>"
+                                . "<p>Error code " . mysqli_errno($DBConnect)
+                                . ": " . mysqli_error($DBConnect) . "</p>";
+                        } else {
 
 
-
+                            echo "<h2>Bedankt voor uw bericht!</h2>";
+                        }
+                        mysqli_close($DBConnect);
+                    }
 
 
 
             } else {
 
+
                 if (empty($_POST["firstname"])) {
                     $errVoornaam = "<div class='errorText'>&emsp; Voornaam is verplicht</div>";
+                    $errVoornaam2 = "bg-danger";
                 }
 
                 if (empty($_POST["lastname"])) {
                     $errAchternaam = "<div class='errorText'>&emsp; Achternaam is verplicht</div>";
+                    $errAchternaam2 = "bg-danger";
                 }
 
                 if (empty($_POST["subject"])) {
                     $errBericht = "<div class='errorText'>&emsp; Een bericht is verplicht</div>";
+                    $errBericht2 = "bg-danger";
                 }
 
                 if (empty($_POST["onderwerp"])) {
                     $errOnderwerp = "<div class='errorText'>&emsp; Een onderwerp is verplicht</div>";
+                    $errOnderwerp2 = "bg-danger";
                 }
 
                 if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
                     $emailErr = "<div class='errorText'>&emsp; Vul een geldig e-mailadres in.</div>";
+                    $emailErr2 = "bg-danger";
                 }
             }
         }
@@ -129,24 +142,24 @@ include 'hidden.menu.php';
 
             <label for="fname">Voornaam</label>
             <?php echo $errVoornaam; ?>
-            <input type="text" id="fname" name="firstname" placeholder="Uw voornaam.." value="<?php echo $voornaam; ?>">
+            <input type="text" class = "<?php echo $errVoornaam2; ?>"id="fname" name="firstname" placeholder="Uw voornaam.." value="<?php echo $voornaam; ?>">
 
 
             <label for="lname">Achternaam</label>
             <?php echo $errAchternaam; ?>
-            <input type="text" id="lname" name="lastname" placeholder="Uw achternaam.." value="<?php echo $achternaam; ?>">
+            <input type="text" class="<?php echo $errAchternaam2; ?>" id="lname" name="lastname" placeholder="Uw achternaam.." value="<?php echo $achternaam; ?>">
 
             <label for="email">E-mail adres</label>
             <?php echo $emailErr; ?>
-            <input type="text" id="email" name="email" placeholder="Uw e-mail adres.." value="<?php echo $email; ?>">
+            <input type="text" class="<?php echo $emailErr2; ?>" id="email" name="email" placeholder="Uw e-mail adres.." value="<?php echo $email; ?>">
 
             <label for="onderwerp">Onderwerp</label>
             <?php echo $errOnderwerp; ?>
-            <input type="text" id="onderwerp" name="onderwerp" placeholder="Het onderwerp.." value="<?php echo $onderwerp; ?>">
+            <input type="text" class="<?php echo $errOnderwerp2; ?>"id="onderwerp" name="onderwerp" placeholder="Het onderwerp.." value="<?php echo $onderwerp; ?>">
 
             <label for="subject">Bericht</label>
             <?php echo $errBericht; ?>
-            <textarea class="inputForm" id="subject" name="subject" placeholder="Typ hier..." style="height:200px"><?php echo $bericht; ?></textarea>
+            <textarea class="inputForm <?php echo $errBericht2; ?>" id="subject" name="subject" placeholder="Typ hier..." style="height:200px"><?php echo $bericht; ?></textarea>
 
             <input type="submit" name="submit" value="Verzenden">
 

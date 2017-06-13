@@ -41,7 +41,7 @@ include 'hidden.menu.php';
                         <option  value = "slb" >SLB</option>
                     </select><br>
 
-    <p>* Verplicht in te vullen.</p>
+
     <input id='submit'type='submit' name='Submit' value='Registreren' /><br/>
 
 </form>
@@ -55,19 +55,18 @@ if(isset($_POST["Submit"])){
     $email = $_POST['Email'];
     $password = $_POST['Password'];
     $rol = $_POST['rol'];
-
+    $firstname = str_replace(array('\'', '"'), '', $firstname);
+    $lastname = str_replace(array('\'', '"'), '', $lastname);
+    $email = str_replace(array('\'', '"'), '', $email);
+    $password = str_replace(array('\'', '"'), '', $password);
 
     if (empty ($_POST['Firstname'])
         || empty ($_POST['Lastname'])
         || empty ($_POST['Email'])
         || empty ($_POST['Password'])
-        || empty ($_POST['Phone'])
-        || empty ($_POST['City'])
-        || empty ($_POST['StreetAddress'])
-        || empty ($_POST['Postalcode'])
         || empty ($_POST['rol']))
     {
-        echo "<h3>please fill in all fields<h3>";
+        echo  "<h3>please fill in all fields<h3>";
 
     }
     else
@@ -91,14 +90,15 @@ if(isset($_POST["Submit"])){
         }elseif ($rol == "slb"){
             $rol = "INSERT INTO user_type (SLB) Values ('') ";
         }
-
+        echo "<h3> Thanks for submiting<h3>";
     }
 
 }
 ?>
 </div>
 </div>
-
+</div>
+</div>
 
 
 

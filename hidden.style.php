@@ -1,3 +1,6 @@
+<?php
+include 'include/session.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +12,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style>
+
 
         body {
             background-color: #eeeeee;
@@ -68,7 +72,8 @@
             border-radius: 4px;
             cursor: pointer;
         }
-        .profile{
+
+        .profile {
             float: left;
             margin-top: 5px;
             margin-right: 10%;
@@ -79,7 +84,7 @@
 
         }
 
-        #profile-pic{
+        #profile-pic {
             border-radius: 5px;
             border: 5px;
             border-color: #000000;
@@ -89,7 +94,8 @@
             height: 250px;
             background-color: #009e13;
         }
-        #profileinfo{
+
+        #profileinfo {
             float: left;
             width: 250px;
             height: 250px;
@@ -115,7 +121,7 @@
         .errorText {
             color: red;
             font-weight: bold;
-            float:left;
+            float: left;
         }
 
         .correctText {
@@ -130,6 +136,63 @@
             position: absolute;
         }
 
+        <?php
+
+        echo "<style>
+
+body{
+background-color: $bgColor;
+}
+
+.jumbotron{
+background-color: $bgColor;
+}
+
+.container text-center{
+background-color: $bgColor;
+}
+
+.container-fluid bg-3 text-center{
+background-color: $bgColor;
+}
+
+.row{
+background-color: $bgColor;
+}
+
+.col-sm-3{
+background-color: $bgColor;
+}
+
+p{
+color: $textColor;
+}
+
+h1{
+color: $textColor;
+}h2{
+color: $textColor;
+}h3{
+color: $textColor;
+}h4{
+color: $textColor;
+}h5{
+color: $textColor;
+}h6{
+color: $textColor;
+}
+input{
+color: $textColor;
+}
+label{
+color: $textColor;
+}
+
+
+
+</style>";
+
+        ?>
 
 
     </style>
