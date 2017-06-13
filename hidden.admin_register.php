@@ -59,7 +59,7 @@ if(isset($_POST["Submit"])){
     $streetaddress = $_POST['StreetAddress'];
     $postalcode = $_POST['Postalcode'];
     $rol = $_POST['rol'];
-    $admincode = $_POST["admincode"];
+
 
     if (empty ($_POST['Firstname'])
         || empty ($_POST['Lastname'])
