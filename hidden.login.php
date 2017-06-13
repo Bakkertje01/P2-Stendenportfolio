@@ -13,9 +13,7 @@ if (!empty($_POST["login"])) {
 	if (is_array($row)) {
 		$_SESSION["Gebruiker_ID"] = $row['Gebruiker_ID'];
 		$_SESSION["Type"] = $row['Type'];
-		ob_start();
 		header('refresh:3;url=profiel.php');
-		ob_end_flush();
 	} else {
 		$message = "Invalid Username or Password!";
 	}
@@ -27,9 +25,9 @@ if (!empty($_POST["logout"])) {
 
 if (!empty($_POST["gast"])){
     $_SESSION ["Gast_ID"] = $row['Gebruiker_ID'];
-	ob_start();
+
 	header('refresh:3;url=index.php');
-	ob_end_flush();
+
 }
 ?>
 <html>
