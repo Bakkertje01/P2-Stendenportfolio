@@ -18,6 +18,7 @@ if ($result->num_rows > 0) {
         $studentnaam = $row["Voornaam"];
 
         $studentnumber = $row["Studentnr"];
+        $studentquote = $row["Quote"];
 
 
     }
@@ -25,6 +26,7 @@ if ($result->num_rows > 0) {
     $studentnaam = "Gast";
 
     $studentnumber = "default";
+    $studentquote = "Ik ben hier nieuw!";
     echo "0 results";
 }
 
@@ -33,7 +35,7 @@ if ($result->num_rows > 0) {
 
 $bgColor = '';
 $textColor = '';
-$studentquote = "Ik houd erg veel van vlaflip en macaroni";
+
 $PfNaam = 'pf.jpg';
 $profielfoto = "studentuploads/$studentnumber/Profielfoto/$PfNaam";
 
