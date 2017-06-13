@@ -10,6 +10,9 @@ if (!empty($_POST["login"])) {
 	$row = mysqli_fetch_array($result);
 	if (is_array($row)) {
 		$_SESSION["Gebruiker_ID"] = $row['Gebruiker_ID'];
+		ob_start();
+		header('refresh:3;url=upload.php');
+		ob_end_flush();
 	} else {
 		$message = "Invalid Username or Password!";
 	}
@@ -57,9 +60,16 @@ include 'hidden.menu.php';
 		} else {
 			$result = mysqlI_query($conn, "SELECT * FROM user WHERE Gebruiker_ID='" . $_SESSION["Gebruiker_ID"] . "'");
 			$row = mysqli_fetch_array($result);
+
+
+
 			?>
                 Welcome <?php echo ucwords($row['Voornaam']); ?>, You have successfully
-                logged in!<br>
+                logged in!
+
+
+
+            <br>
 
 		<?php } ?>
     </div>
