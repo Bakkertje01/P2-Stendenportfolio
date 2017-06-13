@@ -50,12 +50,15 @@ include 'hidden.menu.php';
 <?php
 if(isset($_POST["Submit"])){
     //The post values have to be the same as the form <name> tag
-    $firstname = $_POST['Firstname'];
+    $firstname = filter_var( $_POST['Firstname'],FILTER_SANITIZE_MAGIC_QUOTES);
     $lastname = $_POST['Lastname'];
     $email = $_POST['Email'];
     $password = $_POST['Password'];
     $rol = $_POST['rol'];
-
+    $firstname = str_replace(array('\'', '"'), '', $firstname);
+    $lastname = str_replace(array('\'', '"'), '', $lastname);
+    $email = str_replace(array('\'', '"'), '', $email);
+    $password = str_replace(array('\'', '"'), '', $password);
 
     if (empty ($_POST['Firstname'])
         || empty ($_POST['Lastname'])
