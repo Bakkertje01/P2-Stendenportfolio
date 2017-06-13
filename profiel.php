@@ -219,7 +219,7 @@ color: $textColor;
         <label for='Titel'>Naam van je bestand:</label>
 
 
-        <input type='text' name='Titel' id='email'/>
+        <input type='text' name='Titel' id='email' />
 
         <input type='submit' name='verstuur' id='phone' value='Upload'/>
 

@@ -1,5 +1,7 @@
 <?php
 
+include('include/session.php');
+
 if (isset($_POST['bekijk'])) {
 
     $datumin = $_POST['date'];
@@ -80,13 +82,7 @@ if (isset($_POST['reset'])) {
 }
 
 //V-Uit de Session Halen-V
-$bgColor = '';
-$textColor = '';
-$studentnumber = "Henk";
-$studentnaam = "Henk";
-$studentquote = "Ik houd erg veel van vlaflip en macaroni";
-$PfNaam = 'pf.jpg';
-$profielfoto = "studentuploads/$studentnumber/Profielfoto/$PfNaam";
+
 
 
 ?>
@@ -106,7 +102,7 @@ include 'hidden.menu.php';
 
 <div class="jumbotron">
     <div class="container text-center">
-        <h3>Bestanden van <?php echo $studentnumber; ?></h3>
+        <h3>Bestanden van <?php echo $studentnaam; ?></h3>
 
         <img width="20%" <?php echo "src='$profielfoto'" ?> alt="profielfoto"
              title="Profielfoto">
