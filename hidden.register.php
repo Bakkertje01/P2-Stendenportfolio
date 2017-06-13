@@ -1,3 +1,5 @@
+<?php include 'include/session.php';?>
+
 <html>
 
 <head>
@@ -8,7 +10,6 @@
 
 <?php include 'include/db_connection.php';?>
 <?php include 'include/functions.php';?>
-<?php include 'include/session.php';?>
 <?php
 include 'hidden.header.php';
 ob_start(); include 'hidden.menu.php';
@@ -40,12 +41,12 @@ ob_start(); include 'hidden.menu.php';
                         <label for='Studentnr' >Student_nr*:</label><br/>
                         <input type='number' name='Studentnr' id='Studentnr' maxlength="6" /><br/>
 
-                        <p>* Verplicht in te vullen.</p>
-                        <input id='submit'type='submit' name='Submit' value='Registreren' /><br/>
-                    </form>
+        <p>* Verplicht in te vullen.</p>
+        <input id='submit'type='submit' name='Submit' value='Registreren' /><br/>
+        </form>
     </div>
 
-    </div>
+</div>
 
 <?php
 //Registration script
@@ -66,11 +67,11 @@ if(isset($_POST["Submit"])){
         echo "please fill in all fields";
     }
     else
-        {
+    {
         //hasing the password
 
 
-       // $password = password_encrypt($_POST["Wachtwoord"]);
+        // $password = password_encrypt($_POST["Wachtwoord"]);
 
 
 
@@ -92,7 +93,7 @@ if(isset($_POST["Submit"])){
 ?>
 
 </p>
-    </div>
+</div>
 </div>
 
 <div class="container-fluid bg-3 text-center">
