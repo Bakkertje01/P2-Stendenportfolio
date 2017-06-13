@@ -1,7 +1,7 @@
 <?php
+include 'include/session.php';
 
-$studentnumber = "Henk";
-$studentnaam = "Henk";
+
 $studentquote = "Ik houd erg veel van vlaflip en macaroni";
 $PfNaam = 'pf.jpg';
 $profielfoto = "studentuploads/$studentnumber/Profielfoto/$PfNaam";
@@ -17,6 +17,7 @@ $profielfoto = "studentuploads/$studentnumber/Profielfoto/$PfNaam";
 
 <body>
 <?php
+
 include 'hidden.header.php';
 include 'hidden.menu.php';
 
