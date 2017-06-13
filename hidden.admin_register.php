@@ -9,11 +9,10 @@
 <?php
 $connection = mysqli_connect("127.0.0.1","root","");
 include 'hidden.header.php';
-ob_start();
 include 'hidden.menu.php';
 ?>
 
-<!-- tekstboxes kleiner maken--->
+
 <div class="jumbotron">
     <div class="container text-center">
         <h1>administrator registration</h1>
@@ -84,8 +83,8 @@ if(isset($_POST["Submit"])){
         $sql  = "INSERT INTO customer (Firstname, Lastname, Email, Password) 
         VALUES ('$firstname', '$lastname', '$email', '$password')";
         $result = mysqli_query($connection, $sql);
-       // header("Location: hidden.login.php");
-        ob_end_flush();
+
+
         if($result === false){
             echo"ERROR".mysqli_errno()." : ".mysqli_error();
         }
