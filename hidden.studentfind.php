@@ -13,7 +13,7 @@ include 'hidden.menu.php';
 ?>
 <div class="jumbotron">
     <div class="container text-center">
-        <h1>administrator registration</h1>
+        <h1>Student Search</h1>
         <p>
             <div id="wrapper">
 
@@ -32,7 +32,7 @@ include 'hidden.menu.php';
 
 
 if(empty($_POST['voornaam'])){
-     echo "<h2>Please Fill in your Surname<h2>";
+     echo "<h3>Please Fill in your Surname<h3>";
 }else{
     $DBtable = "gebruiker";
     $voornaam = $_POST["voornaam"];
