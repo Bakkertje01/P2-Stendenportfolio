@@ -23,7 +23,7 @@ include 'hidden.menu.php';
 	<?php
 
 	echo"<P>U bent Uitgelogd</P>";
-	header('location:index.php');
+	header('refresh:3;index.php');
 	ob_end_flush();
 	?>
 </div>
