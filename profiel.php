@@ -31,17 +31,115 @@ include 'hidden.menu.php';
             <div id='content'>
                 <h3> Mijn Profiel </h3>
 
-                <form id='register' action='Upload.php' method='post' enctype="multipart/form-data">
+                <form id='register' action='profiel.php' method='post' enctype="multipart/form-data">
 
                     <label for='upload'>Huidige Profielfoto: </label><br><br>
                     <img style='float: left' width="20%" <?php echo "src='$profielfoto'" ?> alt="profielfoto"
-                         title="Profielfoto"><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                         title="Profielfoto"><br><br><br><br><br><br><br><br><br><br><br><br><br>
                     <label>Kies nieuwe Profielfoto: </label><br><br>
                     <input type='file' name='pfupload' id='firstname'/><br/>
                     <input type='submit' name='pfsubmit' id='phone' value='Upload Profielfoto'/>
 
 
                 </form>
+
+                <?php
+
+
+                if (isset($_POST['pfsubmit'])) {
+
+
+                    if (isset($_FILES['pfupload']) && !empty($_FILES['pfupload']['name'])) {
+
+                        $errors = array();
+
+                        $fileTitle = 'pf.jpg';
+
+                        $selectedDir = 'Profielfoto';
+
+                        $file_name = "$fileTitle";
+
+                        $file_size = $_FILES['pfupload']['size'];
+                        $file_tmp = $_FILES['pfupload']['tmp_name'];
+                        $file_type = $_FILES['pfupload']['type'];
+
+
+                        $ext = explode('.', $file_name);
+                        $acceptedFiles = array('jpg', 'jpeg', 'png', 'gif', 'JPG', 'JPEG');
+
+                        $pfDir = "studentuploads/$studentnumber/Profielfoto/$PfNaam";
+
+                        if (file_exists($profielfoto) && isset($_FILES['pfupload'])) {
+                            unlink($profielfoto);
+                        }
+
+
+                        if (!in_array($ext[1], $acceptedFiles)) {
+                            $errors[] = 'Bestandsformaat niet juist!';
+
+                        }
+
+                        if ($file_size > 8388608) {
+                            $errors[] = 'Bestand is te groot!(8 MB max)';
+                        }
+
+                        if (empty($studentnumber)) {
+                            $errors[] = 'Geen file poster!';
+                        }
+
+                        if (empty($errors) == true) {
+                            $StudentDir = 'studentuploads';
+                            $dirname = $studentnumber;
+
+                            if (!is_dir("./$StudentDir")) {
+                                mkdir("./$StudentDir", 0777);
+                            }
+
+                            if (!is_dir("$StudentDir/$dirname")) {
+                                mkdir("$StudentDir/$dirname", 0777);
+                                if (!is_dir("$StudentDir/$dirname/$selectedDir")) {
+                                    mkdir("$StudentDir/$dirname/$selectedDir", 0777);
+                                    echo "<center>Nieuwe map voor $dirname aangemaakt</center>";
+                                }
+                            }
+
+
+                            if (is_dir("$StudentDir/$dirname")) {
+
+                                if (!is_dir("$StudentDir/$dirname/$selectedDir")) {
+                                    mkdir("$StudentDir/$dirname/$selectedDir", 0777);
+                                    echo "<center>Nieuwe map voor $dirname aangemaakt</center>";
+                                }
+                            }
+                            $dots = substr_count($file_name, '.');
+                            if ($dots <= 1) {
+                                if (!file_exists("$StudentDir/$dirname/$selectedDir/" . $file_name)) {
+                                    move_uploaded_file($file_tmp, "$StudentDir/$dirname/$selectedDir/" . $file_name);
+                                } else {
+                                    echo "Bestand bestaat al";
+                                }
+                            } else {
+                                echo "<br><p style='text-align:center;'>Bestandsnaam bevat meer dan 1 punt!<br>Upload Mislukt, verander je bestandsnaam</p>";
+                                $file_name = NULL;
+                            }
+                            if (strpos($file_name, '.')) {
+                                echo "<br><p style='text-align:center;'>Upload Gelukt</p><br>";
+
+                            }
+                        } else {
+                            foreach ($errors as $error) {
+                                echo '<center>' . $error . '</center><br>';
+                            }
+                        }
+                    } else {
+                        echo "<center><p>Geen bestand gekozen!</p></center>";
+                    }
+
+
+                }
+
+                ?>
+
                 <br>
                 <br>
                 <br>
@@ -49,7 +147,7 @@ include 'hidden.menu.php';
         <p>
 
 
-            <form id='register' action='Upload.php' method='post' enctype="multipart/form-data">
+            <form id='register' action='profiel.php' method='post' enctype="multipart/form-data">
                 <label for='upload'>Bestand: </label><br/>
                 <input type='file' name='upload' id='firstname'/><br/>
         <p>Type:</p>
