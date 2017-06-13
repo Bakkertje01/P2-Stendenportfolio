@@ -81,8 +81,11 @@ if (isset($_POST['reset'])) {
 
 //V-Uit de Session Halen-V
 
-$naam = "Henk";
+$studentnumber = "Henk";
+$studentnaam = "Henk";
 $studentquote = "Ik houd erg veel van vlaflip en macaroni";
+$PfNaam = 'pf.jpg';
+$profielfoto = "studentuploads/$studentnumber/Profielfoto/$PfNaam";
 
 
 ?>
@@ -102,62 +105,30 @@ include 'hidden.menu.php';
 
 <div class="jumbotron">
     <div class="container text-center">
-        <h3>Bestanden van <?php echo $naam; ?></h3>
+        <h3>Bestanden van <?php echo $studentnumber; ?></h3>
+
+        <img width="20%" <?php echo "src='$profielfoto'" ?> alt="profielfoto"
+             title="Profielfoto">
         <p><i>'<?php echo $studentquote; ?>'</i></p>
     </div>
 </div>
 
 <div class="container text-center">
 
-
-    <form action="Mijn%20Uploads.php" method="post" enctype="multipart/form-data">
-
-
-        <h3>Selecteer map:</h3>
-
-        <?php
-
-        $dropoptions = array('CV', 'Afbeeldingen', 'Documenten');
-
-        echo "<select name='date'>";
-        foreach ($dropoptions as $item) {
-
-
-            $finalnameoffolder = str_replace($exlude, '', $item);
-
-
-            echo "<option value='$finalnameoffolder'>$finalnameoffolder</option>";
-        }
-        echo "</select>";
-
-        ?>
-
-
-        <p>
-        <center><input id="bekijkup" type="submit" name="bekijk"
-                       value="Verstuur">
-            <input id="bekijkup" type="submit" name="reset" value="Reset"></center>
-        </p>
-
-
-    </form>
-
     <div>
 
         <p><?php
 
-            if (isset($_POST['bekijk'])) {
+            $subdirs = array('CV', 'Afbeeldingen', 'Documenten');
 
-                $studentnumber = 'henk/'; //DIT MOET UIT DE SESSION KOMEN!!!
 
-                $finalnameoffolder = $studentnumber;
+            foreach ($subdirs as $subdir) {
 
-                $Typefolder = $_POST['date'];
+                echo "<div class=\"container text-center\"><p>";
+                echo "<h4>$subdir van $studentnaam</h4>";
 
-                $testTheFolder = $finalnameoffolder . $Typefolder;
-
-                echo dateSelect($studentnumber, $Typefolder);
-
+                echo dateSelect($studentnumber, $subdir);
+                echo "</p><br><br></div>";
             }
 
             ?></p>

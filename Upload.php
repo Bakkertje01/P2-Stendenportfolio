@@ -1,10 +1,11 @@
 <?php
 
-//LOGIN MOET UIT DE SESSION KOMEN
-$login = '1234';
-if ($login !== '1234') {
-    include 'hidden.noLogin.php';
-}
+$studentnumber = "Henk";
+$studentnaam = "Henk";
+$studentquote = "Ik houd erg veel van vlaflip en macaroni";
+$PfNaam = 'pf.jpg';
+$profielfoto = "studentuploads/$studentnumber/Profielfoto/$PfNaam";
+
 
 ?>
 
@@ -23,14 +24,34 @@ include 'hidden.menu.php';
 ?>
 <div class="jumbotron">
     <div class="container text-center">
-        <p>
-            <div id="wrapper">
-                <div id='content'>
-                    <h3> Bestanden Uploaden </h3>
 
-                    <form id='register' action='Upload.php' method='post' enctype="multipart/form-data">
-                        <label for='upload'>Bestand: </label><br/>
-                        <input type='file' name='upload' id='firstname'/><br/>
+
+        <p>
+        <div id="wrapper">
+            <div id='content'>
+                <h3> Mijn Profiel </h3>
+
+                <form id='register' action='Upload.php' method='post' enctype="multipart/form-data">
+
+                    <label for='upload'>Huidige Profielfoto: </label><br><br>
+                    <img style='float: left' width="20%" <?php echo "src='$profielfoto'" ?> alt="profielfoto"
+                         title="Profielfoto"><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                    <label>Kies nieuwe Profielfoto: </label><br><br>
+                    <input type='file' name='pfupload' id='firstname'/><br/>
+                    <input type='submit' name='pfsubmit' id='phone' value='Upload Profielfoto'/>
+
+
+                </form>
+                <br>
+                <br>
+                <br>
+        </p>
+        <p>
+
+
+            <form id='register' action='Upload.php' method='post' enctype="multipart/form-data">
+                <label for='upload'>Bestand: </label><br/>
+                <input type='file' name='upload' id='firstname'/><br/>
         <p>Type:</p>
 
         <?php
@@ -88,7 +109,7 @@ include 'hidden.menu.php';
                     $fileTitle = str_replace('--', '_', $_POST['Titel']);
                 }
             } else {
-                $fileTitle = 'Geen naam opgegeven';
+                $fileTitle = 'pf';
             }
 
 
@@ -99,9 +120,9 @@ include 'hidden.menu.php';
             }
 
 
-            $filePoster = 'henk';
-
             $file_name = "--$fileTitle--" . $_FILES['upload']['name'];
+
+
             $file_size = $_FILES['upload']['size'];
             $file_tmp = $_FILES['upload']['tmp_name'];
             $file_type = $_FILES['upload']['type'];
@@ -120,9 +141,14 @@ include 'hidden.menu.php';
             if ($file_size > 8388608) {
                 $errors[] = 'Bestand is te groot!(8 MB max)';
             }
+
+            if (empty($studentnumber)) {
+                $errors[] = 'Geen file poster!';
+            }
+
             if (empty($errors) == true) {
                 $StudentDir = 'studentuploads';
-                $dirname = "$filePoster";
+                $dirname = $studentnumber;
 
 
                 if (!is_dir("./$StudentDir")) {

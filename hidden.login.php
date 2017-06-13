@@ -2,19 +2,20 @@
 
 session_start();
 $conn = mysqli_connect("localhost", "root", "", "portfolio");
+$connBackup = mysqli_connect("localhost", "root", "", "portfolio");
 
 $message = "";
 if (!empty($_POST["login"])) {
-	$result = mysqli_query($conn, "SELECT * FROM students WHERE Email='" . $_POST["email"] . "' and Password = '" . $_POST["password"] . "'");
+	$result = mysqli_query($conn, "SELECT * FROM user WHERE Email='" . $_POST["email"] . "' and Wachtwoord = '" . $_POST["password"] . "'");
 	$row = mysqli_fetch_array($result);
 	if (is_array($row)) {
-		$_SESSION["studentID"] = $row['studentID'];
+		$_SESSION["Gebruiker_ID"] = $row['Gebruiker_ID'];
 	} else {
 		$message = "Invalid Username or Password!";
 	}
 }
 if (!empty($_POST["logout"])) {
-	$_SESSION["studentID"] = "";
+	$_SESSION["Gebruiker_ID"] = "";
 	session_destroy();
 }
 ?>
@@ -31,7 +32,7 @@ include 'hidden.menu.php';
 <div class='jumbotron'>
     <div class="container text-center">
 		<?php
-        if (empty($_SESSION["studentID"])) { ?>
+        if (empty($_SESSION["Gebruiker_ID"])) { ?>
             <form action="" method="post" id="frmLogin">
                 <div class="error-message"><?php if (isset($message)) {
 						echo $message;
@@ -54,14 +55,12 @@ include 'hidden.menu.php';
             <p><a href="hidden.register.php">registreren</a></p>
 			<?php
 		} else {
-			$result = mysqlI_query($conn, "SELECT * FROM students WHERE studentID='" . $_SESSION["studentID"] . "'");
+			$result = mysqlI_query($conn, "SELECT * FROM user WHERE Gebruiker_ID='" . $_SESSION["Gebruiker_ID"] . "'");
 			$row = mysqli_fetch_array($result);
 			?>
-            <form action="" method="post" id="frmLogout">
-                Welcome <?php echo ucwords($row['FirstName']); ?>, You have successfully
+                Welcome <?php echo ucwords($row['Voornaam']); ?>, You have successfully
                 logged in!<br>
-                <input type="submit" name="logout" value="Logout" class="logout-button">.
-            </form>
+
 		<?php } ?>
     </div>
 </div>
