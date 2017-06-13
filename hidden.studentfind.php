@@ -38,6 +38,7 @@ if(empty($_POST['voornaam'])){
     $DBtable = "gebruiker";
     $voornaam = $_POST["voornaam"];
     $voornaam = trim($voornaam,"'.,");
+    echo $voornaam;
     // filter van input spaces,kommas,quotes
 
    /* if(!mysqli_select_db($connection,DB_NAME)){
