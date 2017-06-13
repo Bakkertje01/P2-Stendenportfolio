@@ -21,6 +21,54 @@ include 'hidden.header.php';
 include 'hidden.menu.php';
 
 
+if (isset($_POST['bgkleur']) && isset($_POST['textkleur']) ) {
+
+    $bgColor = $_POST['bgkleur'];
+    $textColor = $_POST['textkleur'];
+
+    //$bgColor en $textColor moeten naar DB!
+
+
+    echo "<style>
+
+body{
+background-color: $bgColor;
+}
+
+.jumbotron{
+background-color: $bgColor;
+}
+
+p{
+color: $textColor;
+}
+
+h1{
+color: $textColor;
+}h2{
+color: $textColor;
+}h3{
+color: $textColor;
+}h4{
+color: $textColor;
+}h5{
+color: $textColor;
+}h6{
+color: $textColor;
+}
+input{
+color: $textColor;
+}
+label{
+color: $textColor;
+}
+
+
+
+</style>";
+}
+
+
 ?>
 <div class="jumbotron">
     <div class="container text-center">
@@ -182,10 +230,7 @@ include 'hidden.menu.php';
     </div>
 
 
-</div>
-
-
-</p>
+    </p>
 </div>
 
 <p><?php
@@ -305,11 +350,46 @@ include 'hidden.menu.php';
 
 </form>
 
-<center><p>Upload hier de bestanden die je met de wereld wil delen! <br>
-        Zorg dat je de juiste map selecteert.
+<center>
+
+    <form action="profiel.php" method="post">
+        <h3>Kleuren:</h3>
+
+        <p>Achtergrond:</p>
+        <select name="bgkleur">
+            <option value="#f44242">Rood</option>
+            <option value="#118e1d">Groen</option>
+            <option value="#ffea32">Geel</option>
+            <option value="#6d68ff">Blauw</option>
+            <option value="#ffaa00">Oranje</option>
+            <option value="#ffffff">Wit</option>
+            <option value="#000000">Zwart</option>
+            <option value="#00faff">Cyaan</option>
+            <option value="#eeeeee" selected="selected">Standaard</option>
+        </select><br>
+        <p>Text:</p>
+        <select name="textkleur">
+            <option value="#f44242">Rood</option>
+            <option value="#118e1d">Groen</option>
+            <option value="#ffea32">Geel</option>
+            <option value="#6d68ff">Blauw</option>
+            <option value="#ffaa00">Oranje</option>
+            <option value="#ffffff">Wit</option>
+            <option value="#000000" selected="selected">Zwart</option>
+            <option value="#00faff">Cyaan</option>
+            <option value="#eeeeee">Grijs</option>
+        </select><br>
+        <input type='submit' id='phone' name='kleursub' value='Kies kleur!'/>
+
+
+    </form>
+    <br><br><br><br>
     </p></center>
+<br>
+<br>
 
 
+</div>
 </div>
 
 
@@ -318,6 +398,7 @@ include 'hidden.menu.php';
 include 'hidden.footer.php';
 
 ?>
+
 
 </body>
 
