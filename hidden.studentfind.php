@@ -7,7 +7,7 @@
 
 <body>
 <?php
-include "db_connection.php";
+///include "db_connection.php";
 include 'hidden.header.php';
 include 'hidden.menu.php';
 ?>
@@ -19,7 +19,7 @@ include 'hidden.menu.php';
 </form>
 
 <?php
-
+// connectie moet worden gemaakt
 // doet het nog niet moet nog portofolio van student hebben
 
 
@@ -42,7 +42,8 @@ if(empty($_POST['voornaam' ])){
                 echo "There was no student found by the name of ".$voornaam."";
             }else{
                 if($row = mysqli_fetch_assoc($DBresult)) {
-                    echo "students by the name of  ".$row["Voornaam"] ." was found";
+                    echo "students by the Firstname of  ".$row["Voornaam"] ." was found";
+                    echo "students by the Lastname of  ".$row["Achternaam"] ." was found";
                     // https.portfolio.$voornaam. //hier komt link van site met naam naar pagina van student
                 }
             }
