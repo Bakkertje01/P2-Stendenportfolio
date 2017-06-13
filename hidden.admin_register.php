@@ -55,7 +55,10 @@ if(isset($_POST["Submit"])){
     $email = $_POST['Email'];
     $password = $_POST['Password'];
     $rol = $_POST['rol'];
-
+    $firstname = str_replace(array('\'', '"'), '', $firstname);
+    $lastname = str_replace(array('\'', '"'), '', $lastname);
+    $email = str_replace(array('\'', '"'), '', $email);
+    $password = str_replace(array('\'', '"'), '', $password);
 
     if (empty ($_POST['Firstname'])
         || empty ($_POST['Lastname'])

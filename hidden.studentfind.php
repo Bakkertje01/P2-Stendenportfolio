@@ -23,7 +23,7 @@ include 'hidden.menu.php';
 
                 <form  action = "hidden.studentfind.php" method = "POST">
                     <p>vul het naamveld in van de student van wie je het portofolio wilt zien.</p><br>
-                    <p>Naam : <input type = "text" name = "voornaam" value = '<?php echo (isset($_POST["submit"])) && empty($_POST['voornaam'])?  : $_POST['voornaam'] ?>'></p>
+                    <p>Naam : <input type = "text" name = "voornaam" pattern="[a-zA-Z]{1,}" value = '<?php echo (isset($_POST["submit"])) && !empty($_POST['voornaam'])? $_POST['voornaam'] : null ?>'></p>
                     <input type = "submit" name = "submit" value = "Search">
                 </form>
 
@@ -32,13 +32,14 @@ include 'hidden.menu.php';
 // doet het nog niet moet nog portofolio van student hebben
 
 
-if(isset($_POST["submit"]) && empty($_POST['voornaam'])){
+if(!isset($_POST["submit"]) || isset($_POST["submit"]) && empty($_POST['voornaam'])){
      echo "<h2>Please Fill in your Surname<h2>";
 }else{
     $DBtable = "gebruiker";
     $voornaam = $_POST["voornaam"];
+    $voornaam = str_replace(array('\'','"','.',','), '', $voornaam);
 
-    // filter van input spaces,kommas,quotes
+
 
     if(!mysqli_select_db($connection,DB_NAME)){
         echo" COULD NOT SELECT DATABASE ".mysqli_errno($connection)." : ".mysqli_error($connection);
@@ -60,6 +61,7 @@ if(isset($_POST["submit"]) && empty($_POST['voornaam'])){
             }
         }
     }
+
 
 }
 
