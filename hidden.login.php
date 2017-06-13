@@ -1,18 +1,20 @@
 <?php
-
-session_start();
-$conn = mysqli_connect("localhost", "root", "", "portfolio");
-$connBackup = mysqli_connect("localhost", "root", "", "portfolio");
+include 'include/session.php';
+include 'include/db_connection.php';
 
 $message = "";
 if (!empty($_POST["login"])) {
-	$result = mysqli_query($conn, "SELECT * FROM user WHERE Email='" . $_POST["email"] . "' and Wachtwoord = '" . $_POST["password"] . "'");
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+
+
+	$result = mysqli_query($connection, "SELECT * FROM user WHERE Email='$email' and Wachtwoord = '$password'")
+	or die ('error: '. mysqli_error($connection));
 	$row = mysqli_fetch_array($result);
 	if (is_array($row)) {
 		$_SESSION["Gebruiker_ID"] = $row['Gebruiker_ID'];
-		ob_start();
+		$_SESSION["Type"] = $row['Type'];
 		header('refresh:3;url=profiel.php');
-		ob_end_flush();
 	} else {
 		$message = "Invalid Username or Password!";
 	}
@@ -20,6 +22,13 @@ if (!empty($_POST["login"])) {
 if (!empty($_POST["logout"])) {
 	$_SESSION["Gebruiker_ID"] = "";
 	session_destroy();
+}
+
+if (!empty($_POST["gast"])){
+    $_SESSION ["Gast_ID"] = $row['Gebruiker_ID'];
+
+	header('refresh:3;url=index.php');
+
 }
 ?>
 <html>
@@ -61,7 +70,8 @@ include 'hidden.menu.php';
             <p><a href="hidden.register.php">registreren</a></p>
 			<?php
 		} else {
-			$result = mysqlI_query($conn, "SELECT * FROM user WHERE Gebruiker_ID='" . $_SESSION["Gebruiker_ID"] . "'");
+			$result = mysqlI_query($connection, "SELECT * FROM user WHERE Gebruiker_ID='" . $_SESSION["Gebruiker_ID"] . "'")
+			or die ('error: '. mysqli_error($connection));
 			$row = mysqli_fetch_array($result);
 
 
