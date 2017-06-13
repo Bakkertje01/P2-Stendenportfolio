@@ -126,7 +126,6 @@ include 'hidden.menu.php';
 
                 echo "<div class=\"container text-center\"><p>";
                 echo "<h4>$subdir van $studentnaam</h4>";
-
                 echo dateSelect($studentnumber, $subdir);
                 echo "</p><br><br></div>";
             }

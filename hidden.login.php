@@ -11,7 +11,7 @@ if (!empty($_POST["login"])) {
 	if (is_array($row)) {
 		$_SESSION["Gebruiker_ID"] = $row['Gebruiker_ID'];
 		ob_start();
-		header('refresh:3;url=upload.php');
+		header('refresh:3;url=profiel.php');
 		ob_end_flush();
 	} else {
 		$message = "Invalid Username or Password!";
@@ -36,7 +36,7 @@ include 'hidden.menu.php';
     <div class="container text-center">
 		<?php
         if (empty($_SESSION["Gebruiker_ID"])) { ?>
-            <form action="" method="post" id="frmLogin">
+            <form action="" method="post">
                 <div class="error-message"><?php if (isset($message)) {
 						echo $message;
 					} ?></div>
@@ -52,7 +52,10 @@ include 'hidden.menu.php';
                     <div><input name="password" type="password"></div>
                 </div>
                 <div class="field-group">
-                    <div><input type="submit" name="login" value="Login" class="form-submit-button"></span></div>
+                    <div><input type="submit" name="login" value="Login"></span></div>
+                </div>
+                <div class="field-group">
+                    <div><input type="submit" name="gast" value="Gast"></span></div>
                 </div>
             </form>
             <p><a href="hidden.register.php">registreren</a></p>
@@ -64,8 +67,8 @@ include 'hidden.menu.php';
 
 
 			?>
-                Welcome <?php echo ucwords($row['Voornaam']); ?>, You have successfully
-                logged in!
+                Welkom <?php echo ucwords($row['Voornaam']); ?>, U bent ingelogd. U wordt doorgestuurd naar uw
+                <a href="profiel.php">profielpagina</a>.
 
 
 
