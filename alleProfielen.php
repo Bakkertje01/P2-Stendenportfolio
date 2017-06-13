@@ -280,40 +280,7 @@ include 'hidden.footer.php';
 </html>
 
 
-<?php
 
-
-if ($result->num_rows > 0) {
-    // output data of each row
-    while ($row = $result->fetch_assoc()) {
-
-        $studentnaam = $row["Voornaam"];
-        $studentnumber = $row["Studentnr"];
-        $studentquote = $row["Quote"];
-
-        echo "    <div class='container text-center'>
-        <h3>Bestanden van  $studentnaam</h3>
-
-        <img width='20%' src='$profielfoto' alt='profielfoto'
-             title='Profielfoto'>
-        <p><i>' $studentquote'</i></p>
-    </div>";
-
-
-        echo "id: " . $row["Gebruiker_ID"] . " <br>- Name: " . $row["Voornaam"] . " <br>Studentnr: " . $row["Studentnr"] . "<br>";
-
-
-    }
-} else {
-    $studentnaam = "Gast";
-
-    $studentnumber = "default";
-    $studentquote = "Ik ben hier nieuw!";
-    echo "0 results";
-}
-
-
-?>
 
 
 
