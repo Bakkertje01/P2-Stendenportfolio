@@ -53,7 +53,7 @@ function dateSelect($datum, $folder)
 
             }
         } else {
-            echo "Deze map bevat geen bestanden";
+            echo "<p>Deze map bevat geen bestanden</p>";
         }
 
     }

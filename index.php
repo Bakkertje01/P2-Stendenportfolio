@@ -1,3 +1,7 @@
+<?php
+include  'include/session.php';
+?>
+
 <html>
 
 <head>
@@ -27,7 +31,6 @@
 
 <body>
 <?php
-include  'include/session.php';
 include 'hidden.header.php';
 include 'hidden.menu.php';
 
@@ -51,7 +54,7 @@ $imgTitle3 = fileToArray('homepic/titles.txt', 3);
         <p>$welcomeMssg</p>";
         ?>
     </div>
-</div>
+
 
 <div class="container-fluid bg-3 text-center">
     <div class="row">
@@ -77,6 +80,8 @@ $imgTitle3 = fileToArray('homepic/titles.txt', 3);
 <br>
 <br>
 <br>
+
+</div>
 
 <?php
 include 'hidden.footer.php';

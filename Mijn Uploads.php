@@ -66,7 +66,7 @@ function dateSelect($datum, $folder)
 
             }
         } else {
-            echo "Deze map bevat geen bestanden";
+            echo "<p>Deze map bevat geen bestanden</p>";
         }
 
     }
@@ -102,17 +102,16 @@ include 'hidden.menu.php';
 
 <div class="jumbotron">
     <div class="container text-center">
-        <h3>Bestanden van <?php echo $studentnaam; ?></h3>
+        <h3>Bestanden van <?php echo "$studentnaam $studentachter"; ?></h3>
 
         <img width="20%" <?php echo "src='$profielfoto'" ?> alt="profielfoto"
              title="Profielfoto">
         <p><i>'<?php echo $studentquote; ?>'</i></p>
     </div>
-</div>
+
 
 <div class="container text-center">
 
-    <div>
 
         <p><?php
 
@@ -121,7 +120,7 @@ include 'hidden.menu.php';
 
             foreach ($subdirs as $subdir) {
 
-                echo "<div class=\"container text-center\"><p>";
+                echo "<div class='container text-center'><p>";
                 echo "<h4>$subdir van $studentnaam</h4>";
                 echo dateSelect($studentnumber, $subdir);
                 echo "</p><br><br></div>";
@@ -129,9 +128,9 @@ include 'hidden.menu.php';
 
             ?></p>
     </div>
-
-
 </div>
+
+
 
 <?php
 

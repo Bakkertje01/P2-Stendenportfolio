@@ -22,13 +22,12 @@ include 'hidden.header.php';
 include 'hidden.menu.php';
 
 
-if (isset($_POST['bgkleur']) && isset($_POST['textkleur']) ) {
+if (isset($_POST['kleursub']) && isset($_POST['textkleur']) ) {
 
     $bgColor = $_POST['bgkleur'];
     $textColor = $_POST['textkleur'];
-
-    //$bgColor en $textColor moeten naar DB!
-
+    $sql = "UPDATE User SET color_path = '$bgColor', img_path = '$textColor' WHERE Gebruiker_ID = $ID";
+    $result = $connection->query($sql);
 
     echo "<style>
 
@@ -37,6 +36,26 @@ background-color: $bgColor;
 }
 
 .jumbotron{
+background-color: $bgColor;
+}
+
+.container text-center{
+background-color: $bgColor;
+}
+
+.container-fluid bg-3 text-center{
+background-color: $bgColor;
+}
+
+.row{
+background-color: $bgColor;
+}
+
+.col-sm-3{
+background-color: $bgColor;
+}
+
+.img-responsive{
 background-color: $bgColor;
 }
 
@@ -78,12 +97,12 @@ color: $textColor;
         <p>
         <div id="wrapper">
             <div id='content'>
-                <h3> Mijn Profiel </h3>
+                <h3>Profiel van <?php echo "$studentnaam $studentachter"; ?> </h3>
 
                 <form id='register' action='profiel.php' method='post' enctype="multipart/form-data">
 
                     <label for='upload'>Huidige Profielfoto: </label><br><br>
-                    <img style='float: left' width="20%" <?php echo "src='$profielfoto'" ?> alt="profielfoto"
+                    <img style='float: left' width="20%" <?php echo "src='$profielfoto'"; ?> alt="profielfoto"
                          title="Profielfoto"><br><br><br><br><br><br><br><br><br><br><br><br><br>
                     <label>Kies nieuwe Profielfoto: </label><br><br>
                     <input type='file' name='pfupload' id='firstname'/><br/>
@@ -386,6 +405,30 @@ color: $textColor;
     </form>
     <br><br><br><br>
     </p></center>
+
+<h3> Mijn Quote </h3>
+
+<form id='register' action='profiel.php' method='post'>
+
+    <label for='upload'>Huidige Quote: </label><br><br><br><br>
+    <?php echo $studentquote ?><br><br><br><br>
+    <label>Kies nieuwe Quote: </label><br><br>
+    <input type='text' name='quote' id='firstname'/><br/>
+    <input type='submit' name='quotesubmit' id='phone' value='Bewerk Quote'/>
+</form>
+
+<?php
+
+if (isset($_POST['quotesubmit']) && !empty($_POST['quote'])){
+    $nieuweQuote = $_POST['quote'];
+    $sql = "UPDATE User SET Quote = '$nieuweQuote' WHERE Gebruiker_ID = $ID";
+    $result = $connection->query($sql);
+
+
+}
+
+?>
+
 <br>
 <br>
 
