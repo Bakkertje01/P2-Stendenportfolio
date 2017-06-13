@@ -26,6 +26,8 @@ include 'hidden.menu.php';
         $onderwerp = "";
         $bericht = "";
 
+        $statusBootstrap = "";
+
         $errVoornaam = "";
         $errAchternaam = "";
         $errBericht = "";
@@ -35,69 +37,61 @@ include 'hidden.menu.php';
 
         if (isset($_POST["submit"])) {
 
+
+
             //Variabelen zetten naar de ingevoerde waarden om de ingevoerde waarden te laten staan.
             $voornaam = $_POST['firstname'];
             $achternaam = $_POST['lastname'];
             $email = $_POST['email'];
             $onderwerp = $_POST['onderwerp'];
             $bericht = $_POST['subject'];
+            $datum = date('y-m-d');
 
 
             //Kijken of er wel/geen lege velden zijn en foutmeldingen aanmaken
             if (!empty($_POST["firstname"]) && !empty($_POST["lastname"]) && !empty($_POST["email"]) && !empty($_POST["subject"]) && (filter_var($_POST["email"], FILTER_VALIDATE_EMAIL))) {
-                echo "<div class='correctText'>Alle velden zijn ingevuld </div>";
-                echo "<h2>Bedankt voor uw bericht!</h2>";
+
+                echo "<div class='correctText'>Alle velden zijn correct ingevuld </div>";
+
+                //Connectie maken met DB en testen
+                    $DBConnect = mysqli_connect("localhost", "root", "");
+                    if ($DBConnect === FALSE) {
+                        echo "<p>Unable to connect to the database server.</p>"
+                            . "<p>Error code " . mysqli_errno() . ": " . mysqli_error()
+                            . "</p>";
+                    } else {
+                        //Kijken of database 'bugReports' al bestaat en anders een nieuwe aanmaken.
+                        $DBName = "portfolio";
+
+                        mysqli_select_db($DBConnect, $DBName);
+
+                        //Dit is voor het testen
+                        //echo "<h1>Datbase connectie is gelukt! </h1>";
+
+                        //
+                        $TableName = "contact";
+                        $SQLstring = "SHOW TABLES LIKE '$TableName'";
+                        $QueryResult = mysqli_query($DBConnect, $SQLstring);
 
 
-
-               /* $to      = 'niekluttikhof8@gmail.com';
-                $subject = 'Contactformulier' . $onderwerp;
-                $message = 'Het volgende bericht is verstuurd via het contact formulier \n' . '<b>' . $onderwerp . '</b>\n\n' . $bericht ;
-                $headers = 'From: webmaster@example.com' . "\r\n" .
-                    'Reply-To: webmaster@example.com' . "\r\n" .
-                    'X-Mailer: PHP/' . phpversion();
-                ini_set('smtp_port',25);
-                mail($to, $subject, $message, $headers);*/
+                        $SQLstring2 = "INSERT INTO $TableName VALUES(NULL,'$voornaam', '$achternaam', '$email', '$onderwerp', '$bericht', '$datum')";
+                        $QueryResult2 = mysqli_query($DBConnect, $SQLstring2);
+                        if ($QueryResult2 === FALSE) {
+                            echo "<p>Unable to execute the query.</p>"
+                                . "<p>Error code " . mysqli_errno($DBConnect)
+                                . ": " . mysqli_error($DBConnect) . "</p>";
+                        } else {
 
 
-                $voornaamPrint = $_POST['firstname'];
-                $achternaamPrint = $_POST['lastname'];
-                $emailPrint = $_POST['email'];
-                $onderwerpPrint = $_POST['onderwerp'];
-                $berichtPrint = $_POST['subject'];
-                $datum = date('d-m-y');
-
-                if (!file_exists("contactBerichten.txt")){
-                    $myfile = fopen("contactBerichten.txt", "w");
-                }
-
-                if (filesize("contactBerichten.txt") == 0){
-                    fwrite($myfile, "**************************************************************\n");
-                }
-
-                $myfile = fopen("contactBerichten.txt", "ab");
-
-                $nieuweBericht =
-
-                    "\nDatum: " . $datum . "\n\n" .
-                    "Voornaam: " . $voornaamPrint . "\n" .
-                    "Achternaam: " . $achternaamPrint . "\n" .
-                    "Email: " . $emailPrint . "\n\n\n" .
-                    "Onderwerp: " . $onderwerpPrint . "\n\n" .
-                    "Bericht: \n" . $berichtPrint . "\n\n" .
-                    "**************************************************************";
-
-                fwrite($myfile, $nieuweBericht);
-                echo "<h2>Bericht is verstuurd.</h2>";
-
-
-
-
-
+                            echo "<h2>Bedankt voor uw bericht!</h2>";
+                        }
+                        mysqli_close($DBConnect);
+                    }
 
 
 
             } else {
+
 
                 if (empty($_POST["firstname"])) {
                     $errVoornaam = "<div class='errorText'>&emsp; Voornaam is verplicht</div>";
