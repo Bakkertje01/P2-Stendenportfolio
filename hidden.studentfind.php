@@ -37,11 +37,10 @@ if(empty($_POST['voornaam'])){
 }else{
     $DBtable = "gebruiker";
     $voornaam = $_POST["voornaam"];
-    $voornaam = trim($voornaam,"'.,");
-    echo $voornaam;
+
     // filter van input spaces,kommas,quotes
 
-   /* if(!mysqli_select_db($connection,DB_NAME)){
+    if(!mysqli_select_db($connection,DB_NAME)){
         echo" COULD NOT SELECT DATABASE ".mysqli_errno($connection)." : ".mysqli_error($connection);
     }else{
         mysqli_select_db($connection,DB_NAME);
@@ -61,7 +60,7 @@ if(empty($_POST['voornaam'])){
             }
         }
     }
-   */
+
 }
 
 ?>
