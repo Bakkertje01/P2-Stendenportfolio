@@ -59,12 +59,15 @@ include 'hidden.menu.php';
 
                         $file_name = "$fileTitle";
 
+
+                        $oldName = $_FILES['pfupload']['name'];
+
                         $file_size = $_FILES['pfupload']['size'];
                         $file_tmp = $_FILES['pfupload']['tmp_name'];
                         $file_type = $_FILES['pfupload']['type'];
 
 
-                        $ext = explode('.', $file_name);
+                        $ext = explode('.', $oldName);
                         $acceptedFiles = array('jpg', 'jpeg', 'png', 'gif', 'JPG', 'JPEG');
 
                         $pfDir = "studentuploads/$studentnumber/Profielfoto/$PfNaam";
