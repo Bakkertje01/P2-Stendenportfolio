@@ -84,7 +84,6 @@ if (isset($_POST['reset'])) {
 //V-Uit de Session Halen-V
 
 
-
 ?>
 
 <html>
@@ -110,7 +109,7 @@ include 'hidden.menu.php';
     </div>
 
 
-<div class="container text-center">
+    <div class="container text-center">
 
 
         <p><?php
@@ -129,7 +128,6 @@ include 'hidden.menu.php';
             ?></p>
     </div>
 </div>
-
 
 
 <?php

@@ -1,3 +1,6 @@
+<?php
+include  'include/session.php';
+?>
 <html>
 
 <head>
@@ -7,7 +10,6 @@
 
 <body>
 <?php
-include 'include/session.php';
 include 'hidden.header.php';
 include 'hidden.menu.php';
 ?>

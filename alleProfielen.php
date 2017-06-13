@@ -94,7 +94,7 @@ include 'hidden.menu.php';
     include('include/db_connection.php');
 
 
-    $sql = "SELECT Gebruiker_ID, Voornaam, Studentnr, Quote FROM User";
+    $sql = "SELECT Gebruiker_ID, Voornaam, Studentnr, Quote, Achternaam FROM user";
     $result = $connection->query($sql);
 
     if ($result->num_rows > 0) {
@@ -105,11 +105,13 @@ include 'hidden.menu.php';
             $studentnaam = $row["Voornaam"];
             $studentnumber = $row["Studentnr"];
             $studentquote = $row["Quote"];
+            $studentachter2 =  $row["Achternaam"];
+
 
             $profielfoto = "studentuploads/$studentnumber/Profielfoto/pf.jpg";
 
             echo "    <div class='container text-center'>
-        <h3>Bestanden van  $studentnaam</h3>
+        <h3>Bestanden van  $studentnaam  $studentachter2</h3>
 
         <img width='20%' src='$profielfoto' alt='profielfoto'
              title='Profielfoto'>
