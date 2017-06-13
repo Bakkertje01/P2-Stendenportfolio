@@ -11,20 +11,28 @@
 include 'hidden.header.php';
 include 'hidden.menu.php';
 ?>
+<div class="jumbotron">
+    <div class="container text-center">
+        <h1>administrator registration</h1>
+        <p>
+            <div id="wrapper">
 
-<form  action = "hidden.studentfind.php" method = "POST">
-    <p>vul het naamveld in van de student van wie je het portofolio wilt zien.</p><br>
-    <p>Naam : <input type = "text" name = "voornaam" value = <?php echo $voornaam ?>></p>
-    <input type = "submit" name = "submit" value = "Search">
-</form>
+                <!-- CONTENT -->
+                <div id='content'>
+
+                <form  action = "hidden.studentfind.php" method = "POST">
+                    <p>vul het naamveld in van de student van wie je het portofolio wilt zien.</p><br>
+                    <p>Naam : <input type = "text" name = "voornaam" value = '<?php (!isset($voornaam))? 0 : $voornaam ?>'></p>
+                    <input type = "submit" name = "submit" value = "Search">
+                </form>
 
 <?php
 // connectie moet worden gemaakt
 // doet het nog niet moet nog portofolio van student hebben
 
 
-if(empty($_POST['voornaam' ])){
-     echo "Please Fill in your Surname ";
+if(empty($_POST['voornaam'])){
+     echo "<h2>Please Fill in your Surname<h2>";
 }else{
     $DBtable = "gebruiker";
     $voornaam = $_POST["voornaam"];
@@ -42,8 +50,8 @@ if(empty($_POST['voornaam' ])){
                 echo "There was no student found by the name of ".$voornaam."";
             }else{
                 if($row = mysqli_fetch_assoc($DBresult)) {
-                    echo "students by the Firstname of  ".$row["Voornaam"] ." was found";
-                    echo "students by the Lastname of  ".$row["Achternaam"] ." was found";
+                    echo "students by the Firstname of  ".$row["Voornaam"] ." : ".$row["Achternaam"] ." was found";
+
                     // https.portfolio.$voornaam. //hier komt link van site met naam naar pagina van student
                 }
             }
@@ -53,9 +61,9 @@ if(empty($_POST['voornaam' ])){
 
 ?>
 
-
-
-
+    </div>
+    </div>
+</div>
 
 <?php
 
