@@ -32,12 +32,14 @@ include 'hidden.menu.php';
 // doet het nog niet moet nog portofolio van student hebben
 
 
-if(empty($_POST['voornaam'])){
+if(isset($_POST["submit"]) && empty($_POST['voornaam'])){
      echo "<h2>Please Fill in your Surname<h2>";
 }else{
     $DBtable = "gebruiker";
     $voornaam = $_POST["voornaam"];
+
     // filter van input spaces,kommas,quotes
+
     if(!mysqli_select_db($connection,DB_NAME)){
         echo" COULD NOT SELECT DATABASE ".mysqli_errno($connection)." : ".mysqli_error($connection);
     }else{
@@ -58,6 +60,7 @@ if(empty($_POST['voornaam'])){
             }
         }
     }
+
 }
 
 ?>
