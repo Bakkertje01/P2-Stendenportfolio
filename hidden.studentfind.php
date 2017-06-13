@@ -13,7 +13,7 @@ include 'hidden.menu.php';
 ?>
 <div class="jumbotron">
     <div class="container text-center">
-        <h1>Student Search</h1>
+        <h3>Student Search</h3>
         <p>
             <div id="wrapper">
 
@@ -32,7 +32,7 @@ include 'hidden.menu.php';
 
 
 if(empty($_POST['voornaam'])){
-     echo "<h3>Please Fill in your Surname<h3>";
+     echo "<h2>Please Fill in your Surname<h2>";
 }else{
     $DBtable = "gebruiker";
     $voornaam = $_POST["voornaam"];
@@ -47,10 +47,10 @@ if(empty($_POST['voornaam'])){
             echo "COULD NOT SELECT FROM TABLE ".mysqli_errno($connection)." : ".mysqli_error($connection);
         }else{
             if(mysqli_num_rows($DBresult)  == 0){
-                echo "There was no student found by the name of ".$voornaam."";
+                echo "There were no students found by the name of ".$voornaam."";
             }else{
                 if($row = mysqli_fetch_assoc($DBresult)) {
-                    echo "students by the Firstname of  ".$row["Voornaam"] ." : ".$row["Achternaam"] ." was found";
+                    echo "students by the name of  ".$row["Voornaam"] ." : ".$row["Achternaam"] ." were found";
 
                     // https.portfolio.$voornaam. //hier komt link van site met naam naar pagina van student
                 }
@@ -60,7 +60,7 @@ if(empty($_POST['voornaam'])){
 }
 
 ?>
-
+    </div>
     </div>
     </div>
 </div>
