@@ -62,6 +62,7 @@ include 'hidden.menu.php';
                 $errOnderwerp2 = "bg-success";
                 $errBericht2 = "bg-success";
                 $emailErr2 = "bg-success";
+                $error = "";
 
 
                 //Connectie maken met DB en testen
