@@ -21,7 +21,7 @@ include 'hidden.menu.php';
 
                 <!-- CONTENT -->
                 <div id='content'>
-                <form id='register' action='hidden.register.php' method='post'>
+                <form id='register' action='hidden.admin_register.php' method='post'>
                     <label for='firstname' >Voornaam*: </label><br/>
                     <input type='text' name='Firstname' id='firstname' maxlength="50" /><br/>
 
