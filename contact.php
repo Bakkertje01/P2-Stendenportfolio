@@ -29,10 +29,15 @@ include 'hidden.menu.php';
         $statusBootstrap = "";
 
         $errVoornaam = "";
+        $errVoornaam2 = "";
         $errAchternaam = "";
+        $errAchternaam2 = "";
         $errBericht = "";
+        $errBericht2 = "";
         $errOnderwerp = "";
+        $errOnderwerp2 = "";
         $emailErr = "";
+        $emailErr2 = "";
 
 
         if (isset($_POST["submit"])) {
@@ -52,6 +57,12 @@ include 'hidden.menu.php';
             if (!empty($_POST["firstname"]) && !empty($_POST["lastname"]) && !empty($_POST["email"]) && !empty($_POST["subject"]) && (filter_var($_POST["email"], FILTER_VALIDATE_EMAIL))) {
 
                 echo "<div class='correctText'>Alle velden zijn correct ingevuld </div>";
+                $errVoornaam2 = "bg-success";
+                $errAchternaam2 = "bg-success";
+                $errOnderwerp2 = "bg-success";
+                $errBericht2 = "bg-success";
+                $emailErr2 = "bg-success";
+
 
                 //Connectie maken met DB en testen
                     $DBConnect = mysqli_connect("localhost", "root", "");
@@ -95,22 +106,27 @@ include 'hidden.menu.php';
 
                 if (empty($_POST["firstname"])) {
                     $errVoornaam = "<div class='errorText'>&emsp; Voornaam is verplicht</div>";
+                    $errVoornaam2 = "bg-danger";
                 }
 
                 if (empty($_POST["lastname"])) {
                     $errAchternaam = "<div class='errorText'>&emsp; Achternaam is verplicht</div>";
+                    $errAchternaam2 = "bg-danger";
                 }
 
                 if (empty($_POST["subject"])) {
                     $errBericht = "<div class='errorText'>&emsp; Een bericht is verplicht</div>";
+                    $errBericht2 = "bg-danger";
                 }
 
                 if (empty($_POST["onderwerp"])) {
                     $errOnderwerp = "<div class='errorText'>&emsp; Een onderwerp is verplicht</div>";
+                    $errOnderwerp2 = "bg-danger";
                 }
 
                 if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
                     $emailErr = "<div class='errorText'>&emsp; Vul een geldig e-mailadres in.</div>";
+                    $emailErr2 = "bg-danger";
                 }
             }
         }
@@ -123,24 +139,24 @@ include 'hidden.menu.php';
 
             <label for="fname">Voornaam</label>
             <?php echo $errVoornaam; ?>
-            <input type="text" id="fname" name="firstname" placeholder="Uw voornaam.." value="<?php echo $voornaam; ?>">
+            <input type="text" class = "<?php echo $errVoornaam2; ?>"id="fname" name="firstname" placeholder="Uw voornaam.." value="<?php echo $voornaam; ?>">
 
 
             <label for="lname">Achternaam</label>
             <?php echo $errAchternaam; ?>
-            <input type="text" id="lname" name="lastname" placeholder="Uw achternaam.." value="<?php echo $achternaam; ?>">
+            <input type="text" class="<?php echo $errAchternaam2; ?>" id="lname" name="lastname" placeholder="Uw achternaam.." value="<?php echo $achternaam; ?>">
 
             <label for="email">E-mail adres</label>
             <?php echo $emailErr; ?>
-            <input type="text" id="email" name="email" placeholder="Uw e-mail adres.." value="<?php echo $email; ?>">
+            <input type="text" class="<?php echo $emailErr2; ?>" id="email" name="email" placeholder="Uw e-mail adres.." value="<?php echo $email; ?>">
 
             <label for="onderwerp">Onderwerp</label>
             <?php echo $errOnderwerp; ?>
-            <input type="text" id="onderwerp" name="onderwerp" placeholder="Het onderwerp.." value="<?php echo $onderwerp; ?>">
+            <input type="text" class="<?php echo $errOnderwerp2; ?>"id="onderwerp" name="onderwerp" placeholder="Het onderwerp.." value="<?php echo $onderwerp; ?>">
 
             <label for="subject">Bericht</label>
             <?php echo $errBericht; ?>
-            <textarea class="inputForm" id="subject" name="subject" placeholder="Typ hier..." style="height:200px"><?php echo $bericht; ?></textarea>
+            <textarea class="inputForm <?php echo $errBericht2; ?>" id="subject" name="subject" placeholder="Typ hier..." style="height:200px"><?php echo $bericht; ?></textarea>
 
             <input type="submit" name="submit" value="Verzenden">
 
