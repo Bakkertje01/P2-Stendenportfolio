@@ -32,17 +32,17 @@ include_once 'hidden.menu.php';
                         <label for='lastname'>Achternaam*: </label><br/>
                         <input type='text' name='Achternaam' id='Achternaam' maxlength="30"/><br/>
 
-                        <label for='email'>Email Address*:</label><br/>
+                        <label for='email'>Email Adres*:</label><br/>
                         <input type='text' name='Email' id='Email' maxlength="50"/><br/>
 
-                        <label for='password'>Password*:</label><br/>
+                        <label for='password'>Wachtwoord*:</label><br/>
                         <input type='password' name='Wachtwoord' id='Wachtwoord' maxlength="50"/><br/>
 
-                        <label for='password1'>verificatiewachtwoord:</label><br/>
+                        <label for='password1'>Wachtwoord ter controle*:</label><br/>
                         <input type='password' name='Wachtwoord1' id='Wachtwoord1' maxlength="50"/><br/>
 
-                        <label for='Studentnr'>Student_nr*:</label><br/>
-                        <input type='number' name='Studentnr' id='Studentnr' maxlength="6"/><br/>
+                        <label for='Studentnr'>Student nummer*:</label><br/>
+                        <input type='number' name='Studentnr' id='Studentnr' maxlength="6" placeholder="Alleen getallen!"/><br/>
 
         <p>* Verplicht in te vullen.</p>
         <input id='submit' type='submit' name='Submit' value='Registreren'/><br/>
