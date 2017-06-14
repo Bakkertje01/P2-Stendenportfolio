@@ -48,6 +48,7 @@ include 'hidden.menu.php';
 </form>
 
 <?php
+// connection moet nog worden gemaakt aan definitive database
 if(isset($_POST["Submit"])){
     //The post values have to be the same as the form <name> tag
     $firstname = $_POST['Firstname'];
@@ -64,33 +65,37 @@ if(isset($_POST["Submit"])){
         || empty ($_POST['Lastname'])
         || empty ($_POST['Email'])
         || empty ($_POST['Password'])
-        || empty ($_POST['rol']))
-    {
-        echo  "<h3>please fill in all fields<h3>";
+        || empty ($_POST['rol'])) {
+        echo "<h3>please fill in all fields<h3>";
 
-    }
-    else
-    {
+    }else{
+
         //hasing the password
         $password = password_encrypt($_POST["Password"]);
-        //defining the query
+
 
         $sql  = "INSERT INTO customer (Firstname, Lastname, Email, Password) 
         VALUES ('$firstname', '$lastname', '$email', '$password')";
         $result = mysqli_query($connection, $sql);
-
-
         if($result === false){
-            echo"ERROR".mysqli_errno()." : ".mysqli_error();
+            echo"ERROR".mysqli_errno($connection)." : ".mysqli_error($connection);
+        }else{
+            if ($rol == "admin") {        /// waarden die ingevoerd worden moeten unique zijn
+                $rol = "INSERT INTO user_type (Admin) Values ('') ";
+                $DBresult = mysqli_query($connection,$rol);
+             echo ($DBresult === false)?"ERROR :".mysqli_errno($connection)." : ".mysqli_error($connection) : "<h2>Registration ADMIN compleet</h2>";
+            } elseif ($rol == "docent") {
+                $rol = "INSERT INTO user_type (Docent) Values ('') ";
+                $DBresult = mysqli_query($connection,$rol);
+                echo ($DBresult === false)?"ERROR :".mysqli_errno($connection)." : ".mysqli_error($connection) : "<h2>Registration DOCENT compleet</h2>";
+            } elseif ($rol == "slb") {
+                $rol = "INSERT INTO user_type (SLB) Values ('') ";
+                $DBresult = mysqli_query($connection,$rol);
+                echo ($DBresult === false)?"ERROR :".mysqli_errno($connection)." : ".mysqli_error($connection) : "<h2>Registration SLB compleet</h2>";
+            }
+            mysqli_free_result($DBresult);
+            echo "<h3> Thanks for submiting<h3>";
         }
-        if($rol == "admin"){        /// waarden die ingevoerd worden moet unique zijn
-            $rol = "INSERT INTO user_type (Admin) Values ('') ";
-        }elseif ($rol == "docent"){
-            $rol = "INSERT INTO user_type (Docent) Values ('') ";
-        }elseif ($rol == "slb"){
-            $rol = "INSERT INTO user_type (SLB) Values ('') ";
-        }
-        echo "<h3> Thanks for submiting<h3>";
     }
 
 }
