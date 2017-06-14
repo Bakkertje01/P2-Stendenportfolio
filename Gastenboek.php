@@ -1,10 +1,14 @@
+<?php
+include 'include/session.php';
+include 'include/db_connection.php';
+
+?>
 <html>
 <head>
     <link rel="icon" type="image/png" href="hide/fav.png"/>
 </head>
 <body>
 <?php
-if(!isset($_SESSION)) session_start();
 include_once 'hidden.header.php';
 include_once 'hidden.menu.php';
 ?>
@@ -26,13 +30,12 @@ include_once 'hidden.menu.php';
                 </li>
             </ul>
         </form>
-</body>
 <?php
-$host = "localhost"; //host, meestal localhost
+$host = "127.0.0.1"; //host, meestal localhost
 $user = "root"; //user die op DB connecteert
 $pass = ""; //Password van de user die op DB connecteert
 $dbname = "portfolio"; //Naam Database
-$con = mysqli_connect($host, $user, $pass, $dbname);
+$connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 
 if (mysqli_connect_errno($con)) // connectie maken met de database
 {
@@ -45,7 +48,7 @@ if (isset($_SESSION['Gebruiker_ID']) && $_SESSION['Gebruiker_ID'] == true) // is
 {
     echo "Je moet inloggen voor je deze pagina kunt zien.";
 }
-$result = mysqli_query($con, "SELECT Voornaam ,Bericht FROM Bericht INNER JOIN user"); // haal uit de database
+$result = mysqli_query($connection, "SELECT Voornaam ,Bericht FROM Bericht INNER JOIN user"); // haal uit de database
 
 if (mysqli_num_rows($result) == 0) // staat er al iets in
 { // gastenboek is nog leeg
