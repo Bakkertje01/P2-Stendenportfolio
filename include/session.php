@@ -10,7 +10,7 @@ if (isset($_SESSION['Gebruiker_ID'])) {
     $ID = 0;
 }
 
-
+$connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 
 $sql = "SELECT Gebruiker_ID, Voornaam, Studentnr, Quote, Achternaam, img_path, color_path FROM User WHERE Gebruiker_ID = $ID";
 $result = $connection->query($sql);
@@ -38,6 +38,7 @@ if ($result->num_rows > 0) {
 $PfNaam = 'pf.jpg';
 $profielfoto = "studentuploads/$studentnumber/Profielfoto/$PfNaam";
 
+//mysqli_close($connection);
 
 /*
 function message() {
