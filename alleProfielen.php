@@ -12,6 +12,7 @@ function dateSelect($datum, $folder)
             $numberOfFiles = count($file1);
         }
 
+
         if ($numberOfFiles > 0) {
 
             foreach (array_reverse($files1) as $file1) {
@@ -56,6 +57,8 @@ function dateSelect($datum, $folder)
             echo "<p>Deze map bevat geen bestanden</p>";
         }
 
+    }else{
+        $numberOfFiles = NULL;
     }
 
 
