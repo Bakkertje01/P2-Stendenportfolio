@@ -28,8 +28,8 @@ include_once 'hidden.menu.php';
                 </form>
 
 <?php
-// connectie moet worden gemaakt
-// doet het nog niet moet nog portofolio van student hebben
+
+// doet het wel maar moet nog portofolio van student hebben
 
 
 if(!isset($_POST["submit"]) || isset($_POST["submit"]) && empty($_POST['voornaam'])){
@@ -45,7 +45,7 @@ if(!isset($_POST["submit"]) || isset($_POST["submit"]) && empty($_POST['voornaam
     if(!mysqli_select_db($connection,$DBname)){
         echo" COULD NOT SELECT DATABASE ".mysqli_errno($connection)." : ".mysqli_error($connection);
     }else{
-        $DBcommand = "SELECT Voornaam,Achternaam FROM $DBtable WHERE Voornaam Like '%$voornaam%'";
+        $DBcommand = "SELECT Voornaam,Achternaam FROM $DBtable WHERE Voornaam Like '%$voornaam%' OR Achternaam Like '%$voornaam%'";
         $DBresult = mysqli_query($connection,$DBcommand);
         if($DBresult === FALSE){
             echo "COULD NOT SELECT FROM TABLE ".mysqli_errno($connection)." : ".mysqli_error($connection);
