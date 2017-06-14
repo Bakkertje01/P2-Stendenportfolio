@@ -100,8 +100,6 @@ include_once 'hidden.menu.php';
 <div class="jumbotron">
     <?php
 
-    include('include/db_connection.php');
-
 
     $sql = "SELECT Gebruiker_ID, Voornaam, Studentnr, Quote, Achternaam FROM user";
     $result = $connection->query($sql);
