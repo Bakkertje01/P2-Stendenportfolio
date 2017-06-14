@@ -38,7 +38,7 @@ if ($result->num_rows > 0) {
 $PfNaam = 'pf.jpg';
 $profielfoto = "studentuploads/$studentnumber/Profielfoto/$PfNaam";
 
-mysqli_close($connection);
+//mysqli_close($connection);
 
 /*
 function message() {
