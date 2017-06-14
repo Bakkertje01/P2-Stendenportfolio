@@ -15,13 +15,9 @@ include_once 'hidden.menu.php';
 <div class="jumbotron">
     <div class="container text-center">
         <h3>Student Finder</h3>
-
             <div id="wrapper">
-
-                <!-- CONTENT -->
                 <div id='content'>
-
-                <form  action = "hidden.studentfind.php" method = "POST">
+                <form action = "studentfind.php" method = "POST">
                     <p>vul het naamveld in van de student van wie je het portofolio wilt zien.</p><br>
                     <p>Naam : <input type = "text" name = "voornaam" pattern="[a-zA-Z]{1,}" value = '<?php echo (isset($_POST["submit"])) && !empty($_POST['voornaam'])? $_POST['voornaam'] : null ?>'></p>
                     <input type = "submit" name = "submit" value = "Search">
