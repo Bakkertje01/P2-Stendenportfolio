@@ -41,7 +41,7 @@ if(!isset($_POST["submit"]) || isset($_POST["submit"]) && empty($_POST['voornaam
     if(!mysqli_select_db($connection,$DBname)){
         echo" COULD NOT SELECT DATABASE ".mysqli_errno($connection)." : ".mysqli_error($connection);
     }else{
-        $DBcommand = "SELECT Voornaam,Achternaam FROM $DBtable WHERE Voornaam Like '%$voornaam%' OR Achternaam Like '%$voornaam%'";
+        $DBcommand = "SELECT Voornaam,Achternaam FROM $DBtable WHERE Voornaam Like '$voornaam%' OR Achternaam Like '$voornaam%'";
         $DBresult = mysqli_query($connection,$DBcommand);
         if($DBresult === FALSE){
             echo "COULD NOT SELECT FROM TABLE ".mysqli_errno($connection)." : ".mysqli_error($connection);
@@ -50,7 +50,7 @@ if(!isset($_POST["submit"]) || isset($_POST["submit"]) && empty($_POST['voornaam
                 echo "There were no students found by the name of ".$voornaam."";
             }else{
                 if($row = mysqli_fetch_assoc($DBresult)) {
-                    echo "<h3>students by the name of</h3>  <h4><a href = '' >".$row["Voornaam"] ." : ".$row["Achternaam"] ."</a></h4> <h3>were found</h3>";
+                    echo "<h3>students by the name of</h3>  <h4><a href = '' >".$row["Voornaam"]." ".$row["Achternaam"] ."</a></h4> <h3>were found</h3>";
 
                     // https.portfolio.$voornaam. //hier komt link van site met naam naar pagina van student
                 }
