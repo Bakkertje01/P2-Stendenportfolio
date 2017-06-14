@@ -78,11 +78,6 @@ if (isset($_POST['reset'])) {
 
 }
 
-//V-Uit de Session Halen-V
-
-
-
-
 ?>
 
 <html>
