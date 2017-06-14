@@ -16,7 +16,7 @@ include 'hidden.menu.php';
 <div class="jumbotron">
     <div class="container text-center">
         <h1>administrator registration</h1>
-        <p>
+
             <div id="wrapper">
 
                 <!-- CONTENT -->
@@ -36,11 +36,10 @@ include 'hidden.menu.php';
 
                     <p>Please pick a role to determined which authorisation you will be given upon registration</p><br>
                     <select name = "rol" >
-                        <option  value = "admin" >Admin</option>
                         <option  value = "docent" >Docent</option>
                         <option  value = "slb" >SLB</option>
                     </select><br>
-    </div>
+                </div>
 
 
     <input id='submit'type='submit' name='Submit' value='Registreren' /><br/>
@@ -77,8 +76,8 @@ if(isset($_POST["Submit"])){
         $password = password_hash($password, PASSWORD_BCRYPT);
 
 
-        $sql  = "INSERT INTO $DBtable (`Voornaam`,`Achternaam`,`Email`,`Wachtwoord`,`Type`) 
-        VALUES ('$firstname', '$lastname', '$email', '$password','$rol')";
+        $sql  = "INSERT INTO $DBtable (Voornaam, Achternaam, Email, Wachtwoord, Studentnr, Verified,`Type`,img_path,color_path,Quote) 
+        VALUES ('$firstname', '$lastname', '$email', '$password',NULL,Null,'$rol',NULL,NULL,NULL)";
         $result = mysqli_query($connection, $sql);
         if($result === false){
             echo"ERROR".mysqli_errno($connection)." : ".mysqli_error($connection);
@@ -90,6 +89,7 @@ if(isset($_POST["Submit"])){
 
 }
 ?>
+</div>
 </div>
 </div>
 
