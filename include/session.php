@@ -5,8 +5,11 @@ session_start();
 
 include_once('db_connection.php');
 
-
-$ID = $_SESSION["Gebruiker_ID"];
+if (isset($_SESSION['Gebruiker_ID'])) {
+    $ID = $_SESSION["Gebruiker_ID"];
+}else{
+    $ID = 0;
+}
 
 
 
