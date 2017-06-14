@@ -4,6 +4,7 @@
 </head>
 <body>
 <?php
+if(!isset($_SESSION)) session_start();
 include_once 'hidden.header.php';
 include_once 'hidden.menu.php';
 ?>
@@ -36,6 +37,13 @@ $con = mysqli_connect($host, $user, $pass, $dbname);
 if (mysqli_connect_errno($con)) // connectie maken met de database
 {
     echo "Connectie Database mislukt: " . mysqli_connect_error();
+}
+if (isset($_SESSION['Gebruiker_ID']) && $_SESSION['Gebruiker_ID'] == true) // is de gebruiker ingelogd?
+{
+    echo "Welkom op de pagina " . $_SESSION['Voornaam'] . "!";
+} else
+{
+    echo "Je moet inloggen voor je deze pagina kunt zien.";
 }
 $result = mysqli_query($con, "SELECT Voornaam ,Bericht FROM Bericht INNER JOIN user"); // haal uit de database
 
