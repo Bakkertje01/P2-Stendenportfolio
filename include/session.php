@@ -5,7 +5,10 @@ session_start();
 
 include_once('db_connection.php');
 
+
 $ID = $_SESSION["Gebruiker_ID"];
+
+
 
 $sql = "SELECT Gebruiker_ID, Voornaam, Studentnr, Quote, Achternaam, img_path, color_path FROM User WHERE Gebruiker_ID = $ID";
 $result = $connection->query($sql);
@@ -21,6 +24,7 @@ if ($result->num_rows > 0) {
         $textColor =  $row["img_path"];
     }
 } else {
+    $ID = 'gast';
     $studentnaam = "Gast";
     $studentachter = ", Coole";
     $studentnumber = "default";
