@@ -38,8 +38,8 @@ if (!empty($_POST["gast"])){
 </head>
 <body>
 <?php
-include_once 'hidden.header.php';
-include_once 'hidden.menu.php';
+include 'hidden.header.php';
+include 'hidden.menu.php';
 ?>
 <div class='jumbotron'>
     <div class="container text-center">
@@ -89,7 +89,7 @@ include_once 'hidden.menu.php';
 </div>
 <?php
 
-include_once 'hidden.footer.php';
+include 'hidden.footer.php';
 
 ?>
 </body>

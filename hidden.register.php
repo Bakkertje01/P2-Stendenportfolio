@@ -99,6 +99,8 @@ if (isset($_POST["Submit"])) {
                         } else {
 
                             //hasing the password
+                            $password = password_hash($password, PASSWORD_BCRYPT);
+
                             //$password = password_encrypt($_POST["Wachtwoord"]);
 
                             $sql = "INSERT INTO user";
