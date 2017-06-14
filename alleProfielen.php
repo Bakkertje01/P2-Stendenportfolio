@@ -11,16 +11,17 @@ function dateSelect($datum, $folder)
 
     if (!empty($folder)) {
 
-        $numberOfFiles = 1;
+
 
         foreach (array_reverse($files1) as $file1) {
             $numberOfFiles = count($file1);
-            if ($numberOfFiles < 1){
-                $numberOfFiles = 0;
-            }
         }
 
-        if ($numberOfFiles > 0) {
+        if (empty($numberOfFiles)){
+            $numberOfFiles = 0;
+        }
+
+        if ($numberOfFiles >= 1) {
 
             foreach (array_reverse($files1) as $file1) {
                 $filetypes = explode('.', $file1);
