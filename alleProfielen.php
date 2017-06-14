@@ -7,12 +7,16 @@ function dateSelect($datum, $folder)
 
     $files1 = glob("$dirnamez/" . "$folder/" . "*");
 
+    if (empty($folder)) {
+        $numberOfFiles = NULL;
+        echo "<p>Deze map bevat geen bestanden</p>";
+    }
+
     if (!empty($folder)) {
 
         foreach (array_reverse($files1) as $file1) {
             $numberOfFiles = count($file1);
         }
-
 
         if ($numberOfFiles > 0) {
 
