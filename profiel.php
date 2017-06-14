@@ -1,12 +1,6 @@
 <?php
 include_once 'include/session.php';
 
-
-$studentquote = "Ik houd erg veel van vlaflip en macaroni";
-$PfNaam = 'pf.jpg';
-$profielfoto = "studentuploads/$studentnumber/Profielfoto/$PfNaam";
-
-
 ?>
 
 <html>

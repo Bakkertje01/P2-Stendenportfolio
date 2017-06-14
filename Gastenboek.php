@@ -25,13 +25,40 @@ include_once 'hidden.menu.php';
                     <span>Vertel het eens!</span>
                 </li>
                 <li>
-                    <input name="submit" type="submit">
-                    <input type="reset" value="Reset">
+                    <input name="verstuur" value="verstuur" type="submit">
+                    <input type="submit" name="reset" value="Reset">
                 </li>
             </ul>
         </form>
+
+        <?php
+
+
+        if (isset($_POST['reset'])){
+
+
+        }
+
+        if (isset($_POST['verstuur'])){
+
+            if (!empty($_POST['message'])){
+                $message = $_POST['message'];
+            }
+
+            $heleNaam= "$studentnaam $studentachter";
+
+
+            $sql = "UPDATE Bericht SET  Bericht_ID = 1, Bericht = '$message', Naam = '$heleNaam'";
+
+            $result = $connection->query($sql);
+
+        }
+
+
+        ?>
+
 <?php
-$host = "127.0.0.1"; //host, meestal localhost
+$host = "127.0.0.1:8889"; //host, meestal localhost
 $user = "root"; //user die op DB connecteert
 $pass = ""; //Password van de user die op DB connecteert
 $dbname = "portfolio"; //Naam Database
@@ -46,7 +73,7 @@ if (isset($_SESSION['Gebruiker_ID']) && $_SESSION['Gebruiker_ID'] == true) // is
     echo "Welkom op de pagina " . $_SESSION['Voornaam'] . "!";
 } else
 {
-    echo "Je moet inloggen voor je deze pagina kunt zien.";
+    echo "Je moet inloggen voor je een bericht kunt plaatsen.";
 }
 $result = mysqli_query($connection, "SELECT Voornaam ,Bericht FROM Bericht INNER JOIN user"); // haal uit de database
 
