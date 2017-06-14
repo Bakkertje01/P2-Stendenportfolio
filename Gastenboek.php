@@ -1,10 +1,14 @@
+<?php
+include 'include/session.php';
+include 'include/db_connection.php';
+
+?>
 <html>
 <head>
     <link rel="icon" type="image/png" href="hide/fav.png"/>
 </head>
 <body>
 <?php
-if(!isset($_SESSION)) session_start();
 include_once 'hidden.header.php';
 include_once 'hidden.menu.php';
 ?>
