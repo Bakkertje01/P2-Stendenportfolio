@@ -36,7 +36,7 @@ if(!isset($_POST["submit"]) || isset($_POST["submit"]) && empty($_POST['voornaam
      echo "<h2>Please Fill in your Surname<h2>";
 }else{
     $DBname = 'portfolio';
-    $DBtable = "gebruiker";
+    $DBtable = "user";
     $voornaam = $_POST["voornaam"];
     $voornaam = str_replace(array('\'','"','.',','), '', $voornaam);
 
@@ -54,7 +54,7 @@ if(!isset($_POST["submit"]) || isset($_POST["submit"]) && empty($_POST['voornaam
                 echo "There were no students found by the name of ".$voornaam."";
             }else{
                 if($row = mysqli_fetch_assoc($DBresult)) {
-                    echo "students by the name of  ".$row["Voornaam"] ." : ".$row["Achternaam"] ." were found";
+                    echo "<h3>students by the name of</h3>  <h4><a href = '' >".$row["Voornaam"] ." : ".$row["Achternaam"] ."</a></h4> <h3>were found</h3>";
 
                     // https.portfolio.$voornaam. //hier komt link van site met naam naar pagina van student
                 }
