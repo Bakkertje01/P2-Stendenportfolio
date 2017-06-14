@@ -8,10 +8,12 @@ if (!empty($_POST["login"])) {
     $password = $_POST["password"];
 
 
-	$result = mysqli_query($connection, "SELECT * FROM user WHERE Email='$email' and Wachtwoord = '$password'")
+	$result = mysqli_query($connection, "SELECT * FROM user WHERE Email='$email' LIMIT 1")
 	or die ('error: '. mysqli_error($connection));
+
 	$row = mysqli_fetch_array($result);
-	if (is_array($row)) {
+	if (is_array($row) && password_verify($password, $row['Wachtwoord']) ) {
+
 		$_SESSION["Gebruiker_ID"] = $row['Gebruiker_ID'];
 		$_SESSION["Type"] = $row['Type'];
 		header('refresh:3;url=profiel.php');
