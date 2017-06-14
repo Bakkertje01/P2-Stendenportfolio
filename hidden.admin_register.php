@@ -105,7 +105,7 @@ if(isset($_POST["Submit"])){
 
 <?php
 
-include 'hidden.footer.php';
+include_once 'hidden.footer.php';
 
 ?>
 
