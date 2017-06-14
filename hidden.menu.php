@@ -1,5 +1,5 @@
 <?php
-include('include/session.php');
+include_once ('include/session.php');
 
 include "hidden.style.php";
 

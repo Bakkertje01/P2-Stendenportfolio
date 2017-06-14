@@ -40,12 +40,12 @@ include 'hidden.menu.php';
                         <option  value = "docent" >Docent</option>
                         <option  value = "slb" >SLB</option>
                     </select><br>
+    </div>div>
 
 
     <input id='submit'type='submit' name='Submit' value='Registreren' /><br/>
 
 </form>
-</div>
 
 <?php
 if(isset($_POST["Submit"])){
@@ -97,8 +97,7 @@ if(isset($_POST["Submit"])){
 ?>
 </div>
 </div>
-</div>
-</div>
+
 
 
 

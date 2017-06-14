@@ -1,5 +1,5 @@
 <?php
-include  'include/session.php';
+include_once  'include/session.php';
 ?>
 
 <html>
@@ -31,8 +31,8 @@ include  'include/session.php';
 
 <body>
 <?php
-include 'hidden.header.php';
-include 'hidden.menu.php';
+include_once 'hidden.header.php';
+include_once 'hidden.menu.php';
 
 $homePicture = fileToArray('homepic/afb.txt', 0);
 $homePicture1 = fileToArray('homepic/afb1.txt', 0);
@@ -84,7 +84,7 @@ $imgTitle3 = fileToArray('homepic/titles.txt', 3);
 </div>
 
 <?php
-include 'hidden.footer.php';
+include_once 'hidden.footer.php';
 
 
 ?>

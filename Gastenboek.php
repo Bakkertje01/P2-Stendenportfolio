@@ -1,5 +1,5 @@
 <?php
-include  'include/session.php';
+include_once 'include/session.php';
 ?>
 <html>
 
@@ -10,8 +10,8 @@ include  'include/session.php';
 
 <body>
 <?php
-include 'hidden.header.php';
-include 'hidden.menu.php';
+include_once 'hidden.header.php';
+include_once 'hidden.menu.php';
 ?>
 
 

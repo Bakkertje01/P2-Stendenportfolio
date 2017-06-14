@@ -7,8 +7,8 @@
 
 <body>
 <?php
-include 'hidden.header.php';
-include 'hidden.menu.php';
+include_once 'hidden.header.php';
+include_once 'hidden.menu.php';
 ?>
 
 <div class="jumbotron">
@@ -24,7 +24,7 @@ include 'hidden.menu.php';
 
 <?php
 
-include 'hidden.footer.php';
+include_once 'hidden.footer.php';
 ?>
 
 </body>

@@ -9,8 +9,8 @@
 <body>
 <?php
 ///include "db_connection.php";
-include 'hidden.header.php';
-include 'hidden.menu.php';
+include_once 'hidden.header.php';
+include_once 'hidden.menu.php';
 ?>
 <div class="jumbotron">
     <div class="container text-center">
@@ -73,7 +73,7 @@ if(!isset($_POST["submit"]) || isset($_POST["submit"]) && empty($_POST['voornaam
 
 <?php
 
-include 'hidden.footer.php';
+include_once 'hidden.footer.php';
 
 ?>
 

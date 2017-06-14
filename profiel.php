@@ -1,5 +1,5 @@
 <?php
-include 'include/session.php';
+include_once 'include/session.php';
 
 
 $studentquote = "Ik houd erg veel van vlaflip en macaroni";
@@ -18,8 +18,8 @@ $profielfoto = "studentuploads/$studentnumber/Profielfoto/$PfNaam";
 <body>
 <?php
 
-include 'hidden.header.php';
-include 'hidden.menu.php';
+include_once 'hidden.header.php';
+include_once 'hidden.menu.php';
 
 
 if (isset($_POST['kleursub']) && isset($_POST['textkleur']) ) {
@@ -439,7 +439,7 @@ if (isset($_POST['quotesubmit']) && !empty($_POST['quote'])){
 
 <?php
 
-include 'hidden.footer.php';
+include_once 'hidden.footer.php';
 
 ?>
 

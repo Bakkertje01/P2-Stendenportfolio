@@ -3,7 +3,7 @@
 
 session_start();
 
-include('include/db_connection.php');
+include('db_connection.php');
 
 $ID = $_SESSION["Gebruiker_ID"];
 

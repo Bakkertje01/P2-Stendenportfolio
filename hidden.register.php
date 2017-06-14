@@ -6,9 +6,9 @@
 
 <body>
 
-<?php include 'include/db_connection.php'; ?>
-<?php include 'include/functions.php'; ?>
-<?php include 'include/session.php'; ?>
+<?php include_once 'include/db_connection.php'; ?>
+<?php include_once 'include/functions.php'; ?>
+<?php include_once 'include/session.php'; ?>
 <?php
 include 'hidden.header.php';
 ob_start();
@@ -144,7 +144,7 @@ if (isset($_POST["Submit"])) {
 
 <?php
 
-include 'hidden.footer.php';
+include_once 'hidden.footer.php';
 
 ?>
 
