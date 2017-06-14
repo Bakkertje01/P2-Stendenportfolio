@@ -74,7 +74,7 @@ if(isset($_POST["Submit"])){
         mysqli_select_db($connection,$DBname);
 
         //hasing the password
-        $password = password_encrypt($_POST["Password"]);
+        $password = password_hash($password, PASSWORD_BCRYPT);
 
 
         $sql  = "INSERT INTO $DBtable (`Voornaam`,`Achternaam`,`Email`,`Wachtwoord`,`Type`) 
