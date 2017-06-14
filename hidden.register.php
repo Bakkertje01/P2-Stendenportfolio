@@ -82,7 +82,7 @@ if (isset($_POST["Submit"])) {
 
                 if (strlen($password) <= 6) {
                     echo "Choose a password longer then 6 character";
-                    break;
+
                 } else {
 
                     $queryUsers = "SELECT Email FROM user WHERE Email='$email'";
