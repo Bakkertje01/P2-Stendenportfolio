@@ -15,9 +15,10 @@ function dateSelect($datum, $folder)
 
         foreach (array_reverse($files1) as $file1) {
             $numberOfFiles = count($file1);
-            if ($numberOfFiles < 1){
-                $numberOfFiles = 0;
-            }
+        }
+
+        if (empty($numberOfFiles)){
+            $numberOfFiles = 0;
         }
 
         if ($numberOfFiles >= 1) {
