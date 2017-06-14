@@ -35,7 +35,7 @@ include "hidden.style.php";
 
                                 echo "<li><a href='$link'>" . ucfirst($friendlylink) . "</a></li>";
                             } else {
-                                if ($friendlylink === 'alleProfielen' ||$friendlylink === 'contact') {
+                                if ($friendlylink === 'alleProfielen' ||$friendlylink === 'contact' || $friendlylink === 'studentfind') {
                                     echo "<li><a href='$link'>" . ucfirst($friendlylink) . "</a></li>";
                                 }
 

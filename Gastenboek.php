@@ -1,6 +1,5 @@
 <?php
 include 'include/session.php';
-include 'include/db_connection.php';
 
 ?>
 <html>
@@ -31,40 +30,14 @@ include_once 'hidden.menu.php';
             </ul>
         </form>
 
-        <?php
-
-
-        if (isset($_POST['reset'])){
-
-
-        }
-
-        if (isset($_POST['verstuur'])){
-
-            if (!empty($_POST['message'])){
-                $message = $_POST['message'];
-            }
-
-            $heleNaam= "$studentnaam $studentachter";
-
-
-            $sql = "UPDATE Bericht SET  Bericht_ID = 1, Bericht = '$message', Naam = '$heleNaam'";
-
-            $result = $connection->query($sql);
-
-        }
-
-
-        ?>
-
 <?php
-$host = "127.0.0.1:8889"; //host, meestal localhost
-$user = "root"; //user die op DB connecteert
-$pass = ""; //Password van de user die op DB connecteert
-$dbname = "portfolio"; //Naam Database
+//$host = "127.0.0.1:8889"; //host, meestal localhost
+//$user = "root"; //user die op DB connecteert
+//$pass = ""; //Password van de user die op DB connecteert
+//$dbname = "portfolio"; //Naam Database
 $connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 
-if (mysqli_connect_errno($con)) // connectie maken met de database
+if (mysqli_connect_errno($connection)) // connectie maken met de database
 {
     echo "Connectie Database mislukt: " . mysqli_connect_error();
 }
@@ -75,7 +48,8 @@ if (isset($_SESSION['Gebruiker_ID']) && $_SESSION['Gebruiker_ID'] == true) // is
 {
     echo "Je moet inloggen voor je een bericht kunt plaatsen.";
 }
-$result = mysqli_query($connection, "SELECT Voornaam ,Bericht FROM Bericht INNER JOIN user"); // haal uit de database
+$result = mysqli_query($connection, "SELECT `Voornaam` ,`Bericht` FROM `Bericht` INNER JOIN `user` ON Bericht.Gebruiker_ID = user.Gebruiker_ID "); // haal uit de database //AANVULLEN JOIN ON user.id = bericht.userid
+
 
 if (mysqli_num_rows($result) == 0) // staat er al iets in
 { // gastenboek is nog leeg
@@ -83,8 +57,8 @@ if (mysqli_num_rows($result) == 0) // staat er al iets in
 } else
 {
 
-while ($row = mysqli_fetch_array($result))
-{
+    while ($row = mysqli_fetch_array($result))
+    {
 ?>
 
 <div class="velden"> <!-- voor styling van alle echo's; zie CSS -->
@@ -92,10 +66,10 @@ while ($row = mysqli_fetch_array($result))
         <div class="Bericht"><?php echo ($row['Bericht']); ?></div> <!-- echo bericht-->
         <div class="Voornaam"><?php echo ($row['Voornaam']); ?></div> <!-- echo bericht-->
     </div>
-    <?php } ?>
+<?php } ?>
     <?php
-    }
-    mysqli_close($con); // sluit connectie
+}
+    mysqli_close($connection); // sluit connectie
     ?>
 </div>
 </div>

@@ -1,5 +1,4 @@
 <!doctype html>
-<!--   Naam: Myrren van Belkom  Studentnummer: 21031487  -->
 <html>
 <head>
     <title>Guest Book</title>
@@ -26,8 +25,8 @@ if (!postValueset("Bericht"))    // zijn de formulieren ingevuld
     echo "<p>Alle velden moeten worden ingevuld!</p>";
 else
 {
-    $Bericht = mysqli_escape_string($con, htmlspecialchars($_POST["Bericht"]));; // haal uit bericht
-    $sql = "INSERT INTO portfolio(bericht) VALUES('$Bericht')"; // haal uit bericht en zet in de database
+    $bericht = mysqli_escape_string($con, htmlspecialchars($_POST["bericht"]));; // haal uit bericht
+    $sql = "INSERT INTO portfolio(bericht) VALUES('$bericht')"; // haal uit bericht en zet in de database
     if (!mysqli_query($con, $sql))
     {
         die('Error: ' . mysqli_error($con)); //  indien het niet lukt het in de database toe te voegen
