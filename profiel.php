@@ -16,14 +16,18 @@ include_once 'hidden.header.php';
 include_once 'hidden.menu.php';
 
 
-if (isset($_POST['kleursub']) && isset($_POST['textkleur']) ) {
+if (isset($_POST['kleursub']) && isset($_POST['textkleur'])) {
 
     $bgColor = $_POST['bgkleur'];
     $textColor = $_POST['textkleur'];
     $sql = "UPDATE User SET color_path = '$bgColor', img_path = '$textColor' WHERE Gebruiker_ID = $ID";
     $result = $connection->query($sql);
 
+    $kleurgekozen = "<p>Kleuren gekozen! <a href='profiel.php'>Ok!</a></p>";
+
     echo "<style>
+    
+
 
 body{
 background-color: $bgColor;
@@ -233,7 +237,7 @@ color: $textColor;
         <label for='Titel'>Naam van je bestand:</label>
 
 
-        <input type='text' name='Titel' id='email' />
+        <input type='text' name='Titel' id='email'/>
 
         <input type='submit' name='verstuur' id='phone' value='Upload'/>
 
@@ -398,6 +402,11 @@ color: $textColor;
 
     </form>
     <br><br><br><br>
+    <?php if (isset($_POST[kleursub])){
+        echo $kleurgekozen;
+
+
+    } ?>
     </p></center>
 
 <h3> Mijn Quote </h3>
@@ -413,10 +422,11 @@ color: $textColor;
 
 <?php
 
-if (isset($_POST['quotesubmit']) && !empty($_POST['quote'])){
+if (isset($_POST['quotesubmit']) && !empty($_POST['quote'])) {
     $nieuweQuote = $_POST['quote'];
     $sql = "UPDATE User SET Quote = '$nieuweQuote' WHERE Gebruiker_ID = $ID";
     $result = $connection->query($sql);
+    echo "<p>Quote bijgewerkt naar '$nieuweQuote' <a href='profiel.php'> Ok! </a></p>";
 
 
 }
