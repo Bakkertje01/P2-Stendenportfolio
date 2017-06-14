@@ -19,7 +19,7 @@ if (isset($_SESSION['Gebruiker_ID']) && $_SESSION['Gebruiker_ID'] == true) // is
     echo "Welkom op de pagina " . $_SESSION['Voornaam'] . "!";
 } else
 {
-    echo "Je moet inloggen voor je deze pagina kunt zien.";
+    echo "Je moet inloggen voor je een bericht kunt plaatsen.";
 }
 
 if (!postValueset("Bericht"))    // zijn de formulieren ingevuld
