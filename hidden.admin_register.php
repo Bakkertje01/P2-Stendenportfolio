@@ -2,7 +2,6 @@
 
 <head>
     <link rel="icon" type="image/png" href="hide/fav.png"/>
-
 </head>
 
 <body>
@@ -16,10 +15,7 @@ include 'hidden.menu.php';
 <div class="jumbotron">
     <div class="container text-center">
         <h1>administrator registration</h1>
-
             <div id="wrapper">
-
-                <!-- CONTENT -->
                 <div id='content'>
                 <form id='register' action='hidden.admin_register.php' method='post'>
                     <label for='firstname' >Voornaam*: </label><br/>
@@ -47,9 +43,10 @@ include 'hidden.menu.php';
 </form>
 
 <?php
-// connection moet nog worden gemaakt aan definitive database
+
 if(isset($_POST["Submit"])){
-    //The post values have to be the same as the form <name> tag
+    $DBname = "portfolio";
+    $DBtable = "user";
     $firstname = $_POST['Firstname'];
     $lastname = $_POST['Lastname'];
     $email = $_POST['Email'];
@@ -68,23 +65,12 @@ if(isset($_POST["Submit"])){
         echo "<h3>please fill in all fields<h3>";
 
     }else{
-        $DBname = "portfolio";
-        $DBtable = "user";
         mysqli_select_db($connection,$DBname);
-
-        //hasing the password
         $password = password_hash($password, PASSWORD_BCRYPT);
-
-
         $sql  = "INSERT INTO $DBtable (Voornaam, Achternaam, Email, Wachtwoord, Studentnr, Verified,`Type`,img_path,color_path,Quote) 
         VALUES ('$firstname', '$lastname', '$email', '$password',NULL,Null,'$rol',NULL,NULL,NULL)";
-        $result = mysqli_query($connection, $sql);
-        if($result === false){
-            echo"ERROR".mysqli_errno($connection)." : ".mysqli_error($connection);
-        }else{
-            mysqli_free_result($DBresult);
-            echo "<h3> Thanks for submiting<h3>";
-        }
+        $DBresult = mysqli_query($connection, $sql);
+        echo($result === false)?"ERROR".mysqli_errno($connection)." : ".mysqli_error($connection): "<h3> Thanks for submiting<h3>";
     }
 
 }
