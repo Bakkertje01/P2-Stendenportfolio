@@ -40,7 +40,7 @@ include 'hidden.menu.php';
                         <option  value = "docent" >Docent</option>
                         <option  value = "slb" >SLB</option>
                     </select><br>
-    </div>div>
+    </div>
 
 
     <input id='submit'type='submit' name='Submit' value='Registreren' /><br/>
@@ -69,30 +69,20 @@ if(isset($_POST["Submit"])){
         echo "<h3>please fill in all fields<h3>";
 
     }else{
+        $DBname = "portfolio";
+        $DBtable = "user";
+        mysqli_select_db($connection,$DBname);
 
         //hasing the password
-        $password = password_encrypt($_POST["Password"]);
+        $password = password_hash($password, PASSWORD_BCRYPT);
 
 
-        $sql  = "INSERT INTO customer (Firstname, Lastname, Email, Password) 
-        VALUES ('$firstname', '$lastname', '$email', '$password')";
+        $sql  = "INSERT INTO $DBtable (`Voornaam`,`Achternaam`,`Email`,`Wachtwoord`,`Type`) 
+        VALUES ('$firstname', '$lastname', '$email', '$password','$rol')";
         $result = mysqli_query($connection, $sql);
         if($result === false){
             echo"ERROR".mysqli_errno($connection)." : ".mysqli_error($connection);
         }else{
-            if ($rol == "admin") {        /// waarden die ingevoerd worden moeten unique zijn
-                $rol = "INSERT INTO user_type (Admin) Values ('') ";
-                $DBresult = mysqli_query($connection,$rol);
-             echo ($DBresult === false)?"ERROR :".mysqli_errno($connection)." : ".mysqli_error($connection) : "<h2>Registration ADMIN compleet</h2>";
-            } elseif ($rol == "docent") {
-                $rol = "INSERT INTO user_type (Docent) Values ('') ";
-                $DBresult = mysqli_query($connection,$rol);
-                echo ($DBresult === false)?"ERROR :".mysqli_errno($connection)." : ".mysqli_error($connection) : "<h2>Registration DOCENT compleet</h2>";
-            } elseif ($rol == "slb") {
-                $rol = "INSERT INTO user_type (SLB) Values ('') ";
-                $DBresult = mysqli_query($connection,$rol);
-                echo ($DBresult === false)?"ERROR :".mysqli_errno($connection)." : ".mysqli_error($connection) : "<h2>Registration SLB compleet</h2>";
-            }
             mysqli_free_result($DBresult);
             echo "<h3> Thanks for submiting<h3>";
         }

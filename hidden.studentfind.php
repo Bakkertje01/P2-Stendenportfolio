@@ -8,7 +8,7 @@
 
 <body>
 <?php
-///include "db_connection.php";
+$connection = mysqli_connect("127.0.0.1","root","");
 include_once 'hidden.header.php';
 include_once 'hidden.menu.php';
 ?>
@@ -35,16 +35,16 @@ include_once 'hidden.menu.php';
 if(!isset($_POST["submit"]) || isset($_POST["submit"]) && empty($_POST['voornaam'])){
      echo "<h2>Please Fill in your Surname<h2>";
 }else{
+    $DBname = 'portfolio';
     $DBtable = "gebruiker";
     $voornaam = $_POST["voornaam"];
     $voornaam = str_replace(array('\'','"','.',','), '', $voornaam);
 
 
-
-    if(!mysqli_select_db($connection,DB_NAME)){
+    mysqli_select_db($connection,$DBname);
+    if(!mysqli_select_db($connection,$DBname)){
         echo" COULD NOT SELECT DATABASE ".mysqli_errno($connection)." : ".mysqli_error($connection);
     }else{
-        mysqli_select_db($connection,DB_NAME);
         $DBcommand = "SELECT Voornaam,Achternaam FROM $DBtable WHERE Voornaam Like '%$voornaam%'";
         $DBresult = mysqli_query($connection,$DBcommand);
         if($DBresult === FALSE){
