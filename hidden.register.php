@@ -10,9 +10,9 @@
 <?php include_once 'include/functions.php'; ?>
 <?php include_once 'include/session.php'; ?>
 <?php
-include 'hidden.header.php';
+include_once 'hidden.header.php';
 ob_start();
-include 'hidden.menu.php';
+include_once 'hidden.menu.php';
 
 ?>
 

@@ -1,6 +1,6 @@
 <?php
-include 'include/session.php';
-include 'include/db_connection.php';
+include_once 'include/session.php';
+include_once 'include/db_connection.php';
 
 $message = "";
 if (!empty($_POST["login"])) {
