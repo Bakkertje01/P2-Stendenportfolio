@@ -15,21 +15,17 @@ include_once 'hidden.menu.php';
 <div class="jumbotron">
     <div class="container text-center">
         <h3>Student Finder</h3>
-
             <div id="wrapper">
-
-                <!-- CONTENT -->
                 <div id='content'>
-
-                <form  action = "hidden.studentfind.php" method = "POST">
+                <form action = "studentfind.php" method = "POST">
                     <p>vul het naamveld in van de student van wie je het portofolio wilt zien.</p><br>
                     <p>Naam : <input type = "text" name = "voornaam" pattern="[a-zA-Z]{1,}" value = '<?php echo (isset($_POST["submit"])) && !empty($_POST['voornaam'])? $_POST['voornaam'] : null ?>'></p>
                     <input type = "submit" name = "submit" value = "Search">
                 </form>
 
 <?php
-// connectie moet worden gemaakt
-// doet het nog niet moet nog portofolio van student hebben
+
+// doet het wel maar moet nog portofolio van student hebben
 
 
 if(!isset($_POST["submit"]) || isset($_POST["submit"]) && empty($_POST['voornaam'])){
@@ -45,7 +41,7 @@ if(!isset($_POST["submit"]) || isset($_POST["submit"]) && empty($_POST['voornaam
     if(!mysqli_select_db($connection,$DBname)){
         echo" COULD NOT SELECT DATABASE ".mysqli_errno($connection)." : ".mysqli_error($connection);
     }else{
-        $DBcommand = "SELECT Voornaam,Achternaam FROM $DBtable WHERE Voornaam Like '%$voornaam%'";
+        $DBcommand = "SELECT Voornaam,Achternaam FROM $DBtable WHERE Voornaam Like '$voornaam%' OR Achternaam Like '$voornaam%'";
         $DBresult = mysqli_query($connection,$DBcommand);
         if($DBresult === FALSE){
             echo "COULD NOT SELECT FROM TABLE ".mysqli_errno($connection)." : ".mysqli_error($connection);
@@ -54,7 +50,7 @@ if(!isset($_POST["submit"]) || isset($_POST["submit"]) && empty($_POST['voornaam
                 echo "There were no students found by the name of ".$voornaam."";
             }else{
                 if($row = mysqli_fetch_assoc($DBresult)) {
-                    echo "<h3>students by the name of</h3>  <h4><a href = '' >".$row["Voornaam"] ."  ".$row["Achternaam"] ."</a></h4> <h3>were found</h3>";
+                    echo "<h3>students by the name of</h3>  <h4><a href = '' >".$row["Voornaam"]." ".$row["Achternaam"] ."</a></h4> <h3>were found</h3>";
 
                     // https.portfolio.$voornaam. //hier komt link van site met naam naar pagina van student
                 }
