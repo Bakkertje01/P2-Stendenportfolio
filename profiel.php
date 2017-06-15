@@ -281,7 +281,7 @@ color: $textColor;
     if (isset($_POST['verstuur'])) {
 
 
-        if (isset($_FILES['upload']) && !empty($_FILES['upload']['name'])) {
+        if (isset($_FILES['upload']) && !empty($_FILES['upload']['name']) && !empty($_POST['Titel'])) {
 
 
             $errors = array();
@@ -380,7 +380,7 @@ color: $textColor;
                 }
             }
         } else {
-            echo "<center><p>Geen bestand gekozen!</p></center>";
+            echo "<center><p>Geen bestand gekozen of geen naam toegewezen!</p></center>";
         }
 
 
