@@ -7,7 +7,7 @@
 <body>
 <?php
 require_once "include/db_connection.php";
-include "include/noacces.php";
+//include "include/noacces.php";
 include 'hidden.header.php';
 include 'hidden.menu.php';
 ?>
@@ -28,11 +28,11 @@ include 'hidden.menu.php';
             $DBcommand = "SELECT * FROM $DBtable";
             $DBresult = mysqli_query($connection,$DBcommand);
             echo($DBresult === false)?"COULD NOT EXECUTE STATEMENT": NULL;
-            $TH = array("Voornaam","Achternaam","Email","Studentnr","Verified","Type","img_path","color_path","Quote");
+            $TH = array("Gebruiker_ID","Voornaam","Achternaam","Email","Studentnr","Verified","Type","img_path","color_path","Quote");
             $X = 0;
             $count = count($TH);
-            echo "<table width = 100% border = 1% height = 100 >";
-            echo "<form action = 'hidden.AdminOverview.php' method = 'POST'>";
+            echo "<table width = 100%  height = 200 >";
+            echo "<form action = '' method = 'POST'>";
             echo "<tr>";
            while($X < $count ){
                echo "<th>".$TH[$X]."</th>";
@@ -41,6 +41,7 @@ include 'hidden.menu.php';
             echo "</tr>";
             while($row = mysqli_fetch_assoc($DBresult)){
                 echo "<tr>";
+                echo "<td>".$row["Gebruiker_ID"]."</td>";
                 echo "<td>".$row["Voornaam"]."</td>";
                 echo "<td>".$row["Achternaam"]."</td>";
                 echo "<td>".$row["Email"]."</td>";
@@ -50,11 +51,19 @@ include 'hidden.menu.php';
                 echo "<td>".$row["img_path"]."</td>";
                 echo "<td>".$row["color_path"]."</td>";
                 echo "<td>".$row["Quote"]."</td>";
-                echo "<td><input type = 'submit' name = 'edit' value = 'Edit'></td>";
+                echo "<td><input type = 'submit' name = 'edit' value = '".$row['Gebruiker_ID']."'></td>";
                 echo "<tr>";
             }
             echo "</form>";
             echo "</table>";
+            echo "<br><br>";
+
+            if(isset($_POST['edit'])){
+                $CID = $_POST['edit'];
+                echo $CID;
+                $DBcommand = "SELECT * FROM $DBtable WHERE Gebruiker_ID = '$CID'";
+
+            }
 
             ?>
 
