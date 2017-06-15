@@ -24,6 +24,8 @@ if ($result->num_rows > 0) {
         $studentquote = $row["Quote"];
         $bgColor = $row["color_path"];
         $textColor =  $row["img_path"];
+        $PfNaam = 'pf.jpg';
+        $profielfoto = "studentuploads/$studentnumber/Profielfoto/$PfNaam";
     }
 } else {
     $ID = 'gast';
@@ -33,10 +35,16 @@ if ($result->num_rows > 0) {
     $studentquote = "Ik ben hier nieuw!";
     $bgColor = NULL;
     $textColor =  NULL;
+    $PfNaam = 'pf.jpg';
+    $profielfoto = "studentuploads/default/Profielfoto/$PfNaam";
+}
+$checkPf = "studentuploads/$studentnumber/Profielfoto/$PfNaam";
+
+if (!file_exists($checkPf)){
+    $profielfoto = "studentuploads/default/Profielfoto/$PfNaam";
 }
 
-$PfNaam = 'pf.jpg';
-$profielfoto = "studentuploads/$studentnumber/Profielfoto/$PfNaam";
+
 
 //mysqli_close($connection);
 
