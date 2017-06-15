@@ -52,6 +52,7 @@ include_once 'hidden.menu.php';
 </div>
 
 <?php
+
 //Registration script
 if (isset($_POST["Submit"])) {
     //The post values have to be the same as the form <name> tag
@@ -61,8 +62,15 @@ if (isset($_POST["Submit"])) {
     $password = $_POST['Wachtwoord'];
     $password1 = $_POST['Wachtwoord1'];
     $studentnr = $_POST['Studentnr'];
+    $substring = substr($email, -20);
 
-    $firstname = str_replace(array('\'','"'),"",$firstname);
+
+    $firstname = str_replace(array('\'', '"'), "", $firstname);
+    $lastname = str_replace(array('\'', '"'), "", $lastname);
+    $email = str_replace(array('\'', '"'), "", $email);
+    $password = str_replace(array('\'', '"'), "", $password);
+    $password1 = str_replace(array('\'', '"'), "", $password1);
+    $studentnr = str_replace(array('\'', '"'), "", $studentnr);
 
 
     //Verifcation
@@ -70,52 +78,57 @@ if (isset($_POST["Submit"])) {
         echo "please fill in all fields";
     } else {
 
-        /* Password Matching Validation */
-        if ($password != $password1) {
-            echo "Passwords moeten hetzelfde zijn<br>";
-
+        if ($substring != "@student.stenden.com") {
+            echo "het is geen student email adres";
         } else {
 
-            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                echo "Enter a Valid email";
+            /* Password Matching Validation */
+            if ($password != $password1) {
+                echo "Passwords moeten hetzelfde zijn<br>";
+
             } else {
 
-                if (strlen($password) <= 6) {
-                    echo "Choose a password longer then 6 character";
-
+                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                    echo "Enter a Valid email";
                 } else {
 
-                    $queryUsers = "SELECT Email FROM user WHERE Email='$email'";
-                    $resultemail = mysqli_query($connection, $queryUsers);
-                    if (mysqli_num_rows($resultemail) > 0) {
-                        echo '<div class="">' . '* Email adres bestaat al' . "</div>";
+                    if (strlen($password) <= 6) {
+                        echo "Choose a password longer then 6 character";
+
                     } else {
 
-                        $queryUsers = "SELECT Studentnr FROM user WHERE Studentnr='$studentnr'";
-                        $resultstnumber = mysqli_query($connection, $queryUsers);
-                        //$rowUsers = mysqli_fetch_array($resultUsers);
-                        if (mysqli_num_rows($resultstnumber) > 0) {
-                            echo '<div class="">' . '* Studentnumber bestaat al' . "</div>";
+                        $queryUsers = "SELECT Email FROM user WHERE Email='$email'";
+                        $resultemail = mysqli_query($connection, $queryUsers);
+                        if (mysqli_num_rows($resultemail) > 0) {
+                            echo '<div class="">' . '* Email adres bestaat al' . "</div>";
                         } else {
 
-                            //hasing the password
-                            $password = password_hash($password, PASSWORD_BCRYPT);
+                            $queryUsers = "SELECT Studentnr FROM user WHERE Studentnr='$studentnr'";
+                            $resultstnumber = mysqli_query($connection, $queryUsers);
+                            //$rowUsers = mysqli_fetch_array($resultUsers);
+                            if (mysqli_num_rows($resultstnumber) > 0) {
+                                echo '<div class="">' . '* Studentnumber bestaat al' . "</div>";
+                            } else {
 
-                            //$password = password_encrypt($_POST["Wachtwoord"]);
+                                //hasing the password
+                                $password = password_hash($password, PASSWORD_BCRYPT);
 
-                            $sql = "INSERT INTO user";
-                            $sql .= "(Voornaam, Achternaam, Email, Wachtwoord, Studentnr, Verified, Type) ";
-                            $sql .= "VALUES ('$firstname', '$lastname', '$email', '$password', '$studentnr', 1, 'student')";
+                                //$password = password_encrypt($_POST["Wachtwoord"]);
 
-                            $result = mysqli_query($connection, $sql);
-                            header("Location: hidden.login.php");
+                                $sql = "INSERT INTO user";
+                                $sql .= "(Voornaam, Achternaam, Email, Wachtwoord, Studentnr, Verified, Type) ";
+                                $sql .= "VALUES ('$firstname', '$lastname', '$email', '$password', '$studentnr', 1, 'student')";
 
-                            ob_end_flush();
+                                $result = mysqli_query($connection, $sql);
+                                header("Location: hidden.login.php");
 
-                            if ($result === false) {
-                                echo "ERROR" . mysqli_errno() . " : " . mysqli_error();
+                                ob_end_flush();
+
+                                if ($result === false) {
+                                    echo "ERROR" . mysqli_errno() . " : " . mysqli_error();
 
 
+                                }
                             }
                         }
                     }
