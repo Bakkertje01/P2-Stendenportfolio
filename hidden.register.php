@@ -33,7 +33,7 @@ include_once 'hidden.menu.php';
                         <input type='text' name='Achternaam' id='Achternaam' maxlength="30"/><br/>
 
                         <label for='email'>Email Adres*:</label><br/>
-                        <input type='text' name='Email' id='Email' maxlength="50"/><br/>
+                        <input type='email' name='Email' id='Email' maxlength="50"/><br/>
 
                         <label for='password'>Wachtwoord*:</label><br/>
                         <input type='password' name='Wachtwoord' id='Wachtwoord' maxlength="50"/><br/>

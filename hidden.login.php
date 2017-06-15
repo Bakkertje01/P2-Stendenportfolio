@@ -16,20 +16,36 @@ if (!empty($_POST["login"])) {
 
 		$_SESSION["Gebruiker_ID"] = $row['Gebruiker_ID'];
 		$_SESSION["Type"] = $row['Type'];
+
+		if($_SESSION['Type']== 'student'){
 		header('refresh:3;url=profiel.php');
+		}
+		if($_SESSION['Type']== 'admin'){
+			header('refresh:5;url=hidden.admin_register.php');
+		}
+		if($_SESSION['Type']== 'slb'){
+			header('refresh:5;url=index.php');
+		}
+		if($_SESSION['Type']== 'docent'){
+			header('refresh:5;url=index.php');
+		}
+
 	} else {
 		$message = "Invalid Username or Password!";
 	}
 }
+/*
 if (!empty($_POST["logout"])) {
 	$_SESSION["Gebruiker_ID"] = "";
 	session_destroy();
 }
+*/
 
 if (!empty($_POST["gast"])){
     $_SESSION ["Gast_ID"] = $row['Gebruiker_ID'];
+	$_SESSION["Type"] = $row['Type'];
 
-	header('refresh:3;url=index.php');
+	header('refresh:5;url=index.php');
 
 }
 ?>
@@ -79,7 +95,7 @@ include 'hidden.menu.php';
 
 
 			?>
-                Welkom <?php echo ucwords($row['Voornaam']); ?>, U bent ingelogd. U wordt doorgestuurd naar uw
+                Welkom <?php echo ucwords($row['Voornaam']); ?>, U bent ingelogd als <?php echo ucwords($row['Type']); ?>. U wordt doorgestuurd naar uw
                 <a href="profiel.php">profielpagina</a>.
 
 
