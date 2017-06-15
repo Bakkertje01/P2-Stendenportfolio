@@ -42,20 +42,21 @@ include_once 'hidden.menu.php';
         }
         if (isset($_SESSION['Gebruiker_ID']) && $_SESSION['Gebruiker_ID'] == true) // is de gebruiker ingelogd?
         {
-            echo "Welkom op de pagina ";
+            echo "Welkom op de pagina";
         } else
         {
             echo "Je moet inloggen voor je een bericht kunt plaatsen.";
         }
-        $bericht = mysqli_escape_string($connection, htmlspecialchars($_POST["bericht"]));; // haal uit bericht
-        $gebruiker_id = $_SESSION['Gebruiker_ID'];
-        $sql = "INSERT INTO bericht(`bericht`, `Gebruiker_ID`, `Datum_tijd`) VALUES('$bericht', $gebruiker_id,  )"; // haal uit bericht en zet in de database
-        var_dump($sql);exit;
-        if (!mysqli_query($connection, $sql))
-        {
-            die('Error: ' . mysqli_error($connection)); //  indien het niet lukt het in de database toe te voegen
-        } else
-            mysqli_close($connection);
+        if (isset($_POST['submit'])){
+            $bericht = mysqli_escape_string($connection, htmlspecialchars($_POST["bericht"]));; // haal uit bericht
+            $gebruiker_id = $_SESSION['Gebruiker_ID'];
+            $sql = "INSERT INTO bericht(`bericht`, `Gebruiker_ID`, `Datum_tijd`) VALUES('$bericht', $gebruiker_id,  )"; // haal uit bericht en zet in de database
+            if (!mysqli_query($connection, $sql))
+            {
+                mysqli_close($connection);
+                die('Error: ' . mysqli_error($connection)); //  indien het niet lukt het in de database toe te voegen
+            }
+        }
 
         $result = mysqli_query($connection, "SELECT `Voornaam` ,`Bericht` FROM `Bericht` INNER JOIN `user` ON Bericht.Gebruiker_ID = user.Gebruiker_ID "); // haal uit de database //AANVULLEN JOIN ON user.id = bericht.userid
 
@@ -71,9 +72,9 @@ include_once 'hidden.menu.php';
         ?>
 
         <div class="velden"> <!-- voor styling van alle echo's; zie CSS -->
-            <div class="header">
-                <div class="Bericht"><?php echo ($row['Bericht']); ?></div> <!-- echo bericht-->
+            <div class="header"><br>
                 <div class="Voornaam"><?php echo ($row['Voornaam']); ?></div> <!-- echo bericht-->
+                <div class="Bericht"><?php echo ($row['Bericht']); ?></div> <!-- echo bericht-->
             </div>
             <?php } ?>
             <?php
