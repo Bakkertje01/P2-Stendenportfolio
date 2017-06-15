@@ -1,11 +1,6 @@
 <?php
 include_once 'include/session.php';
 
-$checkPf = "studentuploads/$studentnumber/Profielfoto/$PfNaam";
-
-if (!file_exists($checkPf)){
-    $profielfoto = "studentuploads/default/Profielfoto/$PfNaam";
-}
 
 ?>
 

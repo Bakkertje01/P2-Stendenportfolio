@@ -113,6 +113,12 @@ include_once 'hidden.menu.php';
 
             $profielfoto = "studentuploads/$studentnumber/Profielfoto/pf.jpg";
 
+            $checkPf = "studentuploads/$studentnumber/Profielfoto/$PfNaam";
+
+            if (!file_exists($checkPf)){
+                $profielfoto = "studentuploads/default/Profielfoto/$PfNaam";
+            }
+
             echo "    <div class='container text-center'>
         <h3>Bestanden van  $studentnaam  $studentachter2</h3>
 
