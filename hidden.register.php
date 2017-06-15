@@ -24,7 +24,6 @@ include_once 'hidden.menu.php';
 
             <?php
 
-
             $errVoornaam = "";
             $errVoornaam2 = "";
             $errAchternaam = "";
@@ -39,11 +38,6 @@ include_once 'hidden.menu.php';
             $errEmail2 = "";
             $errStudentnummer = "";
             $errStudentnummer2 = "";
-
-
-
-
-
 
             ?>
             <div id="wrapper">
@@ -91,7 +85,9 @@ include_once 'hidden.menu.php';
 
 
 
+
                     ?>
+                    <p>* Verplicht in te vullen.</p>
                     <form id='register' action='hidden.register.php' method='post'>
                         <label for='firstname'>Voornaam*: </label>
                         <?php echo $errVoornaam; ?>
@@ -117,7 +113,7 @@ include_once 'hidden.menu.php';
                         <?php echo $errStudentnummer; ?>
                         <input type='number'  class="<?php echo $errStudentnummer2; ?>" name='Studentnr' id='Studentnr' maxlength="6" placeholder="Alleen getallen!"/>
 
-        <p>* Verplicht in te vullen.</p>
+
         <input id='submit' type='submit' name='Submit' value='Registreren'/><br/>
         </form>
     </div>
@@ -126,7 +122,7 @@ include_once 'hidden.menu.php';
 
 <?php
 
-//Registration script
+///Registration script
 if (isset($_POST["Submit"])) {
     //The post values have to be the same as the form <name> tag
     $firstname = $_POST['Voornaam'];
@@ -161,7 +157,7 @@ if (isset($_POST["Submit"])) {
             echo "het is geen student email adres";
         } else {
 
-            /* Password Matching Validation */
+            //Password Matching Validation
             if ($password != $password1) {
                 echo "Passwords moeten hetzelfde zijn<br>";
 
