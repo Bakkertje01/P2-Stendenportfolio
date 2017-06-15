@@ -1,9 +1,6 @@
 <?php
 // DATABASE CONNECTION
-define("DB_SERVER", "127.0.0.1");//database host
-define("DB_USER", "root");                //database login name
-define("DB_PASS", "");                //database login password
-define("DB_NAME", "portfolio");        //database name
+include_once ('include/Databases/contstants.php');
 $connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 
 //Test connection
