@@ -1,6 +1,7 @@
 <?php
 include_once 'include/session.php';
 
+
 ?>
 
 <html>
@@ -84,6 +85,7 @@ color: $textColor;
 
 
 </style>";
+
 }
 
 

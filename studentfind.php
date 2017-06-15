@@ -49,7 +49,7 @@ if(!isset($_POST["submit"]) || isset($_POST["submit"]) && empty($_POST['voornaam
             if(mysqli_num_rows($DBresult)  == 0){
                 echo "There were no students found by the name of ".$voornaam."";
             }else{
-                if($row = mysqli_fetch_assoc($DBresult)) {
+                while($row = mysqli_fetch_assoc($DBresult)) {
                     echo "<h3>students by the name of</h3>  <h4><a href = '' >".$row["Voornaam"]." ".$row["Achternaam"] ."</a></h4> <h3>were found</h3>";
 
                     // https.portfolio.$voornaam. //hier komt link van site met naam naar pagina van student
