@@ -32,7 +32,7 @@ include 'hidden.menu.php';
             $X = 0;
             $count = count($TH);
             echo "<table width = 100% border = 1% height = 100 >";
-            echo "<form action = 'hidden.AdminOverview.php'>"
+            echo "<form action = 'hidden.AdminOverview.php' method = 'POST'>";
             echo "<tr>";
            while($X < $count ){
                echo "<th>".$TH[$X]."</th>";
@@ -50,9 +50,10 @@ include 'hidden.menu.php';
                 echo "<td>".$row["img_path"]."</td>";
                 echo "<td>".$row["color_path"]."</td>";
                 echo "<td>".$row["Quote"]."</td>";
-                echo "<td><a href = ''>Edit</a></td>";
+                echo "<td><input type = 'submit' name = 'edit' value = 'Edit'></td>";
                 echo "<tr>";
             }
+            echo "</form>";
             echo "</table>";
 
             ?>
