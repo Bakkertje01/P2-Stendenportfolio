@@ -1,6 +1,25 @@
 <?php
 include_once 'include/session.php';
+function deletefiles($datum, $folder)
+{
 
+    $dirnamez = "./studentuploads/" . $datum;
+
+    $files1 = glob("$dirnamez/" . "$folder/" . "*");
+
+
+    if (!empty($folder)) {
+
+        foreach ($files1 as $file1) {
+            $fileTitle = explode('--', $file1);
+            $deftitle = ucfirst($fileTitle[1]);
+            echo "<option value='$file1'>$deftitle</option>";
+        }
+
+    }
+
+
+}
 
 ?>
 
@@ -218,33 +237,36 @@ color: $textColor;
         <p>
 
 
-            <form id='register' action='profiel.php' method='post' enctype="multipart/form-data">
-                <label for='upload'>Bestand: </label><br/>
-                <input type='file' name='upload' id='firstname'/><br/>
-        <p>Type:</p>
-
-        <?php
-        $foldersForUpload = array('CV', 'Afbeeldingen', 'Documenten');
-
-        echo "<select name='dirselect'>";
-        foreach ($foldersForUpload as $item) {
-            echo "<option value='$item'>$item</option>";
-
-        }
-        echo "</select><p></p>";
-
-        ?>
+        <h3>Bestanden uploaden</h3>
 
 
-        <label for='Titel'>Naam van je bestand:</label>
+        <form id='register' action='profiel.php' method='post' enctype="multipart/form-data">
+            <label for='upload'>Bestand: </label><br/>
+            <input type='file' name='upload' id='firstname'/><br/>
+            <p>Type:</p>
+
+            <?php
+            $foldersForUpload = array('CV', 'Afbeeldingen', 'Documenten');
+
+            echo "<select name='dirselect'>";
+            foreach ($foldersForUpload as $item) {
+                echo "<option value='$item'>$item</option>";
+
+            }
+            echo "</select><p></p>";
+
+            ?>
 
 
-        <input type='text' name='Titel' id='email'/>
-
-        <input type='submit' name='verstuur' id='phone' value='Upload'/>
+            <label for='Titel'>Naam van je bestand:</label>
 
 
-        <input type='submit' name='reset' style="float: right" value="Reset"/>
+            <input type='text' name='Titel' id='email'/>
+
+            <input type='submit' name='verstuur' id='phone' value='Upload'/>
+
+
+            <input type='submit' name='reset' style="float: right" value="Reset"/>
 
         </form>
     </div>
@@ -404,7 +426,7 @@ color: $textColor;
 
     </form>
     <br><br><br><br>
-    <?php if (isset($_POST[kleursub])){
+    <?php if (isset($_POST['kleursub'])) {
         echo $kleurgekozen;
 
 
@@ -437,6 +459,46 @@ if (isset($_POST['quotesubmit']) && !empty($_POST['quote'])) {
 
 <br>
 <br>
+
+<h3> Bestanden verwijderen </h3>
+
+<form id='register' action='profiel.php' method='post'>
+
+    <label for='upload'>Bestanden: </label><br><br><br><br>
+    <label>Kies te verwijderen bestand: </label><br><br>
+    <?php
+    $subdirs = array('CV', 'Afbeeldingen', 'Documenten');
+
+    echo "<select name='selectdelete'>";
+
+
+    foreach ($subdirs as $subdir) {
+
+        deletefiles($studentnumber, $subdir);
+
+    }
+    echo "</select>";
+
+    ?>
+    <input type='submit' name='deletefile' id='phone' value='Verwijder'/>
+</form>
+
+<?php
+
+if (isset($_POST['deletefile'])) {
+
+    $deleteFile = $_POST['selectdelete'];
+
+    if (!empty($deleteFile)) {
+
+        unlink($deleteFile);
+
+        echo "<p>Het bestand is verwijderd.</p>";
+    }
+
+}
+
+?>
 
 
 </div>
