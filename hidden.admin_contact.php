@@ -1,3 +1,7 @@
+<?php
+include_once 'include/session.php';
+?>
+
 <html>
 
 <head>
@@ -17,6 +21,7 @@ include_once 'hidden.menu.php';
 
     <div class="container text-center">
         <h2>Contact berichten</h2>
+
         <?php
 
                 //Connectie maken met DB en testen
@@ -51,14 +56,14 @@ include_once 'hidden.menu.php';
 
 
                                 echo "<table class='table table-hover table-striped table-bordered'>";
-                                echo    "<tr class='info'><th width='200'>Bericht nummer</th>" . "<th>$idPrint</th></tr>"
+                                echo    "<tr class='info'><th width='200'>Bericht nummer</th>" . "<th>$idPrint <form action='#' method='POST'><span class='pull-right'><input type='submit'  class='btn btn-info' name='verwijder' value='Verwijder'></span></form></th></tr>"
                                     . "<tr><td width='200'><b>Voornaam</b></td>" . "<td>$voornaamPrint</td></tr>"
                                     . "<tr><td width='200'><b>Achternaam</b></td>" . "<td>$achternaamPrint</td></tr>"
                                     . "<tr><td width='200'><b>E-Mail</b></td>" . "<td>$emailPrint</td></tr>"
                                     . "<tr><td width='200'><b>Datum</b></td>" . "<td>$datumPrint</td></tr>"
                                     . "<tr><td width='200'><b>Onderwerp</b></td>" . "<td>$onderwerpPrint</td></tr>"
                                     . "<tr><td width='200'><b>Bericht</b></td>" . "<td>$berichtPrint</td></tr>"
-                                    . "<tr><td width='200'><a href='mailto:$emailPrint'><input type='submit' name='submit' value='Beantwoord bericht'></a></td></tr>";
+                                    . "<tr><td width='200'><form action='mailto:$emailPrint' method='POST'><input type='submit' name='submit' value='Beantwoord bericht'></form></td></tr>";
 
                                     echo '</table>';
                                     echo '<hr>';
