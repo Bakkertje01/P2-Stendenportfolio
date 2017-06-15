@@ -471,7 +471,7 @@ if (isset($_POST['quotesubmit']) && !empty($_POST['quote'])) {
 
     echo "<select name='selectdelete'>";
 
-
+    echo "<option value=''>Selecteer je bestand</option>";
     foreach ($subdirs as $subdir) {
 
         deletefiles($studentnumber, $subdir);
