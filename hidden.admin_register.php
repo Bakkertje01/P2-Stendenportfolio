@@ -1,3 +1,8 @@
+<?php
+include_once 'include/session.php';
+include_once 'include/db_connection.php';
+include 'include/noacces_admin.php';
+?>
 <html>
 
 <head>
@@ -6,7 +11,7 @@
 
 <body>
 <?php
-$connection = mysqli_connect("127.0.0.1","root","");
+//$connection = mysqli_connect("127.0.0.1","root","");
 include 'hidden.header.php';
 include 'hidden.menu.php';
 ?>
