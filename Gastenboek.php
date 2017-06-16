@@ -17,15 +17,15 @@ include_once 'hidden.menu.php';
         <h1>My Portfolio</h1>
         <p>Some text that represents "Me"...</p>
         <h2>Plaats een bericht!</h2>
-        <form class="form-style" method="POST" action="gastenboek.php">
+        <form class="form-style" method="POST" >
             <ul>
                 <li>
                     <label for="bericht">Bericht</label>
-                    <textarea cols="50" name="message" rows="5"> </textarea>
+                    <textarea cols="50" name="bericht" rows="5"> </textarea>
                     <span>Vertel het eens!</span>
                 </li>
                 <li>
-                    <input name="verstuur" value="verstuur" type="submit">
+                    <input name="submit" value="submit" type="submit">
                     <input type="submit" name="reset" value="Reset">
                 </li>
             </ul>
@@ -49,12 +49,13 @@ include_once 'hidden.menu.php';
         {
             echo "Je moet inloggen voor je een bericht kunt plaatsen.";
         }
+
         if (isset($_POST['submit'])){
+
             $bericht = mysqli_escape_string($connection, htmlspecialchars($_POST["bericht"]));; // haal uit bericht
             $gebruiker_id = $_SESSION['Gebruiker_ID'];
             $date = date('Y:m:d:H:i');
-            $sql = "INSERT INTO bericht(`bericht`, `Gebruiker_ID`, `Datum_tijd`) VALUES('$bericht', $gebruiker_id, $date)"; // haal uit bericht en zet in de database
-            var_dump($sql); DIE;
+            $sql = "INSERT INTO bericht(`bericht`, `Gebruiker_ID`, `Datum_tijd`) VALUES('$bericht', $gebruiker_id, '$date')"; // haal uit bericht en zet in de database
             if (!mysqli_query($connection, $sql))
             {
                 mysqli_close($connection);
