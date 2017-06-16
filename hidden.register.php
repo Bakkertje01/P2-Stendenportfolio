@@ -1,3 +1,10 @@
+<?php
+    include_once 'include/db_connection.php';
+    include_once 'include/functions.php';
+    include_once 'include/session.php';
+?>
+
+
 <html>
 
 <head>
@@ -6,9 +13,7 @@
 
 <body>
 
-<?php include_once 'include/db_connection.php'; ?>
-<?php include_once 'include/functions.php'; ?>
-<?php include_once 'include/session.php'; ?>
+
 <?php
 include_once 'hidden.header.php';
 ob_start();

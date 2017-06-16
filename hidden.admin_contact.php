@@ -1,5 +1,6 @@
 <?php
 include_once 'include/session.php';
+//include_once 'include/noacces_admin.php';
 ?>
 
 <html>
@@ -42,6 +43,11 @@ include_once 'hidden.menu.php';
                             echo "<p>There are no reports!</p>";
                         }
                         else {
+
+
+
+
+
                             echo "<p>Dit zijn de contactformulieren die zijn toegevoegd</p>";
                             while($Row = mysqli_fetch_assoc($QueryResult))
                             {
@@ -56,19 +62,43 @@ include_once 'hidden.menu.php';
 
 
                                 echo "<table class='table table-hover table-striped table-bordered'>";
-                                echo    "<tr class='info'><th width='200'>Bericht nummer</th>" . "<th>$idPrint <form action='#' method='POST'><span class='pull-right'><input type='submit'  class='btn btn-info' name='verwijder' value='Verwijder'></span></form></th></tr>"
+                                echo    "<tr class='info'><th width='200'>Bericht nummer</th>" . "<th>$idPrint</th></tr>"
                                     . "<tr><td width='200'><b>Voornaam</b></td>" . "<td>$voornaamPrint</td></tr>"
                                     . "<tr><td width='200'><b>Achternaam</b></td>" . "<td>$achternaamPrint</td></tr>"
                                     . "<tr><td width='200'><b>E-Mail</b></td>" . "<td>$emailPrint</td></tr>"
                                     . "<tr><td width='200'><b>Datum</b></td>" . "<td>$datumPrint</td></tr>"
                                     . "<tr><td width='200'><b>Onderwerp</b></td>" . "<td>$onderwerpPrint</td></tr>"
                                     . "<tr><td width='200'><b>Bericht</b></td>" . "<td>$berichtPrint</td></tr>"
-                                    . "<tr><td width='200'><form action='mailto:$emailPrint' method='POST'><input type='submit' name='submit' value='Beantwoord bericht'></form></td></tr>";
+                                    . "<tr class='info'><td width='220'><form action='mailto:$emailPrint' method='POST'><input type='submit' class='btn' name='submit' value='Antwoord'></form> <form action='hidden.admin_contact.php' method='POST'><input type='hidden' name='verwijderen' value='".$idPrint."'> <span class='pull-right'><input type='submit'  class='btn btn-danger active' name='verwijder' value='Verwijder'></span></form></td></tr>";
 
                                     echo '</table>';
                                     echo '<hr>';
 
                             }
+                           /* if(isset($_POST['verwijder'])){
+
+                                $berichtNummer = $_POST['verwijderen'];
+                                echo $berichtNummer;
+
+                                $SQLstring = "DELETE FROM contact WHERE Contactg_ID = $berichtNummer;";
+                                $QueryResult = mysqli_query($DBConnect, $SQLstring);
+                                if ($QueryResult === FALSE) {
+                                    echo "<p>Unable to execute the query.</p>"
+                                        . "<p>Error code " . mysqli_errno($DBConnect)
+                                        . ": " . mysqli_error($DBConnect) . "</p>";
+                                } else {
+
+
+                                    echo "<h2>Het bericht is verwijderd!</h2>";
+                                }
+                                header("Refresh:0");
+
+
+
+                                echo "hoi";
+
+
+                            }*/
 
                         }
                         mysqli_free_result($QueryResult);
