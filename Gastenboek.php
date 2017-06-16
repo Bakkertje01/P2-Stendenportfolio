@@ -1,5 +1,7 @@
 <?php
 include 'include/session.php';
+include 'include/db_connection.php';
+
 ?>
 <html>
 <head>
@@ -50,7 +52,9 @@ include_once 'hidden.menu.php';
         if (isset($_POST['submit'])){
             $bericht = mysqli_escape_string($connection, htmlspecialchars($_POST["bericht"]));; // haal uit bericht
             $gebruiker_id = $_SESSION['Gebruiker_ID'];
-            $sql = "INSERT INTO bericht(`bericht`, `Gebruiker_ID`, `Datum_tijd`) VALUES('$bericht', $gebruiker_id,  )"; // haal uit bericht en zet in de database
+            $date = date('Y:m:d:H:i');
+            $sql = "INSERT INTO bericht(`bericht`, `Gebruiker_ID`, `Datum_tijd`) VALUES('$bericht', $gebruiker_id, $date)"; // haal uit bericht en zet in de database
+            var_dump($sql); DIE;
             if (!mysqli_query($connection, $sql))
             {
                 mysqli_close($connection);
