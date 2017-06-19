@@ -51,7 +51,7 @@ if(!isset($_POST["submit"]) || isset($_POST["submit"]) && empty($_POST['voornaam
             }else{
                 echo "<h3>Gevonden studenten</h3>";
                 while($row = mysqli_fetch_assoc($DBresult)) {
-                    echo "<h4><a href = 'hidden.profiel.php?student=$row[Studentnr]' >".$row["Voornaam"]." ".$row["Achternaam"] ."</a></h4>";
+                    echo "<h4><a href = 'hidden.foundstudent.php?student=$row[Studentnr]' >".$row["Voornaam"]." ".$row["Achternaam"] ."</a></h4>";
 
                     // https.portfolio.$voornaam. //hier komt link van site met naam naar pagina van student
                 }
