@@ -23,7 +23,7 @@ if (!empty($_POST["login"])) {
 	if (is_array($row) && password_verify($password, $row['Wachtwoord']) ) {
 
 		$_SESSION["Gebruiker_ID"] = $row['Gebruiker_ID'];
-		$_SESSION["Type"] = $row['Type'];
+        $_SESSION["Type"] = $row['Type'];
 
 		if($_SESSION['Type']== 'student'){
 		header('refresh:3;url=profiel.php');
