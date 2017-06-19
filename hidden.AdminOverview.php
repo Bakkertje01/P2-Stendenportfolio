@@ -58,8 +58,8 @@ include 'hidden.menu.php';
             echo "</table>";
             echo "<br><br>";
 
-            if(isset($_POST['edit']) || isset($_POST['update'])){
-                $CID = $_POST['edit'];
+            if(isset($_POST['edit'])){
+                $CID = $row["Gebruiker_ID"];
                 echo $CID;
                 $DBcommand = "SELECT * FROM $DBtable WHERE Gebruiker_ID = '$CID'";
                 $DBresult = mysqli_query($connection,$DBcommand);
@@ -83,6 +83,7 @@ include 'hidden.menu.php';
                         echo "<td><input type = 'submit' name = 'delete' value = 'delete'></td>";
                         echo "<tr>";
                     }
+
                     echo "</form>";
                     echo "</table>";
                     echo $CID;
@@ -102,7 +103,7 @@ include 'hidden.menu.php';
                     $DBresult = mysqli_query($connection,$DBcommand);
                     echo ($DBresult === false)? "COULD NOT EXECUTE QUERY".mysqli_errno($connection)." : ".mysqli_error($connection): 'UPDATE HAS BEEN APPLIED';
                 }elseif(isset($_POST['delete'])){
-                    $DBcommand = "DROP TABLE $DBtable WHERE userid = '$CID'";
+                    $DBcommand = "DELETE FROM $DBtable WHERE userid = '$CID'";
                     $DBresult = mysqli_query($connection,$DBcommand);
                     echo ($DBresult === false)? "COULD NOT EXECUTE QUERY".mysqli_errno($connection)." : ".mysqli_error($connection): 'DELETION HAS BEEN APPLIED';
                 }
