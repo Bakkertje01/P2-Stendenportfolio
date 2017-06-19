@@ -70,7 +70,7 @@ include_once 'include/session.php';
             box-sizing: border-box;
             margin-top: 6px;
             margin-bottom: 16px;
-            resize: vertical;
+            resize: none;
         }
 
         input[type=password] {
