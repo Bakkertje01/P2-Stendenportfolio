@@ -53,7 +53,7 @@ if(!isset($_POST["submit"])){
             if(mysqli_num_rows($DBresult)  == 0){
                 echo "There were no students found by the name of ".$voornaam."";
             }else{
-                echo "<h3>Gevonden studenten</h3>";
+                echo "<h3><br><br>Gevonden studenten</h3>";
                 while($row = mysqli_fetch_assoc($DBresult)) {
                     echo "<h4><a href = 'hidden.foundstudent.php?student=$row[Studentnr]' >".$row["Voornaam"]." ".$row["Achternaam"] ."</a></h4>";
 
