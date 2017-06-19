@@ -1,5 +1,7 @@
 <?php
 include 'include/session.php';
+include 'include/db_connection.php';
+
 ?>
 <html>
 <head>
@@ -15,15 +17,15 @@ include_once 'hidden.menu.php';
         <h1>My Portfolio</h1>
         <p>Some text that represents "Me"...</p>
         <h2>Plaats een bericht!</h2>
-        <form class="form-style" method="POST" action="gastenboek.php">
+        <form class="form-style" method="POST" >
             <ul>
                 <li>
                     <label for="bericht">Bericht</label>
-                    <textarea cols="50" name="message" rows="5"> </textarea>
+                    <textarea cols="50" name="bericht" rows="5"> </textarea>
                     <span>Vertel het eens!</span>
                 </li>
                 <li>
-                    <input name="verstuur" value="verstuur" type="submit">
+                    <input name="submit" value="submit" type="submit">
                     <input type="submit" name="reset" value="Reset">
                 </li>
             </ul>
@@ -42,20 +44,24 @@ include_once 'hidden.menu.php';
         }
         if (isset($_SESSION['Gebruiker_ID']) && $_SESSION['Gebruiker_ID'] == true) // is de gebruiker ingelogd?
         {
-            echo "Welkom op de pagina ";
+            echo "Welkom op de pagina";
         } else
         {
             echo "Je moet inloggen voor je een bericht kunt plaatsen.";
         }
-        $bericht = mysqli_escape_string($connection, htmlspecialchars($_POST["bericht"]));; // haal uit bericht
-        $gebruiker_id = $_SESSION['Gebruiker_ID'];
-        $sql = "INSERT INTO bericht(`bericht`, `Gebruiker_ID`, `Datum_tijd`) VALUES('$bericht', $gebruiker_id,  )"; // haal uit bericht en zet in de database
-        var_dump($sql);exit;
-        if (!mysqli_query($connection, $sql))
-        {
-            die('Error: ' . mysqli_error($connection)); //  indien het niet lukt het in de database toe te voegen
-        } else
-            mysqli_close($connection);
+
+        if (isset($_POST['submit'])){
+
+            $bericht = mysqli_escape_string($connection, htmlspecialchars($_POST["bericht"]));; // haal uit bericht
+            $gebruiker_id = $_SESSION['Gebruiker_ID'];
+            $date = date('Y:m:d:H:i');
+            $sql = "INSERT INTO bericht(`bericht`, `Gebruiker_ID`, `Datum_tijd`) VALUES('$bericht', $gebruiker_id, '$date')"; // haal uit bericht en zet in de database
+            if (!mysqli_query($connection, $sql))
+            {
+                mysqli_close($connection);
+                die('Error: ' . mysqli_error($connection)); //  indien het niet lukt het in de database toe te voegen
+            }
+        }
 
         $result = mysqli_query($connection, "SELECT `Voornaam` ,`Bericht` FROM `Bericht` INNER JOIN `user` ON Bericht.Gebruiker_ID = user.Gebruiker_ID "); // haal uit de database //AANVULLEN JOIN ON user.id = bericht.userid
 
@@ -71,9 +77,9 @@ include_once 'hidden.menu.php';
         ?>
 
         <div class="velden"> <!-- voor styling van alle echo's; zie CSS -->
-            <div class="header">
-                <div class="Bericht"><?php echo ($row['Bericht']); ?></div> <!-- echo bericht-->
+            <div class="header"><br>
                 <div class="Voornaam"><?php echo ($row['Voornaam']); ?></div> <!-- echo bericht-->
+                <div class="Bericht"><?php echo ($row['Bericht']); ?></div> <!-- echo bericht-->
             </div>
             <?php } ?>
             <?php

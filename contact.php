@@ -141,7 +141,7 @@ include_once 'hidden.menu.php';
 
 
             <label for="fname">Voornaam</label>
-
+            <?php echo $errVoornaam; ?>
             <input type="text" class = "<?php echo $errVoornaam2; ?>"id="fname" name="firstname" placeholder="Uw voornaam.." value="<?php echo $voornaam; ?>">
 
 
