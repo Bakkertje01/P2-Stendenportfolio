@@ -26,188 +26,192 @@ include_once 'hidden.menu.php';
         <h1>My Portfolio</h1>
 
 
+        <?php
 
-            <?php
+        $errVoornaam = "";
+        $errVoornaam2 = "";
+        $errAchternaam = "";
+        $errAchternaam2 = "";
+        $errBericht = "";
+        $errBericht2 = "";
+        $errWachtwoord = "";
+        $errWachtwoord2 = "";
+        $errWachtwoordControle = "";
+        $errWachtwoordControle2 = "";
+        $errEmail = "";
+        $errEmail2 = "";
+        $errStudentnummer = "";
+        $errStudentnummer2 = "";
 
-            $errVoornaam = "";
-            $errVoornaam2 = "";
-            $errAchternaam = "";
-            $errAchternaam2 = "";
-            $errBericht = "";
-            $errBericht2 = "";
-            $errWachtwoord = "";
-            $errWachtwoord2 = "";
-            $errWachtwoordControle = "";
-            $errWachtwoordControle2 = "";
-            $errEmail = "";
-            $errEmail2 = "";
-            $errStudentnummer = "";
-            $errStudentnummer2 = "";
+        ?>
+        <div id="wrapper">
+            <!-- CONTENT -->
+            <div id='content'>
+                <h1> Registratie </h1>
+                <?php
 
-            ?>
-            <div id="wrapper">
-                <!-- CONTENT -->
-                <div id='content'>
-                    <h1> Registratie </h1>
-                    <?php
+                if (empty ($_POST['Voornaam']) || empty ($_POST['Achternaam']) || empty ($_POST['Email']) || empty ($_POST['Wachtwoord']) || empty ($_POST['Wachtwoord1']) || empty ($_POST['Studentnr'])) {
 
-                    if (empty ($_POST['Voornaam']) || empty ($_POST['Achternaam']) || empty ($_POST['Email']) || empty ($_POST['Wachtwoord']) || empty ($_POST['Wachtwoord1']) || empty ($_POST['Studentnr'])) {
-
-                        if (isset($_POST['Submit'])) {
+                    if (isset($_POST['Submit'])) {
 
 
-                            if (empty($_POST["Voornaam"])) {
-                                $errVoornaam = "<div class='errorText'>&emsp; Voornaam is verplicht</div>";
-                                $errVoornaam2 = "bg-danger";
-                            }
+                        if (empty($_POST["Voornaam"])) {
+                            $errVoornaam = "<div class='errorText'>&emsp; Voornaam is verplicht</div>";
+                            $errVoornaam2 = "bg-danger";
+                        }
 
-                            if (empty($_POST["Achternaam"])) {
-                                $errAchternaam = "<div class='errorText'>&emsp; Achternaam is verplicht</div>";
-                                $errAchternaam2 = "bg-danger";
-                            }
+                        if (empty($_POST["Achternaam"])) {
+                            $errAchternaam = "<div class='errorText'>&emsp; Achternaam is verplicht</div>";
+                            $errAchternaam2 = "bg-danger";
+                        }
 
-                            if (empty($_POST["Studentnummer"])) {
-                                $errStudentnummer = "<div class='errorText'>&emsp; Een studentnummer is verplicht</div>";
-                                $errStudentnummer2 = "bg-danger";
-                            }
+                        if (empty($_POST["Studentnummer"])) {
+                            $errStudentnummer = "<div class='errorText'>&emsp; Een studentnummer is verplicht</div>";
+                            $errStudentnummer2 = "bg-danger";
+                        }
 
-                            if (empty($_POST["Wachtwoord"])) {
-                                $errWachtwoord = "<div class='errorText'>&emsp; Een wachtwoord is verplicht (minimaal 6 tekens)</div>";
-                                $errWachtwoord2 = "bg-danger";
-                            }
+                        if (empty($_POST["Wachtwoord"])) {
+                            $errWachtwoord = "<div class='errorText'>&emsp; Een wachtwoord is verplicht (minimaal 6 tekens)</div>";
+                            $errWachtwoord2 = "bg-danger";
+                        }
 
-                            if (empty($_POST["WachtwoordControle"])) {
-                                $errWachtwoordControle = "<div class='errorText'>&emsp; Een wachtwoord controle is verplicht (minimaal 6 tekens)</div>";
-                                $errWachtwoordControle2 = "bg-danger";
-                            }
+                        if (empty($_POST["WachtwoordControle"])) {
+                            $errWachtwoordControle = "<div class='errorText'>&emsp; Een wachtwoord controle is verplicht (minimaal 6 tekens)</div>";
+                            $errWachtwoordControle2 = "bg-danger";
+                        }
 
-                            if (!filter_var($_POST["Email"], FILTER_VALIDATE_EMAIL)) {
-                                $errEmail = "<div class='errorText'>&emsp; Vul een geldig e-mailadres in.</div>";
-                                $errEmail2 = "bg-danger";
-                            }
+                        if (!filter_var($_POST["Email"], FILTER_VALIDATE_EMAIL)) {
+                            $errEmail = "<div class='errorText'>&emsp; Vul een geldig e-mailadres in.</div>";
+                            $errEmail2 = "bg-danger";
                         }
                     }
+                }
 
 
+                ?>
+                <p>* Verplicht in te vullen.</p>
+                <form id='register' action='hidden.register.php' method='post'>
+                    <label for='firstname'>Voornaam*: </label>
+                    <?php echo $errVoornaam; ?>
+                    <input type='text' class="<?php echo $errVoornaam2; ?>" name='Voornaam' id='Voornaam'
+                           maxlength="30"/>
+
+                    <label for='lastname'>Achternaam*: </label>
+                    <?php echo $errAchternaam; ?>
+                    <input type='text' class="<?php echo $errAchternaam2; ?>" name='Achternaam' id='Achternaam'
+                           maxlength="30"/>
+
+                    <label for='email'>Email Adres*: </label>
+                    <?php echo $errEmail; ?>
+                    <input type='email' class="<?php echo $errEmail2; ?>" name='Email' id='Email' maxlength="50"/>
+
+                    <label for='password'>Wachtwoord*: </label>
+                    <?php echo $errWachtwoord; ?>
+                    <input type='password' class="<?php echo $errWachtwoord2; ?>" name='Wachtwoord' id='Wachtwoord'
+                           maxlength="50"/>
+
+                    <label for='password1'>Wachtwoord ter controle*: </label>
+                    <?php echo $errWachtwoordControle; ?>
+                    <input type='password' class="<?php echo $errWachtwoordControle2; ?>" name='Wachtwoord1'
+                           id='Wachtwoord1' maxlength="50"/>
+
+                    <label for='Studentnr'>Student nummer*: </label>
+                    <?php echo $errStudentnummer; ?>
+                    <input type='number' class="<?php echo $errStudentnummer2; ?>" name='Studentnr' id='Studentnr'
+                           maxlength="6" placeholder="Alleen getallen!"/>
 
 
-                    ?>
-                    <p>* Verplicht in te vullen.</p>
-                    <form id='register' action='hidden.register.php' method='post'>
-                        <label for='firstname'>Voornaam*: </label>
-                        <?php echo $errVoornaam; ?>
-                        <input type='text' class="<?php echo $errVoornaam2; ?>"  name='Voornaam' id='Voornaam' maxlength="30"/>
+                    <input id='submit' type='submit' name='Submit' value='Registreren'/><br/>
+                </form>
+            </div>
 
-                        <label for='lastname'>Achternaam*: </label>
-                        <?php echo $errAchternaam; ?>
-                        <input type='text' class="<?php echo $errAchternaam2; ?>" name='Achternaam' id='Achternaam' maxlength="30"/>
+        </div>
 
-                        <label for='email'>Email Adres*: </label>
-                        <?php echo $errEmail; ?>
-                        <input type='email'  class="<?php echo $errEmail2; ?>" name='Email' id='Email' maxlength="50"/>
+        <?php
 
-                        <label for='password'>Wachtwoord*: </label>
-                        <?php echo $errWachtwoord; ?>
-                        <input type='password'  class="<?php echo $errWachtwoord2; ?>" name='Wachtwoord' id='Wachtwoord' maxlength="50"/>
+        ///Registration script
+        if (isset($_POST["Submit"])) {
+            //The post values have to be the same as the form <name> tag
+            $firstname = $_POST['Voornaam'];
+            $lastname = $_POST['Achternaam'];
+            $email = $_POST['Email'];
+            $password = $_POST['Wachtwoord'];
+            $password1 = $_POST['Wachtwoord1'];
+            $studentnr = $_POST['Studentnr'];
+            $substring = substr($email, -20);
 
-                        <label for='password1'>Wachtwoord ter controle*: </label>
-                        <?php echo $errWachtwoordControle; ?>
-                        <input type='password'  class="<?php echo $errWachtwoordControle2; ?>" name='Wachtwoord1' id='Wachtwoord1' maxlength="50"/>
+            $voornaam = trim($_POST['voornaam']);
+            $voornaam = strip_tags($voornaam);
+            $voornaam = htmlspecialchars($voornaam);
 
-                        <label for='Studentnr'>Student nummer*: </label>
-                        <?php echo $errStudentnummer; ?>
-                        <input type='number'  class="<?php echo $errStudentnummer2; ?>" name='Studentnr' id='Studentnr' maxlength="6" placeholder="Alleen getallen!"/>
-
-
-        <input id='submit' type='submit' name='Submit' value='Registreren'/><br/>
-        </form>
-    </div>
-
-</div>
-
-<?php
-
-///Registration script
-if (isset($_POST["Submit"])) {
-    //The post values have to be the same as the form <name> tag
-    $firstname = $_POST['Voornaam'];
-    $lastname = $_POST['Achternaam'];
-    $email = $_POST['Email'];
-    $password = $_POST['Wachtwoord'];
-    $password1 = $_POST['Wachtwoord1'];
-    $studentnr = $_POST['Studentnr'];
-    $substring = substr($email, -20);
+            $firstname = str_replace(array('\'', '"'), "", $firstname);
+            $lastname = str_replace(array('\'', '"'), "", $lastname);
+            $email = str_replace(array('\'', '"'), "", $email);
+            $password = str_replace(array('\'', '"'), "", $password);
+            $password1 = str_replace(array('\'', '"'), "", $password1);
+            $studentnr = str_replace(array('\'', '"'), "", $studentnr);
 
 
-    $firstname = str_replace(array('\'', '"'), "", $firstname);
-    $lastname = str_replace(array('\'', '"'), "", $lastname);
-    $email = str_replace(array('\'', '"'), "", $email);
-    $password = str_replace(array('\'', '"'), "", $password);
-    $password1 = str_replace(array('\'', '"'), "", $password1);
-    $studentnr = str_replace(array('\'', '"'), "", $studentnr);
+            //Verifcation
+            if (empty ($_POST['Voornaam']) || empty ($_POST['Achternaam']) || empty ($_POST['Email']) || empty ($_POST['Wachtwoord']) || empty ($_POST['Wachtwoord1']) || empty ($_POST['Studentnr'])) {
 
+                //
 
-    //Verifcation
-    if (empty ($_POST['Voornaam']) || empty ($_POST['Achternaam']) || empty ($_POST['Email']) || empty ($_POST['Wachtwoord']) || empty ($_POST['Wachtwoord1']) || empty ($_POST['Studentnr'])) {
-
-        //
-
-
-
-
-
-    } else {
-
-        if ($substring != "@student.stenden.com") {
-            echo "het is geen student email adres";
-        } else {
-
-            //Password Matching Validation
-            if ($password != $password1) {
-                echo "Passwords moeten hetzelfde zijn<br>";
 
             } else {
 
-                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                    echo "Enter a Valid email";
+                if ($substring != "@student.stenden.com") {
+                    echo "het is geen student email adres";
                 } else {
 
-                    if (strlen($password) <= 6) {
-                        echo "Choose a password longer then 6 character";
+                    //Password Matching Validation
+                    if ($password != $password1) {
+                        echo "Passwords moeten hetzelfde zijn<br>";
 
                     } else {
 
-                        $queryUsers = "SELECT Email FROM user WHERE Email='$email'";
-                        $resultemail = mysqli_query($connection, $queryUsers);
-                        if (mysqli_num_rows($resultemail) > 0) {
-                            echo '<div class="">' . '* Email adres bestaat al' . "</div>";
+                        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                            echo "Enter a Valid email";
                         } else {
 
-                            $queryUsers = "SELECT Studentnr FROM user WHERE Studentnr='$studentnr'";
-                            $resultstnumber = mysqli_query($connection, $queryUsers);
-                            //$rowUsers = mysqli_fetch_array($resultUsers);
-                            if (mysqli_num_rows($resultstnumber) > 0) {
-                                echo '<div class="">' . '* Studentnumber bestaat al' . "</div>";
+                            if (strlen($password) <= 6) {
+                                echo "Choose a password longer then 6 character";
+
                             } else {
 
-                                //hasing the password
-                                $password = password_hash($password, PASSWORD_BCRYPT);
+                                $queryUsers = "SELECT Email FROM user WHERE Email='$email'";
+                                $resultemail = mysqli_query($connection, $queryUsers);
+                                if (mysqli_num_rows($resultemail) > 0) {
+                                    echo '<div class="">' . '* Email adres bestaat al' . "</div>";
+                                } else {
 
-                                //$password = password_encrypt($_POST["Wachtwoord"]);
+                                    $queryUsers = "SELECT Studentnr FROM user WHERE Studentnr='$studentnr'";
+                                    $resultstnumber = mysqli_query($connection, $queryUsers);
+                                    //$rowUsers = mysqli_fetch_array($resultUsers);
+                                    if (mysqli_num_rows($resultstnumber) > 0) {
+                                        echo '<div class="">' . '* Studentnumber bestaat al' . "</div>";
+                                    } else {
 
-                                $sql = "INSERT INTO user";
-                                $sql .= "(Voornaam, Achternaam, Email, Wachtwoord, Studentnr, Verified, Type) ";
-                                $sql .= "VALUES ('$firstname', '$lastname', '$email', '$password', '$studentnr', 1, 'student')";
+                                        //hasing the password
+                                        $password = password_hash($password, PASSWORD_BCRYPT);
 
-                                $result = mysqli_query($connection, $sql);
-                                header("Location: hidden.login.php");
+                                        //$password = password_encrypt($_POST["Wachtwoord"]);
 
-                                ob_end_flush();
+                                        $sql = "INSERT INTO user";
+                                        $sql .= "(Voornaam, Achternaam, Email, Wachtwoord, Studentnr, Verified, Type) ";
+                                        $sql .= "VALUES ('$firstname', '$lastname', '$email', '$password', '$studentnr', 1, 'student')";
 
-                                if ($result === false) {
-                                    echo "ERROR" . mysqli_errno() . " : " . mysqli_error();
+                                        $result = mysqli_query($connection, $sql);
+                                        header("Location: hidden.login.php");
+
+                                        ob_end_flush();
+
+                                        if ($result === false) {
+                                            echo "ERROR" . mysqli_errno() . " : " . mysqli_error();
 
 
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -215,12 +219,10 @@ if (isset($_POST["Submit"])) {
                 }
             }
         }
-    }
-}
-?>
+        ?>
 
 
-</div>
+    </div>
 </div>
 
 <div class="container-fluid bg-3 text-center">
