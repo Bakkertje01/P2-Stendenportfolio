@@ -91,6 +91,9 @@ if (isset($_POST['reset'])) {
 <?php
 include_once 'hidden.header.php';
 include_once 'hidden.menu.php';
+
+
+
 ?>
 
 
@@ -107,12 +110,72 @@ if(isset($_GET['student'])) {
 		// output data of each row
 		while ($row = $result->fetch_assoc()) {
 
-
+            $bgColor = $row['color_path'];
+            $textColor = $row['img_path'];
 			$studentnaam = $row["Voornaam"];
 			$studentnumber = $row["Studentnr"];
 			$studentquote = $row["Quote"];
 			$studentachter2 = $row["Achternaam"];
 
+			echo "<style>
+    
+
+
+body{
+background-color: $bgColor;
+}
+
+.jumbotron{
+background-color: $bgColor;
+}
+
+.container text-center{
+background-color: $bgColor;
+}
+
+.container-fluid bg-3 text-center{
+background-color: $bgColor;
+}
+
+.row{
+background-color: $bgColor;
+}
+
+.col-sm-3{
+background-color: $bgColor;
+}
+
+.img-responsive{
+background-color: $bgColor;
+}
+
+p{
+color: $textColor;
+}
+
+h1{
+color: $textColor;
+}h2{
+color: $textColor;
+}h3{
+color: $textColor;
+}h4{
+color: $textColor;
+}h5{
+color: $textColor;
+}h6{
+color: $textColor;
+}
+input{
+color: $textColor;
+}
+label{
+color: $textColor;
+}
+
+
+
+</style>";
 
 			$profielfoto = "studentuploads/$studentnumber/Profielfoto/pf.jpg";
 
