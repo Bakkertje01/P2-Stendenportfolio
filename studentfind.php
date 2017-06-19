@@ -1,3 +1,9 @@
+<?php
+include_once 'include/session.php';
+include  'include/db_connection.php';
+include_once 'include/noacces.php';
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -8,7 +14,6 @@
 
 <body>
 <?php
-$connection = mysqli_connect("127.0.0.1","root","");
 include_once 'hidden.header.php';
 include_once 'hidden.menu.php';
 ?>
@@ -31,16 +36,12 @@ include_once 'hidden.menu.php';
 if(!isset($_POST["submit"]) || isset($_POST["submit"]) && empty($_POST['voornaam'])){
      echo "<h2>Please Fill in your Surname<h2>";
 }else{
-    $DBname = 'portfolio';
     $DBtable = "user";
     $voornaam = $_POST["voornaam"];
     $voornaam = str_replace(array('\'','"','.',','), '', $voornaam);
 
 
-    mysqli_select_db($connection,$DBname);
-    if(!mysqli_select_db($connection,$DBname)){
-        echo" COULD NOT SELECT DATABASE ".mysqli_errno($connection)." : ".mysqli_error($connection);
-    }else{
+
         $DBcommand = "SELECT Voornaam,Achternaam,Email,Studentnr,`Type`,img_path,color_path,Quote FROM $DBtable WHERE Voornaam Like '%$voornaam%' OR Achternaam Like '%$voornaam%' HAVING `TYPE` = 'student'";
         $DBresult = mysqli_query($connection,$DBcommand);
         if($DBresult === FALSE){
@@ -57,9 +58,6 @@ if(!isset($_POST["submit"]) || isset($_POST["submit"]) && empty($_POST['voornaam
                 }
             }
         }
-    }
-
-
 }
 
 ?>

@@ -1,5 +1,6 @@
 <?php
-include_once('include/session.php');
+include_once'include/session.php';
+include_once 'include/noacces.php';
 function dateSelect($datum, $folder)
 {
 
@@ -99,7 +100,7 @@ if(isset($_GET['student'])) {
 	$studentnr = $_GET['student'];
 
 
-	$sql = "SELECT Gebruiker_ID, Voornaam, Studentnr, Quote, Achternaam FROM user WHERE Studentnr = '$studentnr'";
+	$sql = "SELECT Gebruiker_ID, Voornaam, Studentnr, Quote, Achternaam, img_path, color_path FROM user WHERE Studentnr = '$studentnr'";
 	$result = $connection->query($sql);
 
 	if ($result->num_rows > 0) {
