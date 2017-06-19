@@ -58,10 +58,49 @@ include 'hidden.menu.php';
             echo "</table>";
             echo "<br><br>";
 
-            if(isset($_POST['edit'])){
+            if(isset($_POST['edit']) || isset($_POST['update'])){
                 $CID = $_POST['edit'];
                 echo $CID;
                 $DBcommand = "SELECT * FROM $DBtable WHERE Gebruiker_ID = '$CID'";
+                $DBresult = mysqli_query($connection,$DBcommand);
+                echo ($DBresult === false)? "COULD NOT EXECUTE QUERY".mysqli_errno($connection)." : ".mysqli_error($connection): NULL;
+
+                    echo "<table border = 1% width = 100% height = 200>";
+                    echo "<form action = 'hidden.AdminOverview.php?$CID' method = 'POST'>";
+                    while ($row = mysqli_fetch_assoc($DBresult)) {
+                        echo "<tr>";
+                        echo "<td><input type = 'text' name = 'GID' value = '" . $row['Gebruiker_ID'] . "'></td>";
+                        echo "<td><input type = 'text' name = 'voornaam' value ='" . $row["Voornaam"] . "'</td>";
+                        echo "<td><input type = 'text' name = 'achternaam' value ='" . $row["Achternaam"] . "'</td>";
+                        echo "<td><input type = 'text' name = 'email' value ='" . $row["Email"] . "'</td>";
+                        echo "<td><input type = 'text' name = 'studentnr' value ='" . $row["Studentnr"] . "'</td>";
+                        echo "<td><input type = 'text' name = 'verified' value ='" . $row["Verified"] . "'</td>";
+                        echo "<td><input type = 'text' name = 'type' value ='" . $row["Type"] . "'</td>";
+                        echo "<td><input type = 'text' name = 'imgpath' value ='" . $row["img_path"] . "'</td>";
+                        echo "<td><input type = 'text' name = 'colorpath' value ='" . $row["color_path"] . "'</td>";
+                        echo "<td><input type = 'text' name = 'quote' value ='" . $row["Quote"] . "'</td>";
+                        echo "<td><input type = 'submit' name = 'update' value = 'Update'></td>";
+                        echo "<tr>";
+                    }
+                    echo "</form>";
+                    echo "</table>";
+
+                if(isset($_POST['update'])){
+
+                    $voornaam= $_POST['voornaam'];
+                    $achternaam= $_POST['achternaam'];
+                    $email= $_POST['email'];
+                    $studentnr= $_POST['studentnr'];
+                    $verified= $_POST['verified'];
+                    $type= $_POST['type'];
+                    $imgpath= $_POST['imgpath'];
+                    $colorpath= $_POST['colorpath'];
+                    $quote= $_POST['quote'];
+                    $DBcommand = "UPDATE $DBtable SET Voornaam = '$voornaam',Achternaam = '$achternaam',Email = '$email',Studentnr = 'studentnr',
+                    Verified = '$verified',`Type` = '$type',img_path = '$imgpath',color_path = '$colorpath',Quote = '$quote' WHERE Gebruiker_ID = '$CID'";
+                    $DBresult = mysqli_query($connection,$DBcommand);
+                    echo ($DBresult === false)? "COULD NOT EXECUTE QUERY".mysqli_errno($connection)." : ".mysqli_error($connection): 'CHANGE HAS BEEN APPLIED';
+                }
 
             }
 
@@ -69,12 +108,12 @@ include 'hidden.menu.php';
 
             </div>
         </div>
-    </div>
 </div>
 
 
 
 
+</div>
 
 
 <?php
