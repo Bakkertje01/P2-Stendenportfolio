@@ -32,7 +32,7 @@ include 'hidden.menu.php';
             $X = 0;
             $count = count($TH);
             echo "<table width = 100%  height = 200 >";
-            echo "<form action = '' method = 'POST'>";
+            echo "<form action = 'hidden.AdminOverview.php' method = 'POST'>";
             echo "<tr>";
            while($X < $count ){
                echo "<th>".$TH[$X]."</th>";
@@ -66,7 +66,7 @@ include 'hidden.menu.php';
                 echo ($DBresult === false)? "COULD NOT EXECUTE QUERY".mysqli_errno($connection)." : ".mysqli_error($connection): NULL;
 
                     echo "<table border = 1% width = 100% height = 200>";
-                    echo "<form action = 'hidden.AdminOverview.php?$CID' method = 'POST'>";
+                    echo "<form action = 'hidden.AdminOverview.php' method = 'POST'>";
                     while ($row = mysqli_fetch_assoc($DBresult)) {
                         echo "<tr>";
                         echo "<td><input type = 'text' name = 'GID' value = '" . $row['Gebruiker_ID'] . "'></td>";
@@ -80,11 +80,12 @@ include 'hidden.menu.php';
                         echo "<td><input type = 'text' name = 'colorpath' value ='" . $row["color_path"] . "'</td>";
                         echo "<td><input type = 'text' name = 'quote' value ='" . $row["Quote"] . "'</td>";
                         echo "<td><input type = 'submit' name = 'update' value = 'Update'></td>";
+                        echo "<td><input type = 'submit' name = 'delete' value = 'delete'></td>";
                         echo "<tr>";
                     }
                     echo "</form>";
                     echo "</table>";
-
+                    echo $CID;
                 if(isset($_POST['update'])){
 
                     $voornaam= $_POST['voornaam'];
@@ -99,7 +100,11 @@ include 'hidden.menu.php';
                     $DBcommand = "UPDATE $DBtable SET Voornaam = '$voornaam',Achternaam = '$achternaam',Email = '$email',Studentnr = 'studentnr',
                     Verified = '$verified',`Type` = '$type',img_path = '$imgpath',color_path = '$colorpath',Quote = '$quote' WHERE Gebruiker_ID = '$CID'";
                     $DBresult = mysqli_query($connection,$DBcommand);
-                    echo ($DBresult === false)? "COULD NOT EXECUTE QUERY".mysqli_errno($connection)." : ".mysqli_error($connection): 'CHANGE HAS BEEN APPLIED';
+                    echo ($DBresult === false)? "COULD NOT EXECUTE QUERY".mysqli_errno($connection)." : ".mysqli_error($connection): 'UPDATE HAS BEEN APPLIED';
+                }elseif(isset($_POST['delete'])){
+                    $DBcommand = "DROP TABLE $DBtable WHERE userid = '$CID'";
+                    $DBresult = mysqli_query($connection,$DBcommand);
+                    echo ($DBresult === false)? "COULD NOT EXECUTE QUERY".mysqli_errno($connection)." : ".mysqli_error($connection): 'DELETION HAS BEEN APPLIED';
                 }
 
             }
