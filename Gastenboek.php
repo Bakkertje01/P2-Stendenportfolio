@@ -91,6 +91,14 @@ include_once 'hidden.menu.php';
 </body>
 <style>
     /*form-style is de formulier class*/
+    .Voornaam{
+        border: 1px solid black;
+
+    }
+    .Bericht{
+        border: 1px solid black;
+
+    }
     .form-style{ /*balkbreedte en het font*/
         max-width:400px;
         margin:50px auto;
@@ -117,8 +125,11 @@ include_once 'hidden.menu.php';
         font-size: 14px;
         font-family: Arial, Helvetica, sans-serif;
     }
-    .form-style input[type="voornaam"],/*invoervelden*/
-    .form-style input[type="achternaam"],
+    .form-style input[type="voornaam"]{
+        border: 1px solid black;
+
+    }/*invoervelden*/
+    .form-style input[type="achternaam"]{}
     .form-style input[type="email"],
     .form-style textarea,
     .form-style select
@@ -129,6 +140,7 @@ include_once 'hidden.menu.php';
         line-height: 25px;
         font-size: 16px;
         font-family: Georgia, "Times New Roman", Times, serif;
+
     }
     .form-style li > span{  /*de tekst onderin de invoervelden*/
         background: #F3F3F3;
@@ -139,6 +151,7 @@ include_once 'hidden.menu.php';
         color: #C0C0C0;
         font-family: Arial, Helvetica, sans-serif;
         font-size: 11px;
+
     }
     .form-style textarea{ /*textarea een vast grootte geven kan niet groter dan de pagina worden gemaakt*/
         resize:none;

@@ -66,6 +66,14 @@ if(isset($_POST["Submit"])) {
     $email = str_replace(array('\'', '"'), '', $email);
     $password = str_replace(array('\'', '"'), '', $password);
 
+    $email = trim($_POST['email']);
+    $email = strip_tags($email);
+    $email = htmlspecialchars($email);
+
+    $password = trim($_POST['Password']);
+    $password = strip_tags($password);
+    $password = htmlspecialchars($password);
+
 
     if (empty ($_POST['Firstname'])
         || empty ($_POST['Lastname'])
@@ -88,7 +96,7 @@ if(isset($_POST["Submit"])) {
                 echo "Enter a Valid email";
             } else {
 
-                if (strlen($password) <= 6) {
+                if (strlen($password) <= 5) {
                     echo "Choose a password longer then 6 character";
 
                 } else {
