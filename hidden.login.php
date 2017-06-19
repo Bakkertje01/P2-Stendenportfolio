@@ -29,7 +29,7 @@ if (!empty($_POST["login"])) {
 		header('refresh:3;url=profiel.php');
 		}
 		if($_SESSION['Type']== 'admin'){
-			header('refresh:5;url=hidden.admin_register.php');
+			header('refresh:5;url=hidden.AdminOverview.php');
 		}
 		if($_SESSION['Type']== 'slb'){
 			header('refresh:5;url=index.php');
