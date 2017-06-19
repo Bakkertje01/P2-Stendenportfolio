@@ -14,7 +14,6 @@ include_once 'include/noacces.php';
 
 <body>
 <?php
-$connection = mysqli_connect("127.0.0.1","root","");
 include_once 'hidden.header.php';
 include_once 'hidden.menu.php';
 ?>
@@ -64,7 +63,7 @@ if(!isset($_POST["submit"])){
         }
 }
 
-    }
+
     else {
         echo "<br><br><h3>Vul een naam, of een gedeelte daarvan in.</h3>";
     }
