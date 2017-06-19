@@ -1,3 +1,9 @@
+<?php
+include_once 'include/session.php';
+include  'include/db_connection.php';
+include_once 'include/noacces.php';
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -8,7 +14,6 @@
 
 <body>
 <?php
-$connection = mysqli_connect("127.0.0.1","root","");
 include_once 'hidden.header.php';
 include_once 'hidden.menu.php';
 ?>
@@ -31,17 +36,13 @@ include_once 'hidden.menu.php';
 if(!isset($_POST["submit"]) || isset($_POST["submit"]) && empty($_POST['voornaam'])){
      echo "<h2>Please Fill in your Surname<h2>";
 }else{
-    $DBname = 'portfolio';
     $DBtable = "user";
     $voornaam = $_POST["voornaam"];
     $voornaam = str_replace(array('\'','"','.',','), '', $voornaam);
 
 
-    mysqli_select_db($connection,$DBname);
-    if(!mysqli_select_db($connection,$DBname)){
-        echo" COULD NOT SELECT DATABASE ".mysqli_errno($connection)." : ".mysqli_error($connection);
-    }else{
-        $DBcommand = "SELECT Voornaam,Achternaam,Email,Studentnr,Type,img_path,color_path,Quote FROM $DBtable WHERE Voornaam Like '%$voornaam%' OR Achternaam Like '%$voornaam%'";
+
+        $DBcommand = "SELECT Voornaam,Achternaam,Email,Studentnr,`Type`,img_path,color_path,Quote FROM $DBtable WHERE Voornaam Like '%$voornaam%' OR Achternaam Like '%$voornaam%' HAVING `TYPE` = 'student'";
         $DBresult = mysqli_query($connection,$DBcommand);
         if($DBresult === FALSE){
             echo "COULD NOT SELECT FROM TABLE ".mysqli_errno($connection)." : ".mysqli_error($connection);
@@ -49,18 +50,14 @@ if(!isset($_POST["submit"]) || isset($_POST["submit"]) && empty($_POST['voornaam
             if(mysqli_num_rows($DBresult)  == 0){
                 echo "There were no students found by the name of ".$voornaam."";
             }else{
-                echo "<h3>students by the name of</h3>";
+                echo "<h3>Gevonden studenten</h3>";
                 while($row = mysqli_fetch_assoc($DBresult)) {
-                    echo "<h4><a href = 'hidden.profiel.php?student=$row[Studentnr]' >".$row["Voornaam"]." ".$row["Achternaam"] ."</a></h4>";
+                    echo "<h4><a href = 'hidden.foundstudent.php?student=$row[Studentnr]' >".$row["Voornaam"]." ".$row["Achternaam"] ."</a></h4>";
 
                     // https.portfolio.$voornaam. //hier komt link van site met naam naar pagina van student
                 }
-                    echo "<h3>were found</h3>";
             }
         }
-    }
-
-
 }
 
 ?>
