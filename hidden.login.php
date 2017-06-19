@@ -7,6 +7,14 @@ if (!empty($_POST["login"])) {
     $email = $_POST["email"];
     $password = $_POST["password"];
 
+    $email = trim($_POST['email']);
+    $email = strip_tags($email);
+    $email = htmlspecialchars($email);
+
+    $password = trim($_POST['password']);
+    $password = strip_tags($password);
+    $password = htmlspecialchars($password);
+
 
 	$result = mysqli_query($connection, "SELECT * FROM user WHERE Email='$email' LIMIT 1")
 	or die ('error: '. mysqli_error($connection));

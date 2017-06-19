@@ -47,11 +47,11 @@ include_once 'hidden.menu.php';
 
 
             //Variabelen zetten naar de ingevoerde waarden om de ingevoerde waarden te laten staan.
-            $voornaam = $_POST['firstname'];
-            $achternaam = $_POST['lastname'];
-            $email = $_POST['email'];
-            $onderwerp = $_POST['onderwerp'];
-            $bericht = $_POST['subject'];
+            $voornaam = mysqli_real_escape_string($connection, $_POST['firstname']);
+            $achternaam = mysqli_real_escape_string($connection, $_POST['lastname']);
+            $email = mysqli_real_escape_string($connection, $_POST['email']);
+            $onderwerp = mysqli_real_escape_string($connection, $_POST['onderwerp']);
+            $bericht = mysqli_real_escape_string($connection, $_POST['subject']);
             $datum = date('y-m-d');
 
 
