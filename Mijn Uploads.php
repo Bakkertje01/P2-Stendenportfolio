@@ -2,8 +2,6 @@
 
 include_once('include/session.php');
 
-
-
 if (isset($_POST['bekijk'])) {
 
     $datumin = $_POST['date'];
