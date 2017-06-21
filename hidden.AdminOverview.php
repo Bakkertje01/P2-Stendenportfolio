@@ -63,7 +63,7 @@ include 'hidden.menu.php';
                 $DBresult = mysqli_query($connection, $DBcommand);
                 echo ($DBresult === false) ? "COULD NOT EXECUTE QUERY" . mysqli_errno($connection) . " : " . mysqli_error($connection) : NULL;
 
-                echo "<table border = 1% width = 100% height = 200px>";
+                echo "<table border = 1% width = 100%  height = 200px>";
                 echo "<form action = '' method = 'POST'>";
                 while ($row = mysqli_fetch_assoc($DBresult)) {
                     echo "<tr>";
