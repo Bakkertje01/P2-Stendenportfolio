@@ -9,6 +9,7 @@
 require_once "include/db_connection.php";
 //include "include/noacces.php";
 include 'hidden.header.php';
+ob_start();
 include 'hidden.menu.php';
 ?>
 
@@ -31,8 +32,7 @@ include 'hidden.menu.php';
             $TH = array("Gebruiker_ID","Voornaam","Achternaam","Email","Studentnr","Verified","Type","img_path","color_path","Quote");
             $X = 0;
             $count = count($TH);
-            echo "<table width = 100%  height = 200 >";
-            echo "<form action = 'hidden.AdminOverview.php' method = 'POST'>";
+            echo "<table width = 100%  height = 200px >";
             echo "<tr>";
            while($X < $count ){
                echo "<th>".$TH[$X]."</th>";
@@ -51,63 +51,61 @@ include 'hidden.menu.php';
                 echo "<td>".$row["img_path"]."</td>";
                 echo "<td>".$row["color_path"]."</td>";
                 echo "<td>".$row["Quote"]."</td>";
-                echo "<td><input type = 'submit' name = 'edit' value = '".$row['Gebruiker_ID']."'></td>";
+                echo "<td><a href = 'hidden.AdminOverview.php?CID=".$row['Gebruiker_ID']."'>Edit</a></td>";
                 echo "<tr>";
             }
-            echo "</form>";
+
             echo "</table>";
             echo "<br><br>";
-
-            if(isset($_POST['edit'])){
-                $CID = $row["Gebruiker_ID"];
-                echo $CID;
+            if(isset($_GET['CID'])){
+                $CID = $_GET['CID'];
                 $DBcommand = "SELECT * FROM $DBtable WHERE Gebruiker_ID = '$CID'";
-                $DBresult = mysqli_query($connection,$DBcommand);
-                echo ($DBresult === false)? "COULD NOT EXECUTE QUERY".mysqli_errno($connection)." : ".mysqli_error($connection): NULL;
+                $DBresult = mysqli_query($connection, $DBcommand);
+                echo ($DBresult === false) ? "COULD NOT EXECUTE QUERY" . mysqli_errno($connection) . " : " . mysqli_error($connection) : NULL;
 
-                    echo "<table border = 1% width = 100% height = 200>";
-                    echo "<form action = 'hidden.AdminOverview.php' method = 'POST'>";
-                    while ($row = mysqli_fetch_assoc($DBresult)) {
-                        echo "<tr>";
-                        echo "<td><input type = 'text' name = 'GID' value = '" . $row['Gebruiker_ID'] . "'></td>";
-                        echo "<td><input type = 'text' name = 'voornaam' value ='" . $row["Voornaam"] . "'</td>";
-                        echo "<td><input type = 'text' name = 'achternaam' value ='" . $row["Achternaam"] . "'</td>";
-                        echo "<td><input type = 'text' name = 'email' value ='" . $row["Email"] . "'</td>";
-                        echo "<td><input type = 'text' name = 'studentnr' value ='" . $row["Studentnr"] . "'</td>";
-                        echo "<td><input type = 'text' name = 'verified' value ='" . $row["Verified"] . "'</td>";
-                        echo "<td><input type = 'text' name = 'type' value ='" . $row["Type"] . "'</td>";
-                        echo "<td><input type = 'text' name = 'imgpath' value ='" . $row["img_path"] . "'</td>";
-                        echo "<td><input type = 'text' name = 'colorpath' value ='" . $row["color_path"] . "'</td>";
-                        echo "<td><input type = 'text' name = 'quote' value ='" . $row["Quote"] . "'</td>";
-                        echo "<td><input type = 'submit' name = 'update' value = 'Update'></td>";
-                        echo "<td><input type = 'submit' name = 'delete' value = 'delete'></td>";
-                        echo "<tr>";
-                    }
-
-                    echo "</form>";
-                    echo "</table>";
-                    echo $CID;
-                if(isset($_POST['update'])){
-
-                    $voornaam= $_POST['voornaam'];
-                    $achternaam= $_POST['achternaam'];
-                    $email= $_POST['email'];
-                    $studentnr= $_POST['studentnr'];
-                    $verified= $_POST['verified'];
-                    $type= $_POST['type'];
-                    $imgpath= $_POST['imgpath'];
-                    $colorpath= $_POST['colorpath'];
-                    $quote= $_POST['quote'];
-                    $DBcommand = "UPDATE $DBtable SET Voornaam = '$voornaam',Achternaam = '$achternaam',Email = '$email',Studentnr = 'studentnr',
-                    Verified = '$verified',`Type` = '$type',img_path = '$imgpath',color_path = '$colorpath',Quote = '$quote' WHERE Gebruiker_ID = '$CID'";
-                    $DBresult = mysqli_query($connection,$DBcommand);
-                    echo ($DBresult === false)? "COULD NOT EXECUTE QUERY".mysqli_errno($connection)." : ".mysqli_error($connection): 'UPDATE HAS BEEN APPLIED';
-                }elseif(isset($_POST['delete'])){
-                    $DBcommand = "DELETE FROM $DBtable WHERE userid = '$CID'";
-                    $DBresult = mysqli_query($connection,$DBcommand);
-                    echo ($DBresult === false)? "COULD NOT EXECUTE QUERY".mysqli_errno($connection)." : ".mysqli_error($connection): 'DELETION HAS BEEN APPLIED';
+                echo "<table border = 1% width = 100% height = 200px>";
+                echo "<form action = '' method = 'POST'>";
+                while ($row = mysqli_fetch_assoc($DBresult)) {
+                    echo "<tr>";
+                    echo "<td><input type = 'text' name = 'GID' value = '" . $row['Gebruiker_ID'] . "'></td>";
+                    echo "<td><input type = 'text' name = 'voornaam' value ='" . $row["Voornaam"] . "'</td>";
+                    echo "<td><input type = 'text' name = 'achternaam' value ='" . $row["Achternaam"] . "'</td>";
+                    echo "<td><input type = 'text' name = 'email' value ='" . $row["Email"] . "'</td>";
+                    echo "<td><input type = 'text' name = 'studentnr' value ='" . $row["Studentnr"] . "'</td>";
+                    echo "<td><input type = 'text' name = 'verified' value ='" . $row["Verified"] . "'</td>";
+                    echo "<td><input type = 'text' name = 'type' value ='" . $row["Type"] . "'</td>";
+                    echo "<td><input type = 'text' name = 'imgpath' value ='" . $row["img_path"] . "'</td>";
+                    echo "<td><input type = 'text' name = 'colorpath' value ='" . $row["color_path"] . "'</td>";
+                    echo "<td><input type = 'text' name = 'quote' value ='" . $row["Quote"] . "'</td>";
+                    echo "<td><input type = 'submit' name = 'update' value = 'update'></td>";
+                    echo "<td><input type = 'submit' name = 'delete' value = 'delete'></td>";
+                    echo "<tr>";
                 }
-
+                echo "</form>";
+                echo "</table>";
+                if (isset($_POST['update'])) {
+                    $CID = $_GET['CID'];
+                    echo $CID;
+                    $voornaam = $_POST['voornaam'];
+                    $achternaam = $_POST['achternaam'];
+                    $email = $_POST['email'];
+                    $verified = $_POST['verified'];
+                    $type = $_POST['type'];
+                    $imgpath = $_POST['imgpath'];
+                    $colorpath = $_POST['colorpath'];
+                    $quote = $_POST['quote'];
+                    $DBcommand = "UPDATE $DBtable SET Voornaam = '$voornaam',Achternaam = '$achternaam',Email = '$email',
+                    Verified = '$verified',`Type` = '$type',img_path = '$imgpath',color_path = '$colorpath',Quote = '$quote' WHERE Gebruiker_ID = '$CID'";
+                    $DBresult = mysqli_query($connection, $DBcommand);
+                    echo ($DBresult === false) ? "COULD NOT EXECUTE QUERY" . mysqli_errno($connection) . " : " . mysqli_error($connection) : 'UPDATE HAS BEEN APPLIED';
+                    header("Location: hidden.adminOverview.php");
+                } elseif (isset($_POST['delete'])) {
+                    $CID = $_GET['CID'];
+                    $DBcommand = "DELETE FROM $DBtable WHERE Gebruiker_ID = '$CID'";
+                    $DBresult = mysqli_query($connection, $DBcommand);
+                    echo ($DBresult === false) ? "COULD NOT EXECUTE QUERY" . mysqli_errno($connection) . " : " . mysqli_error($connection) : 'DELETION HAS BEEN APPLIED';
+                    header("Location: hidden.adminOverview.php");
+                }
             }
 
             ?>
@@ -123,7 +121,7 @@ include 'hidden.menu.php';
 
 
 <?php
-
+ob_flush();
 include_once 'hidden.footer.php';
 
 ?>
