@@ -20,39 +20,40 @@ include "hidden.style.php";
 
             <?php
 
-            $files = glob("./" . "*");
-
             echo '<ul class="nav navbar-nav">';
 
-            foreach ($files as $link) {
+            if (isset($_SESSION['Gebruiker_ID'])) {
 
-                $heh = explode('.', $link);
+                if ($_SESSION['Type'] == 'admin') {
+                    echo " <li><a href='hidden.admin_landing.php'><span class=''></span> Admin menu</a></li>";
+                    echo " <li><a href='hidden.admin_register.php'><span class=''></span> Registratie slb/leraar</a></li>";
+                    echo " <li><a href='hidden.AdminOverview.php'><span class=''></span> Users aanpassen</a></li>";
+                    echo " <li><a href='hidden.admin_contact.php'><span class=''></span> Admin Contact</a></li>";
+                } elseif ($_SESSION['Type'] == 'student') {
+                    echo " <li><a href='profiel.php'><span class=''></span> Edit profiel</a></li>";
+                    echo " <li><a href='JouwGastenboek.php'><span class=''></span> Gastenboek</a></li>";
+                    echo " <li><a href='Mijn Uploads.php'><span class=''></span> Mijn profiel</a></li>";
+                    echo " <li><a href='contact.php'><span class=''></span>Contact</a></li>";
+                    echo " <li><a href='studentfind.php'><span class=''></span>Zoek student</a></li>";
+                } elseif ($_SESSION['Type'] == 'slb') {
+                    echo " <li><a href=''><span class=''></span>SLB menu</a></li>";
+                    echo " <li><a href='contact.php'><span class=''></span>Contact</a></li>";
+                    echo " <li><a href='studentfind.php'><span class=''></span>Zoek student</a></li>";
+                } elseif ($_SESSION['Type'] == 'docent') {
+                    echo " <li><a href=''><span class=''></span>Docent menu</a></li>";
+                    echo " <li><a href='contact.php'><span class=''></span>Contact</a></li>";
+                    echo " <li><a href='studentfind.php'><span class=''></span>Zoek student</a></li>";
+                } else {
 
-                if (!empty($heh[2])) {
-                    if ($heh[2] == 'php' || $heh[2] == 'html') {
-                        $friendlylink = preg_replace('/[^A-Za-z0-9\-]/', '', $heh[1]);
-
-                        if ($friendlylink !== 'index') {
-                            if ($ID > 0) {
-
-                                echo "<li><a href='$link'>" . ucfirst($friendlylink) . "</a></li>";
-                            } else {
-                                if ($friendlylink === 'contact' || $friendlylink === 'studentfind') {
-                                    echo "<li><a href='$link'>" . ucfirst($friendlylink) . "</a></li>";
-                                }
-
-                            }
-                        }
-
-                    } else {
-                        echo '';
-                    }
                 }
             }
-
-            echo '</ul>';
+            else{
+                echo " <li><a href='contact.php'><span class=''></span>Contact</a></li>";
+            }
+            echo "</ul>";
 
             ?>
+
             <ul class="nav navbar-nav navbar-right">
                 <?php if (isset($_SESSION['Gebruiker_ID'])) { ?>
                     <li><a href="hidden.logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>

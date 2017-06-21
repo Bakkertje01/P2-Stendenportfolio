@@ -6,10 +6,12 @@
 
 <body>
 <?php
-require_once "include/db_connection.php";
-include "include/noacces.php";
+include_once 'include/session.php';
+include_once "include/db_connection.php";
+include_once "include/noacces_admin.php";
 include 'hidden.header.php';
-ob_start();
+
+
 include 'hidden.menu.php';
 ?>
 
@@ -104,7 +106,7 @@ include 'hidden.menu.php';
                     $DBcommand = "DELETE FROM $DBtable WHERE Gebruiker_ID = '$CID'";
                     $DBresult = mysqli_query($connection, $DBcommand);
                     echo ($DBresult === false) ? "COULD NOT EXECUTE QUERY" . mysqli_errno($connection) . " : " . mysqli_error($connection) : 'DELETION HAS BEEN APPLIED';
-                    header("Location: hidden.adminOverview.php");
+                   header("Location: hidden.adminOverview.php");
                 }
             }
 
@@ -121,7 +123,7 @@ include 'hidden.menu.php';
 
 
 <?php
-ob_flush();
+
 include_once 'hidden.footer.php';
 
 ?>

@@ -13,6 +13,7 @@ include 'include/noacces_admin.php';
 <?php
 //$connection = mysqli_connect("127.0.0.1","root","");
 include 'hidden.header.php';
+
 include 'hidden.menu.php';
 ?>
 
@@ -66,13 +67,17 @@ if(isset($_POST["Submit"])) {
     $email = str_replace(array('\'', '"'), '', $email);
     $password = str_replace(array('\'', '"'), '', $password);
 
-    $email = trim($_POST['email']);
+   /* $email = trim($_POST['Email']);
     $email = strip_tags($email);
     $email = htmlspecialchars($email);
 
     $password = trim($_POST['Password']);
     $password = strip_tags($password);
     $password = htmlspecialchars($password);
+
+    $password = trim($_POST['Password']);
+    $password = strip_tags($password);
+    $password = htmlspecialchars($password);*/
 
 
     if (empty ($_POST['Firstname'])
