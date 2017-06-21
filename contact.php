@@ -58,7 +58,7 @@ include_once 'hidden.menu.php';
             //Kijken of er wel/geen lege velden zijn en foutmeldingen aanmaken
             if (!empty($_POST["firstname"]) && !empty($_POST["lastname"]) && !empty($_POST["email"]) && !empty($_POST["subject"]) && (filter_var($_POST["email"], FILTER_VALIDATE_EMAIL))) {
 
-                echo "<div class='correctText'>Alle velden zijn correct ingevuld </div>";
+                echo "<div class='correctText'>Alle velden zijn correct ingevuld en het bericht is verzonden.</div>";
                 $errVoornaam2 = "bg-success";
                 $errAchternaam2 = "bg-success";
                 $errOnderwerp2 = "bg-success";

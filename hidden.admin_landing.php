@@ -15,7 +15,7 @@ include 'hidden.menu.php';
 
 <div class="jumbotron">
     <div class="container text-center">
-        <h1>Administrator pagina</h1>
+        <h2>Administrator pagina</h2>
         <div id="wrapper">
             <div id='content'>
             <div class="blok">
@@ -29,6 +29,16 @@ include 'hidden.menu.php';
                 <a href="hidden.admin_register.php" >
                     <div class="blokjes">
                         <h2>Docent + SLB registratie</h2>
+                    </div>
+                </a>
+                <a href="hidden.admin_contact.php" >
+                    <div class="blokjes">
+                        <h2>Admin contact</h2>
+                    </div>
+
+                <a href="http://papadingo.nl/tiri/" >
+                    <div class="blokjes">
+                        <h2>Vrijmibo</h2>
                     </div>
                 </a>
             </div>

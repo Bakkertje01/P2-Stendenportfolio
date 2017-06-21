@@ -20,7 +20,7 @@ include 'hidden.menu.php';
 
 <div class="jumbotron">
     <div class="container text-center">
-        <h1>administrator registration</h1>
+        <h2>SLB / Docent registratie</h2>
             <div id="wrapper">
                 <div id='content'>
                 <form id='register' action='hidden.admin_register.php' method='post'>
@@ -33,13 +33,13 @@ include 'hidden.menu.php';
                     <label for='email' >Email Address*:</label><br/>
                     <input type='text' name='Email' id='email' maxlength="50" /><br/>
 
-                    <label for='password' >Password*:</label><br/>
+                    <label for='password' >Wachtwoord*:</label><br/>
                     <input type='password' name='Password' id='password' maxlength="50" /><br/>
 
-                    <label for='password1' >Password*:</label><br/>
+                    <label for='password1' >Wachtwoord ter controle*:</label><br/>
                     <input type='password' name='Password1' id='password1' maxlength="50" /><br/>
 
-                    <p>Please pick a role to determined which authorisation you will be given upon registration</p><br>
+                    <p>Selecteer een rol </p><br>
                     <select name = "rol" >
                         <option  value = "docent" >Docent</option>
                         <option  value = "slb" >SLB</option>

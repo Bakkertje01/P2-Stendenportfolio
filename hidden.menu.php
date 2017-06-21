@@ -55,6 +55,14 @@ include "hidden.style.php";
             ?>
 
             <ul class="nav navbar-nav navbar-right">
+                <?php
+                if(isset($_SERVER['HTTP_REFERER'])) {
+                    echo"<li>";
+                    $url = htmlspecialchars($_SERVER['HTTP_REFERER']);
+                    echo "<a href='$url'>Terug</a>";
+                    echo "</li>";
+                }
+                ?>
                 <?php if (isset($_SESSION['Gebruiker_ID'])) { ?>
                     <li><a href="hidden.logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                 <?php } else { ?>

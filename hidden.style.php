@@ -150,6 +150,9 @@ include_once 'include/session.php';
             background-color: 0a53a0;
             color: white;
         }
+        .blokjes:hover{
+            border: 2px solid black;
+        }
         /*Errors*/
 
         .errorText {

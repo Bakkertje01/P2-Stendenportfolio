@@ -23,7 +23,7 @@ include_once 'hidden.menu.php';
 <div class="jumbotron">
     <?php
 
-    echo"<P>U bent Uitgelogd. <a href='index.php'>Ok!</a></P>";
+    echo"<P>U bent uitgelogd, <a href='index.php'>Klik hier om naar de hoofdpagina te gaan.</a></P>";
 
     ?>
 </div>

@@ -17,7 +17,7 @@ include 'hidden.menu.php';
 
 <div class="jumbotron">
     <div class="container text-center">
-        <h1>administrator Overview</h1>
+        <h2>Gebruikers bewerken</h2>
         <div id="wrapper">
             <div id='content'>
 
@@ -33,8 +33,8 @@ include 'hidden.menu.php';
             $TH = array("Gebruiker_ID","Voornaam","Achternaam","Email","Studentnr","Verified","Type","img_path","color_path","Quote");
             $X = 0;
             $count = count($TH);
-            echo "<table width = 100%  height = 200px >";
-            echo "<tr>";
+            echo "<table class='table table-hover table-striped table-bordered'>";
+            echo "<tr class='info'>";
            while($X < $count ){
                echo "<th>".$TH[$X]."</th>";
                $X++;
@@ -52,7 +52,8 @@ include 'hidden.menu.php';
                 echo "<td>".$row["img_path"]."</td>";
                 echo "<td>".$row["color_path"]."</td>";
                 echo "<td>".$row["Quote"]."</td>";
-                echo "<td><a href = 'hidden.AdminOverview.php?CID=".$row['Gebruiker_ID']."'>Edit</a></td>";
+                //echo "<td><a href = 'hidden.AdminOverview.php?CID=".$row['Gebruiker_ID']."'>Edit</a></td>";
+                echo "<td><form action='hidden.AdminOverview.php?CID=".$row['Gebruiker_ID']."' method='POST'><input type='submit' class='btn' value='Edit'>";
                 echo "<tr>";
             }
 

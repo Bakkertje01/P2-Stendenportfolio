@@ -76,14 +76,14 @@ include 'hidden.menu.php';
                     <div><input name="email" type="text"></div>
                 </div>
                 <div class="field-group">
-                    <div><label for="password">Password</label></div>
+                    <div><label for="password">Wachtwoord</label></div>
                     <div><input name="password" type="password"></div>
                 </div>
                 <div class="field-group">
                     <div><input type="submit" name="login" value="Login"></span></div>
                 </div>
             </form>
-            <p><a href="hidden.register.php">registreren</a></p>
+            <p><a href="hidden.register.php">Registreren</a></p>
 			<?php
 		} else {
 			$result = mysqlI_query($connection, "SELECT * FROM user WHERE Gebruiker_ID='" . $_SESSION["Gebruiker_ID"] . "'")

@@ -103,7 +103,7 @@ include_once 'hidden.menu.php';
 
                     <label for='email'>Email Adres*: </label>
                     <?php echo $errEmail; ?>
-                    <input type='email' class="<?php echo $errEmail2; ?>" name='Email' id='Email' maxlength="50"/>
+                    <input type='email' class="<?php echo $errEmail2; ?>" name='Email' id='Email' maxlength="50" value="@student.stenden.com"/>
 
                     <label for='password'>Wachtwoord*: </label>
                     <?php echo $errWachtwoord; ?>
@@ -186,7 +186,7 @@ include_once 'hidden.menu.php';
 
                     //Password Matching Validation
                     if ($password != $password1) {
-                        echo "Passwords moeten hetzelfde zijn<br>";
+                        echo "Wachtwoorden moeten hetzelfde zijn<br>";
 
                     } else {
 
@@ -194,10 +194,10 @@ include_once 'hidden.menu.php';
                             echo "Enter a Valid email";
                         } else {
 
-                            if (strlen($password) <= 6) {
+                           /* if (strlen($password) <= 6) {
                                 echo "Choose a password longer then 6 character";
 
-                            } else {
+                            } else {*/
 
                                 $queryUsers = "SELECT Email FROM user WHERE Email='$email'";
                                 $resultemail = mysqli_query($connection, $queryUsers);
@@ -223,7 +223,7 @@ include_once 'hidden.menu.php';
 
                                         $result = mysqli_query($connection, $sql);
 
-                                        echo "u bent succesvol geregistreerd, u wordt doorgestuurd naar de login pagina.";
+                                        echo "U bent succesvol geregistreerd, u wordt doorgestuurd naar de login pagina.";
 
                                         header("refresh:4;url=hidden.login.php");
 
@@ -241,7 +241,7 @@ include_once 'hidden.menu.php';
                     }
                 }
             }
-        }
+        /*}*/
         ?>
 
 
