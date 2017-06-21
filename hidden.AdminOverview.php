@@ -10,8 +10,7 @@ include_once 'include/session.php';
 include_once "include/db_connection.php";
 include_once "include/noacces_admin.php";
 include 'hidden.header.php';
-
-
+ob_start();
 include 'hidden.menu.php';
 ?>
 
