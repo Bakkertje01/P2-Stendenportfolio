@@ -30,6 +30,7 @@ include_once  'include/session.php';
 </head>
 
 <body>
+
 <?php
 include_once 'hidden.header.php';
 include_once 'hidden.menu.php';
