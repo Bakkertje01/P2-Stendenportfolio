@@ -1,12 +1,11 @@
 <div class="jumbotron">
     <div class="container text-center">
-        <h2>Plaats een bericht!</h2>
+        <h2>Gastenboek!</h2>
         <form class="form-style" method="POST" >
             <ul>
                 <li>
                     <label for="bericht">Bericht</label>
                     <textarea cols="50" name="bericht" rows="5"> </textarea>
-                    <span>Vertel het eens!</span>
                 </li>
                 <li>
                     <input name="submit" value="submit" type="submit">
@@ -92,71 +91,10 @@
             padding: 10px;
             border: solid 1px #dcdcdc;
         }
-        .form-style{ /*balkbreedte en het font*/
-            max-width:400px;
-            margin:50px auto;
-            padding:20px;
-            font-family: Georgia, "Times New Roman", Times, serif;
+        .form-style ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
         }
-        .form-style ul{ /*puntjes van de lijst verwijderen*/
-            list-style:none;
-            padding:0;
-            margin:0;
-        }
-        .form-style li{ /*afstand tussen de balkjes creeren en een border om de invoervelden*/
-            padding: 9px;
-            border:1px solid #DDDDDD;
-            margin-bottom: 30px;
-        }
-        .form-style li:last-child{ /*border verwijderen om de reset en verzend knop*/
-            border:none;
-        }
-        .form-style li > label{ /*de labels stylen*/
-            margin-top: -19px;
-            padding: 2px 5px 2px 5px;
-            color: #B9B9B9;
-            font-size: 14px;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-        .form-style input[type="voornaam"]{
-            border: 1px solid black;
-
-        }/*invoervelden*/
-        .form-style input[type="achternaam"]{}
-        .form-style input[type="email"],
-        .form-style textarea,
-        .form-style select
-        {
-            width: 100%;
-            display: block;
-            border: none;
-            line-height: 25px;
-            font-size: 16px;
-            font-family: Georgia, "Times New Roman", Times, serif;
-
-        }
-        .form-style li > span{  /*de tekst onderin de invoervelden*/
-            background: #F3F3F3;
-            display: block;
-            padding: 3px;
-            margin: 0 -9px -9px -9px;
-            text-align: center;
-            color: #C0C0C0;
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 11px;
-
-        }
-        .form-style textarea{ /*textarea een vast grootte geven kan niet groter dan de pagina worden gemaakt*/
-            resize:none;
-        }
-        .form-style input[type="submit"], /*stijl van de buttons*/
-        .form-style input[type="reset"]{
-            background: #2471FF;
-            border: none;
-            padding: 10px 20px 10px 20px;
-            border-bottom: 3px solid #5994FF;
-            border-radius: 3px;
-            color: #D2E2FF;
-        }
-    </style>
+        </style>
     </html>
