@@ -112,7 +112,7 @@ if(isset($_POST["Submit"])) {
                     $sql = "INSERT INTO $DBtable (Voornaam, Achternaam, Email, Wachtwoord, Studentnr, Verified,`Type`,img_path,color_path,Quote) 
         VALUES ('$firstname', '$lastname', '$email', '$password',NULL,Null,'$rol',NULL,NULL,NULL)";
                     $DBresult = mysqli_query($connection, $sql);
-                    echo ($result === false) ? "ERROR" . mysqli_errno($connection) . " : " . mysqli_error($connection) : "<h3> Thanks for submiting<h3>";
+                    echo ($result === false) ? "ERROR" . mysqli_errno($connection) . " : " . mysqli_error($connection) : "<br><br><h3>Bedankt voor het registreren<h3>";
                 }
 
             }

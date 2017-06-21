@@ -32,7 +32,7 @@
         }
         if (isset($_SESSION['Gebruiker_ID']) && $_SESSION['Gebruiker_ID'] == true) // is de gebruiker ingelogd?
         {
-            echo "Welkom op de pagina";
+            echo "<br><br>Welkom op de pagina";
         } else
         {
             echo "Je moet inloggen voor je een bericht kunt plaatsen.";

@@ -21,16 +21,24 @@ include_once 'hidden.menu.php';
 
 
 <div class="jumbotron">
+    <div class="container text-center">
+
     <?php
 
     echo"<P>U bent uitgelogd, <a href='index.php'>Klik hier om naar de hoofdpagina te gaan.</a></P>";
 
     ?>
+
+    </div>
 </div>
 
 
 
 
 </body>
+
+<?php
+include_once ('hidden.footer.php');
+?>
 
 </html>
