@@ -55,7 +55,7 @@ include_once 'hidden.menu.php';
             $bericht = mysqli_escape_string($connection, htmlspecialchars($_POST["bericht"]));; // haal uit bericht
             $gebruiker_id = $_SESSION['Gebruiker_ID'];
             $date = date('Y:m:d:H:i');
-            $sql = "INSERT INTO bericht(`Bericht`, `Gebruiker_ID`, `Datum_tijd`) VALUES('$bericht', $gebruiker_id, '$date')"; // haal uit bericht en zet in de database
+            $sql = "INSERT INTO bericht(`Bericht`, `Gebruiker_ID`, `Datum_tijd`, `Portfolio_ID`) VALUES('$bericht', $gebruiker_id, '$date', '$studentnumber')";  // haal uit bericht en zet in de database
             if (!mysqli_query($connection, $sql))
             {
                 mysqli_close($connection);
