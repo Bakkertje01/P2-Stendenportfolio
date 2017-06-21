@@ -1,7 +1,7 @@
 <?php
 include 'include/session.php';
 include 'include/db_connection.php';
-
+//if(isset($_SESSION)&& $_SESSION['Type']==)
 ?>
 <html>
 <head>
@@ -55,7 +55,7 @@ include_once 'hidden.menu.php';
             $bericht = mysqli_escape_string($connection, htmlspecialchars($_POST["bericht"]));; // haal uit bericht
             $gebruiker_id = $_SESSION['Gebruiker_ID'];
             $date = date('Y:m:d:H:i');
-            $sql = "INSERT INTO bericht(`bericht`, `Gebruiker_ID`, `Datum_tijd`) VALUES('$bericht', $gebruiker_id, '$date')"; // haal uit bericht en zet in de database
+            $sql = "INSERT INTO bericht(`Bericht`, `Gebruiker_ID`, `Datum_tijd`) VALUES('$bericht', $gebruiker_id, '$date')"; // haal uit bericht en zet in de database
             if (!mysqli_query($connection, $sql))
             {
                 mysqli_close($connection);
@@ -63,7 +63,7 @@ include_once 'hidden.menu.php';
             }
         }
 
-        $result = mysqli_query($connection, "SELECT `Voornaam` ,`Bericht` FROM `Bericht` INNER JOIN `user` ON Bericht.Gebruiker_ID = user.Gebruiker_ID "); // haal uit de database //AANVULLEN JOIN ON user.id = bericht.userid
+        $result = mysqli_query($connection, "SELECT `Voornaam` ,`Bericht` FROM `Bericht` INNER JOIN `user` ON Bericht.Gebruiker_ID = user.Gebruiker_ID WHERE Portfolio_ID = " . $studentnumber); // haal uit de database //AANVULLEN JOIN ON user.id = bericht.userid
 
 
         if (mysqli_num_rows($result) == 0) // staat er al iets in
@@ -92,12 +92,17 @@ include_once 'hidden.menu.php';
 <style>
     /*form-style is de formulier class*/
     .Voornaam{
-        border: 1px solid black;
-
+        border: solid 1px #707070;
+        box-shadow: 0 0 5px 1px #969696;
+        padding: 10px;
+        border: solid 1px #dcdcdc;
+        background-color: #cccccc;
     }
     .Bericht{
-        border: 1px solid black;
-
+        border: solid 1px #707070;
+        box-shadow: 0 0 5px 1px #969696;
+        padding: 10px;
+        border: solid 1px #dcdcdc;
     }
     .form-style{ /*balkbreedte en het font*/
         max-width:400px;
