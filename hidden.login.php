@@ -23,13 +23,13 @@ if (!empty($_POST["login"])) {
 	if (is_array($row) && password_verify($password, $row['Wachtwoord']) ) {
 
 		$_SESSION["Gebruiker_ID"] = $row['Gebruiker_ID'];
-		$_SESSION["Type"] = $row['Type'];
+        $_SESSION["Type"] = $row['Type'];
 
 		if($_SESSION['Type']== 'student'){
 		header('refresh:3;url=profiel.php');
 		}
 		if($_SESSION['Type']== 'admin'){
-			header('refresh:5;url=hidden.AdminOverview.php');
+			header('refresh:5;url=hidden.admin_landing.php');
 		}
 		if($_SESSION['Type']== 'slb'){
 			header('refresh:5;url=index.php');

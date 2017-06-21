@@ -1,6 +1,11 @@
 <?php
 include_once'include/session.php';
 include_once 'include/noacces.php';
+
+if($_SESSION["Type"] != "admin" && $_SESSION["Type"] != "slb" && $_SESSION["Type"] != "docent") {
+    header("Location: Mijn%20Uploads.php");
+}
+
 function dateSelect($datum, $folder)
 {
 
@@ -219,7 +224,9 @@ color: $textColor;
 }
 
 
-	?>
+    include("hidden.guestbook.php");
+
+?>
 
 
 

@@ -136,7 +136,20 @@ include_once 'include/session.php';
         input[type=submit]:hover {
             background-color: #0a53a0;
         }
+        .blok{
+            width: 500px;
+            height: 250px;
+            margin: 0 auto;
+        }
 
+        .blokjes {
+            width: 200px;
+            height: 200px;
+            float: left;
+            margin: 15px;
+            background-color: 0a53a0;
+            color: white;
+        }
         /*Errors*/
 
         .errorText {
@@ -156,6 +169,7 @@ include_once 'include/session.php';
             height: 50px;
             position: absolute;
         }
+
 
         <?php
 

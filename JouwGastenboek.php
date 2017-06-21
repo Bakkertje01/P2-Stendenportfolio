@@ -1,7 +1,7 @@
 <?php
 include 'include/session.php';
 include 'include/db_connection.php';
-
+//if(isset($_SESSION)&& $_SESSION['Type']==)
 ?>
 <html>
 <head>
@@ -14,15 +14,12 @@ include_once 'hidden.menu.php';
 ?>
 <div class="jumbotron">
     <div class="container text-center">
-        <h1>My Portfolio</h1>
-        <p>Some text that represents "Me"...</p>
         <h2>Plaats een bericht!</h2>
         <form class="form-style" method="POST" >
             <ul>
                 <li>
                     <label for="bericht">Bericht</label>
                     <textarea cols="50" name="bericht" rows="5"> </textarea>
-                    <span>Vertel het eens!</span>
                 </li>
                 <li>
                     <input name="submit" value="submit" type="submit">
@@ -30,7 +27,6 @@ include_once 'hidden.menu.php';
                 </li>
             </ul>
         </form>
-
         <?php
         //$host = "127.0.0.1:8889"; //host, meestal localhost
         //$user = "root"; //user die op DB connecteert
@@ -44,7 +40,7 @@ include_once 'hidden.menu.php';
         }
         if (isset($_SESSION['Gebruiker_ID']) && $_SESSION['Gebruiker_ID'] == true) // is de gebruiker ingelogd?
         {
-            echo "Welkom op de pagina";
+            echo "<h3>Welkom op de pagina</h3>";
         } else
         {
             echo "Je moet inloggen voor je een bericht kunt plaatsen.";
@@ -55,7 +51,8 @@ include_once 'hidden.menu.php';
             $bericht = mysqli_escape_string($connection, htmlspecialchars($_POST["bericht"]));; // haal uit bericht
             $gebruiker_id = $_SESSION['Gebruiker_ID'];
             $date = date('Y:m:d:H:i');
-            $sql = "INSERT INTO bericht(`bericht`, `Gebruiker_ID`, `Datum_tijd`) VALUES('$bericht', $gebruiker_id, '$date')"; // haal uit bericht en zet in de database
+            $sql = "INSERT INTO bericht(`Bericht`, `Gebruiker_ID`, `Datum_tijd`, `Portfolio_ID`) VALUES('$bericht', $gebruiker_id, '$date', '$studentnumber')";  // haal uit bericht en zet in de database
+
             if (!mysqli_query($connection, $sql))
             {
                 mysqli_close($connection);
@@ -63,7 +60,7 @@ include_once 'hidden.menu.php';
             }
         }
 
-        $result = mysqli_query($connection, "SELECT `Voornaam` ,`Bericht` FROM `Bericht` INNER JOIN `user` ON Bericht.Gebruiker_ID = user.Gebruiker_ID "); // haal uit de database //AANVULLEN JOIN ON user.id = bericht.userid
+        $result = mysqli_query($connection, "SELECT `Voornaam` ,`Bericht` FROM `Bericht` INNER JOIN `user` ON Bericht.Gebruiker_ID = user.Gebruiker_ID WHERE Portfolio_ID = " . $studentnumber); // haal uit de database //AANVULLEN JOIN ON user.id = bericht.userid
 
 
         if (mysqli_num_rows($result) == 0) // staat er al iets in
@@ -92,78 +89,22 @@ include_once 'hidden.menu.php';
 <style>
     /*form-style is de formulier class*/
     .Voornaam{
-        border: 1px solid black;
-
+        border: solid 1px #707070;
+        box-shadow: 0 0 5px 1px #969696;
+        padding: 10px;
+        border: solid 1px #dcdcdc;
+        background-color: #cccccc;
     }
     .Bericht{
-        border: 1px solid black;
-
+        border: solid 1px #707070;
+        box-shadow: 0 0 5px 1px #969696;
+        padding: 10px;
+        border: solid 1px #dcdcdc;
     }
-    .form-style{ /*balkbreedte en het font*/
-        max-width:400px;
-        margin:50px auto;
-        padding:20px;
-        font-family: Georgia, "Times New Roman", Times, serif;
-    }
-    .form-style ul{ /*puntjes van de lijst verwijderen*/
-        list-style:none;
-        padding:0;
-        margin:0;
-    }
-    .form-style li{ /*afstand tussen de balkjes creeren en een border om de invoervelden*/
-        padding: 9px;
-        border:1px solid #DDDDDD;
-        margin-bottom: 30px;
-    }
-    .form-style li:last-child{ /*border verwijderen om de reset en verzend knop*/
-        border:none;
-    }
-    .form-style li > label{ /*de labels stylen*/
-        margin-top: -19px;
-        padding: 2px 5px 2px 5px;
-        color: #B9B9B9;
-        font-size: 14px;
-        font-family: Arial, Helvetica, sans-serif;
-    }
-    .form-style input[type="voornaam"]{
-        border: 1px solid black;
-
-    }/*invoervelden*/
-    .form-style input[type="achternaam"]{}
-    .form-style input[type="email"],
-    .form-style textarea,
-    .form-style select
-    {
-        width: 100%;
-        display: block;
-        border: none;
-        line-height: 25px;
-        font-size: 16px;
-        font-family: Georgia, "Times New Roman", Times, serif;
-
-    }
-    .form-style li > span{  /*de tekst onderin de invoervelden*/
-        background: #F3F3F3;
-        display: block;
-        padding: 3px;
-        margin: 0 -9px -9px -9px;
-        text-align: center;
-        color: #C0C0C0;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 11px;
-
-    }
-    .form-style textarea{ /*textarea een vast grootte geven kan niet groter dan de pagina worden gemaakt*/
-        resize:none;
-    }
-    .form-style input[type="submit"], /*stijl van de buttons*/
-    .form-style input[type="reset"]{
-        background: #2471FF;
-        border: none;
-        padding: 10px 20px 10px 20px;
-        border-bottom: 3px solid #5994FF;
-        border-radius: 3px;
-        color: #D2E2FF;
+    .form-style ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
     }
 </style>
 </html>
