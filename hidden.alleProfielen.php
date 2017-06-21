@@ -1,8 +1,6 @@
 <?php
 include_once('include/session.php');
-
-
-function dateSelect($datum, $folder, $verified)
+function dateSelect($datum, $folder)
 {
 
     $dirnamez = "./studentuploads/" . $datum;
@@ -39,9 +37,6 @@ function dateSelect($datum, $folder, $verified)
 
                     echo "<a href='$file1' download><img src='$file1' title='$deftitle' class='img-responsive' style='width:100%' alt='$file1'></a>";
 
-                    echo $verified;
-
-
                     echo "</div>";
 
 
@@ -61,9 +56,6 @@ function dateSelect($datum, $folder, $verified)
                     echo " <div class='col-sm-3'><h5>$deftitle ($filetypes[2])</h5>";
 
                     echo "<a href='$file1' target='_blank'><img src='thumbnails/$thumbnail' title='$deftitle' class='img-responsive' style=\"width:100%\" alt=\"$file1\"></a>";
-
-                    echo $verified;
-
 
                     echo "</div>";
                 }
@@ -143,7 +135,7 @@ include_once 'hidden.menu.php';
 
                 echo "<div class=\"container text-center\"><p>";
                 echo "<h4>$subdir van $studentnaam</h4>";
-                echo dateSelect($studentnumber, $subdir, $waarmerk);
+                echo dateSelect($studentnumber, $subdir);
                 echo "</p><br><br></div>";
             }
 

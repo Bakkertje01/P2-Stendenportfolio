@@ -29,7 +29,7 @@ if (!empty($_POST["login"])) {
 		header('refresh:3;url=profiel.php');
 		}
 		if($_SESSION['Type']== 'admin'){
-			header('refresh:5;url=hidden.admin_register.php');
+			header('refresh:5;url=hidden.AdminOverview.php');
 		}
 		if($_SESSION['Type']== 'slb'){
 			header('refresh:5;url=index.php');
@@ -49,13 +49,6 @@ if (!empty($_POST["logout"])) {
 }
 */
 
-if (!empty($_POST["gast"])){
-    $_SESSION ["Gast_ID"] = $row['Gebruiker_ID'];
-	$_SESSION["Type"] = $row['Type'];
-
-	header('refresh:5;url=index.php');
-
-}
 ?>
 <html>
 <head>
@@ -88,9 +81,6 @@ include 'hidden.menu.php';
                 </div>
                 <div class="field-group">
                     <div><input type="submit" name="login" value="Login"></span></div>
-                </div>
-                <div class="field-group">
-                    <div><input type="submit" name="gast" value="Gast"></span></div>
                 </div>
             </form>
             <p><a href="hidden.register.php">registreren</a></p>

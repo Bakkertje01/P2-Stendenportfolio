@@ -438,7 +438,7 @@ color: $textColor;
 <form id='register' action='profiel.php' method='post'>
 
     <label for='upload'>Huidige Quote: </label><br><br><br><br>
-    <?php echo $studentquote ?><br><br><br><br>
+    <?php echo "<p>$studentquote</p>" ?><br><br><br><br>
     <label>Kies nieuwe Quote: </label><br><br>
     <input type='text' name='quote' id='firstname'/><br/>
     <input type='submit' name='quotesubmit' id='phone' value='Bewerk Quote'/>
