@@ -222,7 +222,10 @@ include_once 'hidden.menu.php';
                                         $sql .= "VALUES ('$firstname', '$lastname', '$email', '$password', '$studentnr', 1, 'student')";
 
                                         $result = mysqli_query($connection, $sql);
-                                        header("Location: hidden.login.php");
+
+                                        echo "u bent succesvol geregistreerd, u wordt doorgestuurd naar de login pagina.";
+
+                                        header("refresh:4;url=hidden.login.php");
 
                                         ob_end_flush();
 
