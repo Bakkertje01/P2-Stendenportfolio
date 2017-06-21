@@ -140,7 +140,7 @@ include_once 'hidden.menu.php';
             $studentnr = $_POST['Studentnr'];
             $substring = substr($email, -20);
 
-            $voornaam = trim($_POST['voornaam']);
+            $voornaam = trim($_POST['Voornaam']);
             $voornaam = strip_tags($voornaam);
             $voornaam = htmlspecialchars($voornaam);
 
