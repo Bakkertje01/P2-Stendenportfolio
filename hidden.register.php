@@ -140,9 +140,29 @@ include_once 'hidden.menu.php';
             $studentnr = $_POST['Studentnr'];
             $substring = substr($email, -20);
 
-            $voornaam = trim($_POST['voornaam']);
-            $voornaam = strip_tags($voornaam);
-            $voornaam = htmlspecialchars($voornaam);
+            $firstname = trim($_POST['Voornaam']);
+            $firstname = strip_tags($firstname);
+            $firstname = htmlspecialchars($firstname);
+
+            $lastname = trim($_POST['Achternaam']);
+            $lastname = strip_tags($lastname);
+            $lastname = htmlspecialchars($lastname);
+
+            $email = trim($_POST['Email']);
+            $email = strip_tags($email);
+            $email = htmlspecialchars($email);
+
+            $password = trim($_POST['Wachtwoord']);
+            $password = strip_tags($password);
+            $password = htmlspecialchars($password);
+
+            $password1 = trim($_POST['Wachtwoord1']);
+            $password1 = strip_tags($password1);
+            $password1 = htmlspecialchars($password1);
+
+            $studentnr = trim($_POST['Studentnr']);
+            $studentnr = strip_tags($studentnr);
+            $studentnr = htmlspecialchars($studentnr);
 
             $firstname = str_replace(array('\'', '"'), "", $firstname);
             $lastname = str_replace(array('\'', '"'), "", $lastname);

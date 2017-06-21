@@ -16,6 +16,8 @@ include "hidden.style.php";
             <a class="navbar-brand" href="index.php">Portfolio</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
+
+
             <?php
 
             $files = glob("./" . "*");
@@ -35,7 +37,7 @@ include "hidden.style.php";
 
                                 echo "<li><a href='$link'>" . ucfirst($friendlylink) . "</a></li>";
                             } else {
-                                if ($friendlylink === 'alleProfielen' ||$friendlylink === 'contact' || $friendlylink === 'studentfind') {
+                                if ($friendlylink === 'contact' || $friendlylink === 'studentfind') {
                                     echo "<li><a href='$link'>" . ucfirst($friendlylink) . "</a></li>";
                                 }
 
