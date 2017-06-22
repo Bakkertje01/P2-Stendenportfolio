@@ -50,7 +50,7 @@ if (!file_exists($checkPf)){
 $connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 
 $sql = "SELECT Verified FROM User WHERE Gebruiker_ID = $ID";
-echo $sql;
+//echo $sql;
 $result2 = $connection->query($sql);
 
 //if ($result2['num_rows'] > 0) { dit werkt, bij het niet inloggen, als je inlogd gaat het alsnog fout

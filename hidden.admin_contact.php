@@ -69,7 +69,8 @@ include_once 'hidden.menu.php';
                                     . "<tr><td width='200'><b>Datum</b></td>" . "<td>$datumPrint</td></tr>"
                                     . "<tr><td width='200'><b>Onderwerp</b></td>" . "<td>$onderwerpPrint</td></tr>"
                                     . "<tr><td width='200'><b>Bericht</b></td>" . "<td>$berichtPrint</td></tr>"
-                                    . "<tr class='info'><td width='220'><form action='mailto:$emailPrint' method='POST'><input type='submit' class='btn' name='submit' value='Antwoord'></form> <form action='hidden.admin_contact.php' method='POST'><input type='hidden' name='verwijderen' value='".$idPrint."'> <span class='pull-right'><input type='submit'  class='btn btn-danger active' name='verwijder' value='Verwijder'></span></form></td></tr>";
+                                    . "<tr class='info'><td width='220'><form action='mailto:$emailPrint' method='POST'><input type='submit' class='btn' name='submit' value='Antwoord'></form> "
+                                    . "<tr class='info'><td width='220'><form action='hidden.admin_contact.php' method='POST'><input type='hidden' name='verwijderen' value='".$idPrint."'> <input type='submit'  class='btn btn-danger active' name='verwijder' value='Verwijder'></span></form></td></tr>";
 
                                     echo '</table>';
                                     echo '<hr>';
