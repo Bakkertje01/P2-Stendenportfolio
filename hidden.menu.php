@@ -37,10 +37,12 @@ include "hidden.style.php";
                     echo " <li><a href='studentfind.php'><span class=''></span>Zoek student</a></li>";
                 } elseif ($_SESSION['Type'] == 'slb') {
                     echo " <li><a href=''><span class=''></span>SLB menu</a></li>";
+                    echo " <li><a href='hidden.slb_landing.php'><span class=''></span>SLB home</a></li>";
                     echo " <li><a href='contact.php'><span class=''></span>Contact</a></li>";
                     echo " <li><a href='studentfind.php'><span class=''></span>Zoek student</a></li>";
                 } elseif ($_SESSION['Type'] == 'docent') {
                     echo " <li><a href=''><span class=''></span>Docent menu</a></li>";
+                    echo " <li><a href='hidden.docent_landing.php'><span class=''></span>Docent home</a></li>";
                     echo " <li><a href='contact.php'><span class=''></span>Contact</a></li>";
                     echo " <li><a href='studentfind.php'><span class=''></span>Zoek student</a></li>";
                 } else {
