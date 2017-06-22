@@ -270,7 +270,7 @@ color: $textColor;
             <input type='submit' name='verstuur' id='phone' value='Upload'/>
 
 
-            <input type='submit' name='reset' style="float: right" value="Reset"/>
+            <input type='submit' name='reset' style="margin-left: 10;" value="Reset"/>
 
         </form>
     </div>
