@@ -103,7 +103,7 @@ include 'hidden.menu.php';
                 } elseif (isset($_POST['delete'])) {
                     $CID = $_GET['CID'];
                     $DBcommand = "DELETE FROM $DBtable WHERE Gebruiker_ID = '$CID'";
-                    $DBresult = mysqli_query($connection, $DBcommand);
+                    $DBresult = mysqli_query($connection, $DBcommand);// verwijdert geen bericht moet nog
                     echo ($DBresult === false) ? "COULD NOT EXECUTE QUERY4" . mysqli_errno($connection) . " : " . mysqli_error($connection) : 'DELETION HAS BEEN APPLIED';
                    header("Location: hidden.adminOverview.php");
                 }
