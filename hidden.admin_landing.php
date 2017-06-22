@@ -33,7 +33,7 @@ include 'hidden.menu.php';
                 </a>
                 <a href="hidden.admin_contact.php" >
                     <div class="blokjes">
-                        <h2>Admin contact</h2>
+                        <h2>Admin <br>contact</h2>
                     </div>
 
                 <a href="http://papadingo.nl/tiri/" >
