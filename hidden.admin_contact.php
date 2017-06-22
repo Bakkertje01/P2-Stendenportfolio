@@ -1,6 +1,6 @@
 <?php
 include_once 'include/session.php';
-//include_once 'include/noacces_admin.php';
+include_once 'include/noacces_admin.php';
 ?>
 
 <html>

@@ -7,7 +7,8 @@
 <body>
 <?php
 require_once "include/db_connection.php";
-//include "include/noacces_admin.php";
+include_once 'include/session.php';
+include "include/noacces_admin.php";
 include 'hidden.header.php';
 include 'hidden.menu.php';
 ?>
