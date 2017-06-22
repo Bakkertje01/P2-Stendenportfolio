@@ -1,3 +1,4 @@
+
 <html>
 
 <head>
@@ -19,6 +20,20 @@ include 'hidden.menu.php';
         <h3>SLB pagina</h3>
         <div id="wrapper">
             <div id='content'>
+
+                <?php
+
+                $result = mysqlI_query($connection, "SELECT * FROM user WHERE Gebruiker_ID='" . $_SESSION["Gebruiker_ID"] . "'")
+                or die ('error: '. mysqli_error($connection));
+                $row = mysqli_fetch_array($result);
+
+
+
+                ?>
+                <p>Welkom <?php echo ucwords($row['Voornaam']); ?> <?php echo ucwords($row['Achternaam']); ?></p>
+
+
+
                 <div class="list-group">
 
                 <?php

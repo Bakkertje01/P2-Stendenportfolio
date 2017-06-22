@@ -1,7 +1,8 @@
 <?php
 include_once 'include/session.php';
 include_once 'include/db_connection.php';
-include 'include/noacces_admin.php';
+include "include/noacces_admin.php";
+
 ?>
 <html>
 

@@ -29,13 +29,13 @@ if (!empty($_POST["login"])) {
 		header('refresh:3;url=profiel.php');
 		}
 		if($_SESSION['Type']== 'admin'){
-			header('refresh:5;url=hidden.admin_landing.php');
+			header('refresh:3;url=hidden.admin_landing.php');
 		}
 		if($_SESSION['Type']== 'slb'){
-			header('refresh:5;url=index.php');
+			header('refresh:3;url=hidden.slb_landing.php');
 		}
 		if($_SESSION['Type']== 'docent'){
-			header('refresh:5;url=index.php');
+			header('refresh:3;url=hidden.docent_landing.php');
 		}
 
 	} else {
@@ -93,8 +93,8 @@ include 'hidden.menu.php';
 
 
 			?>
-                Welkom <?php echo ucwords($row['Voornaam']); ?>, U bent ingelogd als <?php echo ucwords($row['Type']); ?>. U wordt doorgestuurd naar uw
-                <a href="profiel.php">profielpagina</a>.
+                Welkom <?php echo ucwords($row['Voornaam']); ?>, U bent ingelogd als <?php echo ucwords($row['Type']); ?>. U wordt doorgestuurd naar uw <?php echo ucwords($row['Type']); ?>
+                <!--<a href="profiel.php">-->pagina<!--</a>-->.
 
 
 

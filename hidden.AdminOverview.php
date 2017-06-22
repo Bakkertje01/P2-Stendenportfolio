@@ -1,3 +1,6 @@
+<?php
+include "include/noacces_admin.php";
+?>
 <html>
 
 <head>
