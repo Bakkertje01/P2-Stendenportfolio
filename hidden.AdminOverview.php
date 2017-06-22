@@ -8,7 +8,7 @@
 <?php
 include_once 'include/session.php';
 include_once "include/db_connection.php";
-include_once "include/noacces_admin.php";
+//include_once "include/noacces_admin.php";
 include 'hidden.header.php';
 ob_start();
 include 'hidden.menu.php';
@@ -30,7 +30,7 @@ include 'hidden.menu.php';
             $DBcommand = "SELECT * FROM $DBtable";
             $DBresult = mysqli_query($connection,$DBcommand);
             echo($DBresult === false)?"COULD NOT EXECUTE STATEMENT": NULL;
-            $TH = array("Gebruiker_ID","Voornaam","Achternaam","Email","Studentnr","Verified","Type","img_path","color_path","Quote");
+            $TH = array("Gebruiker ID","Voornaam","Achternaam","Email","Studentnr","Verified","Type","img path","profiel kleur","Quote");
             $X = 0;
             $count = count($TH);
             echo "<table class='table table-hover table-striped table-bordered'>";
@@ -52,8 +52,7 @@ include 'hidden.menu.php';
                 echo "<td>".$row["img_path"]."</td>";
                 echo "<td>".$row["color_path"]."</td>";
                 echo "<td>".$row["Quote"]."</td>";
-                //echo "<td><a href = 'hidden.AdminOverview.php?CID=".$row['Gebruiker_ID']."'>Edit</a></td>";
-                echo "<td><form action='hidden.AdminOverview.php?CID=".$row['Gebruiker_ID']."' method='POST'><input type='submit' class='btn' value='Edit'>";
+                echo "<td><form action='hidden.AdminOverview.php?CID=".$row['Gebruiker_ID']."' method='POST'><input type='submit' class='btn' value='Edit'></form>";
                 echo "<tr>";
             }
 
@@ -64,16 +63,24 @@ include 'hidden.menu.php';
                 $DBcommand = "SELECT * FROM $DBtable WHERE Gebruiker_ID = '$CID'";
                 $DBresult = mysqli_query($connection, $DBcommand);
                 echo ($DBresult === false) ? "COULD NOT EXECUTE QUERY" . mysqli_errno($connection) . " : " . mysqli_error($connection) : NULL;
-
+                $TH = array("Voornaam","Achternaam","Email","Verified","Type","img path","profiel kleur","Quote","update","delete");
+                $X = 0;
+                $count = count($TH);
+                echo "<table class='table table-hover table-striped table-bordered'>";
+                echo "<tr class='info'>";
+                while($X < $count ){
+                    echo "<th>".$TH[$X]."</th>";
+                    $X++;
+                }
                 echo "<table border = 1% width = 100% height = 200px>";
                 echo "<form action = '' method = 'POST'>";
                 while ($row = mysqli_fetch_assoc($DBresult)) {
                     echo "<tr>";
-                    echo "<td><input type = 'text' name = 'GID' value = '" . $row['Gebruiker_ID'] . "'></td>";
+                    //echo "<td><input type = 'text' name = 'GID' value = '" . $row['Gebruiker_ID'] . "'></td>";
                     echo "<td><input type = 'text' name = 'voornaam' value ='" . $row["Voornaam"] . "'</td>";
                     echo "<td><input type = 'text' name = 'achternaam' value ='" . $row["Achternaam"] . "'</td>";
                     echo "<td><input type = 'text' name = 'email' value ='" . $row["Email"] . "'</td>";
-                    echo "<td><input type = 'text' name = 'studentnr' value ='" . $row["Studentnr"] . "'</td>";
+                    //echo "<td><input type = 'text' name = 'studentnr' value ='" . $row["Studentnr"] . "'</td>";
                     echo "<td><input type = 'text' name = 'verified' value ='" . $row["Verified"] . "'</td>";
                     echo "<td><input type = 'text' name = 'type' value ='" . $row["Type"] . "'</td>";
                     echo "<td><input type = 'text' name = 'imgpath' value ='" . $row["img_path"] . "'</td>";
