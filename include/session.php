@@ -52,9 +52,9 @@ $connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 $sql = "SELECT Verified FROM User WHERE Gebruiker_ID = $ID";
 $result2 = $connection->query($sql);
 
-if ($result2['num_rows'] > 0) {
+if ($result2->num_rows > 0) {
     // output data of each row
-    $row2 = array();
+   $row2 = array();
     while ($row2 = $result2->fetch_assoc()) {
         $waarmerkCheck = $row2["Verified"];
         if ($waarmerkCheck = 1) {
