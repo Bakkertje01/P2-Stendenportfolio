@@ -34,7 +34,7 @@ include "hidden.style.php";
                     echo " <li><a href='JouwGastenboek.php'><span class=''></span> Gastenboek</a></li>";
                     echo " <li><a href='Mijn Uploads.php'><span class=''></span> Mijn profiel</a></li>";
                     echo " <li><a href='contact.php'><span class=''></span>Contact</a></li>";
-                    echo " <li><a href='studentfind.php'><span class=''></span>Zoek student</a></li>";
+                    //echo " <li><a href='studentfind.php'><span class=''></span>Zoek student</a></li>";
                 } elseif ($_SESSION['Type'] == 'slb') {
                     echo " <li><a href='hidden.slb_landing.php'><span class=''></span>SLB home</a></li>";
                     echo " <li><a href='studentfind.php'><span class=''></span>Zoek student</a></li>";
