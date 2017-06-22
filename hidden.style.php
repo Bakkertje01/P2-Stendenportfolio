@@ -172,6 +172,20 @@ include_once 'include/session.php';
             height: 50px;
             position: absolute;
         }
+        .profielcenter{
+            height: 100%;
+            width: 1400px;
+            margin: 0 auto;
+        }
+        .profiel{
+            height: 450px;
+            width: 350px;
+            padding: 15px;
+            margin: 15px;
+            background-color: lightgrey;
+            border: 1px solid black;
+            float: left;
+        }
 
 
         <?php
