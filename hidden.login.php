@@ -3,7 +3,7 @@ include_once 'include/session.php';
 include_once 'include/db_connection.php';
 
 if(isset($_SESSION['Gebruiker_ID'])){
-	header("location: url=index.php");
+	header("location:index.php");
 }
 
 $message = "";

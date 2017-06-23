@@ -4,7 +4,7 @@
     include_once 'include/session.php';
 
 if(isset($_SESSION['Gebruiker_ID'])){
-	header("location: url=index.php");
+	header("location:index.php");
 }
 ?>
 
