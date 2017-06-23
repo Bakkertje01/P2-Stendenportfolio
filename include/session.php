@@ -46,26 +46,28 @@ if (!file_exists($checkPf)){
 }
 
 
+if (isset($_SESSION['Gebruiker_ID'])) {
+    $ID = $_SESSION["Gebruiker_ID"];
+    $connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 
-$connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
-
-$sql2 = "SELECT Verified FROM User WHERE Gebruiker_ID = $ID";
+    $sql2 = "SELECT Verified FROM User WHERE Gebruiker_ID = $ID";
 //echo $sql;
-$result2 = $connection->query($sql2);
+    $result2 = $connection->query($sql2);
 
 //if ($result2['num_rows'] > 0) { dit werkt, bij het niet inloggen, als je inlogd gaat het alsnog fout
-if ($result2->num_rows > 0) {
-    // output data of each row
-   $row2 = array();
-    while ($row2 = $result2->fetch_assoc()) {
-        $waarmerkCheck = $row2["Verified"];
-        if ($waarmerkCheck = 1) {
-            $waarmerk = "<p><img width='20%' src='waarmerk/approved.jpg'>Gewaarmerkt Door SLB/DOCENT</p>";
-        }
-        if ($waarmerkCheck != 1) {
-            $waarmerk = "<p><img width='20%' src='waarmerk/progr.png'>In afwachting van waarmerk</p>";
-        }
+    if ($result2->num_rows > 0) {
+        // output data of each row
+        $row2 = array();
+        while ($row2 = $result2->fetch_assoc()) {
+            $waarmerkCheck = $row2["Verified"];
+            if ($waarmerkCheck = 1) {
+                $waarmerk = "<p><img width='20%' src='waarmerk/approved.jpg'>Gewaarmerkt Door SLB/DOCENT</p>";
+            }
+            if ($waarmerkCheck != 1) {
+                $waarmerk = "<p><img width='20%' src='waarmerk/progr.png'>In afwachting van waarmerk</p>";
+            }
 
+        }
     }
 }
 
