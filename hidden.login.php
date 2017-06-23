@@ -66,7 +66,7 @@ include 'hidden.menu.php';
 <?php
 
 if(isset($_SESSION["registered"])){
-    echo "<h2>Je bent geregistreerd en kunt nu inloggen</h2>";
+    echo "<h2>Je bent geregistreerd en kunt nu inloggen</h2><br>";
 }
         if (empty($_SESSION["Gebruiker_ID"])) { ?>
             <form action="" method="post">
