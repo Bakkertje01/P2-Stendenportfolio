@@ -101,11 +101,19 @@ include 'hidden.menu.php';
                     echo ($DBresult === false) ? "COULD NOT EXECUTE QUERY3" . mysqli_errno($connection) . " : " . mysqli_error($connection) : 'UPDATE HAS BEEN APPLIED';
                     header("Location: hidden.adminOverview.php");
                 } elseif (isset($_POST['delete'])) {
+                    $DBtableBericht = 'bericht';
+                    $DBtableFiles = "files";
                     $CID = $_GET['CID'];
+                    $DBcommand = "DELETE FROM files WHERE Gebruiker_ID = '$CID'";
+                    $DBresult = mysqli_query($connection, $DBcommand);
+                    echo ($DBresult === false) ? "COULD NOT EXECUTE QUERY4" . mysqli_errno($connection) . " : " . mysqli_error($connection) : NULL;
+                    $DBcommand = "DELETE FROM bericht WHERE Gebruiker_ID = '$CID'";
+                    $DBresult = mysqli_query($connection, $DBcommand);
+                    echo ($DBresult === false) ? "COULD NOT EXECUTE QUERY5" . mysqli_errno($connection) . " : " . mysqli_error($connection) : NULL;
                     $DBcommand = "DELETE FROM $DBtable WHERE Gebruiker_ID = '$CID'";
-                    $DBresult = mysqli_query($connection, $DBcommand);// verwijdert geen bericht moet nog
-                    echo ($DBresult === false) ? "COULD NOT EXECUTE QUERY4" . mysqli_errno($connection) . " : " . mysqli_error($connection) : 'DELETION HAS BEEN APPLIED';
-                   header("Location: hidden.adminOverview.php");
+                    $DBresult = mysqli_query($connection, $DBcommand);
+                    echo ($DBresult === false) ? "COULD NOT EXECUTE QUERY6" . mysqli_errno($connection) . " : " . mysqli_error($connection) : 'DELETION HAS BEEN APPLIED';
+                    header("Location: hidden.adminOverview.php");
                 }
             }
 
