@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `portfolio`.`Files` (
   `Filetype` VARCHAR(15) NULL,
   `Verified` INT(1) NULL DEFAULT 0,
   `Description` VARCHAR(100) NULL,
-  `Filename` VARCHAR(50) NULL,
+  `Filename` VARCHAR(200) NULL,
   UNIQUE INDEX `Information_ID_UNIQUE` (`File_ID` ASC),
   PRIMARY KEY (`File_ID`),
   INDEX `fk_Files_User1_idx` (`Gebruiker_ID` ASC),

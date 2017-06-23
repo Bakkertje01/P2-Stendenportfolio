@@ -52,35 +52,27 @@ if (isset($_POST['kleursub']) && isset($_POST['textkleur'])) {
 body{
 background-color: $bgColor;
 }
-
 .jumbotron{
 background-color: $bgColor;
 }
-
 .container text-center{
 background-color: $bgColor;
 }
-
 .container-fluid bg-3 text-center{
 background-color: $bgColor;
 }
-
 .row{
 background-color: $bgColor;
 }
-
 .col-sm-3{
 background-color: $bgColor;
 }
-
 .img-responsive{
 background-color: $bgColor;
 }
-
 p{
 color: $textColor;
 }
-
 h1{
 color: $textColor;
 }h2{
@@ -140,26 +132,34 @@ color: $textColor;
 
                             if (isset($_FILES['pfupload']) && !empty($_FILES['pfupload']['name'])) {
 
+                                $student_ID = $_SESSION['Gebruiker_ID'];
+                                $description = 1;
+
                                 $errors = array();
-
-                                $fileTitle = 'pf.jpg';
-
-                                $selectedDir = 'Profielfoto';
-
-                                $file_name = "$fileTitle";
-
 
                                 $oldName = $_FILES['pfupload']['name'];
 
                                 $file_size = $_FILES['pfupload']['size'];
                                 $file_tmp = $_FILES['pfupload']['tmp_name'];
-                                $file_type = $_FILES['pfupload']['type'];
+                                $file_type = pathinfo($oldName, PATHINFO_EXTENSION);
+
+                                $fileTitle = 'pf';
+
+                                $selectedDir = 'Profielfoto';
+
+                                $file_name = "$fileTitle.$file_type";
+
+
+
+
+
 
 
                                 $ext = explode('.', $oldName);
                                 $acceptedFiles = array('jpg', 'jpeg', 'png', 'gif', 'JPG', 'JPEG');
 
-                                $pfDir = "studentuploads/$studentnumber/Profielfoto/$PfNaam";
+                               $pfDir = "studentuploads/$studentnumber/Profielfoto/$PfNaam";
+              //nodig
 
                                 if (file_exists($profielfoto) && isset($_FILES['pfupload'])) {
                                     unlink($profielfoto);
@@ -207,6 +207,25 @@ color: $textColor;
                                     if ($dots <= 1) {
                                         if (!file_exists("$StudentDir/$dirname/$selectedDir/" . $file_name)) {
                                             move_uploaded_file($file_tmp, "$StudentDir/$dirname/$selectedDir/" . $file_name);
+
+
+                                            $checkpf = "SELECT File_ID FROM files where Filetype = 'profielfoto' AND Gebruiker_ID  = '$student_ID'";
+                                            $row = mysqli_query($connection, $checkpf);
+                                            if (!mysqli_num_rows($row) == 0){
+
+                                                $filepf = mysqli_fetch_assoc($row);
+                                                $query = "UPDATE files SET Filename = '$file_name' WHERE File_ID = " . $filepf['File_ID'] . ";";
+
+                                            }
+                                            else {
+                                                $query = "INSERT INTO files(Files_path, Filename, Filetype, Gebruiker_ID) VALUES('$StudentDir/$dirname/$selectedDir/','$file_name','profielfoto','$student_ID')";
+                                            }
+                                            mysqli_query($connection, $query);
+
+
+
+
+
                                         } else {
                                             echo "Bestand bestaat al";
                                         }
@@ -237,11 +256,14 @@ color: $textColor;
                         <br>
         </p>
     </div>
+
+
     <div class="profiel">
         <p>
 
+<!--BESTANDEN UPLOADEN-->
 
-        <h3>Bestanden uploaden</h3>
+        <h3>Bestanden uploaden:</h3>
 
 
         <form id='register' action='profiel.php' method='post' enctype="multipart/form-data">
@@ -260,15 +282,12 @@ color: $textColor;
             echo "</select><p></p>";
 
             ?>
-
-
             <label for='Titel'>Naam van je bestand:</label>
 
 
             <input type='text' name='Titel' id='email'/>
 
-            <input type='submit' name='verstuur' id='phone' value='Upload'/>
-
+            <input type='submit' name='verstuur' id='phone' value='upload'/>
 
             <input type='submit' name='reset' style="margin-left: 10;" value="Reset"/>
 
@@ -283,12 +302,9 @@ color: $textColor;
 <div class="profiel">
     <p><?php
 
-
         if (isset($_POST['verstuur'])) {
 
-
             if (isset($_FILES['upload']) && !empty($_FILES['upload']['name']) && !empty($_POST['Titel'])) {
-
 
                 $errors = array();
 
@@ -306,13 +322,14 @@ color: $textColor;
                     $fileTitle = 'pf';
                 }
 
-
                 if (!empty($_POST['dirselect'])) {
                     $selectedDir = $_POST['dirselect'];
                 } else {
                     $selectedDir = 'dank';
                 }
 
+                $student_ID = $_SESSION['Gebruiker_ID'];
+                $type = $_POST['dirselect'];
 
                 $file_name = "--$fileTitle--" . $_FILES['upload']['name'];
 
@@ -366,20 +383,46 @@ color: $textColor;
                         }
                     }
                     $dots = substr_count($file_name, '.');
-                    if ($dots <= 1) {
+                    if ($dots <= 1)
+                    {
                         if (!file_exists("$StudentDir/$dirname/$selectedDir/" . $file_name)) {
-                            move_uploaded_file($file_tmp, "$StudentDir/$dirname/$selectedDir/" . $file_name);
-                        } else {
-                            move_uploaded_file($file_tmp, "$StudentDir/$dirname/$selectedDir/" . "--Duplicate" . $file_name);
-                        }
-                    } else {
-                        echo "<br><p style='text-align:center;'>Bestandsnaam bevat meer dan 1 punt!<br>Upload Mislukt, verander je bestandsnaam</p>";
-                        $file_name = NULL;
-                    }
-                    if (strpos($file_name, '.')) {
-                        echo "<br><p style='text-align:center;'>Bestand: '$fileTitleup[1]' in de map $selectedDir geplaatst! </p><br>";
+                            if (move_uploaded_file($file_tmp, "$StudentDir/$dirname/$selectedDir/" . $file_name)){
 
+                                $query = "INSERT INTO files(Files_path, Filename, Filetype, Gebruiker_ID) VALUES('$StudentDir/$dirname/$selectedDir/','$file_name','$type','$student_ID')";
+                                mysqli_query($connection, $query);
+
+                                if (strpos($file_name, '.')) {
+                                    echo "<br><p style='text-align:center;'>Bestand: '$fileTitleup[1]' in de map $selectedDir geplaatst! </p><br>";
+
+                                }
+                            }
+                            else {
+                                echo "upload mislukt";
+                            }
+                        }
+                        else {
+                            if (move_uploaded_file($file_tmp, "$StudentDir/$dirname/$selectedDir/" . "--Duplicate" . $file_name)){
+
+                                $query = "INSERT INTO files(Files_path, Filename, Filetype, Gebruiker_ID) VALUES('$StudentDir/$dirname/$selectedDir/','$file_name','$type','$student_ID')";
+                                mysqli_query($connection, $query);
+
+                                if (strpos($file_name, '.')) {
+                                    echo "<br><p style='text-align:center;'>Bestand: '$fileTitleup[1]' in de map $selectedDir geplaatst! </p><br>";
+
+                                }
+                            }
+                            else {
+                                echo "upload mislukt";
+                            }
+
+
+                        }
+                    } else
+                    {
+                            echo "<br><p style='text-align:center;'>Bestandsnaam bevat meer dan 1 punt!<br>Upload Mislukt, verander je bestandsnaam</p>";
+                            $file_name = NULL;
                     }
+
                 } else {
                     foreach ($errors as $error) {
                         echo '<center>' . $error . '</center><br>';
@@ -395,6 +438,7 @@ color: $textColor;
         ?></p>
     </center>
 
+    <!--BESTANDEN UPLOADEN-->
 
     </form>
 
@@ -478,16 +522,28 @@ color: $textColor;
         <label for='upload'>Bestanden: </label><br><br><br><br>
         <label>Kies te verwijderen bestand: </label><br><br>
         <?php
-        $subdirs = array('CV', 'Afbeeldingen', 'Documenten');
+        //$subdirs = array('CV', 'Afbeeldingen', 'Documenten');
 
         echo "<select name='selectdelete'>";
 
         echo "<option value=''>Selecteer je bestand</option>";
-        foreach ($subdirs as $subdir) {
-
-            deletefiles($studentnumber, $subdir);
+        $SQLgetfiles = "select * from files where Filetype != 'profielfoto'";
+        $Getfiles = mysqli_query($connection, $SQLgetfiles);
+        if (!mysqli_num_rows($row) == 0){
+            echo "geen bestanden";
+        }
+        else{
+            while($fileoption = mysqli_fetch_assoc($Getfiles)){
+                echo "<option value=" . $fileoption['File_ID']. ">" . $fileoption['Filename'] . "</option>";
+            }
 
         }
+
+//        foreach ($subdirs as $subdir) {
+//
+//            deletefiles($studentnumber, $subdir);
+//
+//        }
         echo "</select>";
 
         ?>
@@ -497,12 +553,22 @@ color: $textColor;
     <?php
 
     if (isset($_POST['deletefile'])) {
-
         $deleteFile = $_POST['selectdelete'];
+
+        $querysell="SELECT Files_path, Filename FROM Files WHERE File_ID = '$deleteFile'";
+        $queryselect = mysqli_query($connection, $querysell);
+        $row = mysqli_fetch_assoc($queryselect);
+        $filepath = $row['Files_path'].$row['Filename'];
+
 
         if (!empty($deleteFile)) {
 
-            unlink($deleteFile);
+           $query="DELETE FROM Files WHERE File_ID = '$deleteFile'";
+           mysqli_query($connection, $query);
+
+            echo $deleteFile;
+
+            unlink($filepath);
 
             echo "<p>Het bestand is verwijderd.</p>";
         }
