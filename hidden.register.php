@@ -2,6 +2,10 @@
     include_once 'include/db_connection.php';
     include_once 'include/functions.php';
     include_once 'include/session.php';
+
+if(isset($_SESSION['Gebruiker_ID'])){
+	header("location: url=index.php");
+}
 ?>
 
 
