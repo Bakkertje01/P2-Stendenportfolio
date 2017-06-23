@@ -63,10 +63,10 @@ if(isset($_POST["Submit"])) {
     $password = $_POST['Password'];
     $password1 = $_POST['Password1'];
     $rol = $_POST['rol'];
-    $firstname = str_replace(array('\'', '"'), '', $firstname);
-    $lastname = str_replace(array('\'', '"'), '', $lastname);
-    $email = str_replace(array('\'', '"'), '', $email);
-    $password = str_replace(array('\'', '"'), '', $password);
+    $firstname = str_replace(array('\'', '"','<','>'), '', $firstname);
+    $lastname = str_replace(array('\'', '"','<','>'), '', $lastname);
+    $email = str_replace(array('\'', '"','<','>'), '', $email);
+    $password = str_replace(array('\'', '"','<','>'), '', $password);
 
    /* $email = trim($_POST['Email']);
     $email = strip_tags($email);
