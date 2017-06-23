@@ -68,6 +68,7 @@ include "hidden.style.php";
                     <li><a href="hidden.logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                 <?php } else { ?>
                     <li><a href="hidden.login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    <li><a href="hidden.register.php"><span class="glyphicon glyphicon-user"></span> registreren</a></li>
                 <?php } ?>
             </ul>
         </div>
