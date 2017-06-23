@@ -2,9 +2,6 @@
 include_once 'include/session.php';
 include_once 'include/db_connection.php';
 
-if(isset($_SESSION['Gebruiker_ID'])){
-	header("location:index.php");
-}
 
 $message = "";
 if (!empty($_POST["login"])) {
@@ -20,31 +17,31 @@ if (!empty($_POST["login"])) {
     $password = htmlspecialchars($password);
 
 
-	$result = mysqli_query($connection, "SELECT * FROM user WHERE Email='$email' LIMIT 1")
-	or die ('error: '. mysqli_error($connection));
+    $result = mysqli_query($connection, "SELECT * FROM user WHERE Email='$email' LIMIT 1")
+    or die ('error: '. mysqli_error($connection));
 
-	$row = mysqli_fetch_array($result);
-	if (is_array($row) && password_verify($password, $row['Wachtwoord']) ) {
+    $row = mysqli_fetch_array($result);
+    if (is_array($row) && password_verify($password, $row['Wachtwoord']) ) {
 
-		$_SESSION["Gebruiker_ID"] = $row['Gebruiker_ID'];
+        $_SESSION["Gebruiker_ID"] = $row['Gebruiker_ID'];
         $_SESSION["Type"] = $row['Type'];
 
-		if($_SESSION['Type']== 'student'){
-		header('refresh:3;url=profiel.php');
-		}
-		if($_SESSION['Type']== 'admin'){
-			header('refresh:3;url=hidden.admin_landing.php');
-		}
-		if($_SESSION['Type']== 'slb'){
-			header('refresh:3;url=hidden.slb_landing.php');
-		}
-		if($_SESSION['Type']== 'docent'){
-			header('refresh:3;url=hidden.docent_landing.php');
-		}
+        if($_SESSION['Type']== 'student'){
+            header('refresh:3;url=profiel.php');
+        }
+        if($_SESSION['Type']== 'admin'){
+            header('refresh:3;url=hidden.admin_landing.php');
+        }
+        if($_SESSION['Type']== 'slb'){
+            header('refresh:3;url=hidden.slb_landing.php');
+        }
+        if($_SESSION['Type']== 'docent'){
+            header('refresh:3;url=hidden.docent_landing.php');
+        }
 
-	} else {
-		$message = "Invalid Username or Password!";
-	}
+    } else {
+        $message = "Invalid Username or Password!";
+    }
 }
 /*
 if (!empty($_POST["logout"])) {
@@ -54,19 +51,23 @@ if (!empty($_POST["logout"])) {
 */
 
 ?>
-<html>
-<head>
-    <title>Login</title>
-    <link rel="icon" type="image/png" href="hide/fav.png"/>
-</head>
+    <html>
+    <head>
+        <title>Login</title>
+        <link rel="icon" type="image/png" href="hide/fav.png"/>
+    </head>
 <body>
 <?php
 include 'hidden.header.php';
 include 'hidden.menu.php';
 ?>
-<div class='jumbotron'>
-    <div class="container text-center">
-		<?php
+    <div class='jumbotron'>
+        <div class="container text-center">
+<?php
+
+if(isset($_SESSION["registered"])){
+    echo "<h2>Je bent geregistreerd en kunt nu inloggen</h2>";
+}
         if (empty($_SESSION["Gebruiker_ID"])) { ?>
             <form action="" method="post">
                 <div class="error-message"><?php if (isset($message)) {
@@ -114,7 +115,3 @@ include 'hidden.footer.php';
 ?>
 </body>
 </html>
-
-
-
-

@@ -1,11 +1,7 @@
 <?php
-    include_once 'include/db_connection.php';
-    include_once 'include/functions.php';
-    include_once 'include/session.php';
-
-if(isset($_SESSION['Gebruiker_ID'])){
-	header("location:index.php");
-}
+include_once 'include/db_connection.php';
+include_once 'include/functions.php';
+include_once 'include/session.php';
 ?>
 
 
@@ -198,46 +194,45 @@ include_once 'hidden.menu.php';
                             echo "Enter a Valid email";
                         } else {
 
-                           /* if (strlen($password) <= 6) {
-                                echo "Choose a password longer then 6 character";
+                            /* if (strlen($password) <= 6) {
+                                 echo "Choose a password longer then 6 character";
 
-                            } else {*/
+                             } else {*/
 
-                                $queryUsers = "SELECT Email FROM user WHERE Email='$email'";
-                                $resultemail = mysqli_query($connection, $queryUsers);
-                                if (mysqli_num_rows($resultemail) > 0) {
-                                    echo '<div class="">' . '* Email adres bestaat al' . "</div>";
+                            $queryUsers = "SELECT Email FROM user WHERE Email='$email'";
+                            $resultemail = mysqli_query($connection, $queryUsers);
+                            if (mysqli_num_rows($resultemail) > 0) {
+                                echo '<div class="">' . '* Email adres bestaat al' . "</div>";
+                            } else {
+
+                                $queryUsers = "SELECT Studentnr FROM user WHERE Studentnr='$studentnr'";
+                                $resultstnumber = mysqli_query($connection, $queryUsers);
+                                //$rowUsers = mysqli_fetch_array($resultUsers);
+                                if (mysqli_num_rows($resultstnumber) > 0) {
+                                    echo '<div class="">' . '* Studentnumber bestaat al' . "</div>";
                                 } else {
 
-                                    $queryUsers = "SELECT Studentnr FROM user WHERE Studentnr='$studentnr'";
-                                    $resultstnumber = mysqli_query($connection, $queryUsers);
-                                    //$rowUsers = mysqli_fetch_array($resultUsers);
-                                    if (mysqli_num_rows($resultstnumber) > 0) {
-                                        echo '<div class="">' . '* Studentnumber bestaat al' . "</div>";
-                                    } else {
+                                    //hasing the password
+                                    $password = password_hash($password, PASSWORD_BCRYPT);
 
-                                        //hasing the password
-                                        $password = password_hash($password, PASSWORD_BCRYPT);
+                                    //$password = password_encrypt($_POST["Wachtwoord"]);
 
-                                        //$password = password_encrypt($_POST["Wachtwoord"]);
+                                    $sql = "INSERT INTO user";
+                                    $sql .= "(Voornaam, Achternaam, Email, Wachtwoord, Studentnr, Verified, Type) ";
+                                    $sql .= "VALUES ('$firstname', '$lastname', '$email', '$password', '$studentnr', 1, 'student')";
 
-                                        $sql = "INSERT INTO user";
-                                        $sql .= "(Voornaam, Achternaam, Email, Wachtwoord, Studentnr, Verified, Type) ";
-                                        $sql .= "VALUES ('$firstname', '$lastname', '$email', '$password', '$studentnr', 1, 'student')";
-
-                                        $result = mysqli_query($connection, $sql);
-
-                                        echo "U bent succesvol geregistreerd, u wordt doorgestuurd naar de login pagina.";
-
-                                        header("refresh:4;url=hidden.login.php");
-
-                                        ob_end_flush();
-
-                                        if ($result === false) {
-                                            echo "ERROR" . mysqli_errno() . " : " . mysqli_error();
+                                    $result = mysqli_query($connection, $sql);
 
 
-                                        }
+                                    $_SESSION["registered"] = true;
+                                    header("location:hidden.login.php");
+
+                                    ob_end_flush();
+
+                                    if ($result === false) {
+                                        echo "ERROR" . mysqli_errno() . " : " . mysqli_error();
+
+
                                     }
                                 }
                             }
@@ -245,6 +240,7 @@ include_once 'hidden.menu.php';
                     }
                 }
             }
+        }
         /*}*/
         ?>
 
