@@ -75,6 +75,7 @@
             ?>
         </div>
     </div>
+    </div>
     </body>
     <style>
         /*form-style is de formulier class*/
