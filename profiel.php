@@ -146,7 +146,7 @@
                     </div>
 
 
-                    <div class="profiel">
+
                         <?php
                             if (isset($_POST['verstuur'])) {
                                 if (isset($_FILES['upload']) && !empty($_FILES['upload']['name']) && !empty($_POST['Titel'])) {
@@ -247,6 +247,7 @@
 
     <!--KLEUR SELECTEREN-->
 
+                    <div class="profiel">
                         <form action="profiel.php" method="post">
                             <h3>Kleuren:</h3>
                             <p>Achtergrond:</p>
