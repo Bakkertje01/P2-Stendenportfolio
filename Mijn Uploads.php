@@ -110,18 +110,24 @@ include_once 'hidden.menu.php';
     <div class="container text-center">
         <h3>Bestanden van <?php echo "$studentnaam $studentachter"; ?></h3>
 
-        <img width="20%" <?php echo "src='$profielfoto'" ?> alt="profielfoto"
-             title="Profielfoto">
-        <p><i>'<?php echo $studentquote; ?>'</i></p>
-    </div>
+        <?php
+        $student_ID = $_SESSION['Gebruiker_ID'];
+        $SQLgetfiles = ("SELECT File_ID, Files_path, Filename, Filetype FROM files where Filetype = 'profielfoto' AND Gebruiker_ID  = '$student_ID'");
+        $Getfiles = mysqli_query($connection, $SQLgetfiles);
+        $row = mysqli_fetch_assoc($Getfiles);
+        $filepath = $row['Files_path'] . $row['Filename'];
 
+        // echo "<div class='avatar'><img class='img-responsive' src='$filepath' width='200px' height='100px' alt='Profielfoto'></div>";
+        ?>
 
+       <img width="20%" <?php echo "src='$filepath'" ?> alt="profielfoto" title="Profielfoto">
+          <p><i>'<?php echo $studentquote; ?>'</i></p>
+        </div>
     <div class="container text-center">
-
 
         <p><?php
 
-            $subdirs = array('CV', 'Afbeeldingen', 'Documenten');
+           $subdirs = array('CV', 'Afbeeldingen', 'Documenten');
 
 
             foreach ($subdirs as $subdir) {
@@ -129,10 +135,18 @@ include_once 'hidden.menu.php';
                 echo "<div class='container text-center'><p>";
                 echo "<h4>$subdir van $studentnaam</h4>";
                 echo dateSelect($studentnumber, $subdir, $waarmerk);
+
+
                 echo "</p><br><br></div>";
             }
 
-            ?></p>
+            ?>
+
+
+
+        <p><i>'<?php echo $studentquote; ?>'</i></p>
+
+        </p>
     </div>
 
 </div>

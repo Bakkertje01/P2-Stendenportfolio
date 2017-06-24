@@ -22,9 +22,10 @@
     <!--PROFIEL FOTO-->
 
                     <div class="profiel">
+                        <h3>Huidige Profielfoto:</h3>
                         <form id='register' action='profiel.php' method='post' enctype="multipart/form-data">
-                            <label for='upload'><h3>Huidige Profielfoto:</h3></label><br><br><br><br>
-                            <img style='float: left' width="20%" <?php echo "src='$profielfoto'"; ?> alt="profielfoto"
+                            <label for='upload'></label>
+                            <img style='float: left' width="50%" <?php echo "src='$profielfoto'"; ?> alt="profielfoto"
                                  title="Profielfoto"><br><br><br><br><br><br><br><br>
                             <label>Kies nieuwe Profielfoto: </label><br><br>
                             <input type='file' name='pfupload' id='firstname'/><br/>
@@ -143,9 +144,6 @@
                             <input type='submit' name='verstuur' id='phone' value='upload'/>
                             <input type='submit' name='reset' style="margin-left: 10;" value="Reset"/>
                         </form>
-                    </div>
-
-
 
                         <?php
                             if (isset($_POST['verstuur'])) {
@@ -242,6 +240,7 @@
                                 }
                             }
                             ?>
+                    </div>
 
     <!--BESTANDEN UPLOADEN-->
 
@@ -273,7 +272,7 @@
                                 <option value="#000000" selected="selected">Zwart</option>
                                 <option value="#00faff">Cyaan</option>
                                 <option value="#eeeeee">Grijs</option>
-                            </select><br>
+                            </select><br><br>
                             <input type='submit' id='phone' name='kleursub' value='Kies kleur!'/>
                         </form>
                         <br><br><br><br>

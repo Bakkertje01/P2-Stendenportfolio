@@ -186,6 +186,10 @@ include_once 'include/session.php';
             border: 1px solid black;
             float: left;
         }
+        .select{
+            width: 100px;
+            background-color: red;
+        }
 
 
         <?php
