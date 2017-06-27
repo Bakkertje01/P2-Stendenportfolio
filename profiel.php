@@ -161,7 +161,7 @@
                             <label for='Titel'>Naam van je bestand:</label>
                             <input type='text' name='Titel' id='email'/>
                             <input type='submit' name='verstuur' id='phone' value='upload'/>
-                            <input type='submit' name='reset' style="margin-left: 10;" value="Reset"/>
+                            <input type='submit' name='reset' style="margin-left: 10px;" value="Reset"/>
                         </form>
 
                         <?php
@@ -303,7 +303,62 @@
                                 $result = $connection->query($sql);
                                 $kleurgekozen = "<p>Kleuren gekozen! <a href='profiel.php'>Ok!</a></p>";
 
-                                echo "<style>.jumbotron, .container, .container-fluid, .row, .img-responsive, .col-sm-3, body{background-color: $bgColor;}p, h1, h2, h3, h4, h5, h6, input, label{color: $textColor;}</style>";
+
+                                echo "<style>
+                                                                              
+                                        body{
+                                        background-color: $bgColor;
+                                        }
+                                        
+                                        .jumbotron{
+                                        background-color: $bgColor;
+                                        }
+                                        
+                                        .container text-center{
+                                        background-color: $bgColor;
+                                        }
+                                        
+                                        .container-fluid bg-3 text-center{
+                                        background-color: $bgColor;
+                                        }
+                                        
+                                        .row{
+                                        background-color: $bgColor;
+                                        }
+                                        
+                                        .col-sm-3{
+                                        background-color: $bgColor;
+                                        }
+                                        
+                                        .img-responsive{
+                                        background-color: $bgColor;
+                                        }
+                                        
+                                        p{
+                                        color: $textColor;
+                                        }
+                                        
+                                        h1{
+                                        color: $textColor;
+                                        }h2{
+                                        color: $textColor;
+                                        }h3{
+                                        color: $textColor;
+                                        }h4{
+                                        color: $textColor;
+                                        }h5{
+                                        color: $textColor;
+                                        }h6{
+                                        color: $textColor;
+                                        }
+                                        input{
+                                        color: $textColor;
+                                        }
+                                        label{
+                                        color: $textColor;
+                                        }
+                                        </style>";
+
                             }
                             if (isset($_POST['kleursub'])) {
                                 echo $kleurgekozen;
