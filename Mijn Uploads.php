@@ -119,7 +119,7 @@ include_once 'hidden.menu.php';
         $row = mysqli_fetch_assoc($Getfiles);
         $filepath = $row['Files_path'].$row['Filename'];
         $filetype = $row['Filetype'];
-
+        $filedefaultpic = 'thumbnails\woex.jpg';
 
 
         // echo "<div class='avatar'><img class='img-responsive' src='$filepath' width='200px' height='100px' alt='Profielfoto'></div>";
@@ -140,7 +140,7 @@ include_once 'hidden.menu.php';
             while ($row = mysqli_fetch_assoc($Getfiles)) {
                 echo "<div class='container text-center'><p>";
                 echo "<h4>$subdirs[$x] van $studentnaam</h4>";
-                echo "<a href = '".$row['Files_path'].$row['Filename']."'><img  src = ".($filetype == 'Documenten' ||$filetype == 'CV')? :  ." alt = 'bestand'></a>";
+                echo "<a href = '".$row['Files_path'].$row['Filename']."'><img  src = ' $filedefaultpic' alt = 'bestand'></a>";
                 //echo dateSelect($studentnumber, $subdir, $waarmerk);
                 $x++;
             }
