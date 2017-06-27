@@ -80,6 +80,8 @@ function dateSelect($datum, $folder, $verified)
             }
         } else {
             echo "<p>Deze map bevat geen bestanden</p>";
+            $numberOfFiles = NULL;
+            exit();
         }
 
     }
@@ -118,57 +120,45 @@ include_once 'hidden.menu.php';
 
         <?php
         $student_ID = $_SESSION['Gebruiker_ID'];
-        $SQLgetfiles = ("SELECT File_ID, Files_path, Filename, Filetype FROM files where Filetype = 'profielfoto' AND Gebruiker_ID  = '$student_ID'");
+        $SQLgetfiles = ("SELECT * FROM files where Gebruiker_ID  = '$student_ID'");
         $Getfiles = mysqli_query($connection, $SQLgetfiles);
         $row = mysqli_fetch_assoc($Getfiles);
-        $filepath = $row['Files_path'] . $row['Filename'];
+        $filepath = $row['Files_path'].$row['Filename'];
+        $filetype = $row['Filetype'];
+        $filedefaultpic = 'thumbnails\woex.jpg';
+
 
         // echo "<div class='avatar'><img class='img-responsive' src='$filepath' width='200px' height='100px' alt='Profielfoto'></div>";
         ?>
 
-       <img width="20%" <?php echo "src='$filepath'" ?> alt="profielfoto" title="Profielfoto">
+       <img width="20%" <?php echo "src='".$filepath."'" ?> alt="profielfoto" title="Profielfoto">
           <p><i>'<?php echo $studentquote; ?>'</i></p>
         </div>
     <div class="container text-center">
 
         <p><?php
 
+            $subdirs = array('CV','Documenten','Afbeeldingen');
+            $x =0;
 
-           $subdirs = array('CV', 'Afbeeldingen', 'Documenten');
+            //foreach ($subdirs as $subdir) {
 
-            switch ($indelingUser) {
-                case "indeling1":
-                    $subdirs = array('CV', 'Documenten', 'Afbeeldingen');
-                    break;
-                case "indeling2":
-                    $subdirs = array('CV', 'Afbeeldingen', 'Documenten');
-                    break;
-                case "indeling3":
-                    $subdirs = array('Documenten', 'CV', 'Afbeeldingen');
-                    break;
-                case "indeling4":
-                    $subdirs = array('Documenten', 'Afbeeldingen', 'CV');
-                    break;
-                case "indeling5":
-                    $subdirs = array('Afbeeldingen', 'Documenten', 'CV');
-                    break;
-                case "indeling6":
-                    $subdirs = array('Afbeeldingen', 'CV', 'Documenten');
-                    break;
-            }
-
-
-            foreach ($subdirs as $subdir) {
-
+            while ($row = mysqli_fetch_assoc($Getfiles)) {
                 echo "<div class='container text-center'><p>";
-                echo "<h4>$subdir van $studentnaam</h4>";
-                echo dateSelect($studentnumber, $subdir, $waarmerk);
-
+                echo "<h4>$subdirs[$x] van $studentnaam</h4>";
+                echo "<a href = '".$row['Files_path'].$row['Filename']."'><img  src = ' $filedefaultpic' alt = 'bestand'></a>";
+                //echo dateSelect($studentnumber, $subdir, $waarmerk);
+                $x++;
+            }
 
                 echo "</p><br><br></div>";
-            }
+           // }
 
             ?>
+
+
+
+        <p><i>'<?php echo $studentquote; ?>'</i></p>
 
         </p>
     </div>
