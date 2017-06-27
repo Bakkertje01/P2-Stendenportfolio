@@ -17,7 +17,7 @@ if (isset($_POST['bekijk'])) {
 
 function dateSelect($datum, $folder, $verified)
 {
-
+//henk
 
     $dirnamez = "./studentuploads/" . $datum;
 

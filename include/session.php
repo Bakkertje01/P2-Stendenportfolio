@@ -14,7 +14,7 @@ $connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 
 $sql = "SELECT Gebruiker_ID, Voornaam, Studentnr, Quote, Achternaam, img_path, color_path, Indeling, Verified FROM User WHERE Gebruiker_ID = $ID";
 $result = $connection->query($sql);
-
+//henk
 if ($result->num_rows > 0) {
     // output data of each row
     while ($row = $result->fetch_assoc()) {

@@ -32,6 +32,7 @@
                             <input type='submit' name='pfsubmit' id='phone' value='Upload Profielfoto'/>
                         </form>
                         <?php
+                        //henk
                             if (isset($_POST['pfsubmit'])) {
 
                                 if (isset($_FILES['pfupload']) && !empty($_FILES['pfupload']['name'])) {
