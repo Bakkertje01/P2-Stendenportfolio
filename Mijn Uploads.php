@@ -146,7 +146,7 @@ include_once 'hidden.menu.php';
             while ($row = mysqli_fetch_assoc($Getfiles)) {
                 echo "<div class='container text-center'><p>";
                 echo "<h4>$subdirs[$x] van $studentnaam</h4>";
-                echo "<a href = '".$row['Files_path'].$row['Filename']."'><img  src = ' $filedefaultpic' alt = 'bestand'></a>";
+                echo "<a href = '".$row['Files_path'].$row['Filename']."'><img  src = '$filedefaultpic' alt = 'bestand'></a>";
                 //echo dateSelect($studentnumber, $subdir, $waarmerk);
                 $x++;
             }
