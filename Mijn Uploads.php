@@ -18,6 +18,7 @@ if (isset($_POST['bekijk'])) {
 function dateSelect($datum, $folder, $verified)
 {
 //g
+    $numberOfFiles = 0;
 
     $dirnamez = "./studentuploads/" . $datum;
 
