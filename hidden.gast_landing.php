@@ -41,7 +41,7 @@ include 'hidden.menu.php';
 
 
 
-					$query = "select Achternaam, Voornaam, Studentnr FROM user where Type ='student' order by Voornaam";
+					$query = "select Achternaam, Voornaam, Studentnr FROM user where Studentnr = '" . $_SESSION['Toegang_gast'] . "' order by Voornaam";
 					//echo $query;
 
 					$result = mysqli_query($connection, $query);

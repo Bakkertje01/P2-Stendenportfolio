@@ -40,6 +40,7 @@ if (!empty($_POST["login"])) {
         }
         if($_SESSION['Type']== 'gast'){
 		    header('refresh:3;url=hidden.gast_landing.php');
+	        $_SESSION["Toegang_gast"] = $row['Toegang_gast'];
 	    }
 
     } else {
