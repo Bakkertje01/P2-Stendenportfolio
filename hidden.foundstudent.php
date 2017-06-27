@@ -2,7 +2,7 @@
 include_once'include/session.php';
 include_once 'include/noacces.php';
 
-if($_SESSION["Type"] != "admin" && $_SESSION["Type"] != "slb" && $_SESSION["Type"] != "docent") {
+if($_SESSION["Type"] != "admin" && $_SESSION["Type"] != "slb" && $_SESSION["Type"] != "docent" && $_SESSION["Type"] != "gast") {
     header("Location: Mijn%20Uploads.php");
 }
 

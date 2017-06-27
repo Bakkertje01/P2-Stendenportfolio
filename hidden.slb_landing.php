@@ -51,7 +51,7 @@ include 'hidden.menu.php';
                 else {
 
                    while($Row = mysqli_fetch_assoc($result)){
-                       echo "<a href='#' class='list-group-item'>".$Row["Achternaam"]."</a>";
+                       echo "<a href = 'hidden.foundstudent.php?student=$Row[Studentnr]' class='list-group-item'>".$Row["Achternaam"]."</a>";
                    }
 
 
