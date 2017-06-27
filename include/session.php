@@ -12,7 +12,7 @@ if (isset($_SESSION['Gebruiker_ID'])) {
 
 $connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 
-$sql = "SELECT Gebruiker_ID, Voornaam, Studentnr, Quote, Achternaam, img_path, color_path, Verified FROM User WHERE Gebruiker_ID = $ID";
+$sql = "SELECT Gebruiker_ID, Voornaam, Studentnr, Quote, Achternaam, img_path, color_path, Indeling, Verified FROM User WHERE Gebruiker_ID = $ID";
 $result = $connection->query($sql);
 
 if ($result->num_rows > 0) {
@@ -26,6 +26,7 @@ if ($result->num_rows > 0) {
         $textColor =  $row["img_path"];
         $PfNaam = 'pf.jpg';
         $profielfoto = "studentuploads/$studentnumber/Profielfoto/$PfNaam";
+        $indelingUser = $row["Indeling"];
 
     }
 } else {

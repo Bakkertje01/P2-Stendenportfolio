@@ -127,7 +127,29 @@ include_once 'hidden.menu.php';
 
         <p><?php
 
+
            $subdirs = array('CV', 'Afbeeldingen', 'Documenten');
+
+            switch ($indelingUser) {
+                case "indeling1":
+                    $subdirs = array('CV', 'Documenten', 'Afbeeldingen');
+                    break;
+                case "indeling2":
+                    $subdirs = array('CV', 'Afbeeldingen', 'Documenten');
+                    break;
+                case "indeling3":
+                    $subdirs = array('Documenten', 'CV', 'Afbeeldingen');
+                    break;
+                case "indeling4":
+                    $subdirs = array('Documenten', 'Afbeeldingen', 'CV');
+                    break;
+                case "indeling5":
+                    $subdirs = array('Afbeeldingen', 'Documenten', 'CV');
+                    break;
+                case "indeling6":
+                    $subdirs = array('Afbeeldingen', 'CV', 'Documenten');
+                    break;
+            }
 
 
             foreach ($subdirs as $subdir) {
@@ -141,10 +163,6 @@ include_once 'hidden.menu.php';
             }
 
             ?>
-
-
-
-        <p><i>'<?php echo $studentquote; ?>'</i></p>
 
         </p>
     </div>

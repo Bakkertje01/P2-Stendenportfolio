@@ -115,6 +115,22 @@
                                 }
                             }
                         ?>
+
+                        <?php
+
+                        if(isset($_POST['indelingsubmit'])){
+                            $indeling = $_POST['indelingkeuze'];
+                            $sql = "UPDATE User SET Indeling = '$indeling' WHERE Gebruiker_ID = $ID";
+                            $result = $connection->query($sql);
+                            $indelingConfirm = "<p>Indeling bijgewerkt <a href='profiel.php'> Ok! </a></p>";
+
+                        }
+
+
+                        ?>
+
+
+
                         <br><br><br>
 
                     </div>
@@ -288,6 +304,7 @@
                             }
                             if (isset($_POST['kleursub'])) {
                                 echo $kleurgekozen;
+
                             }
                         ?>
                     </div>
@@ -354,6 +371,44 @@
                                     echo "<p>Het bestand is verwijderd.</p>";
                                 }
                             }
+                        ?>
+                    </div>
+
+                    <!--QUOTE SELECTEREN-->
+
+                    <div class="profiel">
+                        <h3> Indeling </h3>
+                        <form id='register' action='profiel.php' method='POST'>
+
+                            <label for="indelingkeuze">Kies nieuwe Quote: </label><br><br>
+                            <select name="indelingkeuze">
+                                <option value="indeling1">CV, Documenten, Afbeeldingen</option>
+                                <option value="indeling2">CV, Afbeeldingen, Documenten</option>
+                                <option value="indeling3">Documenten, CV, Afbeeldingen</option>
+                                <option value="indeling4">Documenten, Afbeeldingen, CV</option>
+                                <option value="indeling5">Afbeeldingen, Documenten, CV</option>
+                                <option value="indeling6">Afbeeldignen, CV, Documenten</option>
+                            </select>
+                            <br><br>
+                            <input type='submit' name='indelingsubmit' id='phone' value='Bewerk indeling'/><br><br><br><br>
+                            <?php
+
+                            if(isset($indelingConfirm)){
+                                echo $indelingConfirm;
+                            }
+
+                            ?>
+
+                        </form>
+                        <?php
+                        if (isset($_POST['quotesubmit']) && !empty($_POST['quote'])) {
+                            $nieuweQuote = $_POST['quote'];
+                            $sql = "UPDATE User SET Quote = '$nieuweQuote' WHERE Gebruiker_ID = $ID";
+                            $result = $connection->query($sql);
+                            echo "<br><br><p>Quote bijgewerkt naar '$nieuweQuote' <a href='profiel.php'> Ok! </a></p>";
+                        }
+
+
                         ?>
                     </div>
 
