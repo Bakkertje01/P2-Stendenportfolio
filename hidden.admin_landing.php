@@ -37,9 +37,9 @@ include 'hidden.menu.php';
                         <h2>Admin <br>contact</h2>
                     </div>
 
-                <a href="http://papadingo.nl/tiri/" >
+                <a href="hidden.admin_gast_register.php" >
                     <div class="blokjes">
-                        <h2>Vrijmibo</h2>
+                        <h2>Gast registratie</h2>
                     </div>
                 </a>
             </div>

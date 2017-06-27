@@ -38,6 +38,9 @@ if (!empty($_POST["login"])) {
         if($_SESSION['Type']== 'docent'){
             header('refresh:3;url=hidden.docent_landing.php');
         }
+        if($_SESSION['Type']== 'gast'){
+		    header('refresh:3;url=hidden.gast_landing.php');
+	    }
 
     } else {
         $message = "Invalid Username or Password!";
@@ -89,6 +92,7 @@ if(isset($_SESSION["registered"])){
                 </div>
             </form>
             <p><a href="hidden.register.php">Registreren</a></p>
+            <p><a href="contact.php">Gast account aanvragen</a></p>
 			<?php
 		} else {
 			$result = mysqlI_query($connection, "SELECT * FROM user WHERE Gebruiker_ID='" . $_SESSION["Gebruiker_ID"] . "'")
