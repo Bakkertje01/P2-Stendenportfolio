@@ -4,8 +4,8 @@ include_once 'include/noacces.php';
 
 if($_SESSION["Type"] != "admin" && $_SESSION["Type"] != "slb" && $_SESSION["Type"] != "docent" && $_SESSION["Type"] != "gast") {
     header("Location: Mijn%20Uploads.php");
-}
 
+}
 function dateSelect($datum, $folder, $verified)
 {
     $numberOfFiles = 0;
@@ -93,6 +93,7 @@ if (isset($_POST['reset'])) {
 <body>
 <?php
 include_once 'hidden.header.php';
+ob_start();
 include_once 'hidden.menu.php';
 
 
@@ -105,6 +106,12 @@ include_once 'hidden.menu.php';
 if(isset($_GET['student'])) {
 	$studentnr = $_GET['student'];
 
+	if($_SESSION['Type'] == 'gast'){
+        if($_SESSION['Toegang_gast'] != $studentnr){
+	        header("location:hidden.gast_landing.php");
+	        ob_end_flush();
+        }
+	}
     $veriF = $row['Verified'];
 
 	$sql = "SELECT Gebruiker_ID, Voornaam, Studentnr, Quote, Achternaam, img_path, color_path, Indeling FROM user WHERE Studentnr = '$studentnr'";
