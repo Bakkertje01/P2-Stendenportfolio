@@ -28,12 +28,12 @@ if ($result->num_rows > 0) {
         $pfCheck = "studentuploads/$studentnumber/Profielfoto/$PfNaam";
         if(!file_exists($pfCheck)){
             $profielfoto = "studentuploads/default/Profielfoto/d". $PfNaam;
-            echo $profielfoto;
+
         }else{
             $profielfoto = "studentuploads/$studentnumber/Profielfoto/$PfNaam";
         }
         $indelingUser = $row["Indeling"];
-        echo "<br><br><br>".$profielfoto;
+
 
     }
 
