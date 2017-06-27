@@ -228,7 +228,7 @@ color: $textColor;
 
 foreach ($subdirs as $subdir) {
 
-				echo "<div class="container text-center"><p>";
+				echo "<div class='container text-center'><p>";
 				echo "<h4>$subdir van $studentnaam</h4>";
                 echo dateSelect($studentnumber, $subdir, $veriF);
 				echo "</p><br><br></div>";
