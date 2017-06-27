@@ -1,6 +1,12 @@
 # stendenportfolio
 Project 2.2 portfolio
-- Rob
+
+Dev van de week:
+*********
+- Rob   *
+*********
+
+
 - Justin
 - Lennart
 - Sander
