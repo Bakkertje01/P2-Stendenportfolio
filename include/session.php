@@ -25,10 +25,18 @@ if ($result->num_rows > 0) {
         $bgColor = $row["color_path"];
         $textColor =  $row["img_path"];
         $PfNaam = 'pf.jpg';
-        $profielfoto = "studentuploads/$studentnumber/Profielfoto/$PfNaam";
+        $pfCheck = "studentuploads/$studentnumber/Profielfoto/$PfNaam";
+        if(!file_exists($pfCheck)){
+            $profielfoto = "studentuploads/default/Profielfoto/d". $PfNaam;
+            echo $profielfoto;
+        }else{
+            $profielfoto = "studentuploads/$studentnumber/Profielfoto/$PfNaam";
+        }
         $indelingUser = $row["Indeling"];
+        echo "<br><br><br>".$profielfoto;
 
     }
+
 } else {
     $ID = 'gast';
     $studentnaam = "Gast";
@@ -37,14 +45,14 @@ if ($result->num_rows > 0) {
     $studentquote = "Ik ben hier nieuw!";
     $bgColor = NULL;
     $textColor =  NULL;
-    $PfNaam = 'pf.jpg';
+    $PfNaam = 'dpf.jpg';
     $profielfoto = "studentuploads/default/Profielfoto/$PfNaam";
 }
 $checkPf = "studentuploads/$studentnumber/Profielfoto/$PfNaam";
 
-if (!file_exists($checkPf)){
+/*if (!file_exists($checkPf)){
     $profielfoto = "studentuploads/default/Profielfoto/$PfNaam";
-}
+}*/
 
 
 if (isset($_SESSION['Gebruiker_ID'])) {

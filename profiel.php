@@ -45,12 +45,14 @@
                                     $file_type = pathinfo($oldName, PATHINFO_EXTENSION);
                                     $fileTitle = 'pf';
                                     $selectedDir = 'Profielfoto';
-                                    $file_name = "$fileTitle.$file_type";
+                                    $file_name = "$fileTitle.jpg";
                                     $ext = explode('.', $oldName);
                                     $acceptedFiles = array('jpg', 'jpeg', 'png', 'gif', 'JPG', 'JPEG');
                                     $pfDir = "studentuploads/$studentnumber/Profielfoto/$PfNaam";
                                     if (file_exists($profielfoto) && isset($_FILES['pfupload'])) {
-                                        unlink($profielfoto);
+                                        if($profielfoto != "studentuploads/default/Profielfoto/dpf.jpg") {
+                                            unlink($profielfoto);
+                                        }
                                     }
                                     if (!in_array($ext[1], $acceptedFiles)) {
                                         $errors[] = 'Bestandsformaat niet juist!';

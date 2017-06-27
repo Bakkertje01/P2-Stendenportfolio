@@ -23,6 +23,12 @@ function dateSelect($datum, $folder, $verified)
 
     $files1 = glob("$dirnamez/" . "$folder/" . "*");
 
+    if(empty($folder)){
+
+            $numberOfFiles = 0;
+
+    }
+
     if (!empty($folder)) {
         foreach (array_reverse($files1) as $file1) {
             $numberOfFiles = count($file1);
