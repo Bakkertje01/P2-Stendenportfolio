@@ -107,7 +107,7 @@ if(isset($_GET['student'])) {
 
     $veriF = $row['Verified'];
 
-	$sql = "SELECT Gebruiker_ID, Voornaam, Studentnr, Quote, Achternaam, img_path, color_path FROM user WHERE Studentnr = '$studentnr'";
+	$sql = "SELECT Gebruiker_ID, Voornaam, Studentnr, Quote, Achternaam, img_path, color_path, Indeling FROM user WHERE Studentnr = '$studentnr'";
 	$result = $connection->query($sql);
 
 	if ($result->num_rows > 0) {
@@ -120,6 +120,7 @@ if(isset($_GET['student'])) {
 			$studentnumber = $row["Studentnr"];
 			$studentquote = $row["Quote"];
 			$studentachter2 = $row["Achternaam"];
+            $indelingUser = $row["Indeling"];
 
 			echo "<style>
     
