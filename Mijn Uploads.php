@@ -1,3 +1,4 @@
+
 <?php
 
 
@@ -68,7 +69,6 @@ function dateSelect($datum, $folder, $verified)
 
                     echo $verified;
 
-
                     echo "</div>";
                 }
 
@@ -117,7 +117,7 @@ include_once 'hidden.menu.php';
         $Getfiles = mysqli_query($connection, $SQLgetfiles);
         $row = mysqli_fetch_assoc($Getfiles);
         $filepath = $row['Files_path'] . $row['Filename'];
-        $veriF = $row['Verified'];
+        //var_dump($row['verified']);
 
         // echo "<div class='avatar'><img class='img-responsive' src='$filepath' width='200px' height='100px' alt='Profielfoto'></div>";
         ?>
@@ -158,7 +158,7 @@ include_once 'hidden.menu.php';
 
                 echo "<div class='container text-center'><p>";
                 echo "<h4>$subdir van $studentnaam</h4>";
-                echo dateSelect($studentnumber, $subdir, $veriF);
+                echo dateSelect($studentnumber, $subdir, $waarmerk);
 
 
                 echo "</p><br><br></div>";
