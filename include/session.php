@@ -63,7 +63,7 @@ if (isset($_SESSION['Gebruiker_ID'])) {
 //echo $sql;
     $result2 = $connection->query($sql2);
 
-//if ($result2['num_rows'] > 0) { dit werkt, bij het niet inloggen, als je inlogd gaat het alsnog fout
+//if ($result2['num_rows'] > 0) { dit werkt, bij het niet inloggen, als je inlogt gaat het alsnog fout
     if ($result2->num_rows > 0) {
         // output data of each row
         $row2 = array();
@@ -72,10 +72,9 @@ if (isset($_SESSION['Gebruiker_ID'])) {
             if ($waarmerkCheck = 1) {
                 $waarmerk = "<p><img width='20%' src='waarmerk/approved.jpg'>Gewaarmerkt Door SLB/DOCENT</p>";
             }
-            if ($waarmerkCheck != 1) {
+            if ($waarmerkCheck == 0) {
                 $waarmerk = "<p><img width='20%' src='waarmerk/progr.png'>In afwachting van waarmerk</p>";
             }
-
         }
     }
 }

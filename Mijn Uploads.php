@@ -17,6 +17,15 @@ if (isset($_POST['bekijk'])) {
 
 function dateSelect($datum, $folder, $verified)
 {
+    $verified = 0;
+
+    $ID = $_SESSION["Gebruiker_ID"];
+    $connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
+    $sql2 = "SELECT Verified FROM Files WHERE Gebruiker_ID = $ID";
+
+    $resultSql2 = $connection->query($sql2);
+
+
     $numberOfFiles = 0;
 
     $dirnamez = "./studentuploads/" . $datum;
@@ -45,7 +54,17 @@ function dateSelect($datum, $folder, $verified)
 
                     echo "<a href='$file1' download><img src='$file1' title='$deftitle' class='img-responsive' style='width:100%' alt='$file1'></a>";
 
-                    echo $verified;
+                    if ($resultSql2->num_rows > 0) {
+                        while ($row = $resultSql2->fetch_assoc()) {
+                            if($row['Verified'] == 1 ){
+                                echo "<p><img width='20%' src='waarmerk/approved.jpg'>Gewaarmerkt Door SLB/DOCENT</p>";
+                            }else{
+                                echo "<p><img width='20%' src='waarmerk/progr.png'>In afwachting van waarmerk</p>";
+                            }
+                        }
+                    }
+
+                   //echo $verified;
 
                     echo "</div>";
 
