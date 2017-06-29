@@ -65,7 +65,6 @@ function dateSelect($datum, $folder, $verified)
                     }
 
                    //echo $verified;
-
                     echo "</div>";
 
 
