@@ -125,7 +125,7 @@ include 'hidden.menu.php';
 								$sql = "INSERT INTO $DBtable (Voornaam, Achternaam, Email, Wachtwoord, Studentnr, Verified,`Type`,img_path,color_path,Quote,Toegang_gast) 
         VALUES ('$firstname', '$lastname', '$email', '$password',NULL,Null,'gast',NULL,NULL,NULL,$toegangGast)";
 								$DBresult = mysqli_query($connection, $sql);
-								echo ($result === false) ? "ERROR" . mysqli_errno($connection) . " : " . mysqli_error($connection) : "<br><br><h3>Bedankt voor het registreren<h3>";
+								echo ($result === false) ? "ERROR" . mysqli_errno($connection) . " : " . mysqli_error($connection) : "<br><br><h3>Bedankt voor het registreren. Stuur de inloggegevens naar de gast.<h3>";
 							}
 
 						}
