@@ -80,6 +80,7 @@ if(isset($_SESSION["registered"])){
                 <p>Als u gebruik wil maken van het portfolio moet u eerst inloggen. Als dit de eerste keer is dat u <br>
                     deze site bezoekt moet u zich eerst registreren. Na het registreren kunt u inloggen en gebruik <br>
                     maken van onze dienst.<br></p>
+                <p>Bent u een gast dan kan u een gast account aanvragen via de contactpagina.<br></p>
                 <div class="field-group">
                     <div><label for="login">Email</label></div>
                     <div><input name="email" type="text"></div>

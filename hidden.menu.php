@@ -44,6 +44,11 @@ include "hidden.style.php";
                     echo " <li><a href='hidden.docent_landing.php'><span class=''></span>Docent home</a></li>";
                     echo " <li><a href='studentfind.php'><span class=''></span>Zoek student</a></li>";
                     echo " <li><a href='contact.php'><span class=''></span>Contact</a></li>";
+
+                } elseif ($_SESSION['Type'] == 'gast') {
+	                echo " <li><a href='hidden.gast_landing.php'><span class=''></span>Gast home</a></li>";
+	                echo " <li><a href='studentfind.php'><span class=''></span>Zoek student</a></li>";
+	                echo " <li><a href='contact.php'><span class=''></span>Contact</a></li>";
                 } else {
 
                 }
