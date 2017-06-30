@@ -49,7 +49,6 @@ function dateSelect($datum, $folder, $verified)
 
                     $deftitle = ucfirst($fileTitle[1]);
 
-
                     echo " <div class='col-sm-3'><h5>$deftitle</h5>";
 
                     echo "<a href='$file1' download><img src='$file1' title='$deftitle' class='img-responsive' style='width:100%' alt='$file1'></a>";
